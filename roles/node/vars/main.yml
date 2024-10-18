@@ -1,0 +1,14 @@
+---
+# maintains file name, binary names, and anything which is not a directory or path
+
+# config file names
+node_config_file_name: config.toml
+node_app_file_name: app.toml
+node_priv_validator_key_file_name: priv_validator_key.json
+node_node_key_file_name: node_key.json
+node_genesis_file_name: genesis.json
+
+# binary names
+node_service_default_binary_name: omniflixhubd
+
+node_status_endpoint: status
