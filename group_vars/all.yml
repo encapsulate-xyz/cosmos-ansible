@@ -46,4 +46,6 @@ omniflix:
         grpc: 90
         grpc_web: 91
 
-# todo: init and etxernal address and update
+
+# todo: init and and update, rpc setting in config
+
