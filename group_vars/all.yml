@@ -46,6 +46,4 @@ omniflix:
         grpc: 90
         grpc_web: 91
 
-
 # todo: init and and update, rpc setting in config
-

@@ -6,5 +6,5 @@ all:
   children:
     omniflix:
       hosts:
-        5.78.80.127:
+        5.78.92.20:
           type: fullnode
