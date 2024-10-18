@@ -191,7 +191,7 @@ enable-unsafe-cors = false
 
 # snapshot-interval specifies the block interval at which local state sync snapshots are
 # taken (0 to disable). Must be a multiple of pruning-keep-every.
-snapshot-interval = "{{ node_space_optimization_settings.snapshot_interval | int }}"
+snapshot-interval = {{ node_space_optimization_settings.snapshot_interval }}
 
 # snapshot-keep-recent specifies the number of recent snapshots to keep and serve (0 to keep all).
 snapshot-keep-recent = 2
