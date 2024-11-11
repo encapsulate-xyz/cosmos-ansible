@@ -7,6 +7,7 @@ node_app_file_name: app.toml
 node_priv_validator_key_file_name: priv_validator_key.json
 node_node_key_file_name: node_key.json
 node_genesis_file_name: genesis.json
+node_priv_validator_state_file_name: priv_validator_state.json
 
 # binary names
 node_service_default_binary_name: omniflixhubd
@@ -17,3 +18,43 @@ node_space_optimization_settings:
   indexer: null
   pruning: everything
   snapshot_interval: 0
+
+node_type_settings:
+  # config.toml
+  abci:
+    address:
+      default: tcp://127.0.0.1
+  rpc:
+    address:
+      validator: tcp://127.0.0.1
+      fullnode: tcp://0.0.0.0
+  pprof:
+    address:
+      default: localhost
+  p2p:
+    address:
+      default: tcp://0.0.0.0
+  double_sign_check_height:
+    validator: 10
+    fullnode: 0
+  prometheus:
+    enable: true
+    address:
+      default: 0.0.0.0
+  # app.toml
+  api:
+    enable: true
+    swagger: true
+    address:
+      validator: tcp://127.0.0.1
+      fullnode: tcp://0.0.0.0
+  rosetta:
+    enable: false
+    address:
+      validator: localhost
+      fullnode: 0.0.0.0
+  grpc:
+    enable: true
+    address:
+      validator: localhost
+      fullnode: 0.0.0.0

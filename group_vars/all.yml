@@ -2,6 +2,8 @@
 # maintains ports, bianry or repo urls
 
 org: encapsulate
+monitor_server_dns: monitor.encapsulate.xyz
+domain_regex: "^([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$"
 
 default_node_types:
   - validator
@@ -45,5 +47,3 @@ omniflix:
         rosetta: 80
         grpc: 90
         grpc_web: 91
-
-# todo: init and and update, rpc setting in config

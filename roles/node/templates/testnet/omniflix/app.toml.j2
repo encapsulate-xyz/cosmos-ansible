@@ -106,13 +106,13 @@ global-labels = [
 [api]
 
 # Enable defines if the API server should be enabled.
-enable = false
+enable = {{ node_type_settings.api.enable | tojson }}
 
 # Swagger defines if swagger documentation should automatically be registered.
-swagger = false
+swagger = {{ node_type_settings.api.swagger | tojson }}
 
 # Address defines the API server to listen on.
-address = "tcp://0.0.0.0:{{ rest_api_port }}"
+address = "{{ node_type_settings.api.address[type] }}:{{ rest_api_port }}"
 
 # MaxOpenConnections defines the number of maximum open connections.
 max-open-connections = 1000
@@ -136,10 +136,10 @@ enabled-unsafe-cors = false
 [rosetta]
 
 # Enable defines if the Rosetta API server should be enabled.
-enable = false
+enable = {{ node_type_settings.rosetta.enable | tojson }}
 
 # Address defines the Rosetta API server to listen on.
-address = ":{{ rosetta_port }}"
+address = "{{ node_type_settings.rosetta.address[type] }}:{{ rosetta_port }}"
 
 # Network defines the name of the blockchain that will be returned by Rosetta.
 blockchain = "app"
@@ -160,10 +160,10 @@ offline = false
 [grpc]
 
 # Enable defines if the gRPC server should be enabled.
-enable = true
+enable = {{ node_type_settings.grpc.enable | tojson }}
 
 # Address defines the gRPC server address to bind to.
-address = "0.0.0.0:{{ grpc_port }}"
+address = "{{ node_type_settings.grpc.address[type] }}:{{ grpc_port }}"
 
 ###############################################################################
 ###                        gRPC Web Configuration                           ###
@@ -173,10 +173,10 @@ address = "0.0.0.0:{{ grpc_port }}"
 
 # GRPCWebEnable defines if the gRPC-web should be enabled.
 # NOTE: gRPC must also be enabled, otherwise, this configuration is a no-op.
-enable = true
+enable = {{ node_type_settings.grpc.enable | tojson }}
 
 # Address defines the gRPC-web server address to bind to.
-address = "0.0.0.0:{{ grpc_web_port }}"
+address = "{{ node_type_settings.grpc.address[type] }}:{{ grpc_web_port }}"
 
 # EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 enable-unsafe-cors = false
