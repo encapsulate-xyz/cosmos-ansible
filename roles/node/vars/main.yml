@@ -12,6 +12,7 @@ node_priv_validator_state_file_name: priv_validator_state.json
 # binary names
 node_service_default_binary_name:
   omniflix: omniflixhubd
+  quicksilver: quicksilverd
 
 node_status_endpoint: status
 
