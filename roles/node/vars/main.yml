@@ -10,7 +10,8 @@ node_genesis_file_name: genesis.json
 node_priv_validator_state_file_name: priv_validator_state.json
 
 # binary names
-node_service_default_binary_name: omniflixhubd
+node_service_default_binary_name:
+  omniflix: omniflixhubd
 
 node_status_endpoint: status
 

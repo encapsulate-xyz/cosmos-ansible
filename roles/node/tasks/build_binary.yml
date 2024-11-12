@@ -25,7 +25,7 @@
 - name: Find the built binary
   ansible.builtin.find:
     paths: "{{ tmp_dir }}/{{ project }}"
-    patterns: "{{ node_service_default_binary_name }}"
+    patterns: "{{ node_service_default_binary_name[project] }}"
     recurse: true
   register: binary_location
 
