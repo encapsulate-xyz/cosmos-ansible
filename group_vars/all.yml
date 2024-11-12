@@ -3,7 +3,7 @@
 
 org: encapsulate
 monitor_server_dns: monitor.encapsulate.xyz
-domain_regex: "^([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$"
+domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
 default_node_types:
   - validator

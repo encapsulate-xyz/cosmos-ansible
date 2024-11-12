@@ -16,7 +16,7 @@ node_service_default_binary_name:
 node_status_endpoint: status
 
 node_space_optimization_settings:
-  indexer: null
+  indexer: "null"
   pruning: everything
   snapshot_interval: 0
 
