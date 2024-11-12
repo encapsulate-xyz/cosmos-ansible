@@ -101,23 +101,23 @@ node_ufw_rules:
 
 node_sentry_settings:
   pex:
-    validator: ~  # false
-    fullnode: ~    # true
+    validator: # false
+    fullnode: # true
   persistent_peers:
-    validator: ~  # list of sentry nodes
-    fullnode: ~  # validator node, optionally other sentry nodes
+    validator: # list of sentry nodes
+    fullnode: # validator node, optionally other sentry nodes
   private_peer_ids:
-    validator: ~  # ""
-    fullnode: ~  # validator node ID
+    validator: # ""
+    fullnode: # validator node ID
   unconditional_peer_ids:
-    validator: ~  # sentry node IDs (optional)
-    fullnode: ~  # validator node ID and sentry node IDs (optional)
+    validator: # sentry node IDs (optional)
+    fullnode: # validator node ID and sentry node IDs (optional)
   addr_book_strict:
-    validator: ~  # false
-    fullnode: ~  # false
+    validator: # false
+    fullnode: # false
   seeds:
-    validator: ~  # ""
-    fullnode: ~  # can connect to other seeds
+    validator: # ""
+    fullnode: # can connect to other seeds
   external_address:
-    validator: ~  # ""
-    fullnode: ~  # can use the default if its a fullnode
+    validator: # ""
+    fullnode: # can use the default if its a fullnode
