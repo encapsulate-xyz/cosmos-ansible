@@ -31,3 +31,11 @@ quicksilver:
     source_url: https://github.com/quicksilver-zone/quicksilver
   fullnode:
     source_url: https://github.com/quicksilver-zone/quicksilver
+
+celestia:
+  ports:
+    prefix: 102
+  validator:
+    source_url: https://github.com/celestiaorg/celestia-app
+  fullnode:
+    source_url: https://github.com/celestiaorg/celestia-app
