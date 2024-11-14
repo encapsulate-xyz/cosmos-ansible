@@ -55,3 +55,13 @@ humans:
     source_url: https://github.com/humansdotai/humans
     ports:
       prefix: 108
+
+ojo:
+  validator:
+    source_url: https://github.com/ojo-network/ojo
+    ports:
+      prefix: 109
+  fullnode:
+    source_url: https://github.com/ojo-network/ojo
+    ports:
+      prefix: 110

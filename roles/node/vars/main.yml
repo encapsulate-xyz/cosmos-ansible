@@ -15,6 +15,7 @@ node_service_default_binary_name:
   quicksilver: quicksilverd
   celestia: celestia-appd
   humans: humansd
+  ojo: ojod
 
 node_status_endpoint: status
 
