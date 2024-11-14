@@ -17,6 +17,7 @@ node_service_default_binary_name:
   humans: humansd
   ojo: ojod
   umee: umeed
+  c4e: c4ed
 
 node_status_endpoint: status
 

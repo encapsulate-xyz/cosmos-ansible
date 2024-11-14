@@ -75,3 +75,13 @@ umee:
     source_url: https://github.com/umee-network/umee
     ports:
       prefix: 112
+
+c4e:
+  validator:
+    source_url: https://github.com/chain4energy/c4e-chain
+    ports:
+      prefix: 113
+  fullnode:
+    source_url: https://github.com/chain4energy/c4e-chain
+    ports:
+      prefix: 114
