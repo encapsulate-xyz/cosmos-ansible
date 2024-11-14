@@ -39,3 +39,11 @@ celestia:
     source_url: https://github.com/celestiaorg/celestia-app
   fullnode:
     source_url: https://github.com/celestiaorg/celestia-app
+
+humans:
+  ports:
+    prefix: 103
+  validator:
+    source_url: https://github.com/humansdotai/humans
+  fullnode:
+    source_url: https://github.com/humansdotai/humans
