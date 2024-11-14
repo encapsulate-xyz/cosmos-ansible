@@ -31,15 +31,15 @@
 
 - name: Set all port variables dynamically
   ansible.builtin.set_fact:
-    p2p_port: "{{ vars[project].ports.prefix ~ ports.suffix.p2p }}"
-    rpc_port: "{{ vars[project].ports.prefix ~ ports.suffix.rpc }}"
-    abci_port: "{{ vars[project].ports.prefix ~ ports.suffix.abci }}"
-    prometheus_port: "{{ vars[project].ports.prefix ~ ports.suffix.prometheus }}"
-    pprof_port: "{{ vars[project].ports.prefix ~ ports.suffix.pprof }}"
-    rest_api_port: "{{ vars[project].ports.prefix ~ ports.suffix.rest_api }}"
-    rosetta_port: "{{ vars[project].ports.prefix ~ ports.suffix.rosetta }}"
-    grpc_port: "{{ vars[project].ports.prefix ~ ports.suffix.grpc }}"
-    grpc_web_port: "{{ vars[project].ports.prefix ~ ports.suffix.grpc_web }}"
+    p2p_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.p2p }}"
+    rpc_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.rpc }}"
+    abci_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.abci }}"
+    prometheus_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.prometheus }}"
+    pprof_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.pprof }}"
+    rest_api_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.rest_api }}"
+    rosetta_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.rosetta }}"
+    grpc_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.grpc }}"
+    grpc_web_port: "{{ vars[project][type].ports.prefix ~ ports.suffix.grpc_web }}"
 
 - name: Display all port variables
   ansible.builtin.debug:
