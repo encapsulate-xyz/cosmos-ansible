@@ -206,13 +206,13 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 # and will introspect on the listener or use UPnP
 # to figure out the address. ip and port are required
 # example: 159.89.10.97:26656
-external_address = "{% if node_sentry_settings.external_address[type] %}{{ node_sentry_settings.external_address[type] }}{% else %}{{ inventory_hostname + ':' + p2p_port }}{% endif %}"
+external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{% if node_sentry_settings.seeds[type] %}{{ node_sentry_settings.seeds[type] }}{% else %}{{ vars[project].seeds }}{% endif %}"
+seeds = "{{ node_sentry_settings.seeds[type] | default('065c0d83c5cb9efdbf13e1a4f4ab641f21b4d505@rpc-t.celestia.nodestake.org:666,ee9f90974f85c59d3861fc7f7edb10894f6ac3c8@seed-mocha.pops.one:26656,258f523c96efde50d5fe0a9faeea8a3e83be22ca@seed.mocha-4.celestia.aviaone.com:20279,5d0bf034d6e6a8b5ee31a2f42f753f1107b3a00e@celestia-testnet-seed.itrocket.net:11656,7da0fb48d6ef0823bc9770c0c8068dd7c89ed4ee@celest-test-seed.theamsolutions.info:443') }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{% if node_sentry_settings.persistent_peers[type] %}{{ node_sentry_settings.persistent_peers[type] }}{% else %}{{ vars[project].peers }}{% endif %}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('a8bb0bc58133022effcf415663d93c0ca835ebde@13.212.141.100:26656,1eecce4c8d741979f955c83a2333ad2ade6cae89@65.108.103.17:26665,70e8a8941f32dc5f696e46ee836c27620e773065@78.46.65.144:26656,8badeed7f48eefd5d43af7eb7662f2b578304a27@138.201.63.38:26686,40a97a82f1bcbee283f06df8c2d46b8559fe666e@5.9.147.138:30656,006e6d1287b697a5d94fe7a832d7e8e72f9e838a@65.108.124.43:34656,43e9da043318a4ea0141259c17fcb06ecff816af@141.94.73.39:43656,23711b72518bf5ce249d3f06110858cefc5f294a@94.130.54.216:11656,2c27344691e633115a2d01a2f7ae2117dd30c159@65.108.107.226:23316,5c7646d0b4ff44cab938ff20c32092342466b8e5@174.138.180.246:21656,00144a5d9397384941a595346e05045cc7a9aef9@18.139.78.193:26656,83cda75ef0cb3826858eaafe60f0f14a2018d53f@89.108.123.68:11656') }}"
 
 # UPNP port forwarding
 upnp = false
@@ -222,7 +222,7 @@ addr_book_file = "config/addrbook.json"
 
 # Set true for strict address routability rules
 # Set false for private or local networks
-addr_book_strict = {% if node_sentry_settings.addr_book_strict[type] != none %}{{ node_sentry_settings.addr_book_strict[type] | string | lower }}{% else %}true{% endif %}
+addr_book_strict = {{ (node_sentry_settings.addr_book_strict[type] | default(true)) | tojson }}
 
 # Maximum number of inbound peers
 max_num_inbound_peers = 40
@@ -231,7 +231,7 @@ max_num_inbound_peers = 40
 max_num_outbound_peers = 10
 
 # List of node IDs, to which a connection will be (re)established ignoring any existing limits
-unconditional_peer_ids = "{% if node_sentry_settings.unconditional_peer_ids[type] != '' %}{{ node_sentry_settings.unconditional_peer_ids[type] }}{% else %}{% endif %}"
+unconditional_peer_ids = "{{ node_sentry_settings.unconditional_peer_ids[type] | default() }}"
 
 # Maximum pause when redialing a persistent peer (if zero, exponential backoff is used)
 persistent_peers_max_dial_period = "0s"
@@ -249,7 +249,7 @@ send_rate = 5120000
 recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
-pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex[type] | string | lower }}{% else %}true{% endif %}
+pex = {{ (node_sentry_settings.pex[type] | default(true)) | tojson }}
 
 # Seed mode, in which node constantly crawls the network and looks for
 # peers. If another node asks it for addresses, it responds and disconnects.
@@ -258,7 +258,7 @@ pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex
 seed_mode = false
 
 # Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-private_peer_ids = "{% if node_sentry_settings.private_peer_ids[type] != '' %}{{ node_sentry_settings.private_peer_ids[type] }}{% else %}{% endif %}"
+private_peer_ids = "{{ node_sentry_settings.private_peer_ids[type] | default() }}"
 
 # Toggle to disable guard against peers connecting from the same ip.
 allow_duplicate_ip = false

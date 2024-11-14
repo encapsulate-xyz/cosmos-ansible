@@ -206,13 +206,13 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 # and will introspect on the listener or use UPnP
 # to figure out the address. ip and port are required
 # example: 159.89.10.97:26656
-external_address = "{% if node_sentry_settings.external_address[type] %}{{ node_sentry_settings.external_address[type] }}{% else %}{{ inventory_hostname + ':' + p2p_port }}{% endif %}"
+external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{% if node_sentry_settings.seeds[type] %}{{ node_sentry_settings.seeds[type] }}{% else %}{{ vars[project].seeds }}{% endif %}"
+seeds = "{{ node_sentry_settings.seeds[type] | default('9d75a06ebd3732a041df459849c21b87b2c55cde@35.187.240.195:26656,19feae28207474eb9f168fff9720fd4d418df1ed@35.240.196.102:26656') }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{% if node_sentry_settings.persistent_peers[type] %}{{ node_sentry_settings.persistent_peers[type] }}{% else %}{{ vars[project].peers }}{% endif %}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('2df1f357f08049ba0c0dddfffe805f0e135e54ec@35.247.185.216:26656,6198ac4bc907f6d1a78309ef58491370afc49799@34.124.195.219:26656,574b37cc6e80663cbe848147c2643ca48e@35.240.187.174:26656,8313c9d55006da030588f61806b3e056a113e6e8@34.87.18.204:26656') }}"
 
 # UPNP port forwarding
 upnp = false
@@ -222,7 +222,7 @@ addr_book_file = "config/addrbook.json"
 
 # Set true for strict address routability rules
 # Set false for private or local networks
-addr_book_strict = {% if node_sentry_settings.addr_book_strict[type] != none %}{{ node_sentry_settings.addr_book_strict[type] | string | lower }}{% else %}true{% endif %}
+addr_book_strict = {{ (node_sentry_settings.addr_book_strict[type] | default(true)) | tojson }}
 
 # Maximum number of inbound peers
 max_num_inbound_peers = 40
@@ -231,7 +231,7 @@ max_num_inbound_peers = 40
 max_num_outbound_peers = 10
 
 # List of node IDs, to which a connection will be (re)established ignoring any existing limits
-unconditional_peer_ids = "{% if node_sentry_settings.unconditional_peer_ids[type] != '' %}{{ node_sentry_settings.unconditional_peer_ids[type] }}{% else %}{% endif %}"
+unconditional_peer_ids = "{{ node_sentry_settings.unconditional_peer_ids[type] | default() }}"
 
 # Maximum pause when redialing a persistent peer (if zero, exponential backoff is used)
 persistent_peers_max_dial_period = "0s"
@@ -249,7 +249,7 @@ send_rate = 5120000
 recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
-pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex[type] | string | lower }}{% else %}true{% endif %}
+pex = {{ (node_sentry_settings.pex[type] | default(true)) | tojson }}
 
 # Seed mode, in which node constantly crawls the network and looks for
 # peers. If another node asks it for addresses, it responds and disconnects.
@@ -258,7 +258,7 @@ pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex
 seed_mode = false
 
 # Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-private_peer_ids = "{% if node_sentry_settings.private_peer_ids[type] != '' %}{{ node_sentry_settings.private_peer_ids[type] }}{% else %}{% endif %}"
+private_peer_ids = "{{ node_sentry_settings.private_peer_ids[type] | default() }}"
 
 # Toggle to disable guard against peers connecting from the same ip.
 allow_duplicate_ip = false

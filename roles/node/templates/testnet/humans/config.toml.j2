@@ -206,13 +206,13 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 # and will introspect on the listener or use UPnP
 # to figure out the address. ip and port are required
 # example: 159.89.10.97:26656
-external_address = "{% if node_sentry_settings.external_address[type] %}{{ node_sentry_settings.external_address[type] }}{% else %}{{ inventory_hostname + ':' + p2p_port }}{% endif %}"
+external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{% if node_sentry_settings.seeds[type] %}{{ node_sentry_settings.seeds[type] }}{% else %}{{ vars[project].seeds }}{% endif %}"
+seeds = "{{ node_sentry_settings.seeds[type] | default('3f472746f46493309650e5a033076689996c8881@humans-testnet.rpc.kjnodes.com:12259,6ce9a9acc23594ec75516617647286fe546f83ca@humans-testnet-seed.itrocket.net:17656') }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{% if node_sentry_settings.persistent_peers[type] %}{{ node_sentry_settings.persistent_peers[type] }}{% else %}{{ vars[project].peers }}{% endif %}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('4762fa22edb91acd78010026f8da5fb71e174acb@142.165.207.19:36656,4a6451353a1040ccb2638de485feda28d40416cd@65.109.84.103:26656,3ca8a268313cc18799ec352c50fbaeb2f915399c@95.217.200.36:26656,b9767aa2312748caaf67425890768d85186b69b1@5.9.87.205:26656,752d0b45e13954a6052597d180e5eb230e64f4fa@141.95.99.214:26656,bbd9f16f014279e85fd9047cade8a149cee2761d@91.194.30.203:26656,28aab35e28e06497a7f8fc1a7a50982557bf3b2d@78.46.64.59:26656,be0cad3dd97f25530568cc7edd0ce7e2cf4f1f48@85.239.240.45:26656,2d4bc7286d10ea8a82da62b87615d48a7a903364@81.30.157.35:26656,df5cb643d8aeade8ef288a3dd90e4fd8220954ba@162.55.243.211:26656,fa9eb901a01430d928e71162151992c7afb51d62@178.23.126.70:26656,5c76f2a8ecad56dc081be10dc9a3927df18add20@118.193.37.229:26656,59ad24780f3d8b90da29079a8a386aa1355969ef@144.76.45.59:26656,2b3421d3432361846e77bdeb97d06e2b178a4be3@129.213.108.20:26656,946b549550e9c564193bf4c963d84b17e5415a50@136.243.136.241:26656,1ac5cfbf03df14b6c41d09d9f284e75cf03f5742@202.61.236.219:26656,19230fad7145e6fe80566a72f66b9ca3ec3f04d5@212.47.234.144:26656,e2c3e06eb097cf6fc3a4464a67cb9e19b07d4ea7@172.104.76.251:26656,5b92ede5e88c5029d6c7b3b360b9cf59051ce409@65.109.84.33:26656,f8ae768832a2665c915c3965a5bb8dc1031d5c1e@46.4.23.42:26656,be5158df5152ec7e6a4eca04c89e40494d19927c@51.79.101.159:26656,a7eaa41b5565295810b81641e0bf11a9fb2ca54e@159.69.69.183:26656,e7c7d7868fa4d9de303b1a7a028a314b7bb55ff9@192.168.32.1:26656,4e6f3ba9f9432766d13686076eadf60900d42e5b@65.108.224.156:26656,6778fbe0a87216dd02a21e2b13c3afc6c711c3e7@65.109.112.29:26656,e6489cf86b51fa37cae968ccbbda1da03b742a5e@128.140.56.206:26656,497886715ac23475f7428bd177b9fa53ff886a8d@78.46.80.79:26656,1a60894ec05fa5a92de5aef237dc3ed729912788@65.108.71.140:26656,e41b5c547ebf5dd2e96d30efbd9d4c5c32e2f3a6@161.97.175.119:26656,733ffab95701aeebbc3021e827a7ef5f5c0dd93c@144.76.97.35:26656,b1f13e9971cfdcf784fb0efbd1b72417d5410a02@195.201.59.194:26656,38ff5fa513ee7bc9d2cccf494b3c44be03c599d3@3.22.177.64:26656,6271d80b8fc42da3a2825cc5ef75818dd52423d1@138.201.121.185:26656,42f95015c31c7814b6a0a717fd8c63d15f896e88@94.237.27.19:26656,5e1f23a66fafd1a73871f055a6dd2165c01fe1c2@65.109.25.62:26656,ceba57f1376d4949cc0419918d110f0085b24b25@135.181.113.225:26656,d7eb0e65cecbeeaa649b0a2fdf95ca2fb9f0cc3e@206.125.33.0:26656,650b54b9fed877f05e8f2fa9b1a046e5a601a7c9@135.181.138.160:26656,36f956fa2fe317a5d3163d0b6c7b104e33aa62e9@103.180.28.79:26656,5ca0389db000da1ce87d992816a4aefa387c3998@143.110.190.223:26656,945422039658c95372b0b4f45c24ec4a5f849206@38.146.3.209:26656,fd6bccda6c8c16ed694c1f447966202492a3945c@65.108.72.253:26656,7bb61943f683af93e6ac1a9cf43e4668f4d3304f@116.202.227.117:12256,0ae23e03040dd3e3a6c3a2326c62a206f531d671@162.19.31.150:26656,417089d6681abacc685c2eff9e029d85231a04a0@141.95.34.193:46656,bc098ac0149a0a06701e29e4f7c79cac65c25c7f@162.55.173.57:26656,564fe1660c058471914d7653bef14e4e214045f9@135.181.142.117:26656,ad61f83dc506e821c08df82e8db4d170322e928c@5.161.64.185:26656,35ad999115e2a58540f6cf3bc3b90cc3adc9debc@65.109.116.95:26656,d792d994b50e546cef27f177f549090e6e41476f@69.197.6.24:26656') }}"
 
 # UPNP port forwarding
 upnp = false
@@ -222,7 +222,7 @@ addr_book_file = "config/addrbook.json"
 
 # Set true for strict address routability rules
 # Set false for private or local networks
-addr_book_strict = {% if node_sentry_settings.addr_book_strict[type] != none %}{{ node_sentry_settings.addr_book_strict[type] | string | lower }}{% else %}true{% endif %}
+addr_book_strict = {{ (node_sentry_settings.addr_book_strict[type] | default(true)) | tojson }}
 
 # Maximum number of inbound peers
 max_num_inbound_peers = 40
@@ -231,7 +231,7 @@ max_num_inbound_peers = 40
 max_num_outbound_peers = 10
 
 # List of node IDs, to which a connection will be (re)established ignoring any existing limits
-unconditional_peer_ids = "{% if node_sentry_settings.unconditional_peer_ids[type] != '' %}{{ node_sentry_settings.unconditional_peer_ids[type] }}{% else %}{% endif %}"
+unconditional_peer_ids = "{{ node_sentry_settings.unconditional_peer_ids[type] | default() }}"
 
 # Maximum pause when redialing a persistent peer (if zero, exponential backoff is used)
 persistent_peers_max_dial_period = "0s"
@@ -249,7 +249,7 @@ send_rate = 5120000
 recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
-pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex[type] | string | lower }}{% else %}true{% endif %}
+pex = {{ (node_sentry_settings.pex[type] | default(true)) | tojson }}
 
 # Seed mode, in which node constantly crawls the network and looks for
 # peers. If another node asks it for addresses, it responds and disconnects.
@@ -258,7 +258,7 @@ pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex
 seed_mode = false
 
 # Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-private_peer_ids = "{% if node_sentry_settings.private_peer_ids[type] != '' %}{{ node_sentry_settings.private_peer_ids[type] }}{% else %}{% endif %}"
+private_peer_ids = "{{ node_sentry_settings.private_peer_ids[type] | default() }}"
 
 # Toggle to disable guard against peers connecting from the same ip.
 allow_duplicate_ip = false

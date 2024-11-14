@@ -206,13 +206,13 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 # and will introspect on the listener or use UPnP
 # to figure out the address. ip and port are required
 # example: 159.89.10.97:26656
-external_address = "{% if node_sentry_settings.external_address[type] %}{{ node_sentry_settings.external_address[type] }}{% else %}{{ inventory_hostname + ':' + p2p_port }}{% endif %}"
+external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{% if node_sentry_settings.seeds[type] %}{{ node_sentry_settings.seeds[type] }}{% else %}{{ vars[project].seeds }}{% endif %}"
+seeds = "{{ node_sentry_settings.seeds[type] | default('940c0dc153b0e344de6368d101a97fd4d9e69eff@seeds.cros-nest.com:25656,20e1000e88125698264454a884812746c2eb4807@seeds.lavenderfive.com:11156,ebc272824924ea1a27ea3183dd0b9ba713494f83@quicksilver-mainnet-seed.autostake.com:27026,8542cd7e6bf9d260fef543bc49e59be5a3fa9074@seed.publicnode.com:26656,559e316b30830ddd5e93617592ef70330ecce86d@seed-quicksilver.ibs.team:16656,95fe6a416dff4150e0394f8b429743db60ea1327@seed-node.mms.team:27656') }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{% if node_sentry_settings.persistent_peers[type] %}{{ node_sentry_settings.persistent_peers[type] }}{% else %}{{ vars[project].peers }}{% endif %}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('2aed12a25bfa92e40ccb95c88692735a9488a17e@quicksilver-testnet-peer.itrocket.net:37656,532625a997a6f891405202968607f72afe004f15@202.61.225.157:26666,5e83e140ae6a480ec8ac714fb71e0b509227cb9a@185.144.99.18:26656,760a6069c28f0b54548a656518471ca2b60481c6@135.181.133.249:16656,34e9630e71da146c12160e6f8e5cdfe7bcdfa507@144.76.202.120:61056,5fc67b60aff6ce69e7b183cb35d045add8f3cf8e@65.109.65.248:50656,f8b8352a069730141eb1966f5b74193f3faf5911@185.16.39.125:27656,c70ba571bb3bf5b4e4af8549b01678fbb67602f5@65.109.112.148:21026') }}"
 
 # UPNP port forwarding
 upnp = false
@@ -222,7 +222,7 @@ addr_book_file = "config/addrbook.json"
 
 # Set true for strict address routability rules
 # Set false for private or local networks
-addr_book_strict = {% if node_sentry_settings.addr_book_strict[type] != none %}{{ node_sentry_settings.addr_book_strict[type] | string | lower }}{% else %}true{% endif %}
+addr_book_strict = {{ (node_sentry_settings.addr_book_strict[type] | default(true)) | tojson }}
 
 # Maximum number of inbound peers
 max_num_inbound_peers = 30
@@ -231,7 +231,7 @@ max_num_inbound_peers = 30
 max_num_outbound_peers = 20
 
 # List of node IDs, to which a connection will be (re)established ignoring any existing limits
-unconditional_peer_ids = "{% if node_sentry_settings.unconditional_peer_ids[type] != '' %}{{ node_sentry_settings.unconditional_peer_ids[type] }}{% else %}{% endif %}"
+unconditional_peer_ids = "{{ node_sentry_settings.unconditional_peer_ids[type] | default() }}"
 
 # Maximum pause when redialing a persistent peer (if zero, exponential backoff is used)
 persistent_peers_max_dial_period = "0s"
@@ -249,9 +249,7 @@ send_rate = 5120000
 recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
-{# For pex #}
-pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex[type] | string | lower }}{% else %}true{% endif %}
-
+pex = {{ (node_sentry_settings.pex[type] | default(true)) | tojson }}
 
 # Seed mode, in which node constantly crawls the network and looks for
 # peers. If another node asks it for addresses, it responds and disconnects.
@@ -260,7 +258,7 @@ pex = {% if node_sentry_settings.pex[type] != none %}{{ node_sentry_settings.pex
 seed_mode = false
 
 # Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-private_peer_ids = "{% if node_sentry_settings.private_peer_ids[type] != '' %}{{ node_sentry_settings.private_peer_ids[type] }}{% else %}{% endif %}"
+private_peer_ids = "{{ node_sentry_settings.private_peer_ids[type] | default() }}"
 
 # Toggle to disable guard against peers connecting from the same ip.
 allow_duplicate_ip = false
