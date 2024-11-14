@@ -16,6 +16,7 @@ node_service_default_binary_name:
   celestia: celestia-appd
   humans: humansd
   ojo: ojod
+  umee: umeed
 
 node_status_endpoint: status
 

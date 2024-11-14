@@ -1,0 +1,1117 @@
+{
+  "jsonrpc": "2.0",
+  "id": -1,
+  "result": {
+    "genesis": {
+      "genesis_time": "2023-10-19T12:55:20.37389708Z",
+      "chain_id": "canon-4",
+      "initial_height": "1",
+      "consensus_params": {
+        "block": {
+          "max_bytes": "22020096",
+          "max_gas": "-1"
+        },
+        "evidence": {
+          "max_age_num_blocks": "100000",
+          "max_age_duration": "172800000000000",
+          "max_bytes": "1048576"
+        },
+        "validator": {
+          "pub_key_types": [
+            "ed25519"
+          ]
+        },
+        "version": {
+          "app": "0"
+        }
+      },
+      "app_hash": "",
+      "app_state": {
+        "auth": {
+          "params": {
+            "max_memo_characters": "256",
+            "tx_sig_limit": "7",
+            "tx_size_cost_per_byte": "10",
+            "sig_verify_cost_ed25519": "590",
+            "sig_verify_cost_secp256k1": "1000"
+          },
+          "accounts": [
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1hd4zwgmu2uax5pp43mqdnn09720qmvuqja5ejl",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1alwycngzftsxztdx03wmps6a3t6g4qquzvw3mx",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1aswcvpju7ff2gturf2r6whx25p0j0apu5jmre9",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1wqwe7zrrfgxwamxlutu9he2n62tfwlmnsqs6g7",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee16952kyr062e7l0a7ssxfzmur05tjmknvh63jhm",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee188zca6j070asnvn408d59h92znhy66y2y6yfkx",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1s84d29zk3k20xk9f0hvczkax90l9t94g72n6wm",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            {
+              "@type": "/cosmos.auth.v1beta1.BaseAccount",
+              "address": "umee1t540jct25slvvy8mecg5a90gt5rq7sqc5w4rys",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            }
+          ]
+        },
+        "authz": {
+          "authorization": []
+        },
+        "bank": {
+          "params": {
+            "send_enabled": [],
+            "default_send_enabled": true
+          },
+          "balances": [
+            {
+              "address": "umee188zca6j070asnvn408d59h92znhy66y2y6yfkx",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1t540jct25slvvy8mecg5a90gt5rq7sqc5w4rys",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1wqwe7zrrfgxwamxlutu9he2n62tfwlmnsqs6g7",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1s84d29zk3k20xk9f0hvczkax90l9t94g72n6wm",
+              "coins": [
+                {
+                  "denom": "test1",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test10",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test100",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test11",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test12",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test13",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test14",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test15",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test16",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test17",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test18",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test19",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test2",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test20",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test21",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test22",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test23",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test24",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test25",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test26",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test27",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test28",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test29",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test3",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test30",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test31",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test32",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test33",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test34",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test35",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test36",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test37",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test38",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test39",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test4",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test40",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test41",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test42",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test43",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test44",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test45",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test46",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test47",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test48",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test49",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test5",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test50",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test51",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test52",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test53",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test54",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test55",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test56",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test57",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test58",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test59",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test6",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test60",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test61",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test62",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test63",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test64",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test65",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test66",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test67",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test68",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test69",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test7",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test70",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test71",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test72",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test73",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test74",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test75",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test76",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test77",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test78",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test79",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test8",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test80",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test81",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test82",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test83",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test84",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test85",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test86",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test87",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test88",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test89",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test9",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test90",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test91",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test92",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test93",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test94",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test95",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test96",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test97",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test98",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "test99",
+                  "amount": "1000000000000000000000"
+                },
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1hd4zwgmu2uax5pp43mqdnn09720qmvuqja5ejl",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee16952kyr062e7l0a7ssxfzmur05tjmknvh63jhm",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1aswcvpju7ff2gturf2r6whx25p0j0apu5jmre9",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            },
+            {
+              "address": "umee1alwycngzftsxztdx03wmps6a3t6g4qquzvw3mx",
+              "coins": [
+                {
+                  "denom": "uumee",
+                  "amount": "1000000000000000000000000"
+                }
+              ]
+            }
+          ],
+          "supply": [],
+          "denom_metadata": [
+            {
+              "description": "The native staking token of the Umee network.",
+              "denom_units": [
+                {
+                  "denom": "uumee",
+                  "exponent": 0,
+                  "aliases": [
+                    "microumee"
+                  ]
+                },
+                {
+                  "denom": "UMEE",
+                  "exponent": 6,
+                  "aliases": []
+                }
+              ],
+              "base": "uumee",
+              "display": "UMEE",
+              "name": "UMEE",
+              "symbol": "UMEE",
+              "uri": "",
+              "uri_hash": ""
+            }
+          ]
+        },
+        "bech32ibc": {
+          "nativeHRP": "osmo",
+          "hrpIBCRecords": []
+        },
+        "capability": {
+          "index": "1",
+          "owners": []
+        },
+        "crisis": {
+          "constant_fee": {
+            "denom": "uumee",
+            "amount": "1000"
+          }
+        },
+        "distribution": {
+          "params": {
+            "community_tax": "0.020000000000000000",
+            "base_proposer_reward": "0.010000000000000000",
+            "bonus_proposer_reward": "0.040000000000000000",
+            "withdraw_addr_enabled": true
+          },
+          "fee_pool": {
+            "community_pool": []
+          },
+          "delegator_withdraw_infos": [],
+          "previous_proposer": "",
+          "outstanding_rewards": [],
+          "validator_accumulated_commissions": [],
+          "validator_historical_rewards": [],
+          "validator_current_rewards": [],
+          "delegator_starting_infos": [],
+          "validator_slash_events": []
+        },
+        "evidence": {
+          "evidence": []
+        },
+        "feegrant": {
+          "allowances": []
+        },
+        "genutil": {
+          "gen_txs": [
+            {
+              "body": {
+                "messages": [
+                  {
+                    "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                    "description": {
+                      "moniker": "val-2",
+                      "identity": "",
+                      "website": "",
+                      "security_contact": "",
+                      "details": ""
+                    },
+                    "commission": {
+                      "rate": "0.100000000000000000",
+                      "max_rate": "0.200000000000000000",
+                      "max_change_rate": "0.010000000000000000"
+                    },
+                    "min_self_delegation": "1",
+                    "delegator_address": "umee1aswcvpju7ff2gturf2r6whx25p0j0apu5jmre9",
+                    "validator_address": "umeevaloper1aswcvpju7ff2gturf2r6whx25p0j0apu5kuvg0",
+                    "pubkey": {
+                      "@type": "/cosmos.crypto.ed25519.PubKey",
+                      "key": "5epgoa4ULUx3JXBNbtiCfKAxoCZ63dC5PH8CBpdH84c="
+                    },
+                    "value": {
+                      "denom": "uumee",
+                      "amount": "1000000"
+                    }
+                  }
+                ],
+                "memo": "dfd1d83b668ff2e59dc1d601a4990d1bd95044ba@10.85.0.12:26656",
+                "timeout_height": "0",
+                "extension_options": [],
+                "non_critical_extension_options": []
+              },
+              "auth_info": {
+                "signer_infos": [
+                  {
+                    "public_key": {
+                      "@type": "/cosmos.crypto.secp256k1.PubKey",
+                      "key": "A4YFkUp2akl6ej/OY2dvgDOC9YZz7GU0GjUFZik8oLRm"
+                    },
+                    "mode_info": {
+                      "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                      }
+                    },
+                    "sequence": "0"
+                  }
+                ],
+                "fee": {
+                  "amount": [],
+                  "gas_limit": "200000",
+                  "payer": "",
+                  "granter": ""
+                },
+                "tip": null
+              },
+              "signatures": [
+                "oL4TfKn8FRICh+J37o1txLWXiwKvWeetkHryEl0qrRkNJUTbq2vlQZDCjSZ9ECm8SYjJOOf2uG74wfYmmIYcyw=="
+              ]
+            },
+            {
+              "body": {
+                "messages": [
+                  {
+                    "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                    "description": {
+                      "moniker": "val-3",
+                      "identity": "",
+                      "website": "",
+                      "security_contact": "",
+                      "details": ""
+                    },
+                    "commission": {
+                      "rate": "0.100000000000000000",
+                      "max_rate": "0.200000000000000000",
+                      "max_change_rate": "0.010000000000000000"
+                    },
+                    "min_self_delegation": "1",
+                    "delegator_address": "umee16952kyr062e7l0a7ssxfzmur05tjmknvh63jhm",
+                    "validator_address": "umeevaloper16952kyr062e7l0a7ssxfzmur05tjmknvh7kax3",
+                    "pubkey": {
+                      "@type": "/cosmos.crypto.ed25519.PubKey",
+                      "key": "/0zPiA/LAzhY2aRzXu/qTcAN9PSLe6uvSG9VrZPWlkw="
+                    },
+                    "value": {
+                      "denom": "uumee",
+                      "amount": "1000000"
+                    }
+                  }
+                ],
+                "memo": "e25008728d8f800383561d5ce68cff2d6bfc3826@10.85.0.13:26656",
+                "timeout_height": "0",
+                "extension_options": [],
+                "non_critical_extension_options": []
+              },
+              "auth_info": {
+                "signer_infos": [
+                  {
+                    "public_key": {
+                      "@type": "/cosmos.crypto.secp256k1.PubKey",
+                      "key": "AjLYRH9ND5n3nMlafih0SUIWqrScQQ9QqQ5R4VGAoFQj"
+                    },
+                    "mode_info": {
+                      "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                      }
+                    },
+                    "sequence": "0"
+                  }
+                ],
+                "fee": {
+                  "amount": [],
+                  "gas_limit": "200000",
+                  "payer": "",
+                  "granter": ""
+                },
+                "tip": null
+              },
+              "signatures": [
+                "Fe3IKUqEpAAzWHCz7OaZvc7akG8uOVtD+MJD4nWLTGQovqLhh4v76/7KHlfYR3jpjKESqkTbpqrEzz9W/Sd3jQ=="
+              ]
+            },
+            {
+              "body": {
+                "messages": [
+                  {
+                    "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                    "description": {
+                      "moniker": "val-1",
+                      "identity": "",
+                      "website": "",
+                      "security_contact": "",
+                      "details": ""
+                    },
+                    "commission": {
+                      "rate": "0.100000000000000000",
+                      "max_rate": "0.200000000000000000",
+                      "max_change_rate": "0.010000000000000000"
+                    },
+                    "min_self_delegation": "1",
+                    "delegator_address": "umee1hd4zwgmu2uax5pp43mqdnn09720qmvuqja5ejl",
+                    "validator_address": "umeevaloper1hd4zwgmu2uax5pp43mqdnn09720qmvuqjenkr4",
+                    "pubkey": {
+                      "@type": "/cosmos.crypto.ed25519.PubKey",
+                      "key": "WRy4qaZds0Sfd4wq/WPrB1ZLZCSkL+gITGWiqQaX/aA="
+                    },
+                    "value": {
+                      "denom": "uumee",
+                      "amount": "1000000"
+                    }
+                  }
+                ],
+                "memo": "ee7d691781717cbd1bf6f965dc45aad19c7af05f@10.85.0.11:26656",
+                "timeout_height": "0",
+                "extension_options": [],
+                "non_critical_extension_options": []
+              },
+              "auth_info": {
+                "signer_infos": [
+                  {
+                    "public_key": {
+                      "@type": "/cosmos.crypto.secp256k1.PubKey",
+                      "key": "AqlvgF0KYH2zNEUiCb7v70aIUbmITGjy3HVhuUpltU/f"
+                    },
+                    "mode_info": {
+                      "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                      }
+                    },
+                    "sequence": "0"
+                  }
+                ],
+                "fee": {
+                  "amount": [],
+                  "gas_limit": "200000",
+                  "payer": "",
+                  "granter": ""
+                },
+                "tip": null
+              },
+              "signatures": [
+                "CeEFc9cONPnkeclpQN5LcIFVqRslNr8udyQyOMXRaddJpQEXqZJB6PtNn1RZQJvZsdgQygq8thZEA3RAGYPaYA=="
+              ]
+            }
+          ]
+        },
+        "gov": {
+          "starting_proposal_id": "1",
+          "deposits": [],
+          "votes": [],
+          "proposals": [],
+          "deposit_params": {
+            "min_deposit": [
+              {
+                "denom": "uumee",
+                "amount": "10000000"
+              }
+            ],
+            "max_deposit_period": "172800s"
+          },
+          "voting_params": {
+            "voting_period": "120s"
+          },
+          "tally_params": {
+            "quorum": "0.334000000000000000",
+            "threshold": "0.500000000000000000",
+            "veto_threshold": "0.334000000000000000"
+          }
+        },
+        "gravity": {
+          "params": {
+            "bridge_chain_id": "5"
+          }
+        },
+        "group": {
+          "group_seq": "0",
+          "groups": [],
+          "group_members": [],
+          "group_policy_seq": "0",
+          "group_policies": [],
+          "proposal_seq": "0",
+          "proposals": [],
+          "votes": []
+        },
+        "ibc": {
+          "client_genesis": {
+            "clients": [],
+            "clients_consensus": [],
+            "clients_metadata": [],
+            "params": {
+              "allowed_clients": [
+                "06-solomachine",
+                "07-tendermint"
+              ]
+            },
+            "create_localhost": false,
+            "next_client_sequence": "0"
+          },
+          "connection_genesis": {
+            "connections": [],
+            "client_connection_paths": [],
+            "next_connection_sequence": "0",
+            "params": {
+              "max_expected_time_per_block": "30000000000"
+            }
+          },
+          "channel_genesis": {
+            "channels": [],
+            "acknowledgements": [],
+            "commitments": [],
+            "receipts": [],
+            "send_sequences": [],
+            "recv_sequences": [],
+            "ack_sequences": [],
+            "next_channel_sequence": "0"
+          }
+        },
+        "incentive": {
+          "params": {
+            "max_unbondings": 10,
+            "unbonding_duration": "0",
+            "emergency_unbond_fee": "0.010000000000000000"
+          },
+          "next_program_id": 1,
+          "last_rewards_time": "0",
+          "reward_trackers": [],
+          "reward_accumulators": [],
+          "upcoming_programs": [],
+          "ongoing_programs": [],
+          "completed_programs": [],
+          "bonds": [],
+          "account_unbondings": []
+        },
+        "interchainaccounts": {
+          "controller_genesis_state": {
+            "active_channels": [],
+            "interchain_accounts": [],
+            "ports": [],
+            "params": {
+              "controller_enabled": true
+            }
+          },
+          "host_genesis_state": {
+            "active_channels": [],
+            "interchain_accounts": [],
+            "port": "icahost",
+            "params": {
+              "host_enabled": true,
+              "allow_messages": [
+                "*"
+              ]
+            }
+          }
+        },
+        "leverage": {
+          "params": {
+            "complete_liquidation_threshold": "0.400000000000000000",
+            "minimum_close_factor": "0.050000000000000000",
+            "oracle_reward_factor": "0.010000000000000000",
+            "small_liquidation_size": "500.000000000000000000",
+            "direct_liquidation_fee": "0.050000000000000000"
+          },
+          "registry": [
+            {
+              "base_denom": "uumee",
+              "reserve_factor": "0.100000000000000000",
+              "collateral_weight": "0.350000000000000000",
+              "liquidation_threshold": "0.500000000000000000",
+              "base_borrow_rate": "0.050000000000000000",
+              "kink_borrow_rate": "0.100000000000000000",
+              "max_borrow_rate": "0.800000000000000000",
+              "kink_utilization": "0.500000000000000000",
+              "liquidation_incentive": "0.100000000000000000",
+              "symbol_denom": "UMEE",
+              "exponent": 6,
+              "enable_msg_supply": true,
+              "enable_msg_borrow": true,
+              "blacklist": false,
+              "max_collateral_share": "1.000000000000000000",
+              "max_supply_utilization": "0.900000000000000000",
+              "min_collateral_liquidity": "0.300000000000000000",
+              "max_supply": "1000000000000000",
+              "historic_medians": 0
+            }
+          ],
+          "adjusted_borrows": [],
+          "collateral": [],
+          "reserves": [],
+          "last_interest_time": "0",
+          "bad_debts": [],
+          "interest_scalars": [],
+          "utoken_supply": [],
+          "special_pairs": []
+        },
+        "mint": {
+          "minter": {
+            "inflation": "0.130000000000000000",
+            "annual_provisions": "0.000000000000000000"
+          },
+          "params": {
+            "mint_denom": "uumee",
+            "inflation_rate_change": "0.130000000000000000",
+            "inflation_max": "0.200000000000000000",
+            "inflation_min": "0.070000000000000000",
+            "goal_bonded": "0.670000000000000000",
+            "blocks_per_year": "6311520"
+          }
+        },
+        "nft": {
+          "classes": [],
+          "entries": []
+        },
+        "oracle": {
+          "params": {
+            "vote_period": "5",
+            "vote_threshold": "0.500000000000000000",
+            "reward_band": "0.020000000000000000",
+            "reward_distribution_window": "5256000",
+            "accept_list": [
+              {
+                "base_denom": "uumee",
+                "symbol_denom": "umee",
+                "exponent": 6
+              }
+            ],
+            "slash_fraction": "0.000100000000000000",
+            "slash_window": "100800",
+            "min_valid_per_window": "0.050000000000000000",
+            "historic_stamp_period": "50",
+            "median_stamp_period": "300",
+            "maximum_price_stamps": "36",
+            "maximum_median_stamps": "24"
+          },
+          "feeder_delegations": [],
+          "exchange_rates": [],
+          "miss_counters": [],
+          "aggregate_exchange_rate_prevotes": [],
+          "aggregate_exchange_rate_votes": [],
+          "medians": [],
+          "historic_prices": [],
+          "medianDeviations": [],
+          "avg_counter_params": {
+            "avg_period": "57600s",
+            "avg_shift": "7200s"
+          }
+        },
+        "params": null,
+        "slashing": {
+          "params": {
+            "signed_blocks_window": "10000",
+            "min_signed_per_window": "0.500000000000000000",
+            "downtime_jail_duration": "86400s",
+            "slash_fraction_double_sign": "0.050000000000000000",
+            "slash_fraction_downtime": "0.010000000000000000"
+          },
+          "signing_infos": [],
+          "missed_blocks": []
+        },
+        "staking": {
+          "params": {
+            "unbonding_time": "300s",
+            "max_validators": 100,
+            "max_entries": 7,
+            "historical_entries": 10000,
+            "bond_denom": "uumee",
+            "min_commission_rate": "0.000000000000000000"
+          },
+          "last_total_power": "0",
+          "last_validator_powers": [],
+          "validators": [],
+          "delegations": [],
+          "unbonding_delegations": [],
+          "redelegations": [],
+          "exported": false
+        },
+        "transfer": {
+          "port_id": "transfer",
+          "denom_traces": [],
+          "params": {
+            "send_enabled": true,
+            "receive_enabled": true
+          }
+        },
+        "ugov": {
+          "min_gas_price": {
+            "denom": "uumee",
+            "amount": "0.100000000000000000"
+          },
+          "emergency_group": "",
+          "inflation_params": {
+            "max_supply": {
+              "denom": "uumee",
+              "amount": "21000000000000000"
+            },
+            "inflation_cycle": "63072000s",
+            "inflation_reduction_rate": 2500
+          },
+          "inflation_cycle_end": "1970-01-01T00:00:01Z"
+        },
+        "uibc": {
+          "params": {
+            "ibc_status": "IBC_TRANSFER_STATUS_QUOTA_ENABLED",
+            "total_quota": "1000000.000000000000000000",
+            "token_quota": "600000.000000000000000000",
+            "quota_duration": "86400s"
+          },
+          "outflows": [],
+          "total_outflow_sum": "0.000000000000000000",
+          "quota_expires": "0001-01-01T00:00:00Z"
+        },
+        "upgrade": {},
+        "vesting": {},
+        "wasm": {
+          "params": {
+            "code_upload_access": {
+              "permission": "Everybody",
+              "address": "",
+              "addresses": []
+            },
+            "instantiate_default_permission": "Everybody"
+          },
+          "codes": [],
+          "contracts": [],
+          "sequences": []
+        }
+      }
+    }
+  }
+}

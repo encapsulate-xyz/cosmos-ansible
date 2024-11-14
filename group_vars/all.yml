@@ -65,3 +65,13 @@ ojo:
     source_url: https://github.com/ojo-network/ojo
     ports:
       prefix: 110
+
+umee:
+  validator:
+    source_url: https://github.com/umee-network/umee
+    ports:
+      prefix: 111
+  fullnode:
+    source_url: https://github.com/umee-network/umee
+    ports:
+      prefix: 112
