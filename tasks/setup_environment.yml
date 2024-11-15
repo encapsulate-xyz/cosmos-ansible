@@ -69,6 +69,3 @@
 - name: Confirm deployment details
   ansible.builtin.pause:
     seconds: 20
-
-- name: Include configure ufw task
-  ansible.builtin.include_tasks: tasks/configure_ufw.yml
