@@ -125,4 +125,3 @@ node_ufw_rules:
 #   external_address:
 #     validator: # ""
 #     fullnode: # can use the default if its a fullnode
-

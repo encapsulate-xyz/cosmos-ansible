@@ -99,7 +99,6 @@ node_ufw_rules:
 #     value: "can connect to other seeds"
 #     explanation: Fullnodes (sentry nodes) can connect to seed nodes to discover peers and maintain connectivity with the network.
 
-
 ########################################################################################################################
 # Uncomment below settings to toggle node sentry settings
 ########################################################################################################################
