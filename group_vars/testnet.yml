@@ -12,11 +12,11 @@ omniflix:
 
 quicksilver:
   validator:
-    version: v1.6.4
+    version: v1.7.0
     go:
       version: 1.21.6
   fullnode:
-    version: v1.6.4
+    version: v1.7.0
     go:
       version: 1.21.6
 
