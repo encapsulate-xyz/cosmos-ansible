@@ -2,6 +2,8 @@
 # maintains ports, bianry or repo urls
 
 org: encapsulate
+ansible_port: 8192
+
 monitor_server_dns: monitor.encapsulate.xyz
 domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
