@@ -209,10 +209,10 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{{ node_sentry_settings.seeds[type] | default('940c0dc153b0e344de6368d101a97fd4d9e69eff@seeds.cros-nest.com:25656,20e1000e88125698264454a884812746c2eb4807@seeds.lavenderfive.com:11156,ebc272824924ea1a27ea3183dd0b9ba713494f83@quicksilver-mainnet-seed.autostake.com:27026,8542cd7e6bf9d260fef543bc49e59be5a3fa9074@seed.publicnode.com:26656,559e316b30830ddd5e93617592ef70330ecce86d@seed-quicksilver.ibs.team:16656,95fe6a416dff4150e0394f8b429743db60ea1327@seed-node.mms.team:27656') }}"
+seeds = "{{ node_sentry_settings.seeds[type] | default(seeds) }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('2aed12a25bfa92e40ccb95c88692735a9488a17e@quicksilver-testnet-peer.itrocket.net:37656,532625a997a6f891405202968607f72afe004f15@202.61.225.157:26666,5e83e140ae6a480ec8ac714fb71e0b509227cb9a@185.144.99.18:26656,760a6069c28f0b54548a656518471ca2b60481c6@135.181.133.249:16656,34e9630e71da146c12160e6f8e5cdfe7bcdfa507@144.76.202.120:61056,5fc67b60aff6ce69e7b183cb35d045add8f3cf8e@65.109.65.248:50656,f8b8352a069730141eb1966f5b74193f3faf5911@185.16.39.125:27656,c70ba571bb3bf5b4e4af8549b01678fbb67602f5@65.109.112.148:21026') }}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default(peers) }}"
 
 # UPNP port forwarding
 upnp = false

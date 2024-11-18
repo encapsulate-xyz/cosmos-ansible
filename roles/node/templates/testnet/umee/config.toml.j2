@@ -210,10 +210,10 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{{ node_sentry_settings.seeds[type] | default('9aa8a73ea9364aa3cf7806d4dd25b6aed88d8152@umee-canon.seed.mzonder.com:10456') }}"
+seeds = "{{ node_sentry_settings.seeds[type] | default(seeds) }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default('ee7d691781717cbd1bf6f965dc45aad19c7af05f@canon-4.network.umee.cc:10000,dfd1d83b668ff2e59dc1d601a4990d1bd95044ba@canon-4.network.umee.cc:10001,e25008728d8f800383561d5ce68cff2d6bfc3826@canon-4.network.umee.cc:10002') }}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default(peers) }}"
 
 # Path to address book
 addr_book_file = "config/addrbook.json"
