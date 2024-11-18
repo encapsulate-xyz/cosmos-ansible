@@ -69,3 +69,15 @@ c4e:
     version: v1.4.0
     go:
       version: 1.19.1
+
+axelar:
+  validator:
+    version: v1.0.1
+    go:
+      version: v1.22.4
+    wasmvm_version: v2.1.3
+  fullnode:
+    version: v1.0.1
+    go:
+      version: v1.22.4
+    wasmvm_version: v2.1.3

@@ -1,0 +1,10 @@
+---
+- name: Download wasmvm from URL
+  vars:
+    suffix_url: "{{ vars[project][type].wasmvm_version }}/{{ node_wasmvm_file_name }}"
+  ansible.builtin.get_url:
+    url: "{{ wasmvm_url }}/{{ suffix_url }}"
+    dest: "{{ node_wasmvm_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"

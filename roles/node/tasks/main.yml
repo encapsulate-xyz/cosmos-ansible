@@ -3,6 +3,14 @@
   ansible.builtin.include_vars:
     file: vars/{{ env }}/{{ project }}.yml
 
+- name: Set seeds
+  ansible.builtin.set_fact:
+    seeds: "{{ lookup('file', 'files/{{ env }}/{{ project }}/seeds.txt').splitlines() | join(',') }}"
+
+- name: Set peers
+  ansible.builtin.set_fact:
+    peers: "{{ lookup('file', 'files/{{ env }}/{{ project }}/peers.txt').splitlines() | join(',') }}"
+
 - name: Include configure ufw task
   ansible.builtin.include_tasks: tasks/configure_ufw.yml
 
@@ -19,6 +27,10 @@
 
 - name: Include build binary task
   ansible.builtin.include_tasks: build_binary.yml
+
+- name: Include download wasmvm task
+  ansible.builtin.include_tasks: download_wasmvm.yml
+  when: vars[project][type].wasmvm_version is defined
 
 - name: Get genesis and configuration files
   block:
@@ -79,6 +91,15 @@
         vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ node_node_key_file_name }}"
         secret_destination_path: "{{ node_node_key_path }}"
         secret_type: json
+
+- name: Copy environment file
+  ansible.builtin.template:
+    src: "{{ env }}/{{ project }}/general.env.j2"
+    dest: "{{ node_environment_general_file_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  when: vars[project][type].wasmvm_version is defined
 
 - name: Copy systemd service file
   ansible.builtin.template:

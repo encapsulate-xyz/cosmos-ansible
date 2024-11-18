@@ -18,6 +18,8 @@ go:
   path: "{{ tmp_dir }}/go"
   module111: "on"
 
+wasmvm_url: https://github.com/CosmWasm/wasmvm/releases/download
+
 omniflix:
   validator:
     source_url: https://github.com/OmniFlix/omniflixhub
@@ -87,3 +89,13 @@ c4e:
     source_url: https://github.com/chain4energy/c4e-chain
     ports:
       prefix: 113
+
+axelar:
+  validator:
+    source_url: https://github.com/axelarnetwork/axelar-core
+    ports:
+      prefix: 114
+  fullnode:
+    source_url: https://github.com/axelarnetwork/axelar-core
+    ports:
+      prefix: 115
