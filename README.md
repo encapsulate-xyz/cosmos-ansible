@@ -73,16 +73,15 @@ This playbook allows customization through several variables. You can define the
 
    ```bash
    ansible-galaxy install -r requirements.yml
+  ```
 
 2. Create a `ansible_vault_password` file containing ansible-vault password
 
 3. Then run the playbook:
 
-- To deploy:
-
-```bash
-ansible-playbook node.yml -l validator.umee.testnet.encapsulate.xyz
-```
+  ```bash
+  ansible-playbook node.yml -l validator.umee.testnet.encapsulate.xyz
+  ```
 
 After you run the playbook, it will ask for confirmation, displaying all the variables and the IP address or DNS of the server you are going to deploy.
 
