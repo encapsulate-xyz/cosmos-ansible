@@ -71,7 +71,7 @@ This playbook allows customization through several variables. You can define the
 
 1. First, install the dependencies:
 
-   ```bash
+  ```bash
    ansible-galaxy install -r requirements.yml
   ```
 
