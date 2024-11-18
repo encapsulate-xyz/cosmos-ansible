@@ -22,68 +22,68 @@ omniflix:
   validator:
     source_url: https://github.com/OmniFlix/omniflixhub
     ports:
-      prefix: 101
+      prefix: 100
   fullnode:
     source_url: https://github.com/OmniFlix/omniflixhub
     ports:
-      prefix: 102
+      prefix: 101
 
 quicksilver:
   validator:
     source_url: https://github.com/quicksilver-zone/quicksilver
     ports:
-      prefix: 103
+      prefix: 102
   fullnode:
     source_url: https://github.com/quicksilver-zone/quicksilver
     ports:
-      prefix: 104
+      prefix: 103
 
 celestia:
   validator:
     source_url: https://github.com/celestiaorg/celestia-app
     ports:
-      prefix: 105
+      prefix: 104
   fullnode:
     source_url: https://github.com/celestiaorg/celestia-app
     ports:
-      prefix: 106
+      prefix: 105
 
 humans:
   validator:
     source_url: https://github.com/humansdotai/humans
     ports:
-      prefix: 107
+      prefix: 106
   fullnode:
     source_url: https://github.com/humansdotai/humans
     ports:
-      prefix: 108
+      prefix: 107
 
 ojo:
   validator:
     source_url: https://github.com/ojo-network/ojo
     ports:
-      prefix: 109
+      prefix: 108
   fullnode:
     source_url: https://github.com/ojo-network/ojo
     ports:
-      prefix: 110
+      prefix: 109
 
 umee:
   validator:
     source_url: https://github.com/umee-network/umee
     ports:
-      prefix: 111
+      prefix: 110
   fullnode:
     source_url: https://github.com/umee-network/umee
     ports:
-      prefix: 112
+      prefix: 111
 
 c4e:
   validator:
     source_url: https://github.com/chain4energy/c4e-chain
     ports:
-      prefix: 113
+      prefix: 112
   fullnode:
     source_url: https://github.com/chain4energy/c4e-chain
     ports:
-      prefix: 114
+      prefix: 113
