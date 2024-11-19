@@ -140,7 +140,7 @@ max_subscriptions_per_client = 5
 # WARNING: Using a value larger than 10s will result in increasing the
 # global HTTP write timeout, which applies to all connections and endpoints.
 # See https://github.com/tendermint/tendermint/issues/3435
-timeout_broadcast_tx_commit = "20s"
+timeout_broadcast_tx_commit = "10s"
 
 # Maximum size of request body, in bytes
 max_body_bytes = 1000000
@@ -268,7 +268,7 @@ keep-invalid-txs-in-cache = false
 
 # Maximum size of a single transaction.
 # NOTE: the max size of a tx transmitted over the network is {max_tx_bytes}.
-max_tx_bytes = 1048576
+max_tx_bytes = 3146000
 
 # Maximum size of a batch of transactions to send to a peer
 # Including space needed by encoding (one varint per transaction).
@@ -376,7 +376,7 @@ peer_query_maj23_sleep_duration = "2s"
 # Options:
 #   1) "null"
 #   2) "kv" (default) - the simplest possible indexer, backed by key-value storage (defaults to levelDB; see DBBackend).
-# 		- When "kv" is chosen "tx.height" and "tx.hash" will always be indexed.
+#      - When "kv" is chosen "tx.height" and "tx.hash" will always be indexed.
 indexer = "{{ node_space_optimization_settings.indexer }}"
 
 #######################################################
@@ -411,40 +411,90 @@ namespace = "tendermint"
 # see https://docs.axelar.dev/#/validator-zone/external-chains/overview
 
 [[axelar_bridge_evm]]
-name = "Ethereum"
-# name = "ethereum-2"  # Use this name for testnet-1
-rpc_addr = ""
-start-with-bridge = false
+name = "ethereum-sepolia"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.ethereum_sepolia_rpc }}"
+start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Avalanche"
-rpc_addr = ""
-start-with-bridge = false
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.avalanche_rpc }}"
+start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Fantom"
-rpc_addr = ""
-start-with-bridge = false
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.fantom_rpc }}"
+start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Moonbeam"
-rpc_addr = ""
-start-with-bridge = false
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.moonbeam_rpc }}"
+start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Polygon"
-rpc_addr = ""
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.polygon_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Binance"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.binance_rpc }}"
+start-with-bridge = true
+
+# Due to the lack of future usage of our Aurora connection, we've decided to disable integrating that connection in our apps. 
+# So, you're welcome to stop maintaining Aurora nodes, deregister as a chain maintainer, and remove from vald config. 
+# Appreciate your patience on this, and we're thinking about new models of chain support for the future so each validator has more 
+# choice on which chains to maintain in the future while maintaining good threshold of security, as we keep adding more chains. 
+#[[axelar_bridge_evm]]
+#name = "Aurora"
+#rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.aurora_rpc }}"
+#start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Kava"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.kava_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
-name = "binance"
-rpc_addr = ""
+name = "hero"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.hero_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
-name = "aurora"
-rpc_addr = ""
+name = "arbitrum"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.arbitrum_rpc }}"
 start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "celo"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.celo_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "optimism"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.optimism_rpc }}"
+start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "base"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.base_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "filecoin"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.filecoin_rpc }}"
+start-with-bridge = true
+finality_override = "confirmation"
+
+[[axelar_bridge_evm]]
+name = "linea-sepolia"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.linea_sepolia_rpc }}"
+start-with-bridge = true
+finality_override = "confirmation"
+
+[[axelar_bridge_evm]]
+name = "immutable"
+rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.immutable_rpc }}"
+start-with-bridge = true
 
 ##### message broadcasting options #####
 [broadcast]
