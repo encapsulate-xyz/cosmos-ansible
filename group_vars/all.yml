@@ -4,6 +4,10 @@
 org: encapsulate
 ansible_port: 8192
 
+architecture_map:
+  x86_64: amd64
+  aarch64: arm64
+
 monitor_server_dns: monitor.encapsulate.xyz
 domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
@@ -18,7 +22,8 @@ go:
   path: "{{ tmp_dir }}/go"
   module111: "on"
 
-wasmvm_url: https://github.com/CosmWasm/wasmvm/releases/download
+wasmvm:
+  source_url: https://github.com/CosmWasm/wasmvm/releases/download
 
 omniflix:
   validator:
