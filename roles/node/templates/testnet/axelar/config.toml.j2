@@ -412,32 +412,32 @@ namespace = "tendermint"
 
 [[axelar_bridge_evm]]
 name = "ethereum-sepolia"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.ethereum_sepolia_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.ethereum_sepolia_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Avalanche"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.avalanche_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.avalanche_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Fantom"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.fantom_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.fantom_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Moonbeam"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.moonbeam_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.moonbeam_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Polygon"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.polygon_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.polygon_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Binance"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.binance_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.binance_rpc }}"
 start-with-bridge = true
 
 # Due to the lack of future usage of our Aurora connection, we've decided to disable integrating that connection in our apps. 
@@ -446,54 +446,54 @@ start-with-bridge = true
 # choice on which chains to maintain in the future while maintaining good threshold of security, as we keep adding more chains. 
 #[[axelar_bridge_evm]]
 #name = "Aurora"
-#rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.aurora_rpc }}"
+#rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.aurora_rpc }}"
 #start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "Kava"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.kava_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.kava_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
 name = "hero"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.hero_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.hero_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
 name = "arbitrum"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.arbitrum_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.arbitrum_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
 name = "celo"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.celo_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.celo_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "optimism"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.optimism_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.optimism_rpc }}"
 start-with-bridge = false
 
 [[axelar_bridge_evm]]
 name = "base"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.base_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.base_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
 name = "filecoin"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.filecoin_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.filecoin_rpc }}"
 start-with-bridge = true
 finality_override = "confirmation"
 
 [[axelar_bridge_evm]]
 name = "linea-sepolia"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.linea_sepolia_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.linea_sepolia_rpc }}"
 start-with-bridge = true
 finality_override = "confirmation"
 
 [[axelar_bridge_evm]]
 name = "immutable"
-rpc_addr = "{{ vault[env][project][type].axelar.validator.axelar_bridge_evm.immutable_rpc }}"
+rpc_addr = "{{ vault.testnet.axelar[type].axelar_bridge_evm.immutable_rpc }}"
 start-with-bridge = true
 
 ##### message broadcasting options #####
