@@ -10,4 +10,4 @@ all:
           type: fullnode
         validator.axelar.testnet.encapsulate.xyz:
           type: validator
-          support_amplifier: tue
+          support_amplifier: true
