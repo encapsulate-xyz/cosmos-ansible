@@ -19,13 +19,13 @@ node_ufw_rules:
     - port: "{{ rpc_port }}"
       proto: tcp
       rule: limit
-      from: amplifier.axelar.testnet
+      from: amplifier.axelar.testnet.encapsulate.xyz
       comment: rpc_port
 
     - port: "{{ grpc_web_port }}"
       proto: tcp
       rule: limit
-      from: amplifier.axelar.testnet
+      from: amplifier.axelar.testnet.encapsulate.xyz
       comment: grpc_port
 
   fullnode:
