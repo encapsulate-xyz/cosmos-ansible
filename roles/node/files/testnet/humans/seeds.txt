@@ -1,0 +1,2 @@
+3f472746f46493309650e5a033076689996c8881@humans-testnet.rpc.kjnodes.com:12259
+6ce9a9acc23594ec75516617647286fe546f83ca@humans-testnet-seed.itrocket.net:17656

@@ -1,0 +1,3 @@
+1f091cf9567c0d72a0f93877007379e0298b8860@ojo.peer.stavr.tech:37096
+ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:21656
+7186f24ace7f4f2606f56f750c2684d387dc39ac@ojo-testnet-seed.itrocket.net:12656

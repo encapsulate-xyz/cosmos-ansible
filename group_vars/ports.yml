@@ -1,0 +1,13 @@
+---
+ports:
+  suffix:
+    # Used for both p2p_laddr and p2p_external_address
+    p2p: 56
+    rpc: 57
+    abci: 58
+    prometheus: 60
+    pprof: 61
+    rest_api: 17
+    rosetta: 80
+    grpc: 90
+    grpc_web: 91

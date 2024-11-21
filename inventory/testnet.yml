@@ -4,11 +4,10 @@ all:
   vars:
     env: testnet
   children:
-    sui:
+    axelar:
       hosts:
-        bridge.sui.mainnet.encapsulate.xyz:
-          type: bridge
-        validator.sui.mainnet.encapsulate.xyz:
-          type: validator
-        fullnode.sui.mainnet.encapsulate.xyz:
+        fullnode.axelar.testnet.encapsulate.xyz:
           type: fullnode
+        validator.axelar.testnet.encapsulate.xyz:
+          type: validator
+          support_amplifier: true

@@ -1,9 +1,85 @@
 ---
 # maintains versions and can overwrite all.yml
-sui:
+omniflix:
   validator:
-    version: 218db6e510d2d7fee0a6118fa87fc14baeabbd64
+    version: v0.12.0-alpha.1
+    go:
+      version: 1.21.6
   fullnode:
-    version: 218db6e510d2d7fee0a6118fa87fc14baeabbd64
-  bridge:
-    version: dce2e0683c2472a64858d13dc77b82448b4139f1
+    version: v0.12.0-alpha.1
+    go:
+      version: 1.21.6
+
+quicksilver:
+  validator:
+    version: v1.7.0
+    go:
+      version: 1.21.6
+  fullnode:
+    version: v1.7.0
+    go:
+      version: 1.21.6
+
+celestia:
+  validator:
+    version: v2.3.1
+    go:
+      version: 1.23.1
+  fullnode:
+    version: v2.3.1
+    go:
+      version: 1.23.1
+
+humans:
+  validator:
+    version: master
+    go:
+      version: 1.21.6
+  fullnode:
+    version: master
+    go:
+      version: 1.21.6
+
+ojo:
+  validator:
+    version: v0.1.2
+    go:
+      version: 1.21.6
+  fullnode:
+    version: v0.1.2
+    go:
+      version: 1.21.6
+
+umee:
+  validator:
+    version: v6.7.0
+    go:
+      version: 1.23.1
+  fullnode:
+    version: v6.7.0
+    go:
+      version: 1.23.1
+
+c4e:
+  validator:
+    version: v1.4.0
+    go:
+      version: 1.19.1
+  fullnode:
+    version: v1.4.0
+    go:
+      version: 1.19.1
+
+axelar:
+  validator:
+    version: v1.0.4
+    go:
+      version: v1.22.4
+    wasmvm:
+      version: v1.3.1
+  fullnode:
+    version: v1.0.4
+    go:
+      version: v1.22.4
+    wasmvm:
+      version: v1.3.1
