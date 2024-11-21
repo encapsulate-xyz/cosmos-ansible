@@ -15,6 +15,18 @@ node_ufw_rules:
       rule: allow
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
+    
+    - port: "{{ rpc_port }}"
+      proto: tcp
+      rule: limit
+      from: amplifier.axelar.testnet
+      comment: rpc_port
+
+    - port: "{{ grpc_web_port }}"
+      proto: tcp
+      rule: limit
+      from: amplifier.axelar.testnet
+      comment: grpc_port
 
   fullnode:
     - port: "{{ p2p_port }}"
