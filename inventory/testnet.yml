@@ -4,7 +4,10 @@ all:
   vars:
     env: testnet
   children:
-    omniflix:
+    axelar:
       hosts:
-        5.78.92.20:
+        fullnode.axelar.testnet.encapsulate.xyz:
           type: fullnode
+        validator.axelar.testnet.encapsulate.xyz:
+          type: validator
+          support_amplifier: tue

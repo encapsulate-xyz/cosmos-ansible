@@ -6,7 +6,10 @@ User={{ service_identifier }}
 Group={{ service_identifier }}
 EnvironmentFile={{ node_environment_general_file_path }}
 WorkingDirectory={{ node_home_dir }}
-ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }}
+ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }}{% if support_amplifier %} \
+--rpc.laddr {{ node_type_settings.rpc.address.fullnode }}:{{ rpc_port }} \
+--grpc.address {{ node_type_settings.grpc.address.fullnode }}:{{ grpc_web_port }}{% endif %}
+{% endif %}
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
