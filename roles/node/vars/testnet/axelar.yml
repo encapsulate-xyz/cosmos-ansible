@@ -15,7 +15,7 @@ node_ufw_rules:
       rule: allow
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
-    
+
     - port: "{{ rpc_port }}"
       proto: tcp
       rule: limit

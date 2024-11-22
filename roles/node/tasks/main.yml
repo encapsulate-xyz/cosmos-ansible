@@ -11,9 +11,6 @@
   ansible.builtin.set_fact:
     peers: "{{ lookup('file', 'files/{{ env }}/{{ project }}/peers.txt').splitlines() | join(',') }}"
 
-- name: Include configure ufw task
-  ansible.builtin.include_tasks: tasks/configure_ufw.yml
-
 - name: Apply UFW rules for each node type
   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
   loop: "{{ node_ufw_rules[type] }}"
@@ -102,3 +99,7 @@
   notify:
     - Reload service
     - Restart service
+
+- name: Include coordinated update task
+  ansible.builtin.include_tasks: coordinated_update.yml
+  when: upgrade_height is defined
