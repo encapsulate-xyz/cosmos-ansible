@@ -4,10 +4,36 @@ all:
   vars:
     env: testnet
   children:
+    omniflix:
+      hosts:
+        validator.omniflix.testnet.encapsulate.xyz:
+          type: validator
+    quicksilver:
+      hosts:
+        validator.quicksilver.testnet.encapsulate.xyz:
+          type: validator
+    celestia:
+      hosts:
+        validator.celestia.testnet.encapsulate.xyz:
+          type: validator
+    humans:
+      hosts:
+        validator.humans.testnet.encapsulate.xyz:
+          type: validator
+    ojo:
+      hosts:
+        validator.ojo.testnet.encapsulate.xyz:
+          type: validator
+    umee:
+      hosts:
+        validator.umee.testnet.encapsulate.xyz:
+          type: validator
+    c4e:
+      hosts:
+        validator.c4e.testnet.encapsulate.xyz:
+          type: validator
     axelar:
       hosts:
-        fullnode.axelar.testnet.encapsulate.xyz:
-          type: fullnode
         validator.axelar.testnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
