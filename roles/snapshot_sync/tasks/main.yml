@@ -29,7 +29,7 @@
     - name: Download and Extract snapshot
       ansible.builtin.shell: |
         set -o pipefail
-        curl -o - -L {{ vars[project].snapshot_url }} | lz4 -c -d - | tar -x -C {{ snapshot_sync_home_dir }}
+        curl -o - -L {{ snapshot_url | default(vars[project].snapshot_url) }} | lz4 -c -d - | tar -x -C {{ snapshot_sync_home_dir }}
       async: 10000
       poll: 10
       args:
