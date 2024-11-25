@@ -9,6 +9,7 @@ omniflix:
     version: v0.12.0-alpha.1
     go:
       version: 1.21.6
+  snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
 
 quicksilver:
   validator:
@@ -63,6 +64,7 @@ umee:
     version: v6.7.0
     go:
       version: 1.23.1
+  snapshot_url: https://snapshots-testnet.stake-town.com/umee/canon-4_latest.tar.lz4
 
 c4e:
   validator:
