@@ -89,13 +89,13 @@ axelar:
   validator:
     version: v1.0.4
     go:
-      version: v1.22.4
+      version: 1.22.4
     wasmvm:
       version: v1.3.1
   fullnode:
     version: v1.0.4
     go:
-      version: v1.22.4
+      version: 1.22.4
     wasmvm:
       version: v1.3.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
