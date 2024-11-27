@@ -5,10 +5,14 @@ omniflix:
     version: v5.0.0-alpha.2
     go:
       version: 1.21.6
+    wasmvm:
+      version: v2.1.2
   fullnode:
     version: v5.0.0-alpha.2
     go:
       version: 1.21.6
+    wasmvm:
+      version: v2.1.2
   snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
 
 quicksilver:
@@ -24,11 +28,11 @@ quicksilver:
 
 celestia:
   validator:
-    version: v2.3.1
+    version: v3.0.1-mocha
     go:
       version: 1.23.1
   fullnode:
-    version: v2.3.1
+    version: v3.0.1-mocha
     go:
       version: 1.23.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/celestia/celestia_3269266.tar.lz4
@@ -61,13 +65,13 @@ umee:
     go:
       version: 1.23.1
     wasmvm:
-      version: v1.5.0
+      version: v1.5.5
   fullnode:
     version: v6.7.0
     go:
       version: 1.23.1
     wasmvm:
-      version: v1.5.0
+      version: v1.5.5
   snapshot_url: https://snapshots-testnet.stake-town.com/umee/canon-4_latest.tar.lz4
 
 c4e:
