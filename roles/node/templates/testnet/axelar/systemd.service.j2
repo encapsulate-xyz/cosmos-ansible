@@ -11,6 +11,7 @@ ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_
 --rpc.laddr {{ node_type_settings.rpc.address.fullnode }}:{{ rpc_port }} \
 --grpc.enable true \
 --grpc.address {{ node_type_settings.grpc.address.fullnode }}:{{ grpc_web_port }}{% endif %}
+
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
