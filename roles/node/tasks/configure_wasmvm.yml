@@ -11,8 +11,8 @@
 
 - name: Copy environment file
   ansible.builtin.template:
-    src: "{{ env }}/{{ project }}/general.env.j2"
-    dest: "{{ node_environment_general_file_path }}"
+    src: "wasmvm.env.j2"
+    dest: "{{ node_environment_wasmvm_file_path }}"
     owner: root
     group: root
     mode: "0644"

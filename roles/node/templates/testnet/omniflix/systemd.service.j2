@@ -4,8 +4,12 @@ Description={{ service_identifier }}
 [Service]
 User={{ service_identifier }}
 Group={{ service_identifier }}
-EnvironmentFile={{ node_environment_general_file_path }}
 WorkingDirectory={{ node_home_dir }}
+
+{% if vars[project][type].wasmvm.version is defined %}
+EnvironmentFile={{ node_environment_wasmvm_file_path }}
+{% endif %}
+
 ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }}
 Restart=always
 RestartSec=4
