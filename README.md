@@ -5,6 +5,7 @@ This Ansible playbook automates the deployment and configuration of Cosmos SDK C
 ## Table of Contents
 
 - [Requirements](#requirements)
+- [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Variables](#variables)
 - [Usage](#usage)
@@ -18,7 +19,20 @@ Before using this playbook, ensure the following requirements are met:
 3. **Python**: Python 3.x installed on the control node and all target hosts.
 4. **Privileges**: The user running the playbook must have sudo privileges on the target machines.
 
-**Note**: The following ansible playbook dynamically fetches private validator and node keys from hashicorp vault. 
+## Prerequisites
+
+**Install HashiCorp Vault**
+
+This playbook relies on HashiCorp Vault to securely retrieve sensitive files, such as validator and node keys. Follow the [HashiCorp Vault Installation Guide](https://developer.hashicorp.com/vault/tutorials/getting-started/getting-started-install) to set up Vault on your infrastructure.
+
+**Note on Secrets Management**
+
+The playbook dynamically retrieves private validator keys and node keys from HashiCorp Vault. The keys are expected to follow a structured path format:
+`<environment>/<project>/<organization>/<type>/<file_name>`
+For example:
+`testnet/axelar/encapsulate/validator/priv_validator_key.json`
+
+This structure ensures easy organization and secure retrieval of secrets.
 
 ## Setup
 
@@ -66,22 +80,84 @@ This playbook allows customization through several variables. You can define the
 - **`group_vars/ports.yml`**: Contains port configurations.
 - **`group_vars/mainnet.yml`** or **`group_vars/testnet.yml`**: Contains version-specific variables.
 - **`group_vars/vault.yml`**: Store secret variables, such as `jwtsecret`, in this file.
+- There are role specific variables defined in each roles `default/main.yml` and `vars/main.yml`.
+
+**Note**: Make sure to set the `VAULT_TOKEN` environment variable, as it enables logging in and fetching secrets from HashiCorp Vault.
+
+Create a `group_vars/vault.yml` with your preferred ansible-vault password:
+
+```
+ansible-vault create group_vars/vault.yml
+```
+
+Example `group_vars/vault.yml`:
+```
+vault:
+  default:
+    hcp:
+      vault:
+        url: https://vault.hashicorp.encapsulate.xyz
+  mainnet:
+  testnet:
+    axelar:
+      validator:
+        axelar_bridge_evm:
+          ethereum_sepolia_rpc:
+          avalanche_rpc:
+          fantom_rpc:
+          moonbeam_rpc:
+          polygon_rpc:
+          binance_rpc:
+          aurora_rpc:
+          kava_rpc:
+          hero_rpc:
+          arbitrum_rpc:
+          celo_rpc:
+          optimism_rpc:          
+          base_rpc:
+          filecoin_rpc:
+          linea_sepolia_rpc:
+          immutable_rpc:
+      fullnode:
+        axelar_bridge_evm:
+          ethereum_sepolia_rpc:
+          avalanche_rpc:
+          fantom_rpc:
+          moonbeam_rpc:
+          polygon_rpc:
+          binance_rpc:
+          aurora_rpc:
+          kava_rpc:
+          hero_rpc:
+          arbitrum_rpc:
+          celo_rpc: 
+          optimism_rpc: 
+          base_rpc:
+          filecoin_rpc: 
+          linea_sepolia_rpc: 
+          immutable_rpc: 
+```
 
 ### Usage
 
 1. First, install the dependencies:
 
-  ```bash
-   ansible-galaxy install -r requirements.yml
+  ```
+  ansible-galaxy role install -r roles/requirements.yml
+  ansible-galaxy collection install -r collections/requirements.yml
   ```
 
 2. Create a `ansible_vault_password` file containing ansible-vault password
 
-3. Then run the playbook:
+3. Configure your remote server username and private key file path in the `ansible.cfg` file. Additionally, set the SSH port for your server by adjusting the `ansible_port` variable in `group_vars/all.yml`.
+
+4. Then run the playbook:
 
   ```bash
-  ansible-playbook node.yml -l validator.umee.testnet.encapsulate.xyz
+  ansible-playbook node.yml -l validator.umee.testnet.encapsulate.xyz -e "fetch_validator_keys=true"
   ```
+
+**Note**: The default value for `fetch_validator_keys` is false, which disables fetching keys from Hashicorp Vault.
 
 After you run the playbook, it will ask for confirmation, displaying all the variables and the IP address or DNS of the server you are going to deploy.
 
