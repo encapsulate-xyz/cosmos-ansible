@@ -3,4 +3,3 @@ ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:15156
 c6fc21118312ff69f93124e9db70067a610db9ae@public-seed.testnet.axelar.lunanova.tech:26656
 82846f20e20dc80191bc96aa4c72321dd338faa7@207.180.252.206:26656
 ecd522acae9aca12a3429736c28ddafab0125864@34.82.76.165:26656
-a005b8923888007eb5cf9ed8c8120ed956bc31f7@k8s-testnet-axelarco-c0dd71f944-b4c8da2f814e7b8f.elb.us-east-2.amazonaws.com:26656
