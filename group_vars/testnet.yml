@@ -76,11 +76,11 @@ umee:
 
 c4e:
   validator:
-    version: v1.4.0
+    version: v1.4.3
     go:
       version: 1.19.1
   fullnode:
-    version: v1.4.0
+    version: v1.4.3
     go:
       version: 1.19.1
   snapshot_url: http://c4e.snapshot.stavr.tech:1018/c4e/c4e-snap.tar.lz4
