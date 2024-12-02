@@ -15,7 +15,6 @@ node_directories:
   - "{{ node_config_dir }}"
   - "{{ node_env_dir }}"
   - "{{ node_data_dir }}"
-  - "{{ node_lib_dir }}"
   - "{{ node_log_dir }}"
 
 node_config_file_path: "{{ node_config_dir }}/{{ node_config_file_name }}"

@@ -17,6 +17,15 @@
     mode: "0755"
   loop: "{{ directories }}"
 
+- name: Create lib directory
+  ansible.builtin.file:
+    path: "{{ node_lib_dir }}"
+    state: directory
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0755"
+  when: vars[project][type].wasmvm.version is defined
+
 - name: Create log file for the service
   ansible.builtin.file:
     path: "{{ log_file_path }}"
