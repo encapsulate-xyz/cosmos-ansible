@@ -9,7 +9,7 @@ node_node_key_file_name: node_key.json
 node_genesis_file_name: genesis.json
 node_priv_validator_state_file_name: priv_validator_state.json
 
-node_environment_general_file_name: "{{ service_identifier }}.env"
+node_environment_wasmvm_file_name: "{{ service_identifier }}.wasmvm.env"
 node_wasmvm_lib_file_name: libwasmvm.{{ ansible_architecture }}.so
 
 # binary names

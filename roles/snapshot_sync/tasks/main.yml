@@ -56,12 +56,25 @@
       ansible.builtin.debug:
         msg: Source file does not exist
 
-- name: Set ownership of data directory
+- name: Set ownership for data directory
   ansible.builtin.file:
     path: "{{ snapshot_sync_data_dir }}"
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"
     recurse: true
+
+- name: Handle wasm logic
+  block:
+    - name: Set ownership for wasm directory
+      ansible.builtin.file:
+        path: "{{ snapshot_sync_home_dir }}/wasm"
+        owner: "{{ service_identifier }}"
+        group: "{{ service_identifier }}"
+        recurse: true
+  rescue:
+    - name: Handle missing wasm directory
+      ansible.builtin.debug:
+        msg: wasm direcotry does't present in home directory
 
 - name: Restart service
   ansible.builtin.systemd:
