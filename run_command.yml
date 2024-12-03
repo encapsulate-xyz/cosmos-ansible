@@ -1,0 +1,29 @@
+---
+- name: Run a command
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    allowed_node_types: [validator]
+  vars_files:
+    - group_vars/ports.yml
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+# todo: maybe check here if mnemonic and keyring password are set in pre_tasks
+  pre_tasks:
+    - name: Setup environment and dependencies
+      when: type in allowed_node_types
+      block:
+        - name: Include environment setup tasks
+          ansible.builtin.include_tasks: tasks/setup_environment.yml
+  tasks:
+    - name: Run node playbook
+      when: type in allowed_node_types
+      block:
+        - name: Include common handlers
+          ansible.builtin.include_role:
+            name: common
+        - name: Include command task
+          ansible.builtin.include_tasks: roles/node/tasks/commands.yml
