@@ -2,13 +2,13 @@
 # maintains versions and can overwrite all.yml
 omniflix:
   validator:
-    version: v5.0.0-alpha.2
+    version: v5.0.2
     go:
       version: 1.21.6
     wasmvm:
       version: v2.1.2
   fullnode:
-    version: v5.0.0-alpha.2
+    version: v5.0.2
     go:
       version: 1.21.6
     wasmvm:
