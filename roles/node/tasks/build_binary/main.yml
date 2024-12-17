@@ -1,0 +1,13 @@
+---
+- name: Check if project-specific build binary file exists
+  ansible.builtin.stat:
+    path: "{{ project }}.yml"
+  register: project_build_file
+
+- name: Include project-specific build binary task
+  ansible.builtin.include_tasks: "{{ project }}.yml"
+  when: project_build_file.stat.exists
+
+- name: Include default build binary task
+  ansible.builtin.include_tasks: default.yml
+  when: not project_build_file.stat.exists
