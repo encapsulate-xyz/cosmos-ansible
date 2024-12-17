@@ -17,6 +17,7 @@ omniflix:
   snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
 
 quicksilver:
+  chain_id: rhye-3
   validator:
     version: v1.7.0
     go:
@@ -28,6 +29,7 @@ quicksilver:
   snapshot_url: https://server-4.itrocket.net/testnet/quicksilver/quicksilver_2024-11-23_686128_snap.tar.lz4
 
 celestia:
+  chain_id: mocha-4
   validator:
     version: v3.0.2-mocha
     go:
@@ -39,6 +41,7 @@ celestia:
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/celestia/celestia_3269266.tar.lz4
 
 humans:
+  chain_id: humans_3000-31
   validator:
     version: master
     go:
@@ -101,6 +104,7 @@ c4e:
   snapshot_url: https://snapshots-testnet.stake-town.com/c4e/babajaga-1_latest.tar.lz4
 
 axelar:
+  chain_id: axelar-testnet-lisbon-3
   validator:
     version: v1.1.2
     go:
