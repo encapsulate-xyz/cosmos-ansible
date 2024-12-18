@@ -76,13 +76,13 @@ umee:
 
 c4e:
   validator:
-    version: v1.4.3
+    version: v1.4.0
     go:
       version: 1.19.1
     wasmvm:
       version: v1.5.2
   fullnode:
-    version: v1.4.3
+    version: v1.4.0
     go:
       version: 1.19.1
     wasmvm:
@@ -91,15 +91,15 @@ c4e:
 
 axelar:
   validator:
-    version: v1.0.2
+    version: v1.1.2
     go:
-      version: 1.22.4
+      version: 1.23.1
     wasmvm:
       version: v1.3.1
   fullnode:
-    version: v1.0.2
+    version: v1.1.2
     go:
-      version: 1.22.4
+      version: 1.23.1
     wasmvm:
       version: v1.3.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
