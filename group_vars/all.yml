@@ -2,6 +2,11 @@
 # maintains ports, bianry or repo urls
 
 org: encapsulate
+website: "https://encapsulate.xyz"
+security_mail: "security@encapsulate.xyz"
+about: "Others Trust, We Validate ! Your Stake is Important to Us. Secure Networks while You Earn Rewards."
+identity: B68A51B88F28CEF1
+
 ansible_port: 8192
 
 architecture_map:

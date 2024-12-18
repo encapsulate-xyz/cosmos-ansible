@@ -11,7 +11,7 @@
     - group_vars/vault.yml
     - group_vars/{{ env }}.yml
 
-# todo: maybe check here if mnemonic and keyring password are set in pre_tasks
+  # todo: maybe check here if mnemonic and keyring password are set in pre_tasks
   pre_tasks:
     - name: Setup environment and dependencies
       when: type in allowed_node_types
