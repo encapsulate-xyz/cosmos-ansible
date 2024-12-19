@@ -1,0 +1,65 @@
+---
+- name: Include the UFW vars file
+  ansible.builtin.include_vars:
+    file: vars/ufw_rules.yml
+
+- name: Apply UFW rules
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ price_feeder_ufw_rules }}"
+
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ price_feeder_home_dir }}"
+    directories: "{{ price_feeder_directories }}"
+    lib_dir: "{{ price_feeder_lib_dir }}"
+    log_file_path: "{{ price_feeder_log_file_path }}"
+
+- name: Include build binary task
+  ansible.builtin.include_tasks: build_binary.yml
+
+- name: Include wasmvm task
+  ansible.builtin.include_tasks: configure_wasmvm.yml
+
+- name: Copy config files
+  ansible.builtin.copy:
+    src: "{{ env }}/{{ project }}/{{ item }}"
+    dest: "{{ price_feeder_config_dir }}/{{ item }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  loop: 
+    - currency-pairs.toml
+    - deviation-thresholds.toml
+    - endpoints.toml
+  notify:
+    - Restart service
+
+- name: Copy config.toml file
+  ansible.builtin.template:
+    src: "{{ env }}/{{ project }}/config.toml.j2"
+    dest: "{{ price_feeder_config_file_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Fetch secrets environment file from HCP Vault and save to file
+  ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+  vars:
+    vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ price_feeder_environment_secrets_file_name }}"
+    secret_destination_path: "{{ price_feeder_environment_secrets_file_path }}"
+    secret_type: environment
+  when: fetch_validator_keys | default(false) | bool
+
+- name: Copy systemd service file
+  ansible.builtin.template:
+    src: "systemd.service.j2"
+    dest: /etc/systemd/system/{{ service_identifier }}.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart service
