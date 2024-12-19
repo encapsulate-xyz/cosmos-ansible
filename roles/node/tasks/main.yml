@@ -20,6 +20,7 @@
   vars:
     home: "{{ node_home_dir }}"
     directories: "{{ node_directories }}"
+    lib_dir: "{{ node_lib_dir }}"
     log_file_path: "{{ node_log_file_path }}"
 
 - name: Include build binary task
