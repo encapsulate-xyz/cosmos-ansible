@@ -2,7 +2,7 @@
 - name: Set project and service identifier in facts
   ansible.builtin.set_fact:
     project: "{{ group_names[0] }}"
-    service_identifier: "{{ group_names[0] }}{{ '' if type in default_node_types else '-' + type }}"
+    service_identifier: "{{ group_names[0] }}{{ '' if type in default_node_types else '-' + type }}{%- if price_feeder | default(false) | bool -%}-price-feeder{%- endif -%}"
 
 - name: Set architecture variable based on system architecture
   ansible.builtin.set_fact:
@@ -33,6 +33,8 @@
     rosetta_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.rosetta | default(ports.suffix.rosetta)) }}"
     grpc_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc | default(ports.suffix.grpc)) }}"
     grpc_web_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc_web | default(ports.suffix.grpc_web)) }}"
+    price_feeder_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.price_feeder | default(ports.suffix.price_feeder)) }}"
+
 
 - name: Display all port variables
   ansible.builtin.debug:
@@ -46,6 +48,7 @@
       - "Rosetta Port: {{ rosetta_port }}"
       - "gRPC Port: {{ grpc_port }}"
       - "gRPC-Web Port: {{ grpc_web_port }}"
+      - "Price-Feeder Port: {{ price_feeder_port }}"
 
 - name: Confirm deployment details
   ansible.builtin.pause:
