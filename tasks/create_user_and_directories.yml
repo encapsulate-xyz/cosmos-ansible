@@ -19,7 +19,7 @@
 
 - name: Create lib directory
   ansible.builtin.file:
-    path: "{{ node_lib_dir }}"
+    path: "{{ lib_dir }}"
     state: directory
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"
