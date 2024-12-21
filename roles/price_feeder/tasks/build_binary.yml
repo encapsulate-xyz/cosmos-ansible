@@ -9,7 +9,7 @@
   ansible.builtin.git:
     repo: "{{ price_feeder.source_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project][type].price_feeder.version }}"
+    version: "{{ vars[project].price_feeder.version }}"
     force: true
 
 - name: Build the project using `make build`

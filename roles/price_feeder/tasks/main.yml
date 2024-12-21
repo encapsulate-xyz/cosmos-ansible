@@ -51,7 +51,6 @@
     vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ price_feeder_environment_secrets_file_name }}"
     secret_destination_path: "{{ price_feeder_environment_secrets_file_path }}"
     secret_type: environment
-  when: fetch_validator_keys | default(false) | bool
 
 - name: Copy systemd service file
   ansible.builtin.template:

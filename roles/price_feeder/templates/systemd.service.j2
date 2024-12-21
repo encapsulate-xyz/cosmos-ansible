@@ -7,7 +7,8 @@ Group={{ service_identifier }}
 WorkingDirectory={{ price_feeder_home_dir }}
 EnvironmentFile={{ price_feeder_environment_wasmvm_file_path }}
 EnvironmentFile={{ price_feeder_environment_secrets_file_path }}
-ExecStart={{ price_feeder_bin_dir }}/{{ service_identifier }} {{ price_feeder_config_file_path }} --skip-provider-check
+ExecStart={{ price_feeder_bin_dir }}/{{ service_identifier }} {{ price_feeder_config_file_path }} \
+    --skip-provider-check --log-level debug
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
