@@ -12,8 +12,6 @@
   pre_tasks:
     - name: Include environment setup tasks
       ansible.builtin.include_tasks: tasks/setup_environment.yml
-      vars:
-        price_feeder: true
 
   tasks:
     - name: Run price_feeder playbook

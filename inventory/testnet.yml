@@ -26,8 +26,12 @@ all:
           type: validator
     umee:
       hosts:
-        validator.umee.testnet.encapsulate.xyz:
+        validator_host:
+          ansible_host: validator.umee.testnet.encapsulate.xyz
           type: validator
+        price_feeder_host:
+          ansible_host: pricefeeder.umee.testnet.encapsulate.xyz
+          type: price_feeder
     c4e:
       hosts:
         validator.c4e.testnet.encapsulate.xyz:
