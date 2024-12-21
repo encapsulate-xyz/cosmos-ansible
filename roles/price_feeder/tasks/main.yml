@@ -28,7 +28,7 @@
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"
     mode: "0644"
-  loop: 
+  loop:
     - currency-pairs.toml
     - deviation-thresholds.toml
     - endpoints.toml

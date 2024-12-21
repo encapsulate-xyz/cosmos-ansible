@@ -22,4 +22,3 @@ price_feeder_environment_wasmvm_file_path: "{{ price_feeder_env_dir }}/{{ price_
 price_feeder_environment_secrets_file_path: "{{ price_feeder_env_dir }}/{{ price_feeder_environment_secrets_file_name }}"
 
 price_feeder_wasmvm_lib_file_path: "{{ price_feeder_lib_dir }}/{{ price_feeder_wasmvm_lib_file_name }}"
-
