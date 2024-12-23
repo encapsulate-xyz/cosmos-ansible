@@ -42,6 +42,13 @@
     rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type == "price_feeder"
 
+- name: Set all port variables dynamically for Execution Client
+  ansible.builtin.set_fact:
+    execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
+    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_websocket | default(ports.suffix.execution_websocket)) }}"
+    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_metrics | default(ports.suffix.execution_metrics)) }}"
+  when: execution_client | default(false) | bool
+
 - name: Display all port variables
   ansible.builtin.debug:
     msg:
@@ -63,6 +70,14 @@
       - "gRPC Port: {{ grpc_port }}"
       - "Price-Feeder Port: {{ price_feeder_port }}"
   when: type == "price_feeder"
+
+- name: Display all Execution Client port variables
+  ansible.builtin.debug:
+    msg:
+      - "Execution RPC Port: {{ execution_rpc_port }}"
+      - "Execution Web Socket Port: {{ execution_websocket_port }}"
+      - "Execution Metrics Port: {{ execution_metrics_port }}"
+  when: execution_client | default(false) | bool
 
 - name: Confirm deployment details
   ansible.builtin.pause:
