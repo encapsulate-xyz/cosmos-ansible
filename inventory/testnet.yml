@@ -47,3 +47,4 @@ all:
       hosts:
         validator.pell.testnet.encapsulate.xyz:
           type: validator
+          execution_client: true
