@@ -56,6 +56,6 @@
 
 - name: Create a symbolic link to agroic binary
   ansible.builtin.file:
-    src: "{{ node_home_dir }}/.agoric-repo/bin/agd"
+    src: "{{ node_home_dir }}/.agoric-repo/bin/{{ node_service_default_binary_name[project] }}"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     state: link

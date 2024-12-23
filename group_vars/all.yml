@@ -117,3 +117,13 @@ agoric:
     source_url: https://github.com/Agoric/agoric-sdk
     ports:
       prefix: 117
+
+pell:
+  validator:
+    source_url: https://github.com/0xPellNetwork/network-config/releases/download
+    ports:
+      prefix: 118
+  fullnode:
+    source_url: https://github.com/0xPellNetwork/network-config/releases/download
+    ports:
+      prefix: 119
