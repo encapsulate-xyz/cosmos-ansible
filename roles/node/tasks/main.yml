@@ -3,6 +3,10 @@
   ansible.builtin.include_vars:
     file: vars/{{ env }}/{{ project }}.yml
 
+- name: Apply UFW rules for each node type
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ node_ufw_rules[type] }}"
+
 - name: Set seeds
   ansible.builtin.set_fact:
     seeds: "{{ lookup('file', 'files/{{ env }}/{{ project }}/seeds.txt').splitlines() | join(',') }}"
@@ -10,10 +14,6 @@
 - name: Set peers
   ansible.builtin.set_fact:
     peers: "{{ lookup('file', 'files/{{ env }}/{{ project }}/peers.txt').splitlines() | join(',') }}"
-
-- name: Apply UFW rules for each node type
-  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
-  loop: "{{ node_ufw_rules[type] }}"
 
 - name: Include user creation task
   ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
