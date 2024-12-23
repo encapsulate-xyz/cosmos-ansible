@@ -54,7 +54,6 @@
       - "Rosetta Port: {{ rosetta_port }}"
       - "gRPC Port: {{ grpc_port }}"
       - "gRPC-Web Port: {{ grpc_web_port }}"
-      - "Price-Feeder Port: {{ price_feeder_port }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Display all price feeder port variables
