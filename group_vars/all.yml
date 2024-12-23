@@ -2,10 +2,14 @@
 # maintains ports, bianry or repo urls
 
 org: encapsulate
+
+# Organization details
+moniker: Encapsulate
 website: "https://encapsulate.xyz"
 security_mail: "security@encapsulate.xyz"
 about: "Others Trust, We Validate ! Your Stake is Important to Us. Secure Networks while You Earn Rewards."
 identity: B68A51B88F28CEF1
+key_name: wallet
 
 ansible_port: 8192
 

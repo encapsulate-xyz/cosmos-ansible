@@ -1,0 +1,27 @@
+---
+- name: Perform unjail transaction and process results
+  block:
+    - name: Execute unjail transaction
+      ansible.builtin.expect:
+        command: >
+          {{ node_bin_dir }}/{{ service_identifier }} tx slashing unjail --home {{ node_home_dir }}
+          --from={{ key_name }}
+          --fees {{ node_network_params.fee }}{{ node_network_params.denom }} --chain-id {{ vars[project].chain_id }} --yes
+          --gas auto --gas-adjustment {{ node_network_params.gas }}
+          --node tcp://localhost:{{ rpc_port }}
+          --output text
+          --keyring-dir {{ node_home_dir }}
+          --sign-mode direct
+        responses:
+          "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
+      register: unjail_output
+      environment:
+        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
+
+    - name: Print unjail transaction result
+      ansible.builtin.debug:
+        msg: "{{ unjail_output.stdout }}"
+
+    - name: Print hash
+      ansible.builtin.debug:
+        msg: "Hash: {{ unjail_output.stdout | regex_search('hash: ([a-zA-Z0-9]+)', '\\1') }}"
