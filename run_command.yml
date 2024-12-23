@@ -19,12 +19,12 @@
           ansible.builtin.include_tasks: tasks/setup_environment.yml
 
         - name: Check if KEYRING_PASSWORD is set
-          fail:
+          ansible.builtin.fail:
             msg: "The environment variable KEYRING_PASSWORD is not set."
           when: lookup('env', 'KEYRING_PASSWORD') == ''
 
         - name: Check if MNEMONIC is set
-          fail:
+          ansible.builtin.fail:
             msg: "The environment variable MNEMONIC is not set."
           when: lookup('env', 'MNEMONIC') == ''
   tasks:

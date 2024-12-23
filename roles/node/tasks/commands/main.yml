@@ -44,21 +44,21 @@
       ansible.builtin.debug:
         msg: >
           {{
-            key_list.stdout | 
-            regex_replace('^Enter keyring passphrase.*:\r\n', '') | 
-            regex_replace('\\\\"', '"') | 
-            default('[]') | 
-            from_json | 
-            map('dict2items') | 
-            map('selectattr', 'key', 'ne', 'pubkey') | 
-            map('items2dict') | 
+            key_list.stdout |
+            regex_replace('^Enter keyring passphrase.*:\r\n', '') |
+            regex_replace('\\\\"', '"') |
+            default('[]') |
+            from_json |
+            map('dict2items') |
+            map('selectattr', 'key', 'ne', 'pubkey') |
+            map('items2dict') |
             list
           }}
 
     - name: Include unjail command
       ansible.builtin.import_tasks: unjail.yml
       when: command is defined and command == "unjail"
-    
+
     - name: Include create validator command
       ansible.builtin.import_tasks: create_validator.yml
       when: command is defined and command == "create_validator"
