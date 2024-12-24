@@ -1,32 +1,4 @@
 ---
-- name: Check if Node.js is already installed
-  ansible.builtin.shell: |
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh
-    node --version
-  register: node_version
-  ignore_errors: true
-  changed_when: false
-  args:
-    executable: /bin/bash
-
-- name: Download and install NVM
-  ansible.builtin.shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-  when: node_version.rc != 0 or node_version.stdout.find(vars[project][type].node.version) == -1
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-
-- name: Install Node.js
-  ansible.builtin.shell: |
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh
-    nvm install {{ vars[project][type].node.version }}
-    nvm alias default {{ vars[project][type].node.version }}
-    npm install -g yarn
-  args:
-    executable: /bin/bash
-  when: node_version.rc != 0 or node_version.stdout.find(vars[project][type].node.version) == -1
-  changed_when: node_install.rc == 0
-
 - name: Check if yarn is installed
   ansible.builtin.shell: |
     source {{ ansible_env.HOME }}/.nvm/nvm.sh
@@ -49,8 +21,8 @@
 
 - name: Create a symbolic link to Node.js
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/versions/node/{{ vars[project][type].node.version }}/bin/node"
-    dest: "/usr/local/bin/node"
+    src: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ vars[project][type].node.version }}/bin/node"
+    dest: "{{ node_bin_dir }}/node"
     state: link
 
 - name: Create the agoric-repo folder
