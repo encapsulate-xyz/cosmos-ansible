@@ -5,9 +5,9 @@
   register: project_install_file
 
 - name: Include project-specific install binary task
-  ansible.builtin.include_tasks: "{{ project }}.yml"
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_binary/{{ project }}.yml"
   when: project_install_file.stat.exists
 
 - name: Include default install binary task
-  ansible.builtin.include_tasks: default.yml
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_binary/default.yml"
   when: not project_install_file.stat.exists
