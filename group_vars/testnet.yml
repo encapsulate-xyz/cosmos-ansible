@@ -120,6 +120,7 @@ axelar:
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
 
 agoric:
+  chain_id: agoricdev-23
   validator:
     version: v0.35.0-u17.1
     go:
@@ -135,6 +136,7 @@ agoric:
   snapshot_url:
 
 pell:
+  chain_id: ignite_186-1
   validator:
     version: v1.1.1-ignite
     wasmvm:
