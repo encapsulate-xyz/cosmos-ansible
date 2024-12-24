@@ -1,5 +1,5 @@
 ---
-- name: Create the group {{ project }}
+- name: Create project group
   ansible.builtin.group:
     name: "{{ project }}"
     state: present
