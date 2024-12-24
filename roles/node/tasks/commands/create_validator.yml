@@ -1,0 +1,27 @@
+---
+- name: Execute create validator
+  ansible.builtin.expect:
+    command: >
+      {{ node_bin_dir }}/{{ service_identifier }} tx staking create-validator --home {{ node_home_dir }}
+      --amount={{ gentx_amount }}{{ node_network_params.denom }}
+      --broadcast-mode=sync \
+      --pubkey=$({{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}) \
+      --moniker={{ moniker }}
+      --website={{ website }}
+      --details="{{ about }}"
+      --commission-rate={{ node_network_params.current_commission_rate }}
+      --commission-max-rate={{ node_network_params.max_commission_rate }}
+      --commission-max-change-rate={{ node_network_params.change_commission_rate }}
+      --min-self-delegation="1"
+      --identity={{ identity }}
+      --security-contact={{ security_mail }}
+      --from={{ key_name }}
+      --chain-id={{ vars[project].chain_id }}
+      --gas-prices {{ node_network_params.gas }}{{ node_network_params.denom }}
+      --gas=auto
+      --gas-adjustment=1.4 -y
+    responses:
+      "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
+  register: create_validator_output
+  environment:
+    LD_LIBRARY_PATH: "{{ node_lib_dir }}"

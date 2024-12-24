@@ -13,7 +13,7 @@
     - jq
     - chrony
     - lz4
-    - yq
+    - yq # failed: [5.78.92.20] (item=yq) => {"ansible_loop_var": "item", "changed": false, "item": "yq", "msg": "No package matching 'yq' is available"}
 
 - name: Remove existing Go directories (if any)
   ansible.builtin.file:

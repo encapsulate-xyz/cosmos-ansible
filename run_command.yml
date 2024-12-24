@@ -1,0 +1,38 @@
+---
+- name: Run a command
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    allowed_node_types: [validator]
+  vars_files:
+    - group_vars/ports.yml
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+  pre_tasks:
+    - name: Setup environment and dependencies
+      when: type in allowed_node_types
+      block:
+        - name: Include environment setup tasks
+          ansible.builtin.include_tasks: tasks/setup_environment.yml
+
+        - name: Check if KEYRING_PASSWORD is set
+          ansible.builtin.fail:
+            msg: "The environment variable KEYRING_PASSWORD is not set."
+          when: lookup('env', 'KEYRING_PASSWORD') == ''
+
+        - name: Check if MNEMONIC is set
+          ansible.builtin.fail:
+            msg: "The environment variable MNEMONIC is not set."
+          when: lookup('env', 'MNEMONIC') == ''
+  tasks:
+    - name: Run node playbook
+      when: type in allowed_node_types
+      block:
+        - name: Include common handlers
+          ansible.builtin.include_role:
+            name: common
+        - name: Include command task
+          ansible.builtin.include_tasks: roles/node/tasks/commands/main.yml
