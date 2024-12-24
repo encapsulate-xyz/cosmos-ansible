@@ -1,13 +1,8 @@
 ---
-- name: Check if project-specific file exists
-  ansible.builtin.stat:
-    path: "{{ role_path }}/tasks/install_binary/{{ project }}.yml"
-  register: project_install_file
-
-- name: Include project-specific install binary task
-  ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_binary/{{ project }}.yml"
-  when: project_install_file.stat.exists
-
-- name: Include default install binary task
-  ansible.builtin.include_tasks: "{{ role_path }}/tasks/install_binary/default.yml"
-  when: not project_install_file.stat.exists
+- name: Handle Install binary task
+  block:
+    - name: Include project-specific install binary task
+      ansible.builtin.include_tasks: "{{ project }}.yml"
+  rescue:
+    - name: Include default install binary task
+      ansible.builtin.include_tasks: default.yml
