@@ -10,6 +10,8 @@
     file: roles/node/vars/{{ env }}/{{ project }}.yml
 
 - name: Manage keys
+  vars:
+    key_name: wallet
   block:
     - name: List Keys
       ansible.builtin.expect:
