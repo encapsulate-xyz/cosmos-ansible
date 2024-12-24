@@ -25,6 +25,9 @@ go:
 wasmvm:
   source_url: https://github.com/CosmWasm/wasmvm/releases/download
 
+price_feeder:
+  source_url: https://github.com/ojo-network/price-feeder
+
 omniflix:
   validator:
     source_url: https://github.com/OmniFlix/omniflixhub

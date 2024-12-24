@@ -16,6 +16,18 @@ node_ufw_rules:
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
 
+    - port: "{{ rpc_port }}"
+      proto: tcp
+      rule: limit
+      from: pricefeeder.umee.testnet.encapsulate.xyz
+      comment: rpc_port
+
+    - port: "{{ grpc_port }}"
+      proto: tcp
+      rule: limit
+      from: pricefeeder.umee.testnet.encapsulate.xyz
+      comment: grpc_port
+
   fullnode:
     - port: "{{ p2p_port }}"
       proto: tcp

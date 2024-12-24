@@ -1,0 +1,24 @@
+---
+# maintains directories and paths
+price_feeder_home_dir: /opt/{{ service_identifier }}
+
+price_feeder_bin_dir: "{{ price_feeder_home_dir }}/bin"
+price_feeder_config_dir: "{{ price_feeder_home_dir }}/config"
+price_feeder_env_dir: "{{ price_feeder_home_dir }}/environment"
+price_feeder_lib_dir: "{{ price_feeder_home_dir }}/lib"
+price_feeder_log_dir: "{{ price_feeder_home_dir }}/log"
+
+price_feeder_directories:
+  - "{{ price_feeder_home_dir }}"
+  - "{{ price_feeder_bin_dir }}"
+  - "{{ price_feeder_config_dir }}"
+  - "{{ price_feeder_env_dir }}"
+  - "{{ price_feeder_log_dir }}"
+
+price_feeder_config_file_path: "{{ price_feeder_config_dir }}/{{ price_feeder_config_file_name }}"
+price_feeder_log_file_path: "{{ price_feeder_log_dir }}/{{ service_identifier }}.log"
+
+price_feeder_environment_wasmvm_file_path: "{{ price_feeder_env_dir }}/{{ price_feeder_environment_wasmvm_file_name }}"
+price_feeder_environment_secrets_file_path: "{{ price_feeder_env_dir }}/{{ price_feeder_environment_secrets_file_name }}"
+
+price_feeder_wasmvm_lib_file_path: "{{ price_feeder_lib_dir }}/{{ price_feeder_wasmvm_lib_file_name }}"

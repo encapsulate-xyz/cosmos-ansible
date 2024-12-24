@@ -1,0 +1,36 @@
+config_dir = "{{ price_feeder_config_dir }}"
+provider_timeout = "1000000s"
+
+gas_prevote = 55000
+gas_vote = 160000
+# instead of fixed gas settings, gas adjustment can be used:
+# gas_adjustment = 1.9
+
+[server]
+listen_addr = "0.0.0.0:{{ price_feeder_port }}"
+read_timeout = "20s"
+verbose_cors = true
+write_timeout = "20s"
+
+[account]
+address = "umee1vaxz9hyn8sq5vk3jgdhkge8xefuhz6xt402ral"
+chain_id = "canon-4"
+validator = "umeevaloper1vaxz9hyn8sq5vk3jgdhkge8xefuhz6xt4tdvv4"
+
+[keyring]
+backend = "os"
+dir = "{{ umee.price_feeder.keyring_dir }}"
+
+[rpc]
+grpc_endpoint = "{{ umee.price_feeder.node_endpoint_address }}:{{ grpc_port }}"
+rpc_timeout = "100ms"
+tmrpc_endpoint = "http://{{ umee.price_feeder.node_endpoint_address }}:{{ rpc_port }}"
+
+[telemetry]
+enable-hostname = true
+enable-hostname-label = true
+enable-service-label = true
+enabled = true
+global-labels = [["canon-4", "umee-testnet"]]
+service-name = "{{ service_identifier }}"
+prometheus-retention-time = 100

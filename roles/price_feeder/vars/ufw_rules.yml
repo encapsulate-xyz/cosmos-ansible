@@ -1,0 +1,7 @@
+---
+price_feeder_ufw_rules:
+  - port: "{{ price_feeder_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: price_feeder_port

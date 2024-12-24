@@ -1,0 +1,9 @@
+---
+price_feeder_environment_wasmvm_file_name: "{{ service_identifier }}.wasmvm.env"
+price_feeder_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
+
+price_feeder_wasmvm_lib_file_name: libwasmvm.{{ ansible_architecture }}.so
+
+price_feeder_config_file_name: config.toml
+
+price_feeder_service_default_binary_name: price-feeder
