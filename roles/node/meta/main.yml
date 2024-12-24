@@ -9,3 +9,8 @@ dependencies:
       GOOS: "{{ ansible_system | lower }}" # Target OS (linux)
       GOARCH: "{{ system_architecture }}" # Target architecture (amd64)
       go_custom_mirror: https://storage.googleapis.com/golang
+  
+  - role: morgangraphics.ansible-role-nvm
+    nvm_version: "{{ nvm.version }}"
+    nodejs_version: "{{ vars[project][type].node.version }}"
+    when: vars[project][type].node.version is defined

@@ -1,0 +1,61 @@
+---
+- name: Check if yarn is installed
+  ansible.builtin.shell: |
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh
+    yarn --version
+  register: yarn_check
+  changed_when: false
+  ignore_errors: true
+  args:
+    executable: /bin/bash
+
+- name: Install yarn using npm
+  ansible.builtin.shell: |
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh
+    npm install -g yarn
+  args:
+    executable: /bin/bash
+  when: yarn_check.rc != 0
+  register: yarn_install
+  changed_when: yarn_install.rc == 0
+
+- name: Create a symbolic link to Node.js
+  ansible.builtin.file:
+    src: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ vars[project][type].node.version }}/bin/node"
+    dest: "{{ node_bin_dir }}/node"
+    state: link
+
+- name: Create the agoric-repo folder
+  ansible.builtin.file:
+    path: "{{ node_home_dir }}/.agoric-repo"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Clone the repository
+  ansible.builtin.git:
+    repo: "{{ vars[project][type].source_url }}"
+    dest: "{{ node_home_dir }}/.agoric-repo"
+    version: "{{ vars[project][type].version }}"
+    force: true
+
+- name: Build agoric binary
+  ansible.builtin.shell: |
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh
+    bin/agd build
+  args:
+    chdir: "{{ node_home_dir }}/.agoric-repo"
+    executable: /bin/bash
+  environment:
+    PATH: "{{ go.root }}/bin:{{ ansible_env.PATH }}"
+    GOROOT: "{{ go.root }}"
+    GOPATH: "{{ go.path }}"
+    GO111MODULE: "{{ go.module111 }}"
+  changed_when: false
+
+- name: Create a symbolic link to agroic binary
+  ansible.builtin.file:
+    src: "{{ node_home_dir }}/.agoric-repo/bin/agd"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    state: link

@@ -41,3 +41,7 @@ all:
         validator.axelar.testnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
+    agoric:
+      hosts:
+        validator.agoric.testnet.encapsulate.xyz:
+          type: validator

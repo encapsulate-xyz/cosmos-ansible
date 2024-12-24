@@ -1,7 +1,7 @@
 ---
 - name: Check if project-specific build binary file exists
   ansible.builtin.stat:
-    path: "{{ project }}.yml"
+    path: "{{ role_path }}/tasks/build_binary/{{ project }}.yml"
   register: project_build_file
 
 - name: Include project-specific build binary task

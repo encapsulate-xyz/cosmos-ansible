@@ -107,3 +107,13 @@ axelar:
     source_url: https://github.com/axelarnetwork/axelar-core
     ports:
       prefix: 115
+
+agoric:
+  validator:
+    source_url: https://github.com/Agoric/agoric-sdk
+    ports:
+      prefix: 116
+  fullnode:
+    source_url: https://github.com/Agoric/agoric-sdk
+    ports:
+      prefix: 117
