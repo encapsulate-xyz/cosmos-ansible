@@ -22,6 +22,8 @@ node_service_default_binary_name:
   umee: umeed
   c4e: c4ed
   axelar: axelard
+  agoric: agd
+  pell: pellcored
 
 node_status_endpoint: status
 
@@ -69,3 +71,15 @@ node_type_settings:
     address:
       validator: localhost
       fullnode: 0.0.0.0
+  # Execution Client
+  execution_websocket:
+    address:
+      validator: localhost
+      fullnode: 0.0.0.0
+  execution_rpc:
+    address:
+      validator: localhost
+      fullnode: 0.0.0.0
+  execution_metrics:
+    address:
+      default: 0.0.0.0

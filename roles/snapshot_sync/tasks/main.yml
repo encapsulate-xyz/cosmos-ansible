@@ -19,9 +19,14 @@
       ansible.builtin.debug:
         msg: Source file does not exist
 
-- name: Delete data folder directories
+- name: Delete data folder
   ansible.builtin.file:
     path: "{{ snapshot_sync_data_dir }}"
+    state: absent
+
+- name: Delete wasm folder
+  ansible.builtin.file:
+    path: "{{ snapshot_sync_home_dir }}/wasm"
     state: absent
 
 - name: Handle Download and extract snapshots

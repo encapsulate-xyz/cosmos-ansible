@@ -43,3 +43,8 @@ all:
       hosts:
         validator.agoric.testnet.encapsulate.xyz:
           type: validator
+    pell:
+      hosts:
+        validator.pell.testnet.encapsulate.xyz:
+          type: validator
+          execution_client: true

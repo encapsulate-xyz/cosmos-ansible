@@ -125,3 +125,14 @@ agoric:
     node:
       version: v18.20.5
   snapshot_url:
+
+pell:
+  validator:
+    version: v1.1.1-ignite
+    wasmvm:
+      version: v2.1.2
+  fullnode:
+    version: v1.1.1-ignite
+    wasmvm:
+      version: v2.1.2
+  snapshot_url: https://ss-t.pell.nodestake.org/2024-12-23_pell_241564.tar.lz4

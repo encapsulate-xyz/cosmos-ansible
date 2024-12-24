@@ -23,8 +23,8 @@
     lib_dir: "{{ node_lib_dir }}"
     log_file_path: "{{ node_log_file_path }}"
 
-- name: Include build binary task
-  ansible.builtin.include_tasks: build_binary/main.yml
+- name: Include install binary task
+  ansible.builtin.include_tasks: install_binary/main.yml
 
 - name: Include wasmvm task
   ansible.builtin.include_tasks: configure_wasmvm.yml

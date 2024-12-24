@@ -12,3 +12,8 @@ ports:
     grpc: 90
     grpc_web: 91
     price_feeder: 71
+    # Execution client ports
+    execution_rpc: 45
+    execution_websocket: 46
+    execution_metrics: 65
+    # END
