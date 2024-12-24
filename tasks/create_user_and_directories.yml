@@ -1,10 +1,10 @@
 ---
-- name: Create the {{ project }} group
+- name: Create the group {{ project }}
   ansible.builtin.group:
     name: "{{ project }}"
     state: present
 
-- name: Create system {{ service_identifier }} user with home and nologin
+- name: Create system user with home and nologin
   ansible.builtin.user:
     name: "{{ service_identifier }}"
     system: true
