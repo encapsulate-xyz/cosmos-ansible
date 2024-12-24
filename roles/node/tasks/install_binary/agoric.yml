@@ -39,6 +39,8 @@
     dest: "{{ node_home_dir }}/.agoric-repo"
     version: "{{ vars[project][type].version }}"
     force: true
+  notify:
+    - Restart service
 
 - name: Build agoric binary
   ansible.builtin.shell: |
