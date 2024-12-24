@@ -13,7 +13,7 @@ verbose_cors = true
 write_timeout = "20s"
 
 [account]
-address = "umee1vaxz9hyn8sq5vk3jgdhkge8xefuhz6xt402ral"
+address = "umee1ak0lurz426qfhd0a3727kdprc8ctrs4a8gywzm"
 chain_id = "canon-4"
 validator = "umeevaloper1vaxz9hyn8sq5vk3jgdhkge8xefuhz6xt4tdvv4"
 
@@ -22,9 +22,9 @@ backend = "os"
 dir = "{{ umee.price_feeder.keyring_dir }}"
 
 [rpc]
-grpc_endpoint = "{{ umee.price_feeder.node_endpoint_address }}:{{ grpc_port }}"
+grpc_endpoint = "validator.umee.testnet.encapsulate.xyz:{{ grpc_port }}"
 rpc_timeout = "100ms"
-tmrpc_endpoint = "http://{{ umee.price_feeder.node_endpoint_address }}:{{ rpc_port }}"
+tmrpc_endpoint = "http://validator.umee.testnet.encapsulate.xyz:{{ rpc_port }}"
 
 [telemetry]
 enable-hostname = true
