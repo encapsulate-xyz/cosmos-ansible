@@ -30,3 +30,5 @@ node_priv_validator_key_path: "{{ node_config_dir }}/{{ node_priv_validator_key_
 node_node_key_path: "{{ node_config_dir }}/{{ node_node_key_file_name }}"
 node_genesis_file_path: "{{ node_config_dir }}/{{ node_genesis_file_name }}"
 node_priv_validator_state_file_path: "{{ node_data_dir }}/{{ node_priv_validator_state_file_name }}"
+
+node_nodejs_dir: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin"
