@@ -272,13 +272,13 @@ max-tx-gas-wanted = 0
 [json-rpc]
 
 # Enable defines if the gRPC server should be enabled.
-enable = true
+enable = {{ node_type_settings.grpc.enable | tojson }}
 
 # Address defines the EVM RPC HTTP server address to bind to.
-address = "127.0.0.1:8545"
+address = "{{ node_type_settings.execution_rpc.address[type] }}:{{ execution_rpc_port }}"
 
 # Address defines the EVM WebSocket server address to bind to.
-ws-address = "127.0.0.1:8546"
+ws-address = "{{ node_type_settings.execution_rpc.address[type] }}:{{ execution_websocket_port }}"
 
 # API defines a list of JSON-RPC namespaces that should be enabled
 # Example: "eth,txpool,personal,net,debug,web3"
@@ -324,7 +324,7 @@ enable-indexer = false
 
 # MetricsAddress defines the EVM Metrics server address to bind to. Pass --metrics in CLI to enable
 # Prometheus metrics path: /debug/metrics/prometheus
-metrics-address = "127.0.0.1:6065"
+metrics-address = "{{ node_type_settings.execution_metrics.address.default }}:{{ execution_metrics_port }}"
 
 # Upgrade height for fix of revert gas refund logic when transaction reverted.
 fix-revert-gas-refund-height = 0

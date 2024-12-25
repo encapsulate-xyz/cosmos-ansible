@@ -20,6 +20,7 @@ all:
       hosts:
         validator.humans.testnet.encapsulate.xyz:
           type: validator
+          execution_client: true
     ojo:
       hosts:
         validator.ojo.testnet.encapsulate.xyz:

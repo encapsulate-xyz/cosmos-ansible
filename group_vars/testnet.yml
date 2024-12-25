@@ -134,7 +134,6 @@ agoric:
     node:
       version: v18.20.5
   snapshot_url:
-
 pell:
   chain_id: ignite_186-1
   validator:

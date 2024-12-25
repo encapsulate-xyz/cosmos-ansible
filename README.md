@@ -154,7 +154,7 @@ vault:
 4. Then run the playbook:
 
   ```bash
-  ansible-playbook node.yml -l validator.umee.testnet.encapsulate.xyz -e "fetch_validator_keys=true"
+  ansible-playbook setup_node.yml -l validator.umee.testnet.encapsulate.xyz -e "fetch_validator_keys=true"
   ```
 
 **Note**: The default value for `fetch_validator_keys` is false, which disables fetching keys from Hashicorp Vault.
