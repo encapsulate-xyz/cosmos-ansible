@@ -31,11 +31,11 @@
 
 - name: Include Snapshot Sync task
   ansible.builtin.include_tasks: snapshot_sync.yml
-  when: sync_method == "snapshot_sync"
+  when: sync_method is defined and sync_method == "snapshot_sync"
 
 - name: Include State Sync task
   ansible.builtin.include_tasks: state_sync.yml
-  when: sync_method == "state_sync"
+  when: sync_method is defined and sync_method == "state_sync"
 
 - name: Handle Restore validator state file
   block:
