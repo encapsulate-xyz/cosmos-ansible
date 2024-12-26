@@ -1,5 +1,5 @@
 ---
-- name: Snapshot sync node
+- name: Sync node
   hosts: all
   become: true
   gather_facts: true
@@ -18,12 +18,12 @@
           ansible.builtin.include_tasks: tasks/setup_environment.yml
 
   tasks:
-    - name: Run snapshot_sync playbook
+    - name: Run sync playbook
       when: type in allowed_node_types
       block:
         - name: Include common handlers
           ansible.builtin.include_role:
             name: common
-        - name: Include snapshot_sync role
+        - name: Include sync role
           ansible.builtin.include_role:
-            name: snapshot_sync
+            name: sync

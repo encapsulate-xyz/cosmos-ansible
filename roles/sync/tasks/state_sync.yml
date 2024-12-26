@@ -1,0 +1,56 @@
+---
+- name: Get the latest block height
+  uri:
+    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block"
+    return_content: true
+  register: latest_block
+
+- name: Extract the latest height
+  set_fact:
+    latest_height: "{{ latest_block.json.result.block.header.height | int }}"
+
+- name: Calculate the trust height
+  set_fact:
+    trust_height: "{{ latest_height | int - 1000 }}"
+
+- name: Get the trust hash for the calculated trust height
+  uri:
+    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block?height={{ tust_height }}"
+    return_content: true
+  register: trust_block_hash_response
+
+- name: Extract the trust hash
+  set_fact:
+    trust_hash: "{{ trust_block_hash_response.json.result.block_id.hash }}"
+
+- name: Print all variables
+  debug:
+    msg:
+      - "RPC_URL: {{ rpc_url | default(vars[project].rpc_url) }}"
+      - "Latest Height: {{ latest_height }}"
+      - "Trust Height (LATEST_HEIGHT - 1000): {{ trust_height }}"
+      - "Trust Hash: {{ trust_hash }}"
+
+- name: Configure statesync settings
+  lineinfile:
+    path: "{{ sync_config_file_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: yes
+  loop:
+    - regexp: '^enable = .*'
+      line: 'enable = true'
+    - regexp: '^rpc_servers = .*'
+      line: 'rpc_servers = "{{ rpc_url | default(vars[project].rpc_url) }},{{ rpc_url | default(vars[project].rpc_url) }}"'    
+    - regexp: '^trust_height = .*'
+      line: 'trust_height = {{ trust_height }}'
+    - regexp: '^trust_hash = .*'
+      line: 'trust_hash = "{{ trust_hash }}"'
+
+- name: Create data directory
+  ansible.builtin.file:
+    path: "{{ sync_data_dir }}"
+    state: directory
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0755"

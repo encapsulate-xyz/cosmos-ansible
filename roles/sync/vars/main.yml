@@ -1,0 +1,3 @@
+---
+sync_priv_validator_state_file_name: priv_validator_state.json
+sync_config_file_name: config.toml
