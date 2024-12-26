@@ -28,7 +28,7 @@
     msg:
       - "RPC_URL: {{ rpc_url | default(vars[project].rpc_url) }}"
       - "Latest Height: {{ latest_height }}"
-      - "Trust Height (LATEST_HEIGHT - 1000): {{ trust_height }}"
+      - "Trust Height (LATEST_HEIGHT - 2000): {{ trust_height }}"
       - "Trust Hash: {{ trust_hash }}"
 
 - name: Configure statesync settings
