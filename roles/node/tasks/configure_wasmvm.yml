@@ -11,7 +11,7 @@
   notify:
     - Restart service
 
-- name: Copy environment file
+- name: Copy wasmvm environment file
   ansible.builtin.template:
     src: "wasmvm.env.j2"
     dest: "{{ node_environment_wasmvm_file_path }}"

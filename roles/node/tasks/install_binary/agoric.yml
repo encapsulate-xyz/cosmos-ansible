@@ -35,3 +35,11 @@
     src: "{{ node_home_dir }}/.agoric-repo/bin/{{ node_service_default_binary_name[project] }}"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     state: link
+
+- name: Copy general environment file
+  ansible.builtin.template:
+    src: "{{ env }}/{{ project }}/general.env.j2"
+    dest: "{{ node_environment_general_file_path }}"
+    owner: root
+    group: root
+    mode: "0644"
