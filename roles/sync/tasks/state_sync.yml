@@ -1,30 +1,30 @@
 ---
 - name: Get the latest block height
-  uri:
+  ansible.builtin.uri:
     url: "{{ rpc_url | default(vars[project].rpc_url) }}/block"
     return_content: true
   register: latest_block
 
 - name: Extract the latest height
-  set_fact:
+  ansible.builtin.set_fact:
     latest_height: "{{ latest_block.json.result.block.header.height | int }}"
 
 - name: Calculate the trust height
-  set_fact:
+  ansible.builtin.set_fact:
     trust_height: "{{ latest_height | int - 1000 }}"
 
 - name: Get the trust hash for the calculated trust height
-  uri:
+  ansible.builtin.uri:
     url: "{{ rpc_url | default(vars[project].rpc_url) }}/block?height={{ trust_height }}"
     return_content: true
   register: trust_block_hash_response
 
 - name: Extract the trust hash
-  set_fact:
+  ansible.builtin.set_fact:
     trust_hash: "{{ trust_block_hash_response.json.result.block_id.hash }}"
 
 - name: Print all variables
-  debug:
+  ansible.builtin.debug:
     msg:
       - "RPC_URL: {{ rpc_url | default(vars[project].rpc_url) }}"
       - "Latest Height: {{ latest_height }}"
@@ -32,19 +32,19 @@
       - "Trust Hash: {{ trust_hash }}"
 
 - name: Configure statesync settings
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ sync_config_file_path }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    backrefs: yes
+    backrefs: true
   loop:
-    - regexp: '^enable = .*'
-      line: 'enable = true'
-    - regexp: '^rpc_servers = .*'
-      line: 'rpc_servers = "{{ rpc_url | default(vars[project].rpc_url) }},{{ rpc_url | default(vars[project].rpc_url) }}"'    
-    - regexp: '^trust_height = .*'
-      line: 'trust_height = {{ trust_height }}'
-    - regexp: '^trust_hash = .*'
+    - regexp: "^enable = .*"
+      line: "enable = true"
+    - regexp: "^rpc_servers = .*"
+      line: 'rpc_servers = "{{ rpc_url | default(vars[project].rpc_url) }},{{ rpc_url | default(vars[project].rpc_url) }}"'
+    - regexp: "^trust_height = .*"
+      line: "trust_height = {{ trust_height }}"
+    - regexp: "^trust_hash = .*"
       line: 'trust_hash = "{{ trust_hash }}"'
 
 - name: Create data directory

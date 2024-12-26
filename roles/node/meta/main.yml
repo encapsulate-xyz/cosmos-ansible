@@ -15,6 +15,6 @@ dependencies:
     nvm_version: "{{ nvm.version }}"
     nodejs_version: "{{ vars[project][type].node.version }}"
     nvm_dir: "{{ nvm.path }}"
-    nvm_commands: 
+    nvm_commands:
       - npm install -g yarn
     when: vars[project][type].node.version is defined
