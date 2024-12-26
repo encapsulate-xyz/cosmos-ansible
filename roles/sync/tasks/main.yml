@@ -81,3 +81,13 @@
   ansible.builtin.systemd:
     name: "{{ service_identifier }}"
     state: restarted
+
+- name: Disable statesync settings
+  ansible.builtin.lineinfile:
+    path: "{{ sync_config_file_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  loop:
+    - regexp: "^enable = .*"
+      line: "enable = false"
