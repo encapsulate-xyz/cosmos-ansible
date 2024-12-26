@@ -102,6 +102,7 @@ c4e:
     wasmvm:
       version: v1.5.2
   snapshot_url: https://snapshots-testnet.stake-town.com/c4e/babajaga-1_latest.tar.lz4
+  rpc_url: https://c4e-testnet-rpc.stake-town.com:443
 
 axelar:
   chain_id: axelar-testnet-lisbon-3
@@ -134,6 +135,8 @@ agoric:
     node:
       version: v18.20.5
   snapshot_url:
+  rpc_url: https://devnet.rpc.agoric.net:443
+
 pell:
   chain_id: ignite_186-1
   validator:

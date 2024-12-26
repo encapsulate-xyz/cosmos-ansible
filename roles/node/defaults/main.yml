@@ -24,9 +24,13 @@ node_app_file_path: "{{ node_config_dir }}/{{ node_app_file_name }}"
 node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"
 
 node_environment_wasmvm_file_path: "{{ node_env_dir }}/{{ node_environment_wasmvm_file_name }}"
+node_environment_general_file_path: "{{ node_env_dir }}/{{ node_environment_general_file_name }}"
+
 node_wasmvm_lib_file_path: "{{ node_lib_dir }}/{{ node_wasmvm_lib_file_name }}"
 
 node_priv_validator_key_path: "{{ node_config_dir }}/{{ node_priv_validator_key_file_name }}"
 node_node_key_path: "{{ node_config_dir }}/{{ node_node_key_file_name }}"
 node_genesis_file_path: "{{ node_config_dir }}/{{ node_genesis_file_name }}"
 node_priv_validator_state_file_path: "{{ node_data_dir }}/{{ node_priv_validator_state_file_name }}"
+
+node_nodejs_dir: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin"

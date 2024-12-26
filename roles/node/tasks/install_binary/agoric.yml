@@ -1,30 +1,4 @@
 ---
-- name: Check if yarn is installed
-  ansible.builtin.shell: |
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh
-    yarn --version
-  register: yarn_check
-  changed_when: false
-  ignore_errors: true
-  args:
-    executable: /bin/bash
-
-- name: Install yarn using npm
-  ansible.builtin.shell: |
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh
-    npm install -g yarn
-  args:
-    executable: /bin/bash
-  when: yarn_check.rc != 0
-  register: yarn_install
-  changed_when: yarn_install.rc == 0
-
-- name: Create a symbolic link to Node.js
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ vars[project][type].node.version }}/bin/node"
-    dest: "{{ node_bin_dir }}/node"
-    state: link
-
 - name: Create the agoric-repo folder
   ansible.builtin.file:
     path: "{{ node_home_dir }}/.agoric-repo"
@@ -44,7 +18,7 @@
 
 - name: Build agoric binary
   ansible.builtin.shell: |
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh
+    source {{ nvm.path }}/nvm.sh
     bin/agd build
   args:
     chdir: "{{ node_home_dir }}/.agoric-repo"
@@ -61,3 +35,11 @@
     src: "{{ node_home_dir }}/.agoric-repo/bin/{{ node_service_default_binary_name[project] }}"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     state: link
+
+- name: Copy general environment file
+  ansible.builtin.template:
+    src: "{{ env }}/{{ project }}/general.env.j2"
+    dest: "{{ node_environment_general_file_path }}"
+    owner: root
+    group: root
+    mode: "0644"
