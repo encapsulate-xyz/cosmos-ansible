@@ -15,7 +15,7 @@
 
 - name: Get the trust hash for the calculated trust height
   uri:
-    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block?height={{ tust_height }}"
+    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block?height={{ trust_height }}"
     return_content: true
   register: trust_block_hash_response
 
