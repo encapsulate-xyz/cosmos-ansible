@@ -1,11 +1,16 @@
 ---
+- name: Get validator public key
+  ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
+  register: pubkey_result
+  changed_when: false
+
 - name: Execute create validator
   ansible.builtin.expect:
     command: >
       {{ node_bin_dir }}/{{ service_identifier }} tx staking create-validator --home {{ node_home_dir }}
       --amount={{ gentx_amount }}{{ node_network_params.denom }}
-      --broadcast-mode=sync \
-      --pubkey=$({{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}) \
+      --broadcast-mode=sync
+      --pubkey='{{ pubkey_result.stdout }}'
       --moniker={{ moniker }}
       --website={{ website }}
       --details="{{ about }}"
