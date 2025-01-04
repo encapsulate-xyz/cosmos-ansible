@@ -1,6 +1,4 @@
 ---
-# todo: maybe store LD_LIBRARY_PATH and see if it works
-
 - name: Include the specific network's vars file
   ansible.builtin.include_vars:
     file: roles/node/defaults/main.yml
@@ -19,8 +17,6 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: existing_key_list
-      environment:
-        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
 
     - name: Add key
       ansible.builtin.expect:
@@ -30,8 +26,6 @@
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
           "Re-enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       when: key_name not in existing_key_list.stdout
-      environment:
-        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
 
     - name: List keys
       ansible.builtin.expect:
@@ -39,8 +33,6 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: key_list
-      environment:
-        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
 
     - name: Extract and parse key addresses
       ansible.builtin.debug:
@@ -74,5 +66,3 @@
       register: delete_key_output
       changed_when: "'Key deleted forever' in delete_key_output.stdout"
       when: key_name in key_list.stdout
-      environment:
-        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
