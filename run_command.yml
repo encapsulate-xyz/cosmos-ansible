@@ -33,11 +33,10 @@
     - name: Run node playbook
       when: type in allowed_node_types
       environment:
-            LD_LIBRARY_PATH: "{{ node_lib_dir }}"
+        LD_LIBRARY_PATH: "{{ node_lib_dir }}"
       block:
         - name: Include common handlers
           ansible.builtin.include_role:
             name: common
         - name: Include command task
           ansible.builtin.include_tasks: roles/node/tasks/commands/main.yml
-          
