@@ -10,6 +10,7 @@
     - group_vars/all.yml
     - group_vars/vault.yml
     - group_vars/{{ env }}.yml
+    - roles/node/defaults/main.yml
 
   pre_tasks:
     - name: Setup environment and dependencies
@@ -27,12 +28,16 @@
           ansible.builtin.fail:
             msg: "The environment variable MNEMONIC is not set."
           when: lookup('env', 'MNEMONIC') == ''
+
   tasks:
     - name: Run node playbook
       when: type in allowed_node_types
+      environment:
+            LD_LIBRARY_PATH: "{{ node_lib_dir }}"
       block:
         - name: Include common handlers
           ansible.builtin.include_role:
             name: common
         - name: Include command task
           ansible.builtin.include_tasks: roles/node/tasks/commands/main.yml
+          
