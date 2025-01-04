@@ -3,6 +3,8 @@
   ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
   register: pubkey_result
   changed_when: false
+  environment:
+    LD_LIBRARY_PATH: "{{ node_lib_dir }}"
 
 - name: Execute create validator
   ansible.builtin.expect:
