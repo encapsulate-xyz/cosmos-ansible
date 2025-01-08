@@ -1,4 +1,14 @@
 ---
+- name: Disable double_sign_check_height settings
+  ansible.builtin.lineinfile:
+    path: "{{ node_config_file_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  loop:
+    - regexp: "^double_sign_check_height = .*"
+      line: "double_sign_check_height = 0"
+
 - name: Skip polling if upgrade height is not defined
   ansible.builtin.debug:
     msg: Skipping height polling since upgrade height is not defined.
