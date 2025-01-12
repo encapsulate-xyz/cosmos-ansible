@@ -27,7 +27,7 @@
 - name: Trigger handlers
   meta: flush_handlers
 
-- name: Disable double_sign_check_height settings
+- name: Change double_sign_check_height to 10
   ansible.builtin.lineinfile:
     path: "{{ node_config_file_path }}"
     regexp: "{{ item.regexp }}"
@@ -39,7 +39,7 @@
   notify:
     - Restart service
 
-- name: Poll blockchain height until it reaches upgrade height - 1
+- name: Poll blockchain height until it reaches upgrade height + 200
   ansible.builtin.uri:
     url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
     method: GET
