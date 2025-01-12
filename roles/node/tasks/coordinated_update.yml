@@ -8,12 +8,10 @@
   loop:
     - regexp: "^double_sign_check_height = .*"
       line: "double_sign_check_height = 0"
+  notify:
+    - Restart service
 
-- name: Skip polling if upgrade height is not defined
-  ansible.builtin.debug:
-    msg: Skipping height polling since upgrade height is not defined.
-
-- name: Poll blockchain height until it reaches upgrade height - 1
+- name: Poll blockchain height until it reaches upgrade height
   ansible.builtin.uri:
     url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
     method: GET
@@ -21,5 +19,33 @@
   register: blockchain_height
   ignore_errors: true # Do not fail the task if the request fails
   until: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) == (upgrade_height | int)
+  delay: 60 # Wait 60 seconds between retries
+  retries: 10000 # Large number to allow long polling
+
+#######################################################################################################################
+
+- name: Trigger handlers
+  meta: flush_handlers
+
+- name: Change double_sign_check_height to 10
+  ansible.builtin.lineinfile:
+    path: "{{ node_config_file_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  loop:
+    - regexp: "^double_sign_check_height = .*"
+      line: "double_sign_check_height = 10"
+  notify:
+    - Restart service
+
+- name: Poll blockchain height until it reaches upgrade height + 200
+  ansible.builtin.uri:
+    url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
+    method: GET
+    return_content: true
+  register: blockchain_height
+  ignore_errors: true # Do not fail the task if the request fails
+  until: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) > (upgrade_height | int) + 200
   delay: 60 # Wait 60 seconds between retries
   retries: 10000 # Large number to allow long polling
