@@ -7,7 +7,7 @@
           {{ node_bin_dir }}/{{ service_identifier }} tx slashing unjail --home {{ node_home_dir }}
           --from={{ key_name }}
           --fees {{ node_network_params.fee }}{{ node_network_params.denom }} --chain-id {{ vars[project].chain_id }} --yes
-          --gas auto --gas-adjustment {{ node_network_params.gas }}
+          --gas auto --gas-adjustment {{ node_network_params.gas_adjustment }}
           --node tcp://localhost:{{ rpc_port }}
           --output text
           --keyring-dir {{ node_home_dir }}

@@ -23,7 +23,7 @@
       --from={{ key_name }}
       --chain-id={{ vars[project].chain_id }}
       --node tcp://localhost:{{ rpc_port }}
-      --gas-prices {{ node_network_params.gas }}{{ node_network_params.denom }}
+      --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
       --gas=auto
       --gas-adjustment=1.4 -y
     responses:
