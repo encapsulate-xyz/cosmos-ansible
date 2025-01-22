@@ -52,11 +52,12 @@ node_ufw_rules:
 ########################################################################################################################
 node_network_params:
   denom: "uqck"
-  fee:
-  gas: "0.025"
+  fee: "20000"
+  gas_price: "0.25"
+  gas_adjustment: "1.8"
   current_commission_rate: "0.10"
   max_commission_rate: "0.20"
-  change_commission_rate: "0.04"
+  change_commission_rate: "0.04"  
 
 ########################################################################################################################
 # SENTRY CONFIGURATION: change only if you wanna run validator in a sentry architecture
