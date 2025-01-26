@@ -4,3 +4,32 @@ all:
   vars:
     env: mainnet
   children:
+    celestia:
+      hosts:
+        validator.celestia.mainnet.encapsulate.xyz:
+          type: validator
+    quicksilver:
+      hosts:
+        validator.quicksilver.mainnet.encapsulate.xyz:
+          type: validator
+    agoric:
+      hosts:
+        validator.agoric.mainnet.encapsulate.xyz:
+          type: validator
+    umee:
+      hosts:
+        validator.umee.mainnet.encapsulate.xyz:
+          type: validator
+    axelar:
+      hosts:
+        validator.axelar.mainnet.encapsulate.xyz:
+          type: validator
+          support_amplifier: true
+    juno:
+      hosts:
+        validator.juno.mainnet.encapsulate.xyz:
+          type: validator
+    stargaze:
+      hosts:
+        validator.stargaze.mainnet.encapsulate.xyz:
+          type: validator
