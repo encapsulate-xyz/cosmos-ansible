@@ -1,10 +1,7 @@
 config_dir = "{{ price_feeder_config_dir }}"
 provider_timeout = "1000000s"
-
 gas_prevote = 55000
 gas_vote = 160000
-# instead of fixed gas settings, gas adjustment can be used:
-# gas_adjustment = 1.9
 
 [server]
 listen_addr = "0.0.0.0:{{ price_feeder_port }}"
@@ -13,7 +10,7 @@ verbose_cors = true
 write_timeout = "20s"
 
 [account]
-address = "umee1s0lankh33kprer2l22nank5rvsuh9ksav9kmza"
+address = "umee1fk8xy9xy4lkuqjdsj380capumn30wlsmsuu8pm"
 chain_id = "umee-1"
 validator = "umeevaloper1s0lankh33kprer2l22nank5rvsuh9ksavp35nh"
 
@@ -31,6 +28,6 @@ enable-hostname = true
 enable-hostname-label = true
 enable-service-label = true
 enabled = true
-global-labels = [["umee-1", "umee-mainnet"]]
+global-labels = [ [ "chain_id", "umee-1",],]
 service-name = "{{ service_identifier }}"
 prometheus-retention-time = 100
