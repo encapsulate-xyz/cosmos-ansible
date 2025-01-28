@@ -27,6 +27,8 @@ node_service_default_binary_name:
   axelar: axelard
   agoric: agd
   pell: pellcored
+  juno: junod
+  stargaze: starsd
 
 node_status_endpoint: status
 

@@ -1,0 +1,5 @@
+0858341ab2e1cbe062c4a8d82223afbd9610a8ff@65.109.93.44:12656
+ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:12656
+22ee6e65e5e79cd0b970dd11e52761de8d1d6dfd@seeds.pupmos.network:2001
+90b09362d9ce3845096c4938eea0dba682b0ad2c@juno-seed-new.blockpane.com:26656
+2484353dab0b2c1275765b8ffa2c50b3b36158ca@seed-node.junochain.com:26656
