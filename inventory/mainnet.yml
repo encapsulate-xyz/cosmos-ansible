@@ -20,7 +20,7 @@ all:
       hosts:
         validator.umee.mainnet.encapsulate.xyz:
           type: validator
-        pricefeeder.umee.mainnet.encapsulate.xyz:
+        pf.umee.mainnet.encapsulate.xyz:
           type: pf
     axelar:
       hosts:
