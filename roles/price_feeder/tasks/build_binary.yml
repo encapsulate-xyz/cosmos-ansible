@@ -7,9 +7,9 @@
 
 - name: Clone the repository to /tmp
   ansible.builtin.git:
-    repo: "{{ price_feeder.source_url }}"
+    repo: "{{ pf.source_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project].price_feeder.version }}"
+    version: "{{ vars[project].pf.version }}"
     force: true
 
 - name: Build the project using `make build`

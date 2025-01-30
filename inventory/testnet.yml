@@ -30,7 +30,7 @@ all:
         validator.umee.testnet.encapsulate.xyz:
           type: validator
         pricefeeder.umee.testnet.encapsulate.xyz:
-          type: price_feeder
+          type: pf
     c4e:
       hosts:
         validator.c4e.testnet.encapsulate.xyz:

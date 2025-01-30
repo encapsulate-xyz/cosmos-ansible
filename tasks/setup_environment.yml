@@ -40,7 +40,7 @@
     price_feeder_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.price_feeder | default(ports.suffix.price_feeder)) }}"
     grpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.grpc | default(ports.suffix.grpc)) }}"
     rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
-  when: type == "price_feeder"
+  when: type == "pf"
 
 - name: Set all port variables dynamically for Execution Client
   ansible.builtin.set_fact:
@@ -69,7 +69,7 @@
       - "RPC Port: {{ rpc_port }}"
       - "gRPC Port: {{ grpc_port }}"
       - "Price-Feeder Port: {{ price_feeder_port }}"
-  when: type == "price_feeder"
+  when: type == "pf"
 
 - name: Display all Execution Client port variables
   ansible.builtin.debug:

@@ -78,7 +78,7 @@ umee:
       version: 1.23.1
     wasmvm:
       version: v1.5.5
-  price_feeder:
+  pf:
     version: umee/v2.4.4-rc1
     keyring_dir: "/opt/umee"
     go:
