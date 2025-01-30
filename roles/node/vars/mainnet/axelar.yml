@@ -18,13 +18,13 @@ node_ufw_rules:
 
     - port: "{{ rpc_port }}"
       proto: tcp
-      rule: limit
+      rule: allow
       from: amplifier.axelar.testnet.encapsulate.xyz
       comment: rpc_port
 
     - port: "{{ grpc_port }}"
       proto: tcp
-      rule: limit
+      rule: allow
       from: amplifier.axelar.testnet.encapsulate.xyz
       comment: grpc_port
 
