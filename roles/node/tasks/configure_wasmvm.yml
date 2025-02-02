@@ -1,4 +1,9 @@
 ---
+- name: Delete libwasmvm library
+  ansible.builtin.file:
+    path: "{{ node_wasmvm_lib_file_path }}"
+    state: absent
+
 - name: Download wasmvm from URL
   vars:
     suffix_url: "{{ vars[project][type].wasmvm.version }}/{{ node_wasmvm_lib_file_name }}"
