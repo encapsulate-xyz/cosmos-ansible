@@ -6,20 +6,10 @@ celestia:
     version: v3.2.0
     go:
       version: 1.23.1
-  fullnode:
-    version: v3.2.0
-    go:
-      version: 1.23.1
 
 umee:
   chain_id: umee-1
   validator:
-    version: v6.7.2
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.5.5
-  fullnode:
     version: v6.7.2
     go:
       version: 1.23.1
@@ -42,23 +32,11 @@ agoric:
       version: 1.23.1
     node:
       version: v18.20.5
-  fullnode:
-    version: v0.35.0-u18.5
-    go:
-      version: 1.23.1
-    node:
-      version: v18.20.5
   snapshot_url: https://snapshots.kjnodes.com/agoric/snapshot_latest.tar.lz4
 
 axelar:
   chain_id: axelar-dojo-1
   validator:
-    version: v1.1.3
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.3.1
-  fullnode:
     version: v1.1.3
     go:
       version: 1.23.1
@@ -72,10 +50,6 @@ quicksilver:
     version: v1.7.5
     go:
       version: 1.21.6
-  fullnode:
-    version: v1.7.5
-    go:
-      version: 1.21.6
   snapshot_url: https://server-2.itrocket.net/mainnet/quicksilver/quicksilver_2025-01-26_11113196_snap.tar.lz4
 
 juno:
@@ -86,26 +60,14 @@ juno:
       version: 1.23.4
     wasmvm:
       version: v1.5.5
-  fullnode:
-    version: v26.0.0
-    go:
-      version: 1.23.4
-    wasmvm:
-      version: v1.5.5
   snapshot_url: https://snapshots.polkachu.com/snapshots/juno/juno_23405873.tar.lz4
 
 stargaze:
   chain_id: stargaze-1
   validator:
-    version: v14.2.0-iavl-v1
+    version: v15.0.0
     go:
-      version: 1.22.11
+      version: 1.23.5
     wasmvm:
-      version: v1.5.2
-  fullnode:
-    version: v14.2.0-iavl-v1
-    go:
-      version: 1.22.11
-    wasmvm:
-      version: v1.5.2
+      version: v2.1.4
   snapshot_url: https://snapshots.polkachu.com/snapshots/stargaze/stargaze_17346976.tar.lz4
