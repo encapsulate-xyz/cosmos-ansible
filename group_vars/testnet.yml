@@ -8,21 +8,11 @@ omniflix:
       version: 1.22.5
     wasmvm:
       version: v2.1.2
-  fullnode:
-    version: v5.1.0-alpha.1
-    go:
-      version: 1.22.5
-    wasmvm:
-      version: v2.1.2
   snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
 
 quicksilver:
   chain_id: rhye-3
   validator:
-    version: v1.7.1
-    go:
-      version: 1.21.6
-  fullnode:
     version: v1.7.1
     go:
       version: 1.21.6
@@ -34,19 +24,11 @@ celestia:
     version: v3.3.0-mocha
     go:
       version: 1.23.1
-  fullnode:
-    version: v3.3.0-mocha
-    go:
-      version: 1.23.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/celestia/celestia_3269266.tar.lz4
 
 humans:
   chain_id: humans_3000-31
   validator:
-    version: master
-    go:
-      version: 1.21.6
-  fullnode:
     version: master
     go:
       version: 1.21.6
@@ -58,21 +40,11 @@ ojo:
     version: v0.1.2
     go:
       version: 1.21.6
-  fullnode:
-    version: v0.1.2
-    go:
-      version: 1.21.6
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/ojo/ojo_9738727.tar.lz4
 
 umee:
   chain_id: canon-4
   validator:
-    version: v6.7.3-rc1
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.5.5
-  fullnode:
     version: v6.7.3-rc1
     go:
       version: 1.23.1
@@ -95,24 +67,12 @@ c4e:
       version: 1.19.1
     wasmvm:
       version: v1.5.2
-  fullnode:
-    version: v1.4.0
-    go:
-      version: 1.19.1
-    wasmvm:
-      version: v1.5.2
   snapshot_url: https://snapshots-testnet.stake-town.com/c4e/babajaga-1_latest.tar.lz4
   rpc_url: https://c4e-testnet-rpc.stake-town.com:443
 
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.1.2
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.3.1
-  fullnode:
     version: v1.1.2
     go:
       version: 1.23.1
@@ -128,22 +88,12 @@ agoric:
       version: 1.23.1
     node:
       version: v18.20.5
-  fullnode:
-    version: v0.35.0-u18.5
-    go:
-      version: 1.23.1
-    node:
-      version: v18.20.5
   snapshot_url:
   rpc_url: https://devnet.rpc.agoric.net:443
 
 pell:
   chain_id: ignite_186-1
   validator:
-    version: v1.1.6
-    wasmvm:
-      version: v2.1.2
-  fullnode:
     version: v1.1.6
     wasmvm:
       version: v2.1.2
