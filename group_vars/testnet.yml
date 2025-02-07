@@ -83,7 +83,7 @@ axelar:
 agoric:
   chain_id: agoricdev-23
   validator:
-    version: agoric-upgrade-18-rc6
+    version: agoric-upgrade-18a
     go:
       version: 1.23.1
     node:
