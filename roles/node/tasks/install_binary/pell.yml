@@ -1,7 +1,7 @@
 ---
 - name: Download pell binary
   vars:
-    suffix_url: "{{ node_service_default_binary_name[project] }}-{{ vars[project][type].stupid_version | regex_replace('-.*$', '') }}-{{ ansible_system | lower }}-{{ system_architecture }}"
+    suffix_url: "{{ node_service_default_binary_name[project] }}-{{ vars[project][type].version | regex_replace('-.*$', '') }}-{{ ansible_system | lower }}-{{ system_architecture }}"
   ansible.builtin.get_url:
     url: "{{ vars[project][type].source_url }}/{{ vars[project][type].version }}/{{ suffix_url }}"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
