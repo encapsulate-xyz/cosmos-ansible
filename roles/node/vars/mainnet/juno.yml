@@ -52,7 +52,7 @@ node_ufw_rules:
 ########################################################################################################################
 node_network_params:
   denom: "ujuno"
-  fee: "20000"
+  fee: "40000"
   gas_price: "0.25"
   gas_adjustment: "1.8"
   current_commission_rate: "0.10"
