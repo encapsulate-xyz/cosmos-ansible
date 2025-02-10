@@ -19,13 +19,13 @@ node_ufw_rules:
     - port: "{{ rpc_port }}"
       proto: tcp
       rule: allow
-      from: amplifier.axelar.testnet.encapsulate.xyz
+      from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: rpc_port
 
     - port: "{{ grpc_port }}"
       proto: tcp
       rule: allow
-      from: amplifier.axelar.testnet.encapsulate.xyz
+      from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: grpc_port
 
   fullnode:
