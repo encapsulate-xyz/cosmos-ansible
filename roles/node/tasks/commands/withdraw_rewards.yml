@@ -51,7 +51,6 @@
       ansible.builtin.set_fact:
         tx_hash: "{{ withdraw_output.stdout | regex_search('(?m)^txhash:\\s*([A-Z0-9]+)', '\\1') | default('') }}"
 
-
 #    - name: Extract 'raw_log' before 'timestamp'
 #      ansible.builtin.set_fact:
 #        raw_log: >-
