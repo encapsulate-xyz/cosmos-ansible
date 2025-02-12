@@ -25,8 +25,7 @@
 #######################################################################################################################
 
 - name: Trigger handlers
-  meta: flush_handlers
-
+  ansible.builtin.meta: flush_handlers
 - name: Change double_sign_check_height to 10
   ansible.builtin.lineinfile:
     path: "{{ node_config_file_path }}"
