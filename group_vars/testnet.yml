@@ -73,11 +73,11 @@ c4e:
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.1.2
+    version: v1.2.1
     go:
       version: 1.23.1
     wasmvm:
-      version: v1.3.1
+      version: v1.5.8
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
 
 agoric:
