@@ -26,17 +26,6 @@
 
 - name: Trigger handlers
   ansible.builtin.meta: flush_handlers
-- name: Change double_sign_check_height to 10
-  ansible.builtin.lineinfile:
-    path: "{{ node_config_file_path }}"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backrefs: true
-  loop:
-    - regexp: "^double_sign_check_height = .*"
-      line: "double_sign_check_height = 10"
-  notify:
-    - Restart service
 
 - name: Poll blockchain height until it reaches upgrade height + 200
   ansible.builtin.uri:
@@ -48,3 +37,15 @@
   until: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) > (upgrade_height | int) + 200
   delay: 60 # Wait 60 seconds between retries
   retries: 10000 # Large number to allow long polling
+
+- name: Change double_sign_check_height to 10
+  ansible.builtin.lineinfile:
+    path: "{{ node_config_file_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  loop:
+    - regexp: "^double_sign_check_height = .*"
+      line: "double_sign_check_height = 10"
+  notify:
+    - Restart service
