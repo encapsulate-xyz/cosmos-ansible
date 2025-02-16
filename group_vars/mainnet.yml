@@ -87,3 +87,13 @@ mantle:
     go:
       version: 1.23.5
   snapshot_url:
+
+c4e:
+  chain_id: perun-1
+  validator:
+    version: v1.4.3
+    go:
+      version: 1.23.5
+    wasmvm:
+      version: v1.5.2
+  snapshot_url:

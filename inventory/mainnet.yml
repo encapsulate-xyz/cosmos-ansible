@@ -44,3 +44,7 @@ all:
       hosts:
         validator.mantle.mainnet.encapsulate.xyz:
           type: validator
+    c4e:
+      hosts:
+        validator.c4e.mainnet.encapsulate.xyz:
+          type: validator
