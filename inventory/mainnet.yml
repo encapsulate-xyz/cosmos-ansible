@@ -35,3 +35,8 @@ all:
       hosts:
         validator.stargaze.mainnet.encapsulate.xyz:
           type: validator
+    althea:
+      hosts:
+        validator.althea.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true

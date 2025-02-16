@@ -158,3 +158,13 @@ stargaze:
     source_url: https://github.com/public-awesome/stargaze
     ports:
       prefix: 123
+
+althea:
+  validator:
+    source_url: https://github.com/AltheaFoundation/althea-L1
+    ports:
+      prefix: 124
+  fullnode:
+    source_url: https://github.com/AltheaFoundation/althea-L1
+    ports:
+      prefix: 125

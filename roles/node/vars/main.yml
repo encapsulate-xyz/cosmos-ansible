@@ -29,6 +29,7 @@ node_service_default_binary_name:
   pell: pellcored
   juno: junod
   stargaze: starsd
+  althea: althea
 
 node_status_endpoint: status
 
