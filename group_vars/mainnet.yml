@@ -79,3 +79,11 @@ althea:
     go:
       version: 1.23.5
   snapshot_url:
+
+mantle:
+  chain_id: mantle-1
+  validator:
+    version: v1.0.1
+    go:
+      version: 1.23.5
+  snapshot_url:

@@ -168,3 +168,13 @@ althea:
     source_url: https://github.com/AltheaFoundation/althea-L1
     ports:
       prefix: 125
+
+mantle:
+  validator:
+    source_url: https://github.com/AssetMantle/node
+    ports:
+      prefix: 126
+  fullnode:
+    source_url: https://github.com/AssetMantle/node
+    ports:
+      prefix: 127

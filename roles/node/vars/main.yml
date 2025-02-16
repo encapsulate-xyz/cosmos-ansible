@@ -30,6 +30,7 @@ node_service_default_binary_name:
   juno: junod
   stargaze: starsd
   althea: althea
+  mantle: mantleNode
 
 node_status_endpoint: status
 

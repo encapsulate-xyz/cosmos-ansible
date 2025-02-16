@@ -40,3 +40,7 @@ all:
         validator.althea.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
+    mantle:
+      hosts:
+        validator.mantle.mainnet.encapsulate.xyz:
+          type: validator
