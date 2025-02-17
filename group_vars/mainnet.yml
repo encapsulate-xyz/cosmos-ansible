@@ -147,3 +147,13 @@ sommelier:
     go:
       version: 1.23.5
   snapshot_url:
+
+ixo:
+  chain_id: ixo-5
+  validator:
+    version: v4.0.0
+    go:
+      version: 1.23.5
+    wasmvm:
+      version: v1.5.4
+  snapshot_url:

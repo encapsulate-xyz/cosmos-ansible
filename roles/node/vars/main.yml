@@ -34,6 +34,7 @@ node_service_default_binary_name:
   gitopia: gitopiad
   gavity: gravity
   sommelier: sommelier
+  ixo: ixod
 
 node_status_endpoint: status
 

@@ -69,3 +69,7 @@ all:
       hosts:
         validator.sommelier.mainnet.encapsulate.xyz:
           type: validator
+    ixo:
+      hosts:
+        validator.ixo.mainnet.encapsulate.xyz:
+          type: validator

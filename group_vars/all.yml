@@ -208,3 +208,13 @@ sommelier:
     source_url: https://github.com/PeggyJV/sommelier
     ports:
       prefix: 133
+
+ixo:
+  validator:
+    source_url: https://github.com/ixofoundation/ixo-blockchain
+    ports:
+      prefix: 134
+  fullnode:
+    source_url: https://github.com/ixofoundation/ixo-blockchain
+    ports:
+      prefix: 135
