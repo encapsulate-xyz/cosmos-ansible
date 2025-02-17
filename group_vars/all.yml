@@ -178,3 +178,23 @@ mantle:
     source_url: https://github.com/AssetMantle/node
     ports:
       prefix: 127
+
+gitopia:
+  validator:
+    source_url: https://github.com/gitopia/gitopia
+    ports:
+      prefix: 128
+  fullnode:
+    source_url: https://github.com/gitopia/gitopia
+    ports:
+      prefix: 129
+
+gravity:
+  validator:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
+    ports:
+      prefix: 130
+  fullnode:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
+    ports:
+      prefix: 131
