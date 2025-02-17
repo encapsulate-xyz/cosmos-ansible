@@ -33,6 +33,7 @@ node_service_default_binary_name:
   mantle: mantleNode
   gitopia: gitopiad
   gavity: gravity
+  sommelier: sommelier
 
 node_status_endpoint: status
 

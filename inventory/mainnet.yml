@@ -65,3 +65,7 @@ all:
       hosts:
         validator.gravity.mainnet.encapsulate.xyz:
           type: validator
+    sommelier:
+      hosts:
+        validator.sommelier.mainnet.encapsulate.xyz:
+          type: validator

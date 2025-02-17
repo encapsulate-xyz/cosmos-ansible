@@ -198,3 +198,13 @@ gravity:
     source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
     ports:
       prefix: 131
+
+sommelier:
+  validator:
+    source_url: https://github.com/PeggyJV/sommelier
+    ports:
+      prefix: 132
+  fullnode:
+    source_url: https://github.com/PeggyJV/sommelier
+    ports:
+      prefix: 133
