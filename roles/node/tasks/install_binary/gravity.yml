@@ -1,0 +1,12 @@
+---
+- name: Download gravity binary
+  vars:
+    suffix_url: "gravity-{{ ansible_system | lower }}-{{ system_architecture }}"
+  ansible.builtin.get_url:
+    url: "{{ vars[project][type].source_url }}/{{ vars[project][type].version }}/{{ suffix_url }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    mode: "0755"
+  notify:
+    - Restart service
