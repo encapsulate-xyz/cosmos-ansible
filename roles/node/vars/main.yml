@@ -36,6 +36,7 @@ node_service_default_binary_name:
   sommelier: sommelier
   ixo: ixod
   paloma: palomad
+  planq: planqd
 
 node_status_endpoint: status
 

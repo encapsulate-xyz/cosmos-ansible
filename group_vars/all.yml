@@ -228,3 +228,13 @@ paloma:
     source_url: https://github.com/palomachain/paloma
     ports:
       prefix: 137
+
+planq:
+  validator:
+    source_url: https://github.com/planq-network/planq
+    ports:
+      prefix: 138
+  fullnode:
+    source_url: https://github.com/planq-network/planq
+    ports:
+      prefix: 139
