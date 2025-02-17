@@ -218,3 +218,13 @@ ixo:
     source_url: https://github.com/ixofoundation/ixo-blockchain
     ports:
       prefix: 135
+
+paloma:
+  validator:
+    source_url: https://github.com/palomachain/paloma
+    ports:
+      prefix: 136
+  fullnode:
+    source_url: https://github.com/palomachain/paloma
+    ports:
+      prefix: 137

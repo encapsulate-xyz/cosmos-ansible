@@ -157,3 +157,13 @@ ixo:
     wasmvm:
       version: v1.5.4
   snapshot_url:
+
+paloma:
+  chain_id: tumbler
+  validator:
+    version: v2.4.6
+    go:
+      version: 1.23.5
+    wasmvm:
+      version: v2.1.3
+  snapshot_url:
