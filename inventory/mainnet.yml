@@ -48,3 +48,20 @@ all:
       hosts:
         validator.c4e.mainnet.encapsulate.xyz:
           type: validator
+    gitopia:
+      hosts:
+        validator.gitopia.mainnet.encapsulate.xyz:
+          type: validator
+    humans:
+      hosts:
+        validator.humans.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
+    omniflix:
+      hosts:
+        validator.omniflix.mainnet.encapsulate.xyz:
+          type: validator
+    gravity:
+      hosts:
+        validator.gravity.mainnet.encapsulate.xyz:
+          type: validator
