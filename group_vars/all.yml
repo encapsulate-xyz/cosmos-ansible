@@ -248,3 +248,13 @@ pylon:
     source_url: https://github.com/Pylons-tech/pylons
     ports:
       prefix: 141
+
+qwoyn:
+  validator:
+    source_url: https://github.com/cosmic-horizon/QWOYN
+    ports:
+      prefix: 142
+  fullnode:
+    source_url: https://github.com/cosmic-horizon/QWOYN
+    ports:
+      prefix: 143

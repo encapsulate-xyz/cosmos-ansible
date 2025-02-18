@@ -114,14 +114,6 @@ humans:
       version: 1.23.5
   snapshot_url:
 
-humans:
-  chain_id: humans_1089-1
-  validator:
-    version: master
-    go:
-      version: 1.23.5
-  snapshot_url:
-
 omniflix:
   chain_id: omniflixhub-1
   validator:
@@ -180,6 +172,14 @@ pylon:
   chain_id: pylons-mainnet-1
   validator:
     version: v1.1.4
+    go:
+      version: 1.23.5
+  snapshot_url:
+
+qwoyn:
+  chain_id: qwoyn-1
+  validator:
+    version: v5.4.1
     go:
       version: 1.23.5
   snapshot_url:

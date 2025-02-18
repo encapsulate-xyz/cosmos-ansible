@@ -86,3 +86,7 @@ all:
       hosts:
         validator.pylon.mainnet.encapsulate.xyz:
           type: validator
+    qwoyn:
+      hosts:
+        validator.qwoyn.mainnet.encapsulate.xyz:
+          type: validator

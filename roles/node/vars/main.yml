@@ -38,6 +38,7 @@ node_service_default_binary_name:
   paloma: palomad
   planq: planqd
   pylon: pylonsd
+  qwoyn: qwoynd
 
 node_status_endpoint: status
 
