@@ -75,7 +75,7 @@ node_ufw_rules:
 # NETWORK PARAMS:
 ########################################################################################################################
 node_network_params:
-  denom: ""
+  denom: "aplanq"
   fee: "20000"
   gas_price: "0.25"
   gas_adjustment: "1.8"
