@@ -175,3 +175,11 @@ planq:
     go:
       version: 1.23.5
   snapshot_url:
+
+pylon:
+  chain_id: pylons-mainnet-1
+  validator:
+    version: v1.1.4
+    go:
+      version: 1.23.5
+  snapshot_url:

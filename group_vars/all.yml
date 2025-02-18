@@ -238,3 +238,13 @@ planq:
     source_url: https://github.com/planq-network/planq
     ports:
       prefix: 139
+
+pylon:
+  validator:
+    source_url: https://github.com/Pylons-tech/pylons
+    ports:
+      prefix: 140
+  fullnode:
+    source_url: https://github.com/Pylons-tech/pylons
+    ports:
+      prefix: 141

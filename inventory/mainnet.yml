@@ -82,3 +82,7 @@ all:
         validator.planq.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
+    pylon:
+      hosts:
+        validator.pylon.mainnet.encapsulate.xyz:
+          type: validator

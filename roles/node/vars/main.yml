@@ -37,6 +37,7 @@ node_service_default_binary_name:
   ixo: ixod
   paloma: palomad
   planq: planqd
+  pylon: pylonsd
 
 node_status_endpoint: status
 
