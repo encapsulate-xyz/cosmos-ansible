@@ -2,3 +2,4 @@
 30e98bbcf5bb29ed4e4ff685fa8fa84fa0ddff51@tenderseed.ccvalidators.com:26008
 54515079bae4cadae2f9b511cffeb9447d4bc98d@c4e.seed.bccnodes.com:30656
 ebc272824924ea1a27ea3183dd0b9ba713494f83@chain4energy-mainnet-seed.autostake.com:27276
+9f61b5f3fc8451916d604b2ee8664d682ed199f7@rpc.c4e.nodestake.top:666
