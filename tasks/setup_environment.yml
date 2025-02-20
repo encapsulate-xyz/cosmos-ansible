@@ -79,6 +79,12 @@
       - "Execution Metrics Port: {{ execution_metrics_port }}"
   when: execution_client | default(false) | bool
 
+- name: Coordinated Update
+  ansible.builtin.debug:
+    msg:
+      - "Coordinated Update at Height: {{ upgrade_height }}"
+  when: upgrade_height is defined
+
 - name: Confirm deployment details
   ansible.builtin.pause:
     seconds: 40
