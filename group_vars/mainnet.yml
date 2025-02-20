@@ -37,17 +37,17 @@ agoric:
 axelar:
   chain_id: axelar-dojo-1
   validator:
-    version: v1.1.3
+    version: v1.2.1
     go:
       version: 1.23.1
     wasmvm:
-      version: v1.3.1
+      version: v1.5.8
   snapshot_url: https://snapshots.polkachu.com/snapshots/axelar/axelar_16464939.tar.lz4
 
 quicksilver:
   chain_id: quicksilver-2
   validator:
-    version: v1.7.6
+    version: v1.7.7
     go:
       version: 1.21.6
   snapshot_url: https://server-2.itrocket.net/mainnet/quicksilver/quicksilver_2025-01-26_11113196_snap.tar.lz4
