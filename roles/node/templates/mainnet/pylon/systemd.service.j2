@@ -10,11 +10,7 @@ WorkingDirectory={{ node_home_dir }}
 EnvironmentFile={{ node_environment_wasmvm_file_path }}
 {% endif %}
 
-ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }} \
---rpc.laddr {{ node_type_settings.rpc.address.fullnode }}:{{ rpc_port }} \
---grpc.enable true \
---grpc.address {{ node_type_settings.grpc.address.fullnode }}:{{ grpc_port }}
-
+ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }}
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
