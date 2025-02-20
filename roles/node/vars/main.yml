@@ -39,6 +39,7 @@ node_service_default_binary_name:
   planq: planqd
   pylon: pylonsd
   qwoyn: qwoynd
+  terra: terrad
 
 node_status_endpoint: status
 

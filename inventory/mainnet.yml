@@ -90,3 +90,7 @@ all:
       hosts:
         validator.qwoyn.mainnet.encapsulate.xyz:
           type: validator
+    terra:
+      hosts:
+        validator.terra.mainnet.encapsulate.xyz:
+          type: validator

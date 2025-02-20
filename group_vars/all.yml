@@ -258,3 +258,13 @@ qwoyn:
     source_url: https://github.com/cosmic-horizon/QWOYN
     ports:
       prefix: 143
+
+terra:
+  validator:
+    source_url: https://github.com/phoenix-directive/core
+    ports:
+      prefix: 144
+  fullnode:
+    source_url: https://github.com/phoenix-directive/core
+    ports:
+      prefix: 145
