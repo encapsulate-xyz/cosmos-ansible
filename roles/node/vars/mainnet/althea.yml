@@ -16,6 +16,12 @@ node_ufw_rules:
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
 
+    - port: "{{ execution_metrics_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: execution_metrics_port
+
   fullnode:
     - port: "{{ p2p_port }}"
       proto: tcp
@@ -46,6 +52,24 @@ node_ufw_rules:
       rule: limit
       from: any
       comment: grpc_port
+
+    - port: "{{ execution_rpc_port }}"
+      proto: tcp
+      rule: limit
+      from: any
+      comment: execution_rpc_port
+
+    - port: "{{ execution_websocket_port }}"
+      proto: tcp
+      rule: limit
+      from: any
+      comment: execution_websocket_port
+
+    - port: "{{ execution_metrics_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: execution_metrics_port
 
 ########################################################################################################################
 # NETWORK PARAMS:
