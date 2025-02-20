@@ -35,3 +35,62 @@ all:
       hosts:
         validator.stargaze.mainnet.encapsulate.xyz:
           type: validator
+    althea:
+      hosts:
+        validator.althea.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
+    mantle:
+      hosts:
+        validator.mantle.mainnet.encapsulate.xyz:
+          type: validator
+    c4e:
+      hosts:
+        validator.c4e.mainnet.encapsulate.xyz:
+          type: validator
+    gitopia:
+      hosts:
+        validator.gitopia.mainnet.encapsulate.xyz:
+          type: validator
+    humans:
+      hosts:
+        validator.humans.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
+    omniflix:
+      hosts:
+        validator.omniflix.mainnet.encapsulate.xyz:
+          type: validator
+    gravity:
+      hosts:
+        validator.gravity.mainnet.encapsulate.xyz:
+          type: validator
+    sommelier:
+      hosts:
+        validator.sommelier.mainnet.encapsulate.xyz:
+          type: validator
+    ixo:
+      hosts:
+        validator.ixo.mainnet.encapsulate.xyz:
+          type: validator
+    paloma:
+      hosts:
+        validator.paloma.mainnet.encapsulate.xyz:
+          type: validator
+    planq:
+      hosts:
+        validator.planq.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
+    pylon:
+      hosts:
+        validator.pylon.mainnet.encapsulate.xyz:
+          type: validator
+    qwoyn:
+      hosts:
+        validator.qwoyn.mainnet.encapsulate.xyz:
+          type: validator
+    terra:
+      hosts:
+        validator.terra.mainnet.encapsulate.xyz:
+          type: validator

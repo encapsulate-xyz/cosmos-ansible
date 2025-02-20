@@ -158,3 +158,113 @@ stargaze:
     source_url: https://github.com/public-awesome/stargaze
     ports:
       prefix: 123
+
+althea:
+  validator:
+    source_url: https://github.com/AltheaFoundation/althea-L1
+    ports:
+      prefix: 124
+  fullnode:
+    source_url: https://github.com/AltheaFoundation/althea-L1
+    ports:
+      prefix: 125
+
+mantle:
+  validator:
+    source_url: https://github.com/AssetMantle/node
+    ports:
+      prefix: 126
+  fullnode:
+    source_url: https://github.com/AssetMantle/node
+    ports:
+      prefix: 127
+
+gitopia:
+  validator:
+    source_url: https://github.com/gitopia/gitopia
+    ports:
+      prefix: 128
+  fullnode:
+    source_url: https://github.com/gitopia/gitopia
+    ports:
+      prefix: 129
+
+gravity:
+  validator:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
+    ports:
+      prefix: 130
+  fullnode:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
+    ports:
+      prefix: 131
+
+sommelier:
+  validator:
+    source_url: https://github.com/PeggyJV/sommelier
+    ports:
+      prefix: 132
+  fullnode:
+    source_url: https://github.com/PeggyJV/sommelier
+    ports:
+      prefix: 133
+
+ixo:
+  validator:
+    source_url: https://github.com/ixofoundation/ixo-blockchain
+    ports:
+      prefix: 134
+  fullnode:
+    source_url: https://github.com/ixofoundation/ixo-blockchain
+    ports:
+      prefix: 135
+
+paloma:
+  validator:
+    source_url: https://github.com/palomachain/paloma
+    ports:
+      prefix: 136
+  fullnode:
+    source_url: https://github.com/palomachain/paloma
+    ports:
+      prefix: 137
+
+planq:
+  validator:
+    source_url: https://github.com/planq-network/planq
+    ports:
+      prefix: 138
+  fullnode:
+    source_url: https://github.com/planq-network/planq
+    ports:
+      prefix: 139
+
+pylon:
+  validator:
+    source_url: https://github.com/Pylons-tech/pylons
+    ports:
+      prefix: 140
+  fullnode:
+    source_url: https://github.com/Pylons-tech/pylons
+    ports:
+      prefix: 141
+
+qwoyn:
+  validator:
+    source_url: https://github.com/cosmic-horizon/QWOYN
+    ports:
+      prefix: 142
+  fullnode:
+    source_url: https://github.com/cosmic-horizon/QWOYN
+    ports:
+      prefix: 143
+
+terra:
+  validator:
+    source_url: https://github.com/phoenix-directive/core
+    ports:
+      prefix: 144
+  fullnode:
+    source_url: https://github.com/phoenix-directive/core
+    ports:
+      prefix: 145

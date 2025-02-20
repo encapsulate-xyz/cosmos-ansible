@@ -29,6 +29,17 @@ node_service_default_binary_name:
   pell: pellcored
   juno: junod
   stargaze: starsd
+  althea: althea
+  mantle: mantleNode
+  gitopia: gitopiad
+  gavity: gravity
+  sommelier: sommelier
+  ixo: ixod
+  paloma: palomad
+  planq: planqd
+  pylon: pylonsd
+  qwoyn: qwoynd
+  terra: terrad
 
 node_status_endpoint: status
 
