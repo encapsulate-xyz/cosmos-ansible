@@ -42,6 +42,11 @@
     rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type == "pf"
 
+- name: Set port variable for axelar vald service
+  ansible.builtin.set_fact:
+    tofnd_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.tofnd | default(ports.suffix.tofnd)) }}"
+  when: type in ["vald", "tofnd"]
+
 - name: Set all port variables dynamically for Execution Client
   ansible.builtin.set_fact:
     execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
@@ -70,6 +75,11 @@
       - "gRPC Port: {{ grpc_port }}"
       - "Price-Feeder Port: {{ price_feeder_port }}"
   when: type == "pf"
+
+- name: Display port variable of axelar vald service
+  ansible.builtin.debug:
+    msg: "Tofnd Port: {{ tofnd_port }}"
+  when: type in ["vald", "tofnd"]
 
 - name: Display all Execution Client port variables
   ansible.builtin.debug:
