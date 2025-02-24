@@ -11,7 +11,10 @@ ports:
     rosetta: 80
     grpc: 90
     grpc_web: 91
+    # Price Feeder Port
     price_feeder: 71
+    # Tofnd Port
+    tofnd: 50
     # Execution client ports
     execution_rpc: 45
     execution_websocket: 46

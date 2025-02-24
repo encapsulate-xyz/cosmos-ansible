@@ -78,6 +78,14 @@ axelar:
       version: 1.23.1
     wasmvm:
       version: v1.5.8
+  vald:
+    version: v1.2.1
+    node_address: "tcp://validator.axelar.testnet.encapsulate.xyz:11457"
+    validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
+    wasmvm:
+      version: v1.5.8
+  tofnd:
+    version: v1.0.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
 
 agoric:
