@@ -43,6 +43,14 @@ axelar:
       version: 1.23.1
     wasmvm:
       version: v1.5.8
+  vald:
+    version: v1.2.1
+    node_address: "tcp://validator.axelar.mainnet.encapsulate.xyz:11457"
+    validator_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
+    wasmvm:
+      version: v1.5.8
+  tofnd:
+    version: v0.10.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/axelar/axelar_16464939.tar.lz4
 
 quicksilver:
