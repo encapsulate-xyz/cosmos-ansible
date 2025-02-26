@@ -1,0 +1,21 @@
+---
+# Maintains directories and paths
+gravity_orchestrator_home_dir: /opt/{{ service_identifier }}
+
+gravity_orchestrator_bin_dir: "{{ gravity_orchestrator_home_dir }}/bin"
+gravity_orchestrator_config_dir: "{{ gravity_orchestrator_home_dir }}/config"
+gravity_orchestrator_env_dir: "{{ gravity_orchestrator_home_dir }}/environment"
+gravity_orchestrator_log_dir: "{{ gravity_orchestrator_home_dir }}/log"
+
+gravity_orchestrator_directories:
+  - "{{ gravity_orchestrator_home_dir }}"
+  - "{{ gravity_orchestrator_bin_dir }}"
+  - "{{ gravity_orchestrator_config_dir }}"
+  - "{{ gravity_orchestrator_env_dir }}"
+  - "{{ gravity_orchestrator_log_dir }}"
+
+gravity_orchestrator_log_file_path: "{{ gravity_orchestrator_log_dir }}/{{ service_identifier }}.log"
+
+gravity_orchestrator_environment_secrets_file_path: "{{ gravity_orchestrator_env_dir }}/{{ gravity_orchestrator_environment_secrets_file_name }}"
+
+gravity_orchestrator_config_file_path: "{{ gravity_orchestrator_config_dir }}/{{ gravity_orchestrator_config_file_name }}"
