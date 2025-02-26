@@ -1,0 +1,24 @@
+[Unit]
+Description={{ service_identifier }}
+
+[Service]
+User={{ service_identifier }}
+Group={{ service_identifier }}
+WorkingDirectory={{ relayer_home_dir }}
+EnvironmentFile={{ relayer_environment_secrets_file_path }}
+ExecStart={{ relayer_bin_dir }}/{{ service_identifier }} --home {{ relayer_home_dir }} \
+    relayer --fees 0ugraviton \
+    --gravity-contract-address 0xa4108aA1Ec4967F8b52220a4f7e94A8201F2D906 \
+    --cosmos-grpc {{ gravity.relayer.node_grpc_address }} \
+    --ethereum-rpc {{ vault.mainnet.gravity.ethereum_rpc }} \
+    --cosmos-phrase $COSMOS_PHRASE \
+    --ethereum-key $ETHEREUM_PVT_KEY
+Restart=always
+RestartSec=4
+LimitNOFILE=65536
+MemoryMax=64G
+StandardOutput=append:{{ relayer_log_file_path }}
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
