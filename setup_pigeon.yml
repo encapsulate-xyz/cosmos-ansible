@@ -1,0 +1,24 @@
+---
+- name: Set up Pigeon
+  hosts: all
+  become: true
+  gather_facts: true
+  vars_files:
+    - group_vars/ports.yml
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+  pre_tasks:
+    - name: Include environment setup tasks
+      ansible.builtin.include_tasks: tasks/setup_environment.yml
+
+  tasks:
+    - name: Run pigeon playbook
+      block:
+        - name: Include common handlers
+          ansible.builtin.include_role:
+            name: common
+        - name: Include pigeon role
+          ansible.builtin.include_role:
+            name: pigeon

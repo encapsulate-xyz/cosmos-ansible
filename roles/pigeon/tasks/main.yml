@@ -1,0 +1,38 @@
+---
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ pigeon_home_dir }}"
+    directories: "{{ pigeon_directories }}"
+    log_file_path: "{{ pigeon_log_file_path }}"
+
+- name: Include download_binary task
+  ansible.builtin.include_tasks: download_binary.yml
+
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: "{{ env }}/config.yml.j2"
+    dest: "{{ pigeon_config_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Fetch secrets key file from HCP Vault and save to file
+  ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+  vars:
+    vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ pigeon_environment_secrets_file_name }}"
+    secret_destination_path: "{{ pigeon_environment_secrets_file_path }}"
+    secret_type: environment
+
+- name: Copy systemd service file
+  ansible.builtin.template:
+    src: "{{ env }}/systemd.service.j2"
+    dest: /etc/systemd/system/{{ service_identifier }}.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart service

@@ -21,7 +21,7 @@
   ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
   vars:
     vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ relayer_environment_secrets_file_name }}"
-    secret_destination_path: "{{ relayer_config_file_path }}"
+    secret_destination_path: "{{ relayer_environment_secrets_file_path }}"
     secret_type: environment
 
 - name: Copy configuration file
