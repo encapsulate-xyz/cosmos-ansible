@@ -202,6 +202,10 @@ gravity:
     source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
     ports:
       prefix: 131
+  orchestrator:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
+  relayer:
+    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
 
 sommelier:
   validator:
@@ -212,6 +216,10 @@ sommelier:
     source_url: https://github.com/PeggyJV/sommelier
     ports:
       prefix: 133
+  orchestrator:
+    source_url: https://github.com/PeggyJV/steward/releases/download
+  steward:
+    source_url: https://github.com/PeggyJV/steward/releases/download
 
 ixo:
   validator:
@@ -232,6 +240,8 @@ paloma:
     source_url: https://github.com/palomachain/paloma
     ports:
       prefix: 137
+  pigeon:
+    source_url: https://github.com/palomachain/pigeon/releases/download
 
 planq:
   validator:

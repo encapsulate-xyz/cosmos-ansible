@@ -19,4 +19,7 @@ ports:
     execution_rpc: 45
     execution_websocket: 46
     execution_metrics: 65
-    # END
+    # Orchestrator Metrics Port
+    orchestrator_metrics: 70
+    # Pigeon Metrics Port
+    pigeon_metrics: 75
