@@ -3,6 +3,7 @@
 pigeon_home_dir: /opt/{{ service_identifier }}
 
 pigeon_bin_dir: "{{ pigeon_home_dir }}/bin"
+pigeon_config_dir: "{{ pigeon_home_dir }}/config"
 pigeon_log_dir: "{{ pigeon_home_dir }}/log"
 pigeon_keys_dir: "{{ pigeon_home_dir }}/keys"
 pigeon_env_dir: "{{ pigeon_home_dir }}/environment"
@@ -10,6 +11,7 @@ pigeon_env_dir: "{{ pigeon_home_dir }}/environment"
 pigeon_directories:
   - "{{ pigeon_home_dir }}"
   - "{{ pigeon_bin_dir }}"
+  - "{{ pigeon_config_dir }}"
   - "{{ pigeon_log_dir }}"
   - "{{ pigeon_keys_dir }}"
   - "{{ pigeon_env_dir }}"

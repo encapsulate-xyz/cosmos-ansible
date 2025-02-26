@@ -20,6 +20,8 @@ ports:
     execution_websocket: 46
     execution_metrics: 65
     # Orchestrator Metrics Port
-    orchestrator_metrics: 70
+    orchestrator_metrics: 80
+    # Relayer Metrics Port
+    relayer_metrics: 81
     # Pigeon Metrics Port
-    pigeon_metrics: 75
+    pigeon_metrics: 82

@@ -10,7 +10,7 @@
 - name: Download and unarchive the binary
   vars:
     suffix_url: >
-      {{ paloma.pigeon.version }}/pigeon_{{ ansible_system }}_{{ ansible_architecture }}-{{ paloma.pigeon.version }}.tar.gz
+      {{ paloma.pigeon.version }}/pigeon_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
   ansible.builtin.unarchive:
     src: "{{ paloma.pigeon.source_url }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
