@@ -178,6 +178,7 @@ paloma:
   snapshot_url: https://snapshots.polkachu.com/snapshots/paloma/paloma_32327947.tar.lz4
   pigeon:
     version: v2.3.3
+    rpc_url: https://rpc-1.paloma.nodes.guru:443
 
 planq:
   chain_id: planq_7070-2
