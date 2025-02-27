@@ -44,80 +44,48 @@ omniflix:
     source_url: https://github.com/OmniFlix/omniflixhub
     ports:
       prefix: 100
-  fullnode:
-    source_url: https://github.com/OmniFlix/omniflixhub
-    ports:
-      prefix: 101
 
 quicksilver:
   validator:
     source_url: https://github.com/quicksilver-zone/quicksilver
     ports:
       prefix: 102
-  fullnode:
-    source_url: https://github.com/quicksilver-zone/quicksilver
-    ports:
-      prefix: 103
 
 celestia:
   validator:
     source_url: https://github.com/celestiaorg/celestia-app
     ports:
       prefix: 104
-  fullnode:
-    source_url: https://github.com/celestiaorg/celestia-app
-    ports:
-      prefix: 105
 
 humans:
   validator:
     source_url: https://github.com/humansdotai/humans
     ports:
       prefix: 106
-  fullnode:
-    source_url: https://github.com/humansdotai/humans
-    ports:
-      prefix: 107
 
 ojo:
   validator:
     source_url: https://github.com/ojo-network/ojo
     ports:
       prefix: 108
-  fullnode:
-    source_url: https://github.com/ojo-network/ojo
-    ports:
-      prefix: 109
 
 umee:
   validator:
     source_url: https://github.com/umee-network/umee
     ports:
       prefix: 110
-  fullnode:
-    source_url: https://github.com/umee-network/umee
-    ports:
-      prefix: 111
 
 c4e:
   validator:
     source_url: https://github.com/chain4energy/c4e-chain
     ports:
       prefix: 112
-  fullnode:
-    source_url: https://github.com/chain4energy/c4e-chain
-    ports:
-      prefix: 113
 
 axelar:
   validator:
     source_url: https://github.com/axelarnetwork/axelar-core
     ports:
       prefix: 114
-  fullnode:
-    source_url: https://github.com/axelarnetwork/axelar-core
-    ports:
-      prefix: 115
   vald:
     source_url: https://github.com/axelarnetwork/axelar-core/releases/download
   tofnd:
@@ -128,80 +96,47 @@ agoric:
     source_url: https://github.com/Agoric/agoric-sdk
     ports:
       prefix: 116
-  fullnode:
-    source_url: https://github.com/Agoric/agoric-sdk
-    ports:
-      prefix: 117
-
 pell:
   validator:
     source_url: https://github.com/0xPellNetwork/network-config/releases/download
     ports:
       prefix: 118
-  fullnode:
-    source_url: https://github.com/0xPellNetwork/network-config/releases/download
-    ports:
-      prefix: 119
 
 juno:
   validator:
     source_url: https://github.com/CosmosContracts/juno
     ports:
       prefix: 120
-  fullnode:
-    source_url: https://github.com/CosmosContracts/juno
-    ports:
-      prefix: 121
 
 stargaze:
   validator:
     source_url: https://github.com/public-awesome/stargaze
     ports:
       prefix: 122
-  fullnode:
-    source_url: https://github.com/public-awesome/stargaze
-    ports:
-      prefix: 123
 
 althea:
   validator:
     source_url: https://github.com/AltheaFoundation/althea-L1
     ports:
       prefix: 124
-  fullnode:
-    source_url: https://github.com/AltheaFoundation/althea-L1
-    ports:
-      prefix: 125
 
 mantle:
   validator:
     source_url: https://github.com/AssetMantle/node
     ports:
       prefix: 126
-  fullnode:
-    source_url: https://github.com/AssetMantle/node
-    ports:
-      prefix: 127
 
 gitopia:
   validator:
     source_url: https://github.com/gitopia/gitopia
     ports:
       prefix: 128
-  fullnode:
-    source_url: https://github.com/gitopia/gitopia
-    ports:
-      prefix: 129
 
 gravity:
   validator:
     source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
     ports:
       prefix: 130
-  fullnode:
-    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
-    ports:
-      prefix: 131
   orchestrator:
     source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
   relayer:
@@ -212,10 +147,6 @@ sommelier:
     source_url: https://github.com/PeggyJV/sommelier
     ports:
       prefix: 132
-  fullnode:
-    source_url: https://github.com/PeggyJV/sommelier
-    ports:
-      prefix: 133
   orchestrator:
     source_url: https://github.com/PeggyJV/steward/releases/download
   steward:
@@ -226,20 +157,12 @@ ixo:
     source_url: https://github.com/ixofoundation/ixo-blockchain
     ports:
       prefix: 134
-  fullnode:
-    source_url: https://github.com/ixofoundation/ixo-blockchain
-    ports:
-      prefix: 135
 
 paloma:
   validator:
     source_url: https://github.com/palomachain/paloma
     ports:
       prefix: 136
-  fullnode:
-    source_url: https://github.com/palomachain/paloma
-    ports:
-      prefix: 137
   pigeon:
     source_url: https://github.com/palomachain/pigeon/releases/download
 
@@ -248,37 +171,21 @@ planq:
     source_url: https://github.com/planq-network/planq
     ports:
       prefix: 138
-  fullnode:
-    source_url: https://github.com/planq-network/planq
-    ports:
-      prefix: 139
 
 pylon:
   validator:
     source_url: https://github.com/Pylons-tech/pylons
     ports:
       prefix: 140
-  fullnode:
-    source_url: https://github.com/Pylons-tech/pylons
-    ports:
-      prefix: 141
 
 qwoyn:
   validator:
     source_url: https://github.com/cosmic-horizon/QWOYN
     ports:
       prefix: 142
-  fullnode:
-    source_url: https://github.com/cosmic-horizon/QWOYN
-    ports:
-      prefix: 143
 
 terra:
   validator:
     source_url: https://github.com/phoenix-directive/core
     ports:
       prefix: 144
-  fullnode:
-    source_url: https://github.com/phoenix-directive/core
-    ports:
-      prefix: 145
