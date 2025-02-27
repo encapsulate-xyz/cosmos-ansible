@@ -10,7 +10,7 @@
 - name: Download and unarchive the binary
   vars:
     suffix_url: >
-      {{ paloma.pigeon.version }}/pigeon_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+      {{ paloma.pigeon.version }}/{{ pigeon_default_service_binary_name }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
   ansible.builtin.unarchive:
     src: "{{ paloma.pigeon.source_url }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
@@ -21,7 +21,7 @@
 
 - name: Copy the binary file
   ansible.builtin.copy:
-    src: "{{ tmp_dir }}/{{ service_identifier }}/pigeon"
+    src: "{{ tmp_dir }}/{{ service_identifier }}/{{ pigeon_default_service_binary_name }}"
     dest: "{{ pigeon_bin_dir }}/{{ service_identifier }}"
     remote_src: true
     owner: root

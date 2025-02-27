@@ -3,7 +3,7 @@ health-check-port: {{ pigeon_metrics_port }}
 paloma:
   chain-id: tumbler
   call-timeout: 20s
-  keyring-dir: {{ pigeon_keys_dir }}
+  keyring-dir: {{ paloma.pigeon.keyring_dir }}
   keyring-pass-env-name: $KEYRING_PASSWORD
   keyring-type: os
   signing-key: wallet
