@@ -9,6 +9,7 @@ relayer_enabled = false
 # tx fees
 [relayer]
 batch_request_mode = "ProfitableOnly"
+relayer_loop_speed = 600
 
 # After requesting a batch, delay the relayer 45 seconds before attempting
 # to relay batches to give the chain time to process the batch request
@@ -57,7 +58,3 @@ margin = 1.1
 # [[relayer.batch_relaying_mode.whitelist]]
 # token = "0x6Bd41fCdF129297c3524395d669c0865b3CA85B2"
 # amount = "50000"
-
-[metrics]
-metrics_enabled = true
-metrics_bind = "0.0.0.0:{{ relayer_metrics_port }}"
