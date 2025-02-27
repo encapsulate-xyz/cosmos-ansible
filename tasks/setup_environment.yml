@@ -52,15 +52,9 @@
     orchestrator_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics)) }}"
   when: type == "orchestrator"
 
-- name: Set port variable for relayer service
-  ansible.builtin.set_fact:
-    relayer_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.relayer_metrics | default(ports.suffix.relayer_metrics)) }}"
-  when: type == "relayer"
-
 - name: Set port variable for steward service
   ansible.builtin.set_fact:
     steward_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward | default(ports.suffix.steward)) }}"
-    steward_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward_metrics | default(ports.suffix.steward_metrics)) }}"
   when: type == "steward"
 
 - name: Set port variable for pigeon service
@@ -107,10 +101,10 @@
     msg: "Orchestrator Port: {{ orchestrator_metrics_port }}"
   when: type == "orchestrator"
 
-- name: Display port variable of relayer service
+- name: Display port variable of steward service
   ansible.builtin.debug:
-    msg: "Relayer Port: {{ relayer_metrics_port }}"
-  when: type == "relayer"
+    msg: "steward Port: {{ steward_port }}"
+  when: type == "steward"
 
 - name: Display port variable of pigeon service
   ansible.builtin.debug:
