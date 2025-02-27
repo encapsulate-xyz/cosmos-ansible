@@ -1,0 +1,19 @@
+[Unit]
+Description={{ service_identifier }}
+
+[Service]
+User={{ service_identifier }}
+Group={{ service_identifier }}
+WorkingDirectory={{ sommelier_orchestrator_config_dir }}
+EnvironmentFile={{ sommelier_orchestrator_environment_secrets_file_path }}
+ExecStart={{ sommelier_orchestrator_bin_dir }}/{{ service_identifier }} --home {{ sommelier_orchestrator_home_dir }} \
+    orchestrator start --orchestrator-only --ethereum-key signer --cosmos-key orchestrator
+Restart=always
+RestartSec=4
+LimitNOFILE=65536
+MemoryMax=64G
+StandardOutput=append:{{ sommelier_orchestrator_log_file_path }}
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target

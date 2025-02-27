@@ -1,0 +1,75 @@
+---
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ sommelier_orchestrator_home_dir }}"
+    directories: "{{ sommelier_orchestrator_directories }}"
+    log_file_path: "{{ sommelier_orchestrator_log_file_path }}"
+
+- name: Fetch the gravity orchestrator service binary     
+  ansible.builtin.get_url:
+    url: "{{ gravity.orchestrator.source_url }}/{{ gravity.orchestrator.version }}/{{ sommelier_orchestrator_service_default_binary_name }}"
+    dest: "{{ sommelier_orchestrator_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
+
+- name: Fetch secrets from HCP Vault and save to files
+  when:
+    - type == 'validator'
+    - fetch_validator_keys | default(false) | bool
+  block:
+    - name: Fetch server key 
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ sommelier_orchestrator_server_key_pkcs8_file_name }}"
+        secret_destination_path: "{{ sommelier_orchestrator_server_key_pkcs8_file_path }}"
+        secret_type: base64
+
+    - name: Fetch secrets key file from HCP Vault and save to file
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ sommelier_orchestrator_orchestrator_key_file_name }}"
+        secret_destination_path: "{{ sommelier_orchestrator_orchestrator_key_file_path }}"
+        secret_type: base64
+
+    - name: Fetch secrets key file from HCP Vault and save to file
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ sommelier_orchestrator_signer_key_file_name }}"
+        secret_destination_path: "{{ sommelier_orchestrator_signer_key_file_path }}"
+        secret_type: base64
+
+- name: Copy server cert file
+  ansible.builtin.copy:
+    src: "{{ env }}/server.crt"
+    dest: "{{ sommelier_orchestrator_server_cert_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: "{{ env }}/config.toml.j2"
+    dest: "{{ sommelier_orchestrator_config_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Copy systemd service file
+  ansible.builtin.template:
+    src: "{{ env }}/systemd.service.j2"
+    dest: /etc/systemd/system/{{ service_identifier }}.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart service

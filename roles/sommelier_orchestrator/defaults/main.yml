@@ -1,0 +1,31 @@
+---
+# Maintains directories and paths
+sommelier_orchestrator_home_dir: /opt/{{ service_identifier }}
+
+sommelier_orchestrator_bin_dir: "{{ sommelier_orchestrator_home_dir }}/bin"
+sommelier_orchestrator_config_dir: "{{ sommelier_orchestrator_home_dir }}/config"
+sommelier_orchestrator_cert_dir: "{{ sommelier_orchestrator_home_dir }}/cert"
+sommelier_orchestrator_env_dir: "{{ sommelier_orchestrator_home_dir }}/environment"
+sommelier_orchestrator_key_dir: "{{ sommelier_orchestrator_home_dir }}/keys"
+sommelier_orchestrator_log_dir: "{{ sommelier_orchestrator_home_dir }}/log"
+
+sommelier_orchestrator_directories:
+  - "{{ sommelier_orchestrator_home_dir }}"
+  - "{{ sommelier_orchestrator_bin_dir }}"
+  - "{{ sommelier_orchestrator_config_dir }}"
+  - "{{ sommelier_orchestrator_cert_dir }}"
+  - "{{ sommelier_orchestrator_key_dir }}"
+  - "{{ sommelier_orchestrator_env_dir }}"
+  - "{{ sommelier_orchestrator_log_dir }}"
+
+sommelier_orchestrator_log_file_path: "{{ sommelier_orchestrator_log_dir }}/{{ service_identifier }}.log"
+
+sommelier_orchestrator_environment_secrets_file_path: "{{ sommelier_orchestrator_env_dir }}/{{ sommelier_orchestrator_environment_secrets_file_name }}"
+
+sommelier_orchestrator_config_file_path: "{{ sommelier_orchestrator_config_dir }}/{{ sommelier_orchestrator_config_file_name }}"
+
+sommelier_orchestrator_server_cert_file_path: "{{ sommelier_orchestrator_cert_dir }}/{{ sommelier_orchestrator_server_cert_file_name }}"
+sommelier_orchestrator_server_key_pkcs8_file_path: "{{ sommelier_orchestrator_cert_dir }}/{{ sommelier_orchestrator_server_key_pkcs8_file_name }}"
+
+sommelier_orchestrator_orchestrator_key_file_path: "{{ sommelier_orchestrator_key_dir }}/{{ sommelier_orchestrator_orchestrator_key_file_name }}"
+sommelier_orchestrator_signer_key_file_path: "{{ sommelier_orchestrator_key_dir }}/{{ sommelier_orchestrator_signer_key_file_name }}"

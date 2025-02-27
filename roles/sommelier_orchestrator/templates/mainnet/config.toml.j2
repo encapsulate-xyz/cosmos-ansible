@@ -1,0 +1,34 @@
+keystore = "{{ sommelier_orchestrator_key_dir }}"
+
+[cosmos]
+gas_adjustment = 1.1
+grpc = "{{ sommelier.node_grpc_address }}"
+key_derivation_path = "m/44'/118'/0'/0/0"
+prefix = "somm"
+msg_batch_size = 5
+
+[cosmos.gas_price]
+amount = 0.0
+denom = "usomm"
+
+[ethereum]
+blocks_to_search = 5000
+gas_price_multiplier = 1.1
+key_derivation_path = "m/44'/60'/0'/0/0"
+rpc = "{{ vault.mainnet.sommelier.ethereum_rpc }}"
+
+[gravity]
+contract = "0x69592e6f9d21989a043646fe8225da2600e5a0f7"
+fees_denom = "usomm"
+
+[keys]
+delegate_key = "orchestrator"
+
+[metrics]
+listen_addr = "0.0.0.0:{{ orchestrator_metrics_port }}"
+
+#[server]
+#address = "0.0.0.0"
+#port = 
+#server_cert_path = "{{ sommelier_orchestrator_server_cert_file_path }}"
+#server_key_path = "{{ sommelier_orchestrator_server_key_pkcs8_file_path }}"
