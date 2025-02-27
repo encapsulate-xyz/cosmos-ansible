@@ -21,6 +21,9 @@ ports:
     execution_metrics: 65
     # Orchestrator Metrics Port
     orchestrator_metrics: 80
+    # Steward Server
+    steward: 34
+    steward_metrics: 83
     # Relayer Metrics Port
     relayer_metrics: 81
     # Pigeon Metrics Port

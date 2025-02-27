@@ -155,7 +155,7 @@ sommelier:
     version: v4.2.7
   steward:
     version: v4.2.7
-  node_grpc_address:
+  node_grpc_address: http://sommelier-grpc.polkachu.com:14190
 
 ixo:
   chain_id: ixo-5
