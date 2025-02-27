@@ -168,7 +168,7 @@ ixo:
 paloma:
   chain_id: tumbler
   validator:
-    version: v2.4.6
+    version: v2.4.7
     go:
       version: 1.23.5
     wasmvm:
