@@ -57,6 +57,12 @@
     relayer_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.relayer_metrics | default(ports.suffix.relayer_metrics)) }}"
   when: type == "relayer"
 
+- name: Set port variable for steward service
+  ansible.builtin.set_fact:
+    steward_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward | default(ports.suffix.steward)) }}"
+    steward_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward_metrics | default(ports.suffix.steward_metrics)) }}"
+  when: type == "steward"
+
 - name: Set port variable for pigeon service
   ansible.builtin.set_fact:
     pigeon_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.pigeon_metrics | default(ports.suffix.pigeon_metrics)) }}"
