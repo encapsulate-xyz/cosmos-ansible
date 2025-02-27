@@ -1,0 +1,16 @@
+---
+# Maintains file names, binary names, and anything that is not a directory or path
+
+steward_key_file_name: keys.json
+steward_config_file_name: config.toml
+
+# binary names
+steward_service_default_binary_name: steward
+
+# Cert names
+steward_server_cert_file_name: server.crt
+steward_server_key_pkcs8_file_name: server_key_pkcs8.pem
+
+# Key names
+steward_orchestrator_key_file_name: orchestrator.pem
+steward_signer_key_file_name: signer.pem
