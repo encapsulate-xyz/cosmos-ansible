@@ -4,7 +4,7 @@
 sommelier_orchestrator_config_file_name: config.toml
 
 # binary names
-sommelier_orchestrator_service_default_binary_name: gbt
+sommelier_orchestrator_service_default_binary_name: steward
 
 # Key names
 sommelier_orchestrator_orchestrator_key_file_name: orchestrator.pem

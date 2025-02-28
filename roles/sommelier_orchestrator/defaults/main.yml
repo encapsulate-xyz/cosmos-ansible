@@ -12,7 +12,6 @@ sommelier_orchestrator_directories:
   - "{{ sommelier_orchestrator_bin_dir }}"
   - "{{ sommelier_orchestrator_config_dir }}"
   - "{{ sommelier_orchestrator_key_dir }}"
-  - "{{ sommelier_orchestrator_env_dir }}"
   - "{{ sommelier_orchestrator_log_dir }}"
 
 sommelier_orchestrator_log_file_path: "{{ sommelier_orchestrator_log_dir }}/{{ service_identifier }}.log"

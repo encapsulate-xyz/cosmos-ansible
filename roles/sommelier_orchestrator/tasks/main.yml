@@ -6,9 +6,9 @@
     directories: "{{ sommelier_orchestrator_directories }}"
     log_file_path: "{{ sommelier_orchestrator_log_file_path }}"
 
-- name: Fetch the gravity orchestrator service binary
+- name: Fetch the orchestrator service binary
   ansible.builtin.get_url:
-    url: "{{ gravity.orchestrator.source_url }}/{{ gravity.orchestrator.version }}/{{ sommelier_orchestrator_service_default_binary_name }}"
+    url: "{{ sommelier.orchestrator.source_url }}/{{ sommelier.orchestrator.version }}/{{ sommelier_orchestrator_service_default_binary_name }}"
     dest: "{{ sommelier_orchestrator_bin_dir }}/{{ service_identifier }}"
     owner: root
     group: root
