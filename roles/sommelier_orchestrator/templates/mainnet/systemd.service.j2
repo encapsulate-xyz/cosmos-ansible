@@ -5,7 +5,6 @@ Description={{ service_identifier }}
 User={{ service_identifier }}
 Group={{ service_identifier }}
 WorkingDirectory={{ sommelier_orchestrator_config_dir }}
-EnvironmentFile={{ sommelier_orchestrator_environment_secrets_file_path }}
 ExecStart={{ sommelier_orchestrator_bin_dir }}/{{ service_identifier }} --home {{ sommelier_orchestrator_home_dir }} \
     orchestrator start --orchestrator-only --ethereum-key signer --cosmos-key orchestrator
 Restart=always
