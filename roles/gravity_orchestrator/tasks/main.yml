@@ -6,7 +6,7 @@
     directories: "{{ gravity_orchestrator_directories }}"
     log_file_path: "{{ gravity_orchestrator_log_file_path }}"
 
-- name: Fetch the gravity orchestrator service binary     
+- name: Fetch the gravity orchestrator service binary
   ansible.builtin.get_url:
     url: "{{ gravity.orchestrator.source_url }}/{{ gravity.orchestrator.version }}/{{ gravity_orchestrator_service_default_binary_name }}"
     dest: "{{ gravity_orchestrator_bin_dir }}/{{ service_identifier }}"

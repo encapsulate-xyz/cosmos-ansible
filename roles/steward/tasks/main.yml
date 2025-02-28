@@ -6,7 +6,7 @@
     directories: "{{ steward_directories }}"
     log_file_path: "{{ steward_log_file_path }}"
 
-- name: Fetch the steward service binary     
+- name: Fetch the steward service binary
   ansible.builtin.get_url:
     url: "{{ sommelier.steward.source_url }}/{{ sommelier.steward.version }}/{{ steward_service_default_binary_name }}"
     dest: "{{ steward_bin_dir }}/{{ service_identifier }}"
@@ -20,7 +20,7 @@
 - name: Fetch secrets from HCP Vault and save to files
   when: fetch_validator_keys | default(false) | bool
   block:
-    - name: Fetch server key pkc8s pem file 
+    - name: Fetch server key pkc8s pem file
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
       vars:
         vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ steward_server_key_pkcs8_file_name }}"
