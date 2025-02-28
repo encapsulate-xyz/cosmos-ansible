@@ -4,14 +4,14 @@ sommelier_orchestrator_home_dir: /opt/{{ service_identifier }}
 
 sommelier_orchestrator_bin_dir: "{{ sommelier_orchestrator_home_dir }}/bin"
 sommelier_orchestrator_config_dir: "{{ sommelier_orchestrator_home_dir }}/config"
-sommelier_orchestrator_key_dir: "{{ sommelier_orchestrator_home_dir }}/keys"
+sommelier_orchestrator_keys_dir: "{{ sommelier_orchestrator_home_dir }}/keys"
 sommelier_orchestrator_log_dir: "{{ sommelier_orchestrator_home_dir }}/log"
 
 sommelier_orchestrator_directories:
   - "{{ sommelier_orchestrator_home_dir }}"
   - "{{ sommelier_orchestrator_bin_dir }}"
   - "{{ sommelier_orchestrator_config_dir }}"
-  - "{{ sommelier_orchestrator_key_dir }}"
+  - "{{ sommelier_orchestrator_keys_dir }}"
   - "{{ sommelier_orchestrator_log_dir }}"
 
 sommelier_orchestrator_log_file_path: "{{ sommelier_orchestrator_log_dir }}/{{ service_identifier }}.log"

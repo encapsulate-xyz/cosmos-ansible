@@ -5,8 +5,7 @@ Description={{ service_identifier }}
 User={{ service_identifier }}
 Group={{ service_identifier }}
 WorkingDirectory={{ steward_home_dir }}
-ExecStart={{ steward_bin_dir }}/{{ service_identifier }} --home {{ steward_home_dir }} \
-    --config {{ steward_config_file_path }} start
+ExecStart={{ steward_bin_dir }}/{{ service_identifier }} --config {{ steward_config_file_path }} start
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
