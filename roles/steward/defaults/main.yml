@@ -1,0 +1,29 @@
+---
+# Maintains directories and paths
+steward_home_dir: /opt/{{ service_identifier }}
+
+steward_bin_dir: "{{ steward_home_dir }}/bin"
+steward_config_dir: "{{ steward_home_dir }}/config"
+steward_cert_dir: "{{ steward_home_dir }}/cert"
+steward_log_dir: "{{ steward_home_dir }}/log"
+steward_keys_dir: "{{ steward_home_dir }}/keys"
+
+steward_directories:
+  - "{{ steward_home_dir }}"
+  - "{{ steward_bin_dir }}"
+  - "{{ steward_config_dir }}"
+  - "{{ steward_cert_dir }}"
+  - "{{ steward_keys_dir }}"
+  - "{{ steward_log_dir }}"
+
+steward_log_file_path: "{{ steward_log_dir }}/{{ service_identifier }}.log"
+
+steward_key_file_path: "{{ steward_key_dir }}/{{ steward_key_file_name }}"
+
+steward_config_file_path: "{{ steward_config_dir }}/{{ steward_config_file_name }}"
+
+steward_server_cert_file_path: "{{ steward_cert_dir }}/{{ steward_server_cert_file_name }}"
+steward_server_key_pkcs8_file_path: "{{ steward_cert_dir }}/{{ steward_server_key_pkcs8_file_name }}"
+
+steward_orchestrator_key_file_path: "{{ steward_key_dir }}/{{ steward_orchestrator_key_file_name }}"
+steward_signer_key_file_path: "{{ steward_key_dir }}/{{ steward_signer_key_file_name }}"

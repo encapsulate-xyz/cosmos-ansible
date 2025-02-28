@@ -1,0 +1,26 @@
+# Orchestrator configuration options
+[orchestrator]
+# If the built-in relayer is enabled, this relayer is configured in the [relayer] section
+relayer_enabled = false
+
+# Relayer configuration options
+
+# requests for batches sent on the Gravity Bridge side, consumes bridge chain
+# tx fees
+[relayer]
+batch_request_mode = "ProfitableOnly"
+
+# After requesting a batch, delay the relayer 45 seconds before attempting
+# to relay batches to give the chain time to process the batch request
+batch_request_relay_offset = 45
+
+[relayer.valset_relaying_mode]
+mode = "Altruistic"
+
+[relayer.batch_relaying_mode]
+mode = "ProfitableOnly"
+margin = 1.1
+
+[metrics]
+metrics_enabled = true
+metrics_bind = "0.0.0.0:{{ orchestrator_metrics_port }}"

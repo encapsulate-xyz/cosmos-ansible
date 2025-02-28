@@ -1,0 +1,8 @@
+---
+# Maintains file names, binary names, and anything that is not a directory or path
+
+gravity_orchestrator_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
+gravity_orchestrator_config_file_name: config.toml
+
+# binary names
+gravity_orchestrator_service_default_binary_name: gbt

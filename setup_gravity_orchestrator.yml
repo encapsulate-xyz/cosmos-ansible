@@ -1,0 +1,26 @@
+---
+- name: Set up Gravity Orchestrator
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    allowed_node_types: [orchestrator]
+  vars_files:
+    - group_vars/ports.yml
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+  pre_tasks:
+    - name: Include environment setup tasks
+      ansible.builtin.include_tasks: tasks/setup_environment.yml
+
+  tasks:
+    - name: Run gravity_orchestrator playbook
+      block:
+        - name: Include common handlers
+          ansible.builtin.include_role:
+            name: common
+        - name: Include gravity_orchestrator role
+          ansible.builtin.include_role:
+            name: gravity_orchestrator

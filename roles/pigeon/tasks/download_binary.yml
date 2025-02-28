@@ -1,0 +1,37 @@
+---
+- name: Create a tmp directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Download and unarchive the binary
+  vars:
+    suffix_url: >
+      {{ paloma.pigeon.version }}/{{ pigeon_default_service_binary_name }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+  ansible.builtin.unarchive:
+    src: "{{ paloma.pigeon.source_url }}/{{ suffix_url }}"
+    dest: "{{ tmp_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy the binary file
+  ansible.builtin.copy:
+    src: "{{ tmp_dir }}/{{ service_identifier }}/{{ pigeon_default_service_binary_name }}"
+    dest: "{{ pigeon_bin_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
+
+- name: Clean up the temporary files in /tmp
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: absent

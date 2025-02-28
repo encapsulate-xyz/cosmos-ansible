@@ -47,6 +47,21 @@
     tofnd_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.tofnd | default(ports.suffix.tofnd)) }}"
   when: type in ["vald", "tofnd"]
 
+- name: Set port variable for orchestrator service
+  ansible.builtin.set_fact:
+    orchestrator_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics)) }}"
+  when: type == "orchestrator"
+
+- name: Set port variable for steward service
+  ansible.builtin.set_fact:
+    steward_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward | default(ports.suffix.steward)) }}"
+  when: type == "steward"
+
+- name: Set port variable for pigeon service
+  ansible.builtin.set_fact:
+    pigeon_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.pigeon_metrics | default(ports.suffix.pigeon_metrics)) }}"
+  when: type == "pigeon"
+
 - name: Set all port variables dynamically for Execution Client
   ansible.builtin.set_fact:
     execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
@@ -80,6 +95,21 @@
   ansible.builtin.debug:
     msg: "Tofnd Port: {{ tofnd_port }}"
   when: type in ["vald", "tofnd"]
+
+- name: Display port variable of orchestrator service
+  ansible.builtin.debug:
+    msg: "Orchestrator Port: {{ orchestrator_metrics_port }}"
+  when: type == "orchestrator"
+
+- name: Display port variable of steward service
+  ansible.builtin.debug:
+    msg: "steward Port: {{ steward_port }}"
+  when: type == "steward"
+
+- name: Display port variable of pigeon service
+  ansible.builtin.debug:
+    msg: "Pigeon Port: {{ pigeon_metrics_port }}"
+  when: type == "pigeon"
 
 - name: Display all Execution Client port variables
   ansible.builtin.debug:
