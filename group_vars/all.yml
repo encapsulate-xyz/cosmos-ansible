@@ -187,3 +187,9 @@ terra:
     source_url: https://github.com/phoenix-directive/core
     ports:
       prefix: 144
+
+passage:
+  validator:
+    source_url: https://github.com/envadiv/Passage3D
+    ports:
+      prefix: 146
