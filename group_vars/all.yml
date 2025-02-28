@@ -139,8 +139,6 @@ gravity:
       prefix: 130
   orchestrator:
     source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
-  relayer:
-    source_url: https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download
 
 sommelier:
   validator:

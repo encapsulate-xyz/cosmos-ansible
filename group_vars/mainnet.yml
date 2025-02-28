@@ -140,9 +140,7 @@ gravity:
   snapshot_url: https://snapshots.polkachu.com/snapshots/gravity/gravity_15740467.tar.lz4
   orchestrator:
     version: v1.12.0
-  relayer:
-    version: v1.12.0
-    node_grpc_address: http://gravity-grpc.polkachu.com:14290
+  node_grpc_address: http://gravity-grpc.polkachu.com:14290
 
 sommelier:
   chain_id: sommelier-3

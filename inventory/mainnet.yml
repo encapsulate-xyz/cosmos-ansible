@@ -75,9 +75,6 @@ all:
         gravity_orchestrator_host:
           ansible_host: validator.gravity.mainnet.encapsulate.xyz
           type: orchestrator
-        gravity_relayer_host:
-          ansible_host: validator.gravity.mainnet.encapsulate.xyz
-          type: relayer
     sommelier:
       hosts:
         validator.sommelier.mainnet.encapsulate.xyz:
@@ -85,7 +82,7 @@ all:
         sommelier_orchestrator_host:
           ansible_host: validator.sommelier.mainnet.encapsulate.xyz
           type: orchestrator
-        sommelier_relayer_host:
+        sommelier_steward_host:
           ansible_host: validator.sommelier.mainnet.encapsulate.xyz
           type: steward
     ixo:

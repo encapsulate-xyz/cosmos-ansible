@@ -1,5 +1,0 @@
----
-# Maintains file names, binary names, and anything that is not a directory or path
-
-relayer_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
-relayer_config_file_name: config.toml
