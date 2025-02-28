@@ -117,3 +117,8 @@ all:
       hosts:
         validator.passage.mainnet.encapsulate.xyz:
           type: validator
+    tenet:
+      hosts:
+        validator.tenet.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true

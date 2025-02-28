@@ -222,3 +222,9 @@ passage:
     go:
       version: 1.23.5
   snapshot_url: https://snapshots.polkachu.com/snapshots/passage/passage_12539367.tar.lz4
+
+tenet:
+  chain_id: tenet_1559-1
+  validator:
+    version: 11.2.1
+  snapshot_url: https://support.synergynodes.com/snapshots/tenet_mainnet/tenet_16535716.tar.lz4

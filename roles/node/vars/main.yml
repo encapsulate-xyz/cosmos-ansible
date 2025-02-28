@@ -41,6 +41,7 @@ node_service_default_binary_name:
   qwoyn: qwoynd
   terra: terrad
   passage: passage
+  tenet: tenetd
 
 node_status_endpoint: status
 

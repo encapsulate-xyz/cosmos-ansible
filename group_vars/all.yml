@@ -193,3 +193,9 @@ passage:
     source_url: https://github.com/envadiv/Passage3D
     ports:
       prefix: 146
+
+tenet:
+  validator:
+    source_url: https://github.com/tenet-org/tenet-mainnet/releases/download
+    ports:
+      prefix: 148
