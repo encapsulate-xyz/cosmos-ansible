@@ -18,12 +18,10 @@ steward_directories:
 
 steward_log_file_path: "{{ steward_log_dir }}/{{ service_identifier }}.log"
 
-steward_key_file_path: "{{ steward_key_dir }}/{{ steward_key_file_name }}"
-
 steward_config_file_path: "{{ steward_config_dir }}/{{ steward_config_file_name }}"
 
 steward_server_cert_file_path: "{{ steward_cert_dir }}/{{ steward_server_cert_file_name }}"
 steward_server_key_pkcs8_file_path: "{{ steward_cert_dir }}/{{ steward_server_key_pkcs8_file_name }}"
 
-steward_orchestrator_key_file_path: "{{ steward_key_dir }}/{{ steward_orchestrator_key_file_name }}"
-steward_signer_key_file_path: "{{ steward_key_dir }}/{{ steward_signer_key_file_name }}"
+steward_orchestrator_key_file_path: "{{ steward_keys_dir }}/{{ steward_orchestrator_key_file_name }}"
+steward_signer_key_file_path: "{{ steward_keys_dir }}/{{ steward_signer_key_file_name }}"
