@@ -19,12 +19,22 @@
   notify:
     - Restart service
 
-- name: Fetch secrets key file from HCP Vault and save to file
-  ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
-  vars:
-    vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ pigeon_environment_secrets_file_name }}"
-    secret_destination_path: "{{ pigeon_environment_secrets_file_path }}"
-    secret_type: environment
+- name: Fetch secrets from HCP Vault and save to files
+  when: fetch_validator_keys | default(false) | bool
+  block:
+    - name: Fetch secret environment file
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ pigeon_environment_secrets_file_name }}"
+        secret_destination_path: "{{ pigeon_environment_secrets_file_path }}"
+        secret_type: environment
+
+    - name: Fetch signing key
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ pigeon_signing_key_file_name }}"
+        secret_destination_path: "{{ pigeon_signing_key_file_path }}"
+        secret_type: json
 
 - name: Copy systemd service file
   ansible.builtin.template:

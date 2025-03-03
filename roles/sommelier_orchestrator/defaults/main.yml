@@ -18,5 +18,5 @@ sommelier_orchestrator_log_file_path: "{{ sommelier_orchestrator_log_dir }}/{{ s
 
 sommelier_orchestrator_config_file_path: "{{ sommelier_orchestrator_config_dir }}/{{ sommelier_orchestrator_config_file_name }}"
 
-sommelier_orchestrator_orchestrator_key_file_path: "{{ sommelier_orchestrator_key_dir }}/{{ sommelier_orchestrator_orchestrator_key_file_name }}"
-sommelier_orchestrator_signer_key_file_path: "{{ sommelier_orchestrator_key_dir }}/{{ sommelier_orchestrator_signer_key_file_name }}"
+sommelier_orchestrator_orchestrator_key_file_path: "{{ sommelier_orchestrator_keys_dir }}/{{ sommelier_orchestrator_orchestrator_key_file_name }}"
+sommelier_orchestrator_signer_key_file_path: "{{ sommelier_orchestrator_keys_dir }}/{{ sommelier_orchestrator_signer_key_file_name }}"

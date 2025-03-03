@@ -4,7 +4,7 @@ paloma:
   chain-id: tumbler
   call-timeout: 20s
   keyring-dir: {{ paloma.pigeon.keyring_dir }}
-  keyring-pass-env-name: $KEYRING_PASSWORD
+  keyring-pass-env-name: KEYRING_PASSWORD
   keyring-type: os
   signing-key: wallet
   base-rpc-url: {{ paloma.pigeon.rpc_url }}
@@ -15,7 +15,7 @@ evm:
   eth-main:
     chain-id: 1
     base-rpc-url: {{ vault.mainnet.paloma.eth_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -23,7 +23,7 @@ evm:
   bnb-main:
     chain-id: 56
     base-rpc-url: {{ vault.mainnet.paloma.bnb_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 1
@@ -31,7 +31,7 @@ evm:
   matic-main:
     chain-id: 137
     base-rpc-url: {{ vault.mainnet.paloma.matic_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -39,7 +39,7 @@ evm:
   op-main:
     chain-id: 10
     base-rpc-url: {{ vault.mainnet.paloma.op_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -47,7 +47,7 @@ evm:
   kava-main:
     chain-id: 2222
     base-rpc-url: {{ vault.mainnet.paloma.kava_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -55,7 +55,7 @@ evm:
   base-main:
     chain-id: 8453
     base-rpc-url: {{ vault.mainnet.paloma.base_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -63,7 +63,7 @@ evm:
   gnosis-main:
     chain-id: 100
     base-rpc-url: {{ vault.mainnet.paloma.gnosis_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -71,7 +71,7 @@ evm:
   blast-main:
     chain-id: 81457
     base-rpc-url: {{ vault.mainnet.paloma.blast_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
@@ -79,7 +79,7 @@ evm:
   arbitrum-main:
     chain-id: 42161
     base-rpc-url: {{ vault.mainnet.paloma.arbitrum_rpc }}
-    keyring-pass-env-name: $KEYRING_PASSWORD
+    keyring-pass-env-name: KEYRING_PASSWORD
     signing-key: 0x5b54998Bbc8230cA1C29a99cE655850Fc01b61E2
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
