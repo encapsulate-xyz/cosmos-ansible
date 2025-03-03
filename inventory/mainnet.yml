@@ -8,6 +8,8 @@ all:
       hosts:
         validator.celestia.mainnet.encapsulate.xyz:
           type: validator
+        fullnode.celestia.mainnet.encapsulate.xyz:
+          type: fullnode
     quicksilver:
       hosts:
         validator.quicksilver.mainnet.encapsulate.xyz:
