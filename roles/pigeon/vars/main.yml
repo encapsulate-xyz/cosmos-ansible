@@ -2,7 +2,7 @@
 # Maintains file names, binary names, and anything that is not a directory or path
 
 # Env file name
-pigeon_environment_secrets_file_name: "{{ service_identifier }}.env"
+pigeon_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
 
 pigeon_config_file_name: config.yml
 
