@@ -10,7 +10,7 @@ ExecStart={{ gravity_orchestrator_bin_dir }}/{{ service_identifier }} --home {{ 
     orchestrator --fees 0ugraviton \
     --gravity-contract-address 0xa4108aA1Ec4967F8b52220a4f7e94A8201F2D906 \
     --ethereum-rpc {{ vault.mainnet.gravity.ethereum_rpc }} \
-    --cosmos-phrase "$COSMOS_PHRASE" \
+    --cosmos-phrase "\"$COSMOS_PHRASE\"" \
     --ethereum-key $ETHEREUM_PVT_KEY
 Restart=always
 RestartSec=4
