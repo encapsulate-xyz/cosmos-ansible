@@ -1,0 +1,7 @@
+---
+steward_ufw_rules:
+  - port: "{{ steward_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: steward_port
