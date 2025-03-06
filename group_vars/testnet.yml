@@ -3,7 +3,7 @@
 omniflix:
   chain_id: flixnet-4
   validator:
-    version: v5.1.0-alpha.1
+    version: v5.2.0-alpha.1
     go:
       version: 1.22.5
     wasmvm:
