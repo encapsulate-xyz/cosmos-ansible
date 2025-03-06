@@ -181,7 +181,7 @@ paloma:
   pigeon:
     version: v2.3.3
     keyring_dir: "/opt/paloma"
-    rpc_url: https://rpc-1.paloma.nodes.guru:443
+    rpc_url: http://localhost:13657
 
 planq:
   chain_id: planq_7070-2
