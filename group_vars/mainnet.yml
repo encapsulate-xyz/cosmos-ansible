@@ -130,7 +130,7 @@ humans:
 omniflix:
   chain_id: omniflixhub-1
   validator:
-    version: v5.1.0
+    version: v5.2.0-alpha.1
     go:
       version: 1.22.5
     wasmvm:
@@ -172,7 +172,7 @@ ixo:
 paloma:
   chain_id: tumbler
   validator:
-    version: v2.4.7
+    version: v2.4.8
     go:
       version: 1.23.5
     wasmvm:
