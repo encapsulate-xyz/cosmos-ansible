@@ -437,7 +437,9 @@ discard_abci_responses = false
 # 		- When "kv" is chosen "tx.height" and "tx.hash" will always be indexed.
 #   3) "psql" - the indexer services backed by PostgreSQL.
 # When "kv" or "psql" is chosen "tx.height" and "tx.hash" will always be indexed.
-indexer = "{{ node_space_optimization_settings.indexer }}"
+
+# Update indexer settings to support pigeon
+indexer = "kv"
 
 # The PostgreSQL connection configuration, the connection format:
 #   postgresql://<user>:<password>@<host>:<port>/<db>?<opts>
