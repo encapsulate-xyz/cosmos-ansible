@@ -130,7 +130,7 @@ humans:
 omniflix:
   chain_id: omniflixhub-1
   validator:
-    version: v5.1.0
+    version: v5.2.0
     go:
       version: 1.22.5
     wasmvm:
