@@ -186,7 +186,7 @@ paloma:
 planq:
   chain_id: planq_7070-2
   validator:
-    version: v2.0.5
+    version: v2.1.0
     go:
       version: 1.23.5
   snapshot_url: https://snapshots.polkachu.com/snapshots/planq/planq_13286525.tar.lz4
