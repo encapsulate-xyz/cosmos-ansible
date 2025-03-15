@@ -130,7 +130,7 @@ humans:
 omniflix:
   chain_id: omniflixhub-1
   validator:
-    version: v5.2.0
+    version: v5.2.1
     go:
       version: 1.22.5
     wasmvm:
@@ -172,7 +172,7 @@ ixo:
 paloma:
   chain_id: tumbler
   validator:
-    version: v2.4.8
+    version: v2.4.9
     go:
       version: 1.23.5
     wasmvm:
@@ -186,7 +186,7 @@ paloma:
 planq:
   chain_id: planq_7070-2
   validator:
-    version: v2.1.0
+    version: v2.1.2
     go:
       version: 1.23.5
   snapshot_url: https://snapshots.polkachu.com/snapshots/planq/planq_13286525.tar.lz4
