@@ -45,7 +45,7 @@ ojo:
 umee:
   chain_id: canon-4
   validator:
-    version: v6.7.3-rc1
+    version: v6.7.4-rc1
     go:
       version: 1.23.1
     wasmvm:
@@ -56,7 +56,7 @@ umee:
     go:
       version: 1.23.1
     wasmvm:
-      version: v1.5.5
+      version: v1.5.9
   snapshot_url: https://snapshots-testnet.stake-town.com/umee/canon-4_latest.tar.lz4
 
 c4e:
