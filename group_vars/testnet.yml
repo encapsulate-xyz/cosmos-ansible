@@ -91,7 +91,7 @@ axelar:
 agoric:
   chain_id: agoric-emerynet-9
   validator:
-    version: agoric-upgrade-19-rc2
+    version: agoric-upgrade-19-rc3
     go:
       version: 1.23.1
     node:
