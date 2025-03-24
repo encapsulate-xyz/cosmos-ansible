@@ -28,17 +28,17 @@
     name: axelar-vald
     state: stopped
 
+- name: Remove mnemonic
+  ansible.builtin.file:
+    path: "{{ tofnd_home_dir }}/export"
+    state: absent
+
 - name: Rotate Keys
   ansible.builtin.expect:
     command: >
       {{ tofnd_bin_dir }}/{{ service_identifier }} -m rotate -d {{ tofnd_home_dir }}
     responses:
       "Please type your tofnd password:": "{{ lookup('env', 'TOFND_PASSWORD') }}\n"
-  register: rotate_key_output
-
-  - name: Print Rotate Keys result
-    ansible.builtin.debug:
-      msg: "{{ rotate_key_output.stdout }}"
 
 - name: Read mnemonic
   ansible.builtin.shell: cat {{ tofnd_home_dir }}/export
