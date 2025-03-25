@@ -42,9 +42,10 @@
     rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type == "pf"
 
-- name: Set port variable for axelar vald service
+- name: Set port variable for axelar vald and tofnd service
   ansible.builtin.set_fact:
     tofnd_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.tofnd | default(ports.suffix.tofnd)) }}"
+    rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type in ["vald", "tofnd"]
 
 - name: Set port variable for orchestrator service

@@ -1,0 +1,64 @@
+---
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: roles/tofnd/defaults/main.yml
+
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: roles/node/vars/main.yml
+
+- name: Poll blockchain height until it is a multiple of 50
+  ansible.builtin.uri:
+    url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
+    method: GET
+    return_content: true
+  register: blockchain_height
+  ignore_errors: true # Do not fail the task if the request fails
+  until: 1 <= ((blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) % 50) <= 9
+  delay: 10 # Wait 10 seconds between retries
+  retries: 1000 # Large number to allow long polling
+
+- name: Stop axelar-tofnd service
+  ansible.builtin.systemd:
+    name: "{{ service_identifier }}"
+    state: stopped
+
+- name: Stop axelar-vald service
+  ansible.builtin.systemd:
+    name: axelar-vald
+    state: stopped
+
+- name: Remove mnemonic
+  ansible.builtin.file:
+    path: "{{ tofnd_home_dir }}/export"
+    state: absent
+
+- name: Rotate Keys
+  ansible.builtin.expect:
+    command: >
+      {{ tofnd_bin_dir }}/{{ service_identifier }} -m rotate -d {{ tofnd_home_dir }}
+    responses:
+      "Please type your tofnd password:": "{{ lookup('env', 'TOFND_PASSWORD') }}\n"
+
+- name: Read mnemonic
+  ansible.builtin.shell: cat {{ tofnd_home_dir }}/export
+  register: file_output
+
+- name: Print mnemonic
+  ansible.builtin.debug:
+    msg: "{{ file_output.stdout }}"
+
+- name: Remove mnemonic
+  ansible.builtin.file:
+    path: "{{ tofnd_home_dir }}/export"
+    state: absent
+
+- name: Restart axelar-tofnd service
+  ansible.builtin.systemd:
+    name: "{{ service_identifier }}"
+    state: restarted
+
+- name: Restart axelar-vald service
+  ansible.builtin.systemd:
+    name: axelar-vald
+    state: restarted
