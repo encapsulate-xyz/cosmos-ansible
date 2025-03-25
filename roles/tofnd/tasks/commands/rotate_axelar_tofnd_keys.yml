@@ -62,3 +62,14 @@
   ansible.builtin.systemd:
     name: axelar-vald
     state: restarted
+
+- name: Push timestamp metric to Pushgateway
+  uri:
+    url: "http://{{ monitor_server_dns }}:{{ pushgateway_port }}/metrics/job/chain_exporter"
+    method: PUT
+    body: |
+      # TYPE axelar_tofnd_last_key_rotation_timestamp gauge
+      axelar_tofnd_last_key_rotation_timestamp{env="{{ env }}",project="{{ project }}"} {{ ansible_date_time.epoch }}
+    headers:
+      Content-Type: "text/plain"
+    status_code: 200
