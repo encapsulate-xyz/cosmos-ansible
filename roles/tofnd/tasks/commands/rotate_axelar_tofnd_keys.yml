@@ -14,9 +14,9 @@
     return_content: true
   register: blockchain_height
   ignore_errors: true # Do not fail the task if the request fails
-  until: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) % 50 == 0  
-  delay: 60 # Wait 60 seconds between retries
-  retries: 10000 # Large number to allow long polling
+  until: 1 <= ((blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) % 50) <= 9
+  delay: 10 # Wait 60 seconds between retries
+  retries: 1000 # Large number to allow long polling
 
 - name: Stop axelar-tofnd service
   ansible.builtin.systemd:
