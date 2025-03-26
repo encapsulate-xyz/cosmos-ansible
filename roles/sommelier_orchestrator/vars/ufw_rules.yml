@@ -1,0 +1,6 @@
+sommelier_orchestrator_ufw_rules:
+  - port: "{{ orchestrator_metrics_port }}"
+    proto: tcp
+    rule: allow
+    from: "{{ monitor_server_dns }}"
+    comment: orchestrator_metrics_port
