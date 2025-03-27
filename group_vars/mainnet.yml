@@ -3,11 +3,11 @@
 celestia:
   chain_id: celestia
   validator:
-    version:  v3.4.2
+    version: v3.4.2
     go:
       version: 1.23.1
   fullnode:
-    version:  v3.4.2
+    version: v3.4.2
     go:
       version: 1.23.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/celestia/celestia_4098687.tar.lz4
