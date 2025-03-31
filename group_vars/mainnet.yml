@@ -145,6 +145,8 @@ gravity:
   orchestrator:
     version: v1.12.0
   node_grpc_address: http://localhost:13090
+  public_api_address: https://gravity-api.polkachu.com
+  address: gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp
 
 sommelier:
   chain_id: sommelier-3
@@ -158,6 +160,8 @@ sommelier:
   steward:
     version: v4.2.7
   node_grpc_address: http://localhost:13290
+  public_grpc_address: sommelier-grpc.polkachu.com:14190
+  address: somm1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtfx4ryr
 
 ixo:
   chain_id: ixo-5

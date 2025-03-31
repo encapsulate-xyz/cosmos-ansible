@@ -1,0 +1,10 @@
+[Unit]
+Description=Run {{ project }} Orchestrator Metrics every 15 seconds
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=15s
+Persistent=true
+
+[Install]
+WantedBy=timers.target
