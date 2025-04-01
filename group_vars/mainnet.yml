@@ -3,11 +3,11 @@
 celestia:
   chain_id: celestia
   validator:
-    version:  v3.4.2
+    version: v3.4.2
     go:
       version: 1.23.1
   fullnode:
-    version:  v3.4.2
+    version: v3.4.2
     go:
       version: 1.23.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/celestia/celestia_4098687.tar.lz4
@@ -32,7 +32,7 @@ umee:
 agoric:
   chain_id: agoric-3
   validator:
-    version: agoric-upgrade-18a
+    version: agoric-upgrade-19
     go:
       version: 1.23.1
     node:
@@ -145,6 +145,8 @@ gravity:
   orchestrator:
     version: v1.12.0
   node_grpc_address: http://localhost:13090
+  public_api_address: https://gravity-api.polkachu.com
+  address: gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp
 
 sommelier:
   chain_id: sommelier-3
@@ -158,6 +160,8 @@ sommelier:
   steward:
     version: v4.2.7
   node_grpc_address: http://localhost:13290
+  public_grpc_address: sommelier-grpc.polkachu.com:14190
+  address: somm1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtfx4ryr
 
 ixo:
   chain_id: ixo-5
@@ -179,7 +183,7 @@ paloma:
       version: v2.1.3
   snapshot_url: https://snapshots.polkachu.com/snapshots/paloma/paloma_32327947.tar.lz4
   pigeon:
-    version: v2.3.3
+    version: v2.3.4
     keyring_dir: "/opt/paloma"
     rpc_url: http://localhost:13657
 
@@ -212,7 +216,7 @@ qwoyn:
 terra:
   chain_id: phoenix-1
   validator:
-    version: v2.15.0
+    version: v2.16.0
     go:
       version: 1.23.5
     wasmvm:

@@ -69,6 +69,6 @@
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: delete_key_output
       changed_when: "'Key deleted forever' in delete_key_output.stdout"
-      when: 
-       - key_name in key_list.stdout
-       - project != "paloma"
+      when:
+        - key_name in key_list.stdout
+        - project != "paloma"

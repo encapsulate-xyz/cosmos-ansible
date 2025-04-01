@@ -41,7 +41,7 @@
       "Please type your tofnd password:": "{{ lookup('env', 'TOFND_PASSWORD') }}\n"
 
 - name: Read mnemonic
-  ansible.builtin.shell: cat {{ tofnd_home_dir }}/export
+  ansible.builtin.command: cat {{ tofnd_home_dir }}/export
   register: file_output
 
 - name: Print mnemonic

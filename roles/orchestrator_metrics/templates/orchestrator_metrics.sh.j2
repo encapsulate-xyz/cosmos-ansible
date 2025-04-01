@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Configuration
+{% if project == "sommelier" %}
+METRICS_URL="http://{{ orchestrator_metrics_url }}/sommelier?grpc={{ sommelier.public_grpc_address }}&orchAddress={{ sommelier.address }}"
+{% elif project == "gravity" %}
+METRICS_URL="http://{{ orchestrator_metrics_url }}/peggo?lcd={{ gravity.public_api_address }}&orchAddress={{ gravity.address }}"
+{% endif %}
+PUSHGATEWAY_URL="http://{{ monitor_server_dns }}:{{ pushgateway_port }}"
+JOB_NAME="chain_exporter"
+ENV="{{ env }}"
+PROJECT="{{ project }}"
+TIMEOUT=30
+
+# Timestamped logger
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
+}
+
+log "Fetching metrics from API..."
+
+# Fetch metrics
+response=$(curl -s --max-time $TIMEOUT "$METRICS_URL")
+curl_exit_code=$?
+
+# Check for curl timeout or failure
+if [[ $curl_exit_code -ne 0 || -z "$response" ]]; then
+    log "Error: Failed to fetch metrics. Possible timeout, network error, or unreachable endpoint."
+    exit 1
+fi
+
+# Check if response is valid JSON
+echo "$response" | jq . > /dev/null 2>&1
+if [[ $? -ne 0 ]]; then
+    log "Error: Received malformed JSON. Possible invalid grpc endpoint or orchAddress."
+    exit 1
+fi
+
+# Extract and validate fields
+percentageHigher=$(echo "$response" | jq '.percentageHigherThanYourOwn')
+ownNonce=$(echo "$response" | jq '.ownEventNonce')
+highestNonce=$(echo "$response" | jq '.highestEventNonce')
+totalDataPoints=$(echo "$response" | jq '.totalDataPoints')
+laggingBy=$(echo "$response" | jq '.lagging_by')
+
+# Validate each value (check for null or missing keys)
+if [[ "$percentageHigher" == "null" || "$ownNonce" == "null" || "$highestNonce" == "null" || "$totalDataPoints" == "null" || "$laggingBy" == "null" ]]; then
+    log "Error: Possible invalid grpc or orchAddress."
+    exit 1
+fi
+
+log "Successfully fetched metrics."
+
+# Build Prometheus metrics format
+metrics=$(cat <<EOF
+# TYPE orchestrator_percentage_higher_than_our gauge
+orchestrator_percentage_higher_than_our $percentageHigher
+# TYPE orchestrator_own_event_nonce gauge
+orchestrator_own_event_nonce $ownNonce
+# TYPE orchestrator_highest_event_nonce gauge
+orchestrator_highest_event_nonce $highestNonce
+# TYPE orchestrator_total_data_points gauge
+orchestrator_total_data_points $totalDataPoints
+# TYPE orchestrator_lagging_by gauge
+orchestrator_lagging_by $laggingBy
+EOF
+)
+
+# Ensure ending newline
+metrics="${metrics}"$'\n'
+
+# Push metrics
+log "Pushing metrics to Pushgateway..."
+start_time=$(date +%s)
+
+push_response=$(curl -s --max-time $TIMEOUT --write-out "%{http_code}" --output /dev/null \
+  --data-binary "$metrics" "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator")
+
+end_time=$(date +%s)
+duration=$((end_time - start_time))
+
+# Handle Pushgateway response
+if [[ "$push_response" == "200" ]]; then
+    log "Successfully pushed metrics."
+else
+    if [[ $duration -gt $TIMEOUT ]]; then
+        log "Push timed out after ${duration}s."
+    else
+        log "Failed to push metrics. HTTP code: $push_response"
+    fi
+    exit 1
+fi
