@@ -53,8 +53,8 @@ log "Successfully fetched metrics."
 
 # Build Prometheus metrics format
 metrics=$(cat <<EOF
-# TYPE orchestrator_percentage_higher gauge
-orchestrator_percentage_higher_then_our $percentageHigher
+# TYPE orchestrator_percentage_higher_than_our gauge
+orchestrator_percentage_higher_than_our $percentageHigher
 # TYPE orchestrator_own_event_nonce gauge
 orchestrator_own_event_nonce $ownNonce
 # TYPE orchestrator_highest_event_nonce gauge
