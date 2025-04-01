@@ -64,7 +64,7 @@
     state: restarted
 
 - name: Push timestamp metric to Pushgateway
-  uri:
+  ansible.builtin.uri:
     url: "http://{{ monitor_server_dns }}:{{ pushgateway_port }}/metrics/job/chain_exporter/env/{{ env }}/project/{{ project }}"
     method: PUT
     body: |
