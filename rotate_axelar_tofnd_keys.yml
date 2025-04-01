@@ -1,0 +1,34 @@
+---
+- name: Rotate Axelar Tofnd Keys
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    allowed_node_types: [tofnd]
+  vars_files:
+    - group_vars/ports.yml
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - group_vars/{{ env }}.yml
+
+  pre_tasks:
+    - name: Setup environment and dependencies
+      when: type in allowed_node_types
+      block:
+        - name: Include environment setup tasks
+          ansible.builtin.include_tasks: tasks/setup_environment.yml
+
+        - name: Check if TOFND_PASSWORD is set
+          ansible.builtin.fail:
+            msg: "The environment variable TOFND_PASSWORD is not set."
+          when: lookup('env', 'TOFND_PASSWORD') == ''
+
+  tasks:
+    - name: Run playbook
+      when: type in allowed_node_types
+      block:
+        - name: Include common handlers
+          ansible.builtin.include_role:
+            name: common
+        - name: Include command task
+          ansible.builtin.include_tasks: roles/tofnd/tasks/commands/rotate_axelar_tofnd_keys.yml

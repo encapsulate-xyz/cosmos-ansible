@@ -20,6 +20,7 @@ architecture_map:
   aarch64: arm64
 
 monitor_server_dns: monitor.encapsulate.xyz
+pushgateway_port: 9091
 domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
 default_node_types:
