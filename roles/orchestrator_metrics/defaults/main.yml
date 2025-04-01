@@ -1,0 +1,15 @@
+---
+# Maintains directories and paths
+orchestrator_metrics_home_dir: /opt/{{ service_identifier }}
+
+orchestrator_metrics_bin_dir: "{{ orchestrator_metrics_home_dir }}/bin"
+orchestrator_metrics_log_dir: "{{ orchestrator_metrics_home_dir }}/log"
+
+orchestrator_metrics_directories:
+  - "{{ orchestrator_metrics_home_dir }}"
+  - "{{ orchestrator_metrics_bin_dir }}"
+  - "{{ orchestrator_metrics_log_dir }}"
+
+orchestrator_metrics_log_file_path: "{{ orchestrator_metrics_log_dir }}/{{ service_identifier }}.log"
+
+orchestrator_metrics_script_file_path: "{{ orchestrator_metrics_bin_dir }}/{{ orchestrator_metrics_script_file_name }}"
