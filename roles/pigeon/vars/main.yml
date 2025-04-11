@@ -4,7 +4,7 @@
 # Env file name
 pigeon_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
 
-pigeon_config_file_name: config.yml
+pigeon_config_file_name: config.yaml
 
 pigeon_default_service_binary_name: pigeon
 
