@@ -1,0 +1,36 @@
+---
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ vald_metrics_home_dir }}"
+    directories: "{{ vald_metrics_directories }}"
+    log_file_path: "{{ vald_metrics_log_file_path }}"
+
+- name: Copy vald metrics script
+  ansible.builtin.template:
+    src: "vald_metrics.sh.j2"
+    dest: "{{ vald_metrics_script_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0755"
+
+- name: Copy vald metrics systemd service file
+  ansible.builtin.template:
+    src: vald_metrics.service.j2
+    dest: "/etc/systemd/system/{{ service_identifier }}.service"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+
+- name: Copy vald metrics timer service file
+  ansible.builtin.template:
+    src: vald_metrics.timer.j2
+    dest: "/etc/systemd/system/{{ service_identifier }}.timer"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart timer
