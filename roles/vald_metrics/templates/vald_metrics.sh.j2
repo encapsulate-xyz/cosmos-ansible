@@ -83,7 +83,7 @@ log "Pushing vald metrics to Pushgateway"
 
 cat <<EOF | curl --max-time 30 --data-binary @- "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/{{ project }}/env/{{ env }}"
 # TYPE axelar_vald_heartbeat_timestamp gauge
-axelar_vald_heartbeat_timestamp{height="$height"} $timestamp_sec
+axelar_vald_heartbeat_timestamp $timestamp_sec
 EOF
 
 log "Pushing vote metrics to Pushgateway"
