@@ -6,7 +6,7 @@ METRICS_URL="http://{{ orchestrator_metrics_url }}/sommelier?grpc={{ sommelier.p
 {% elif project == "gravity" %}
 METRICS_URL="http://{{ orchestrator_metrics_url }}/peggo?lcd={{ gravity.public_api_address }}&orchAddress={{ gravity.address }}"
 {% endif %}
-PUSHGATEWAY_URL="http://{{ monitor_server_dns }}:{{ pushgateway_port }}"
+PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
 JOB_NAME="chain_exporter"
 ENV="{{ env }}"
 PROJECT="{{ project }}"
