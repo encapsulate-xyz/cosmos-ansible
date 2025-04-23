@@ -11,7 +11,7 @@ log() {
 
 # Fetch heartbeat
 log "Fetching latest heartbeat data"
-heartbeat_response=$(timeout 30 curl -s -X POST https://api.axelarscan.io/validator/searchHeartbeats \
+heartbeat_response=$(timeout 30 curl -s -X POST {{ axelar.vald.heartbeat_metrics_url }} \
   -H "Content-Type: application/json" \
   -d '{
     "sender": "'"$ADDRESS"'",
@@ -27,7 +27,7 @@ fi
 
 # Fetch vote data
 log "Fetching vote data"
-vote_response=$(curl -s -X POST https://api.axelarscan.io/validator/searchPolls \
+vote_response=$(curl -s -X POST {{ axelar.vald.vote_metrics_url }} \
   -H "Content-Type: application/json" \
   -d '{
     "voter": "'"$ADDRESS"'",
