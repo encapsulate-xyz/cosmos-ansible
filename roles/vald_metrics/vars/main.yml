@@ -1,0 +1,4 @@
+---
+# Maintains file names, binary names, and anything that is not a directory or path
+
+vald_metrics_script_file_name: vald-metrics.sh

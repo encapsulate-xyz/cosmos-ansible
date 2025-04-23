@@ -30,7 +30,7 @@
     owner: "{{ service_identifier }}"
     group: "{{ service_identifier }}"
     mode: "0755"
-  when: vars[project][type].wasmvm.version is defined
+  when: lib_dir is defined and vars[project][type].wasmvm.version is defined
 
 - name: Create log file for the service
   ansible.builtin.file:

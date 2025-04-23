@@ -78,6 +78,7 @@ axelar:
       version: 1.23.1
     wasmvm:
       version: v1.5.8
+  broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
   vald:
     version: v1.2.1
     node_address: "tcp://validator.axelar.testnet.encapsulate.xyz:11457"

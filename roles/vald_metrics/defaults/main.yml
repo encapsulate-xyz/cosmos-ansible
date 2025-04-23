@@ -1,0 +1,15 @@
+---
+# Maintains directories and paths
+vald_metrics_home_dir: /opt/{{ service_identifier }}
+
+vald_metrics_bin_dir: "{{ vald_metrics_home_dir }}/bin"
+vald_metrics_log_dir: "{{ vald_metrics_home_dir }}/log"
+
+vald_metrics_directories:
+  - "{{ vald_metrics_home_dir }}"
+  - "{{ vald_metrics_bin_dir }}"
+  - "{{ vald_metrics_log_dir }}"
+
+vald_metrics_log_file_path: "{{ vald_metrics_log_dir }}/{{ service_identifier }}.log"
+
+vald_metrics_script_file_path: "{{ vald_metrics_bin_dir }}/{{ vald_metrics_script_file_name }}"

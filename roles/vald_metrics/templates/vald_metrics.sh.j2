@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# Set variables
+ADDRESS="{{ axelar.broadcaster_address }}"
+PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
+JOB_NAME="chain_exporter"
+
+log() {
+  echo "[$(date +"%Y-%m-%d %H:%M:%S")] $1"
+}
+
+# Fetch heartbeat
+log "Fetching latest heartbeat data"
+heartbeat_response=$(timeout 30 curl -s -X POST https://api.axelarscan.io/validator/searchHeartbeats \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender": "'"$ADDRESS"'",
+    "size": 1
+}')
+
+if [ $? -eq 0 ] && [ -n "$heartbeat_response" ]; then
+  log "Successfully fetched heartbeat data"
+else
+  log "Failed to fetch heartbeat data"
+  exit 1
+fi
+
+# Fetch vote data
+log "Fetching vote data"
+vote_response=$(curl -s -X POST https://api.axelarscan.io/validator/searchPolls \
+  -H "Content-Type: application/json" \
+  -d '{
+    "voter": "'"$ADDRESS"'",
+    "size": 200,
+    "sort": [
+      {
+        "created_at.ms": "desc"
+      }
+    ]
+}')
+
+if [ $? -eq 0 ] && [ -n "$vote_response" ]; then
+  log "Successfully fetched vote data"
+else
+  log "Failed to fetch vote data"
+  exit 1
+fi
+
+# Extract height and timestamp for vald heartbeat data
+height=$(echo "$heartbeat_response" | jq -r '.data[0].height')
+timestamp_ms=$(echo "$heartbeat_response" | jq -r '.data[0].timestamp')
+timestamp_sec=$((timestamp_ms / 1000))
+
+# Process vote percentage by chain
+log "Processing vote percentages by chain"
+metrics=""
+mapfile -t lines < <(echo "$vote_response" | jq -r --arg addr "$ADDRESS" '
+  .data[] 
+  | {chain: .sender_chain, vote: .[$addr].vote}
+' | jq -s '
+  group_by(.chain) 
+  | map({
+      chain: .[0].chain,
+      total: length,
+      voting_status: map(select(.vote == true)) | length
+    }) 
+' | jq -r '.[] | "\(.chain) \(.voting_status) \(.total)"')
+
+for line in "${lines[@]}"; do
+  chain=$(echo "$line" | awk '{print $1}')
+  voting_status=$(echo "$line" | awk '{print $2}')
+  total_votes=$(echo "$line" | awk '{print $3}')
+  percent=$(awk "BEGIN {printf \"%.2f\", ($voting_status / $total_votes) * 100}")
+
+  # Add to metrics
+  metrics+=$'axelar_evm_chain_vote_percent{'
+  metrics+="chain=\"$chain\""
+  metrics+="} $percent"$'\n'
+done
+
+# Push to Pushgateway
+log "Pushing vald metrics to Pushgateway"
+
+cat <<EOF | curl --max-time 30 --data-binary @- "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/{{ project }}/env/{{ env }}"
+# TYPE axelar_vald_heartbeat_timestamp gauge
+axelar_vald_heartbeat_timestamp{height="$height"} $timestamp_sec
+EOF
+
+log "Pushing vote metrics to Pushgateway"
+cat <<EOF | curl --max-time 30 --data-binary @- "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/{{ project }}/env/{{ env }}"
+# TYPE axelar_evm_chain_vote_percent gauge
+$metrics
+EOF
+
+log "Successfully pushed to Pushgateway"
