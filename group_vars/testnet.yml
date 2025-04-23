@@ -85,6 +85,8 @@ axelar:
     validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     wasmvm:
       version: v1.5.8
+    vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
+    heartbeat_metrics_url: https://testnet.api.axelarscan.io/validator/searchHeartbeats
   tofnd:
     version: v1.0.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
