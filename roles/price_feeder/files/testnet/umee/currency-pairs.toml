@@ -471,16 +471,6 @@ providers = [
 quote = "DYDX"
 
 [[currency_pairs]]
-base = "KAVA"
-quote = "USDT"
-providers = ["binance", "gate", "bitget", "binanceus", "crypto"]
-
-[[currency_pairs]]
-base = "KAVA"
-quote = "USD"
-providers = ["kraken", "coinbase", "crypto"]
-
-[[currency_pairs]]
 base = "SEI"
 providers = [
   "binance",
@@ -499,6 +489,53 @@ providers = [
 quote = "USD"
 
 [[currency_pairs]]
-base = "NTRN"
+base = "KAVA"
 quote = "USDT"
-providers = [ "binance", "bitget", "gate",]
+providers = [ "binance", "gate", "bitget", "binanceus", "crypto"]
+
+[[currency_pairs]]
+base = "KAVA"
+quote = "USD"
+providers = [ "kraken", "coinbase", "crypto"]
+
+[[currency_pairs]]
+base = "stSTARS"
+providers = [
+  "osmosis",
+]
+quote = "STARS"
+
+[[currency_pairs]]
+base = "HUAHUA"
+providers = [
+  "osmosis",
+]
+quote = "OSMO"
+
+[[currency_pairs]]
+base = "HUAHUA"
+providers = [
+  "osmosis",
+]
+quote = "ATOM"
+
+[[currency_pairs]]
+base = "HUAHUA"
+providers = [
+  "osmosis",
+]
+quote = "ATOM"
+
+[[currency_pairs]]
+base = "nBTC"
+providers = [
+  "osmosis",
+]
+quote = "WBTC"
+
+[[currency_pairs]]
+base = "nBTC"
+providers = [
+  "osmosis",
+]
+quote = "USDC"
