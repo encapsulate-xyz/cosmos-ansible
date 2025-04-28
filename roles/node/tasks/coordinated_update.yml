@@ -11,16 +11,8 @@
   notify:
     - Restart service
 
-- name: Poll blockchain height until it reaches upgrade height
-  ansible.builtin.uri:
-    url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
-    method: GET
-    return_content: true
-  register: blockchain_height
-  ignore_errors: true # Do not fail the task if the request fails
-  until: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) == (upgrade_height | int)
-  delay: 60 # Wait 60 seconds between retries
-  retries: 10000 # Large number to allow long polling
+- name: Include poll height task
+  ansible.builtin.include_tasks: poll_height.yml
 
 #######################################################################################################################
 
