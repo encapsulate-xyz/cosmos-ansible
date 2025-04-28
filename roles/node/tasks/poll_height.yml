@@ -9,7 +9,8 @@
 
 - name: Display waiting message
   ansible.builtin.debug:
-    msg: "Waiting for blockchain height to reach upgrade height. Current: {{ blockchain_height.json.result.sync_info.latest_block_height }}, Remaining blocks: {{ upgrade_height | int - blockchain_height.json.result.sync_info.latest_block_height | default(0) | int }}"
+    msg: "Waiting for blockchain height to reach upgrade height. Current: {{ blockchain_height.json.result.sync_info.latest_block_height }}, Remaining blocks: {{
+      upgrade_height | int - blockchain_height.json.result.sync_info.latest_block_height | default(0) | int }}"
 
 - name: Pause for 30 seconds
   ansible.builtin.pause:
@@ -17,4 +18,4 @@
 
 - name: Include poll height task
   ansible.builtin.include_tasks: poll_height.yml
-  when: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) >= (upgrade_height | int)
+  when: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) == (upgrade_height | int)
