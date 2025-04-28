@@ -3,6 +3,7 @@
   ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
   register: pubkey_result
   changed_when: false
+  failed_when: pubkey_result.rc != 0
 
 - name: Execute create validator
   ansible.builtin.expect:
@@ -29,3 +30,8 @@
     responses:
       "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
   register: create_validator_output
+  failed_when: create_validator_output.rc != 0
+
+- name: print create validator result
+  ansible.builtin.debug:
+    msg: "{{ create_validator_output.stdout }}"

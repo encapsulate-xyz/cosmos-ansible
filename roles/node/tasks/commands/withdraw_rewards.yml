@@ -8,6 +8,7 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: validator_status
+      failed_when: validator_status.rc != 0
 
     - name: Debug raw output
       ansible.builtin.debug:
@@ -38,6 +39,7 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: withdraw_output
+      failed_when: withdraw_output.rc != 0
 
     - name: Print withdrawal result
       ansible.builtin.debug:

@@ -17,7 +17,8 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: existing_key_list
-
+      failed_when: existing_key_list.rc != 0
+    
     - name: Add key
       ansible.builtin.expect:
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys add {{ key_name }} --home {{ node_home_dir }} --recover"
@@ -26,6 +27,8 @@
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
           "Re-enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       when: key_name not in existing_key_list.stdout
+      register: add_key
+      failed_when: add_key.rc != 0
 
     - name: List keys
       ansible.builtin.expect:
@@ -33,6 +36,7 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: key_list
+      failed_when: key_list.rc != 0
 
     - name: Extract and parse key addresses
       ansible.builtin.debug:
@@ -72,3 +76,4 @@
       when:
         - key_name in key_list.stdout
         - project != "paloma"
+      failed_when: delete_key_output.rc != 0
