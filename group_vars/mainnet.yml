@@ -43,8 +43,6 @@ axelar:
   chain_id: axelar-dojo-1
   validator:
     version: v1.2.1
-    go:
-      version: 1.23.1
     wasmvm:
       version: v1.5.8
   broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs

@@ -91,7 +91,7 @@ c4e:
 
 axelar:
   validator:
-    source_url: https://github.com/axelarnetwork/axelar-core
+    source_url: https://github.com/axelarnetwork/axelar-core/releases/download
     ports:
       prefix: 114
   vald:

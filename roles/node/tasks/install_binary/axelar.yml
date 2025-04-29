@@ -1,0 +1,14 @@
+---
+- name: Fetch the axelar service binary
+  vars:
+    suffix_url: >
+      {{ axelar.validator.version }}/{{ node_service_default_binary_name[project] }}-{{ ansible_system | lower }}-{{ system_architecture }}-{{ axelar.validator.version }}
+  ansible.builtin.get_url:
+    url: "{{ axelar.validator.source_url }}/{{ suffix_url }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
