@@ -9,18 +9,27 @@
           --fees {{ node_network_params.fee }}{{ node_network_params.denom }} --chain-id {{ vars[project].chain_id }} --yes
           --gas auto --gas-adjustment {{ node_network_params.gas_adjustment }}
           --node tcp://localhost:{{ rpc_port }}
-          --output text
+          --output json
           --keyring-dir {{ node_home_dir }}
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: unjail_output
-      failed_when: unjail_output.rc != 0
+      failed_when: 
+        - unjail_output.rc != 0
+        - (unjail_output.stdout | from_json).code != 0
 
     - name: Print unjail transaction result
       ansible.builtin.debug:
         msg: "{{ unjail_output.stdout }}"
+      when: unjail_output.rc == 0
 
-    - name: Print hash
+    - name: Print txhash
       ansible.builtin.debug:
-        msg: "Hash: {{ unjail_output.stdout | regex_search('hash: ([a-zA-Z0-9]+)', '\\1') }}"
+        msg: "Hash: {{ (unjail_output.stdout | from_json).txhash }}"
+      when: unjail_output.rc == 0
+
+    - name: Print Codespace error if the unjail excution is failed
+      ansible.builtin.debug:
+        msg: "Codespace: {{ (unjail_output.stdout | from_json).codespace }}"
+      when: (unjail_output.stdout | from_json).code != 0

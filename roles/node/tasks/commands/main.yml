@@ -18,7 +18,7 @@
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: existing_key_list
       failed_when: existing_key_list.rc != 0
-    
+
     - name: Add key
       ansible.builtin.expect:
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys add {{ key_name }} --home {{ node_home_dir }} --recover"

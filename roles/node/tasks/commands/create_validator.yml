@@ -25,13 +25,27 @@
       --chain-id={{ vars[project].chain_id }}
       --node tcp://localhost:{{ rpc_port }}
       --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
+      --output json
       --gas=auto
       --gas-adjustment=1.4 -y
     responses:
       "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
   register: create_validator_output
-  failed_when: create_validator_output.rc != 0
-
+  failed_when: 
+    - create_validator_output.rc != 0
+    - (create_validator_output.stdout | from_json).code != 0
+  
 - name: print create validator result
   ansible.builtin.debug:
     msg: "{{ create_validator_output.stdout }}"
+  when: create_validator_output.rc == 0
+
+- name: Print txhash
+  ansible.builtin.debug:
+    msg: "Hash: {{ (create_validator_output.stdout | from_json).txhash }}"
+  when: create_validator_output.rc == 0
+
+- name: Print Codespace error if the create validator excution is failed
+  ansible.builtin.debug:
+    msg: "Codespace: {{ (create_validator_output.stdout | from_json).codespace }}"
+  when: (create_validator_output.stdout | from_json).code != 0
