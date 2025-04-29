@@ -9,7 +9,7 @@ EnvironmentFile={{ gravity_orchestrator_environment_secrets_file_path }}
 ExecStart={{ gravity_orchestrator_bin_dir }}/{{ service_identifier }} --home {{ gravity_orchestrator_home_dir }} \
     orchestrator --fees 0ugraviton \
     --gravity-contract-address 0xa4108aA1Ec4967F8b52220a4f7e94A8201F2D906 \
-    --ethereum-rpc {{ vault.mainnet.gravity.ethereum_rpc }} \
+    --ethereum-rpc {{ gravity_ethereum_rpc | default(vault.mainnet.gravity.ethereum_rpc) }} \
     --cosmos-grpc {{ gravity.node_grpc_address }} \
     --cosmos-phrase "${COSMOS_PHRASE}" \
     --ethereum-key $ETHEREUM_PVT_KEY
