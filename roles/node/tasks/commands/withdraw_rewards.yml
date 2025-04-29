@@ -8,6 +8,7 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: validator_status
+      failed_when: validator_status.rc != 0
 
     - name: Debug raw output
       ansible.builtin.debug:
@@ -31,51 +32,22 @@
           --chain-id {{ vars[project].chain_id }}
           --home {{ node_home_dir }}
           --node tcp://localhost:{{ rpc_port }}
-          --output text
+          --output json
           --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
           --keyring-dir {{ node_home_dir }}
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: withdraw_output
+      failed_when: 
+        - withdraw_output.rc != 0
+        - (withdraw_output.stdout | from_json).code != 0
 
-    - name: Print withdrawal result
-      ansible.builtin.debug:
-        msg: "{{ withdraw_output.stdout }}"
+    - name: Prase withdraw validator rewards command output and store in variable
+      set_fact:
+        command_result: "{{ withdraw_output.stdout | from_json }}"
+      when: withdraw_output.rc == 0
 
-    - name: Extract 'code'
-      ansible.builtin.set_fact:
-        tx_code: "{{ withdraw_output.stdout | regex_search('(?m)^code:\\s*([0-9]+)', '\\1') | default('') }}"
-
-    - name: Extract 'txhash'
-      ansible.builtin.set_fact:
-        tx_hash: "{{ withdraw_output.stdout | regex_search('(?m)^txhash:\\s*([A-Z0-9]+)', '\\1') | default('') }}"
-
-#    - name: Extract 'raw_log' before 'timestamp'
-#      ansible.builtin.set_fact:
-#        raw_log: >-
-#          {{
-#            withdraw_output.stdout
-#            | regex_replace('\r', '\n')
-#            | regex_search('(?sm)raw_log:\\s*(.*?)(?=^timestamp:)', '\\1')
-#            | default('')
-#          }}
-
-# todo: add raw log to output
-# todo: also command status should depend upon code, a non zero code and task should be shown failed in ansible
-#    - name: Extract raw_log (keeping quotes)
-#      ansible.builtin.set_fact:
-#        tx_raw_log: >-
-#          {{
-#            withdraw_output.stdout
-#            | regex_replace('\r','')
-#            | regex_search('(?m)^\\s*raw_log:\\s*(.*)', '\\1')
-#            | default('')
-#          }}
-
-    - name: Debug parsed output
-      ansible.builtin.debug:
-        msg:
-          - "Code: {{ tx_code }}"
-          - "Hash: {{ tx_hash }}"
-#          - "Raw Log: {{ raw_log }}"
+    - name: Include display command output task
+      ansible.builtin.import_tasks: display_command_output.yml
+      when: withdraw_output.rc == 0
