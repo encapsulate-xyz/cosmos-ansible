@@ -1,0 +1,7 @@
+---
+- name: Display txhash, raw_log and codespace fields
+  ansible.builtin.debug:
+    msg: |
+      txhash: {{ command_result.txhash | default('N/A') }}
+      raw_log: {{ command_result.raw_log | default('') }}
+      codespace: {{ command_result.codespace | default('') }}

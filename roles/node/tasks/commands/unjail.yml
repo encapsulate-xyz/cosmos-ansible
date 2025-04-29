@@ -19,19 +19,11 @@
         - unjail_output.rc != 0
         - (unjail_output.stdout | from_json).code != 0
 
-    - name: Print unjail transaction result
-      ansible.builtin.debug:
-        msg: "{{ unjail_output.stdout }}"
+    - name: Prase unjail command output and store in variable
+      set_fact:
+        command_result: "{{ unjail_output.stdout | from_json }}"
       when: unjail_output.rc == 0
 
-    - name: Display txhash and raw_log fields
-      ansible.builtin.debug:
-        msg: |
-          txhash: {{ (unjail_output.stdout | from_json).txhash }}
-          raw_log: {{ (unjail_output.stdout | from_json).raw_log | default('') }}
+    - name: Include display command output task
+      ansible.builtin.import_tasks: display_command_output.yml
       when: unjail_output.rc == 0
-
-    - name: Print Codespace error if the unjail excution is failed
-      ansible.builtin.debug:
-        msg: "Codespace: {{ (unjail_output.stdout | from_json).codespace }}"
-      when: (unjail_output.stdout | from_json).code != 0

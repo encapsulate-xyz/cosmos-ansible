@@ -35,19 +35,11 @@
     - create_validator_output.rc != 0
     - (create_validator_output.stdout | from_json).code != 0
   
-- name: print create validator result
-  ansible.builtin.debug:
-    msg: "{{ create_validator_output.stdout }}"
+- name: Prase create validator command output and store in variable
+  set_fact:
+    command_result: "{{ create_validator_output.stdout | from_json }}"
   when: create_validator_output.rc == 0
 
-- name: Display txhash and raw_log fields
-  ansible.builtin.debug:
-    msg: |
-      txhash: {{ (create_validator_output.stdout | from_json).txhash }}
-      raw_log: {{ (create_validator_output.stdout | from_json).raw_log | default('') }}
+- name: Include display command output task
+  ansible.builtin.import_tasks: display_command_output.yml
   when: create_validator_output.rc == 0
-
-- name: Print Codespace error if the create validator excution is failed
-  ansible.builtin.debug:
-    msg: "Codespace: {{ (create_validator_output.stdout | from_json).codespace }}"
-  when: (create_validator_output.stdout | from_json).code != 0
