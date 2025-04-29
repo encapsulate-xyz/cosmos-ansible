@@ -74,8 +74,6 @@ axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
     version: v1.2.1
-    go:
-      version: 1.23.1
     wasmvm:
       version: v1.5.8
   broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
