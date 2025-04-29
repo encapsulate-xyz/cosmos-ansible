@@ -43,16 +43,11 @@
         - withdraw_output.rc != 0
         - (withdraw_output.stdout | from_json).code != 0
 
-    - name: Print withdrawal result
-      ansible.builtin.debug:
-        msg: "{{ withdraw_output.stdout }}"
-      when: withdraw_output.rc == 0
-
     - name: Display txhash and raw_log fields
       ansible.builtin.debug:
         msg: |
           txhash: {{ (withdraw_output.stdout | from_json).txhash }}
-          raw_log: {{ (withdraw_output.stdout | from_json).raw_log }}
+          raw_log: {{ (withdraw_output.stdout | from_json).raw_log | default('') }}
       when: withdraw_output.rc == 0
 
     - name: Print Codespace error if the withdraw rewards excution is failed

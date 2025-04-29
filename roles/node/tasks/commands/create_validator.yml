@@ -40,9 +40,11 @@
     msg: "{{ create_validator_output.stdout }}"
   when: create_validator_output.rc == 0
 
-- name: Print txhash
+- name: Display txhash and raw_log fields
   ansible.builtin.debug:
-    msg: "Hash: {{ (create_validator_output.stdout | from_json).txhash }}"
+    msg: |
+      txhash: {{ (create_validator_output.stdout | from_json).txhash }}
+      raw_log: {{ (create_validator_output.stdout | from_json).raw_log | default('') }}
   when: create_validator_output.rc == 0
 
 - name: Print Codespace error if the create validator excution is failed

@@ -24,9 +24,11 @@
         msg: "{{ unjail_output.stdout }}"
       when: unjail_output.rc == 0
 
-    - name: Print txhash
+    - name: Display txhash and raw_log fields
       ansible.builtin.debug:
-        msg: "Hash: {{ (unjail_output.stdout | from_json).txhash }}"
+        msg: |
+          txhash: {{ (unjail_output.stdout | from_json).txhash }}
+          raw_log: {{ (unjail_output.stdout | from_json).raw_log | default('') }}
       when: unjail_output.rc == 0
 
     - name: Print Codespace error if the unjail excution is failed
