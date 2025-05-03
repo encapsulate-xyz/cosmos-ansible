@@ -98,6 +98,10 @@ axelar:
     source_url: https://github.com/axelarnetwork/axelar-core/releases/download
   tofnd:
     source_url: https://github.com/axelarnetwork/tofnd/releases/download
+  fullnode:
+    source_url: https://github.com/axelarnetwork/axelar-core/releases/download
+    ports:
+      prefix: 115
 
 agoric:
   validator:
