@@ -76,6 +76,10 @@ axelar:
     version: v1.2.1
     wasmvm:
       version: v1.5.8
+  fullnode:
+    version: v1.2.1
+    wasmvm:
+      version: v1.5.8
   broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
   vald:
     version: v1.2.1

@@ -40,6 +40,8 @@ all:
         validator.axelar.testnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
+        fullnode.axelar.testnet.encapsulate.xyz:
+          type: fullnode
         axelar_vald_host:
           ansible_host: validator.axelar.testnet.encapsulate.xyz
           type: vald
