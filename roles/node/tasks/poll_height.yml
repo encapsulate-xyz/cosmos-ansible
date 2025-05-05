@@ -18,4 +18,4 @@
 
 - name: Include poll height task
   ansible.builtin.include_tasks: poll_height.yml
-  when: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) == (upgrade_height | int)
+  when: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) != (upgrade_height | int)
