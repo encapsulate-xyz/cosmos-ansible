@@ -1,0 +1,14 @@
+---
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: roles/node/defaults/main.yml
+
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: roles/node/vars/{{ env }}/{{ project }}.yml
+
+- name: Rollback cosmos-sdk and tendermint state by one height
+  ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} rollback --home {{ node_home_dir }}"
+  register: rollback_result
+  changed_when: false
+  failed_when: rollback_result.rc != 0
