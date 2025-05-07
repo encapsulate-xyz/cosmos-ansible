@@ -1,0 +1,14 @@
+---
+- name: Fetch the juno service binary
+  vars:
+    suffix_url: >
+      {{ juno.validator.version }}/{{ node_service_default_binary_name[project] }}
+  ansible.builtin.get_url:
+    url: "{{ juno.validator.source_url }}/{{ suffix_url }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service

@@ -116,7 +116,7 @@ pell:
 
 juno:
   validator:
-    source_url: https://github.com/CosmosContracts/juno
+    source_url: https://github.com/CosmosContracts/juno/releases/download
     ports:
       prefix: 120
 
