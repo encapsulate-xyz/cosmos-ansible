@@ -18,6 +18,13 @@
   changed_when: false
   failed_when: rollback_result.rc != 0
 
+- name: Set ownership for data directory
+  ansible.builtin.file:
+    path: "{{ node_data_dir }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    recurse: true
+
 - name: Restart service
   ansible.builtin.systemd:
     name: "{{ service_identifier }}"
