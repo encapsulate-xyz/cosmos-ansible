@@ -9,21 +9,17 @@
           --fees {{ node_network_params.fee }}{{ node_network_params.denom }} --chain-id {{ vars[project].chain_id }} --yes
           --gas auto --gas-adjustment {{ node_network_params.gas_adjustment }}
           --node tcp://localhost:{{ rpc_port }}
-          --output json
+          --output text
           --keyring-dir {{ node_home_dir }}
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: unjail_output
-      failed_when: 
-        - unjail_output.rc != 0
-        - (unjail_output.stdout | from_json).code != 0
+      failed_when: unjail_output.rc != 0
 
-    - name: Prase unjail command output and store in variable
-      set_fact:
-        command_result: "{{ unjail_output.stdout | from_json }}"
-      when: unjail_output.rc == 0
-
-    - name: Include display command output task
-      ansible.builtin.import_tasks: display_command_output.yml
-      when: unjail_output.rc == 0
+    - name: Display txhash, raw_log and codespace fields
+      ansible.builtin.debug:
+        msg: |
+          TX Hash: {{ unjail_output.stdout | regex_search('txhash: ([a-zA-Z0-9]+)', '\\1') | default('N/A') }}
+          Cosespace: {{ unjail_output.stdout | regex_search('codespace: ([a-zA-Z0-9]+)', '\\1') | default('N/A') }}
+          Raw Log: {{ unjail_output.stdout | regex_search('raw_log: ([a-zA-Z0-9]+)', '\\1') | default('N/A') }} 
