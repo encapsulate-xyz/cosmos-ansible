@@ -15,8 +15,11 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: unjail_output
-      failed_when: unjail_output.rc != 0
+      failed_when: 
+        - unjail_output.rc != 0
+        - (unjail_output.stdout | from_json).code != 0
 
+  always:
     - name: Display txhash, raw_log and codespace fields
       ansible.builtin.debug:
         msg: |
