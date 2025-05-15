@@ -17,7 +17,7 @@
       register: unjail_output
       failed_when: 
         - unjail_output.rc != 0
-        - (unjail_output.stdout | from_json).code != 0
+        - (unjail_output.stdout | regex_search('"code":\s*(\d+)', '\\1') | int) != 0
 
   always:
     - name: Display txhash, raw_log and codespace fields
