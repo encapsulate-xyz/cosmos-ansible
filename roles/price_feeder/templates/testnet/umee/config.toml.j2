@@ -1,8 +1,7 @@
 config_dir = "{{ price_feeder_config_dir }}"
-provider_timeout = "1000000s"
 
-gas_prevote = 55000
-gas_vote = 160000
+gas_adjustment = 1.9
+provider_timeout = "1000000s"
 
 [server]
 listen_addr = "0.0.0.0:{{ price_feeder_port }}"
