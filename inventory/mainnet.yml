@@ -74,18 +74,15 @@ all:
       hosts:
         validator.gravity.mainnet.encapsulate.xyz:
           type: validator
-        gravity_orchestrator_host:
-          ansible_host: validator.gravity.mainnet.encapsulate.xyz
+        orchestrator.gravity.mainnet.encapsulate.xyz:
           type: orchestrator
     sommelier:
       hosts:
         validator.sommelier.mainnet.encapsulate.xyz:
           type: validator
-        sommelier_orchestrator_host:
-          ansible_host: validator.sommelier.mainnet.encapsulate.xyz
+        orchestrator.sommelier.mainnet.encapsulate.xyz:
           type: orchestrator
-        sommelier_steward_host:
-          ansible_host: validator.sommelier.mainnet.encapsulate.xyz
+        steward.sommelier.mainnet.encapsulate.xyz:
           type: steward
     ixo:
       hosts:
@@ -95,8 +92,7 @@ all:
       hosts:
         validator.paloma.mainnet.encapsulate.xyz:
           type: validator
-        paloma_pigeon_host:
-          ansible_host: validator.paloma.mainnet.encapsulate.xyz
+        pigeon.paloma.mainnet.encapsulate.xyz:
           type: pigeon
     planq:
       hosts:
