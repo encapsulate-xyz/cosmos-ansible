@@ -119,6 +119,10 @@ juno:
     source_url: https://github.com/CosmosContracts/juno/releases/download
     ports:
       prefix: 120
+  fullnode:
+    source_url: https://github.com/CosmosContracts/juno/releases/download
+    ports:
+      prefix: 121
 
 stargaze:
   validator:
