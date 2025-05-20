@@ -40,6 +40,8 @@ all:
       hosts:
         validator.juno.mainnet.encapsulate.xyz:
           type: validator
+        fullnode.juno.mainnet.encapsulate.xyz:
+          type: fullnode
     stargaze:
       hosts:
         validator.stargaze.mainnet.encapsulate.xyz:
