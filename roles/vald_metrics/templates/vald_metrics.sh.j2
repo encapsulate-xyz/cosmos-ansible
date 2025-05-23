@@ -2,7 +2,7 @@
 
 # Set variables
 ADDRESS="{{ axelar.broadcaster_address }}"
-PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
+PUSHGATEWAY_URL="http://{{ monitor_server_dns }}:{{ pushgateway_port }}"
 JOB_NAME="chain_exporter"
 
 log() {
