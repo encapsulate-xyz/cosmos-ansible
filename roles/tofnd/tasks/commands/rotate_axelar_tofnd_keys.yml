@@ -65,7 +65,7 @@
 
 - name: Push timestamp metric to Pushgateway
   ansible.builtin.uri:
-    url: "http://{{ pushgateway_dns }}/metrics/job/chain_exporter/env/{{ env }}/project/{{ project }}"
+    url: "https://{{ pushgateway_dns }}/metrics/job/chain_exporter/env/{{ env }}/project/{{ project }}"
     method: PUT
     body: |
       # TYPE axelar_tofnd_last_key_rotation_timestamp gauge
