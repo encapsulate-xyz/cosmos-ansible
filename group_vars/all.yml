@@ -11,6 +11,7 @@ about: "Others Trust, We Validate ! Your Stake is Important to Us. Secure Networ
 identity: B68A51B88F28CEF1
 
 ansible_port: 8192
+pushgateway_port: 9091
 
 orchestrator_metrics_url: "134.209.147.117:8084"
 
@@ -19,8 +20,6 @@ architecture_map:
   aarch64: arm64
 
 monitor_server_dns: monitor.encapsulate.xyz
-pushgateway_dns: pushgateway.encapsulate.xyz
-
 domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
 default_node_types:
