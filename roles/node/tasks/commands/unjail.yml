@@ -21,8 +21,8 @@
 
   always:
     - name: Show raw unjail output for debugging
-      debug:
-      var: unjail_output.stdout
+      ansible.builtin.debug:
+        msg: "{{ unjail_output.stdout }}"
 
     - name: Display txhash, raw_log and codespace fields
       ansible.builtin.debug:
