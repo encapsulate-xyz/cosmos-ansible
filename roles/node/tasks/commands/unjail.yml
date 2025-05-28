@@ -20,13 +20,9 @@
         - (unjail_output.stdout | regex_search('"code":\s*(\d+)', '\\1') | int) != 0
 
   always:
-    - name: Show raw unjail output for debugging
-      ansible.builtin.debug:
-        msg: "{{ unjail_output.stdout }}"
-
     - name: Display txhash, raw_log and codespace fields
       ansible.builtin.debug:
         msg: |
-          TX Hash: {{ (unjail_output.stdout | regex_search('txhash: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
-          Codespace: {{ (unjail_output.stdout | regex_search('codespace: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
-          Raw Log: {{ (unjail_output.stdout | regex_search('raw_log: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
+          TX Hash: {{ (unjail_output.stdout | regex_search('txhash: ([A-Fa-f0-9]+)', '\\1')) | default('N/A', true) }}
+          Codespace: {{ (unjail_output.stdout | regex_search('codespace: "([^"]*)"', '\\1')) | default('N/A', true) }}
+          Raw Log: {{ (unjail_output.stdout | regex_search("raw_log: '(.*?)'", '\\1')) | default('N/A', true) }}
