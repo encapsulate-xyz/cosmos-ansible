@@ -39,13 +39,14 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: withdraw_output
-      failed_when: 
+      failed_when:
         - withdraw_output.rc != 0
-        - (withdraw_output.stdout | from_json).code != 0
+        - ((withdraw_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
+  always:
     - name: Prase withdraw validator rewards command output and store in variable
-      set_fact:
-        command_result: "{{ withdraw_output.stdout | from_json }}"
+      ansible.builtin.set_fact:
+        command_result: "{{ withdraw_output }}"
       when: withdraw_output.rc == 0
 
     - name: Include display command output task

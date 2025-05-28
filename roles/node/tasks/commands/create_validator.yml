@@ -1,45 +1,48 @@
 ---
-- name: Get validator public key
-  ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
-  register: pubkey_result
-  changed_when: false
-  failed_when: pubkey_result.rc != 0
+- name: Create Validator
+  block:
+    - name: Get validator public key
+      ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
+      register: pubkey_result
+      changed_when: false
+      failed_when: pubkey_result.rc != 0
 
-- name: Execute create validator
-  ansible.builtin.expect:
-    command: >
-      {{ node_bin_dir }}/{{ service_identifier }} tx staking create-validator --home {{ node_home_dir }}
-      --amount={{ gentx_amount }}{{ node_network_params.denom }}
-      --broadcast-mode=sync
-      --pubkey='{{ pubkey_result.stdout }}'
-      --moniker={{ moniker }}
-      --website={{ website }}
-      --details="{{ about }}"
-      --commission-rate={{ node_network_params.current_commission_rate }}
-      --commission-max-rate={{ node_network_params.max_commission_rate }}
-      --commission-max-change-rate={{ node_network_params.change_commission_rate }}
-      --min-self-delegation="1"
-      --identity={{ identity }}
-      --security-contact={{ security_mail }}
-      --from={{ key_name }}
-      --chain-id={{ vars[project].chain_id }}
-      --node tcp://localhost:{{ rpc_port }}
-      --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
-      --output json
-      --gas=auto
-      --gas-adjustment=1.4 -y
-    responses:
-      "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-  register: create_validator_output
-  failed_when: 
-    - create_validator_output.rc != 0
-    - (create_validator_output.stdout | from_json).code != 0
-  
-- name: Prase create validator command output and store in variable
-  set_fact:
-    command_result: "{{ create_validator_output.stdout | from_json }}"
-  when: create_validator_output.rc == 0
+    - name: Execute create validator
+      ansible.builtin.expect:
+        command: >
+          {{ node_bin_dir }}/{{ service_identifier }} tx staking create-validator --home {{ node_home_dir }}
+          --amount={{ gentx_amount }}{{ node_network_params.denom }}
+          --broadcast-mode=sync
+          --pubkey='{{ pubkey_result.stdout }}'
+          --moniker={{ moniker }}
+          --website={{ website }}
+          --details="{{ about }}"
+          --commission-rate={{ node_network_params.current_commission_rate }}
+          --commission-max-rate={{ node_network_params.max_commission_rate }}
+          --commission-max-change-rate={{ node_network_params.change_commission_rate }}
+          --min-self-delegation="1"
+          --identity={{ identity }}
+          --security-contact={{ security_mail }}
+          --from={{ key_name }}
+          --chain-id={{ vars[project].chain_id }}
+          --node tcp://localhost:{{ rpc_port }}
+          --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
+          --output json
+          --gas=auto
+          --gas-adjustment=1.4 -y
+        responses:
+          "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
+      register: create_validator_output
+      failed_when:
+        - create_validator_output.rc != 0
+        - ((create_validator_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
-- name: Include display command output task
-  ansible.builtin.import_tasks: display_command_output.yml
-  when: create_validator_output.rc == 0
+  always:
+    - name: Prase create validator command output and store in variable
+      ansible.builtin.set_fact:
+        command_result: "{{ create_validator_output }}"
+      when: create_validator_output.rc == 0
+
+    - name: Include display command output task
+      ansible.builtin.import_tasks: display_command_output.yml
+      when: create_validator_output.rc == 0
