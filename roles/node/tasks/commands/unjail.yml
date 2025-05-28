@@ -15,18 +15,16 @@
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
       register: unjail_output
-      failed_when: 
+      failed_when:
         - unjail_output.rc != 0
-        - (unjail_output.stdout | regex_search('"code":\s*(\d+)', '\\1') | int) != 0
+        - ((unjail_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
   always:
-    - name: Show raw unjail output for debugging
-      ansible.builtin.debug:
-        msg: "{{ unjail_output.stdout }}"
+    - name: Prase unjail command output and store in variable
+      ansible.builtin.set_fact:
+        command_result: "{{ unjail_output }}"
+      when: unjail_output.rc == 0
 
-    - name: Display txhash, raw_log and codespace fields
-      ansible.builtin.debug:
-        msg: |
-          TX Hash: {{ (unjail_output.stdout | regex_search('txhash: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
-          Codespace: {{ (unjail_output.stdout | regex_search('codespace: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
-          Raw Log: {{ (unjail_output.stdout | regex_search('raw_log: ([a-zA-Z0-9]+)', '\\1')) | default('N/A', true) }}
+    - name: Include display command output task
+      ansible.builtin.import_tasks: display_command_output.yml
+      when: unjail_output.rc == 0

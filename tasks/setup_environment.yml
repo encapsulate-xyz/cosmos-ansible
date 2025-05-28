@@ -50,7 +50,8 @@
 
 - name: Set port variable for orchestrator service
   ansible.builtin.set_fact:
-    orchestrator_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics)) }}"
+    orchestrator_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics))
+      }}"
   when: type == "orchestrator"
 
 - name: Set port variable for steward service
@@ -66,8 +67,10 @@
 - name: Set all port variables dynamically for Execution Client
   ansible.builtin.set_fact:
     execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
-    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_websocket | default(ports.suffix.execution_websocket)) }}"
-    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_metrics | default(ports.suffix.execution_metrics)) }}"
+    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_websocket | default(ports.suffix.execution_websocket))
+      }}"
+    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_metrics | default(ports.suffix.execution_metrics))
+      }}"
   when: execution_client | default(false) | bool
 
 - name: Display all port variables
