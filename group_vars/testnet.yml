@@ -3,9 +3,9 @@
 omniflix:
   chain_id: flixnet-4
   validator:
-    version: v5.2.0-alpha.1
+    version: v6.0.0-alpha.2
     go:
-      version: 1.22.5
+      version: 1.24.3
     wasmvm:
       version: v2.1.2
   snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
