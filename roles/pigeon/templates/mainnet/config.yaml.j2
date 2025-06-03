@@ -68,3 +68,11 @@ evm:
     keyring-dir: {{ pigeon_keys_dir }}
     gas-adjustment: 2
     tx-type: 2
+  celo-main:
+    chain-id: 42220
+    base-rpc-url: {{ vault.mainnet.paloma.celo_rpc }}
+    keyring-pass-env-name: KEYRING_PASSWORD
+    signing-key: 0x9a27f79AE2C5342174272874C2385DCb0B8C3d07
+    keyring-dir: {{ pigeon_keys_dir }}
+    gas-adjustment: 2
+    tx-type: 2
