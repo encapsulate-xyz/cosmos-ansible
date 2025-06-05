@@ -6,6 +6,10 @@
 # "$HOME/.cometbft" by default, but could be changed via $CMTHOME env variable
 # or --home cmd flag.
 
+# The version of the CometBFT binary that created or
+# last modified the config file. Do not modify this.
+version = "0.38.17"
+
 #######################################################################
 ###                   Main Base Config Options                      ###
 #######################################################################
@@ -16,11 +20,6 @@ proxy_app = "{{ node_type_settings.abci.address.default }}:{{ abci_port }}"
 
 # A custom human readable name for this node
 moniker = "{{ org }}"
-
-# If this node is many blocks behind the tip of the chain, FastSync
-# allows them to catchup quickly by downloading blocks in parallel
-# and verifying their commits
-fast_sync = true
 
 # Database backend: goleveldb | cleveldb | boltdb | rocksdb | badgerdb
 # * goleveldb (github.com/syndtr/goleveldb - most popular implementation)
@@ -45,6 +44,9 @@ db_backend = "goleveldb"
 
 # Database directory
 db_dir = "data"
+
+# Blockstore directory. If not set, defaults to db_dir
+blockstore_dir = "data"
 
 # Output level for logging, including package level options
 log_level = "info"
@@ -103,7 +105,7 @@ cors_allowed_headers = ["Origin", "Accept", "Content-Type", "X-Requested-With", 
 
 # TCP or UNIX socket address for the gRPC server to listen on
 # NOTE: This server only supports /broadcast_tx_commit
-grpc_laddr = ""
+grpc_laddr = "tcp://127.0.0.1:{{ multiplexer_port }}"
 
 # Maximum number of simultaneous connections.
 # Does not include RPC (HTTP&WebSocket) connections. See max_open_connections
@@ -160,7 +162,7 @@ experimental_websocket_write_buffer_size = 200
 #
 # Enabling this experimental parameter will cause the WebSocket connection to
 # be closed instead if it cannot read fast enough, allowing for greater
-# predictability in subscription behaviour.
+# predictability in subscription behavior.
 experimental_close_on_slow_client = false
 
 # How long to wait for a tx to be committed during /broadcast_tx_commit.
@@ -168,6 +170,11 @@ experimental_close_on_slow_client = false
 # global HTTP write timeout, which applies to all connections and endpoints.
 # See https://github.com/tendermint/tendermint/issues/3435
 timeout_broadcast_tx_commit = "50s"
+
+# Maximum number of requests that can be sent in a batch
+# If the value is set to '0' (zero-value), then no maximum batch size will be
+# enforced for a JSON-RPC batch request.
+max_request_batch_size = 10
 
 # Maximum size of request body, in bytes
 max_body_bytes = 8388608
@@ -201,11 +208,9 @@ pprof_laddr = "{{ node_type_settings.pprof.address.default }}:{{ pprof_port }}"
 # Address to listen for incoming connections
 laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 
-# Address to advertise to peers for them to dial
-# If empty, will use the same port as the laddr,
-# and will introspect on the listener or use UPnP
-# to figure out the address. ip and port are required
-# example: 159.89.10.97:26656
+# Address to advertise to peers for them to dial. If empty, will use the same
+# port as the laddr, and will introspect on the listener to figure out the
+# address. IP and port are required. Example: 159.89.10.97:26656
 external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
@@ -213,9 +218,6 @@ seeds = "{{ node_sentry_settings.seeds[type] | default(seeds) }}"
 
 # Comma separated list of nodes to keep persistent connections to
 persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default(peers) }}"
-
-# UPNP port forwarding
-upnp = false
 
 # Path to address book
 addr_book_file = "config/addrbook.json"
@@ -258,7 +260,7 @@ pex = {{ (node_sentry_settings.pex[type] | default(true)) | tojson }}
 seed_mode = false
 
 # Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-private_peer_ids = "{{ node_sentry_settings.private_peer_ids[type] | default() }}"
+private_peer_ids = ""
 
 # Toggle to disable guard against peers connecting from the same ip.
 allow_duplicate_ip = false
@@ -272,11 +274,16 @@ dial_timeout = "3s"
 #######################################################
 [mempool]
 
-# Mempool version to use:
-#   1) "v0" - FIFO mempool.
-#   2) "v1" - (default) prioritized mempool.
-#   3) "v2" - content addressable transaction pool
-version = "v1"
+# The type of mempool for this node to use.
+#
+#  Possible types:
+#  - "flood" : concurrent linked list mempool with flooding gossip protocol
+#  - "nop"   : nop-mempool (short for no operation; the ABCI app is responsible
+#  for storing, disseminating and proposing txs). "create_empty_blocks=false" is
+#  not supported.
+#  - "priority" : concurrent linked list mempool with priority queue (default)
+#  - "cat"   : content addressable mempool
+type = "priority"
 
 # Recheck (default: true) defines whether CometBFT should recheck the
 # validity for all remaining transaction in the mempool after a block.
@@ -284,7 +291,29 @@ version = "v1"
 # mempool may become invalid. If this does not apply to your application,
 # you can disable rechecking.
 recheck = true
+
+# recheck_timeout is the time the application has during the rechecking process
+# to return CheckTx responses, once all requests have been sent. Responses that
+# arrive after the timeout expires are discarded. It only applies to
+# non-local ABCI clients and when recheck is enabled.
+#
+# The ideal value will strongly depend on the application. It could roughly be estimated as the
+# average size of the mempool multiplied by the average time it takes the application to validate one
+# transaction. We consider that the ABCI application runs in the same location as the CometBFT binary
+# so that the recheck duration is not affected by network delays when making requests and receiving responses.
+recheck_timeout = "1s"
+
+# Broadcast (default: true) defines whether the mempool should relay
+# transactions to other peers. Setting this to false will stop the mempool
+# from relaying transactions to other peers until they are included in a
+# block. In other words, if Broadcast is disabled, only the peer you send
+# the tx to will see it until it is included in a block.
 broadcast = true
+
+# WalPath (default: "") configures the location of the Write Ahead Log
+# (WAL) for the mempool. The WAL is disabled by default. To enable, set
+# WalPath to where you want the WAL to be written (e.g.
+# "data/mempool.wal").
 wal_dir = ""
 
 # Maximum number of transactions in the mempool
@@ -293,7 +322,7 @@ size = 5000
 # Limit the total size of all txs in the mempool.
 # This only accounts for raw transactions (e.g. given 1MB transactions and
 # max_txs_bytes=5MB, mempool will only accept 5 transactions).
-max_txs_bytes = 39485440
+max_txs_bytes = 83886080
 
 # Size of the cache (used to filter transactions we saw earlier) in transactions
 cache_size = 10000
@@ -305,7 +334,7 @@ keep-invalid-txs-in-cache = false
 
 # Maximum size of a single transaction.
 # NOTE: the max size of a tx transmitted over the network is {max_tx_bytes}.
-max_tx_bytes = 7897088
+max_tx_bytes = 2097152
 
 # Maximum size of a batch of transactions to send to a peer
 # Including space needed by encoding (one varint per transaction).
@@ -328,14 +357,7 @@ ttl-duration = "1m15s"
 # it's insertion time into the mempool is beyond ttl-duration.
 ttl-num-blocks = 12
 
-# max-gossip-delay is the maximum allotted time that the reactor expects a transaction to
-# arrive before issuing a new request to a different peer
-# Only applicable to the v2 / CAT mempool
-# Default is 200ms
-max-gossip-delay = "0s"
-
 # Experimental parameters to limit gossiping txs to up to the specified number of peers.
-# This feature is only available for the default mempool (version config set to "v0").
 # We use two independent upper values for persistent and non-persistent peers.
 # Unconditional peers are not affected by this feature.
 # If we are connected to more than the specified number of persistent peers, only send txs to
@@ -349,6 +371,12 @@ max-gossip-delay = "0s"
 # performance results using the default P2P configuration.
 experimental_max_gossip_connections_to_persistent_peers = 0
 experimental_max_gossip_connections_to_non_persistent_peers = 0
+
+# max-gossip-delay is the maximum allotted time that the reactor expects a transaction to
+# arrive before issuing a new request to a different peer
+# Only applicable to the v2 / CAT mempool
+# Default is 200ms
+max-gossip-delay = "0s"
 
 #######################################################
 ###         State Sync Configuration Options        ###
@@ -387,14 +415,16 @@ chunk_request_timeout = "10s"
 chunk_fetchers = "4"
 
 #######################################################
-###       Fast Sync Configuration Connections       ###
+###       Block Sync Configuration Options          ###
 #######################################################
-[fastsync]
+[blocksync]
 
-# Fast Sync version to use:
-#   1) "v0" (default) - the legacy fast sync implementation
-#   "v1" and "v2" are disabled. They have been deprecated and will
-#   be completely removed in one of the upcoming releases
+# Block Sync version to use:
+#
+# In v0.37, v1 and v2 of the block sync protocols were deprecated.
+# Please use v0 instead.
+#
+#   1) "v0" - the default block sync implementation
 version = "v0"
 
 #######################################################
@@ -410,7 +440,7 @@ only_internal_wal = "true"
 wal_file = "data/cs.wal/wal"
 
 # How long we wait for a proposal block before prevoting nil
-timeout_propose = "10s"
+timeout_propose = "3.5s"
 # How much timeout_propose increases with each round
 timeout_propose_delta = "500ms"
 # How long we wait after receiving +2/3 prevotes for “anything” (ie. not a single block or nil)
@@ -424,7 +454,7 @@ timeout_precommit_delta = "500ms"
 # How long we wait after committing a block, before starting on the new
 # height (this gives us a chance to receive some more precommits, even
 # though we already have +2/3).
-timeout_commit = "11s"
+timeout_commit = "4.2s"
 
 # How many blocks to look back to check existence of the node's consensus votes before joining consensus
 # When non-zero, the node will panic upon restart
@@ -465,11 +495,9 @@ discard_abci_responses = true
 # to decide which txs to index based on configuration set in the application.
 #
 # Options:
-#   1) "null"
-#   2) "kv" (default) - the simplest possible indexer, backed by key-value storage (defaults to levelDB; see DBBackend).
-#               - When "kv" is chosen "tx.height" and "tx.hash" will always be indexed.
-#   3) "psql" - the indexer services backed by PostgreSQL.
-# When "kv" or "psql" is chosen "tx.height" and "tx.hash" will always be indexed.
+#   1) "null" (default) - index transaction status only
+#   2) "kv" - index transactions using key-value storage based on DBBackend. "tx.height" and "tx.hash" will always be indexed.
+#   3) "psql" - index transactions using PostgreSQL. "tx.height" and "tx.hash" will always be indexed.
 indexer = "{{ node_space_optimization_settings.indexer }}"
 
 # The PostgreSQL connection configuration, the connection format:

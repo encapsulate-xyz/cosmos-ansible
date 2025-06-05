@@ -33,6 +33,7 @@
     rosetta_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.rosetta | default(ports.suffix.rosetta)) }}"
     grpc_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc | default(ports.suffix.grpc)) }}"
     grpc_web_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc_web | default(ports.suffix.grpc_web)) }}"
+    multiplexer_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.multiplexer | default(ports.suffix.multiplexer)) }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Set all port variables dynamically for price feeder
@@ -82,6 +83,7 @@
       - "Rosetta Port: {{ rosetta_port }}"
       - "gRPC Port: {{ grpc_port }}"
       - "gRPC-Web Port: {{ grpc_web_port }}"
+      - "Multiplexer Port: {{ multiplexer_port }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Display all price feeder port variables
