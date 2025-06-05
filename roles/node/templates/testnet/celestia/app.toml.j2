@@ -181,6 +181,9 @@ max-send-msg-size = "2147483647"
 # NOTE: gRPC-Web uses the same address as the API server.
 enable = {{ node_type_settings.grpc.enable | tojson }}
 
+# Address defines the gRPC-web server address to bind to.
+address = "{{ node_type_settings.grpc.address[type] }}:{{ grpc_web_port }}"
+
 ###############################################################################
 ###                        State Sync Configuration                         ###
 ###############################################################################
