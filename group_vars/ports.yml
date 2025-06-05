@@ -25,3 +25,5 @@ ports:
     steward: 34
     # Pigeon Metrics Port
     pigeon_metrics: 82
+    # Celestia Multiplexer Port
+    multiplexer: 98
