@@ -1,19 +1,17 @@
 ---
-- name: Extract txhash
-  set_fact:
-    txhash: "{{ (command_result.stdout | regex_search('txhash: ([A-Fa-f0-9]+)', '\\1')) | default('N/A', true) }}"
+- name: Pull the last line (pure JSON) and parse it
+  ansible.builtin.set_fact:
+    tx_json: "{{ (command_result.stdout.split('\n') | last) | from_json }}"
 
-- name: Extract codespace
-  set_fact:
-    codespace: "{{ (command_result.stdout | regex_search('codespace: \"([^\"]*)\"', '\\1')) | default('N/A', true) }}"
+- name: Extract interesting fields
+  ansible.builtin.set_fact:
+    txhash: "{{ tx_json.txhash | default('Command didnt go through') }}"
+    code: "{{ tx_json.code | default('Command didnt go through') }}"
+    raw_log: "{{ tx_json.raw_log | default('Command didnt go through') }}"
 
-- name: Extract raw_log
-  set_fact:
-    raw_log: "{{ (command_result.stdout | regex_search(\"raw_log: '(.*?)'\", '\\1')) | default('N/A', true) }}"
-
-- name: Display txhash, raw_log and codespace fields
-  debug:
-    msg: |
-      TX Hash: {{ txhash }}
-      Codespace: {{ codespace }}
-      Raw Log: {{ raw_log }}
+- name: Show tx hash, code and raw-log
+  ansible.builtin.debug:
+    msg:
+      Code: "{{ code }}"
+      TX Hash: "{{ txhash }}"
+      Raw Log: "{{ raw_log }}"
