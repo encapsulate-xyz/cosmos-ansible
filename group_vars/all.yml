@@ -109,7 +109,7 @@ agoric:
       prefix: 116
 pell:
   validator:
-    source_url: https://github.com/0xPellNetwork/network-config/releases/download
+    source_url: https://github.com/0xPellNetwork/aegis/releases/download
     ports:
       prefix: 118
 
