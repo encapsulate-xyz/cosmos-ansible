@@ -1,7 +1,19 @@
 ---
+- name: Extract txhash
+  set_fact:
+    txhash: "{{ (command_result.stdout | regex_search('txhash: ([A-Fa-f0-9]+)', '\\1')) | default('N/A', true) }}"
+
+- name: Extract codespace
+  set_fact:
+    codespace: "{{ (command_result.stdout | regex_search('codespace: \"([^\"]*)\"', '\\1')) | default('N/A', true) }}"
+
+- name: Extract raw_log
+  set_fact:
+    raw_log: "{{ (command_result.stdout | regex_search(\"raw_log: '(.*?)'\", '\\1')) | default('N/A', true) }}"
+
 - name: Display txhash, raw_log and codespace fields
-  ansible.builtin.debug:
+  debug:
     msg: |
-      TX Hash: {{ (command_result.stdout | regex_search('txhash: ([A-Fa-f0-9]+)', '\\1')) | default('N/A', true) }}
-      Codespace: {{ (command_result.stdout | regex_search('codespace: "([^"]*)"', '\\1')) | default('N/A', true) }}
-      Raw Log: {{ (command_result.stdout | regex_search("raw_log: '(.*?)'", '\\1')) | default('N/A', true) }}
+      TX Hash: {{ txhash }}
+      Codespace: {{ codespace }}
+      Raw Log: {{ raw_log }}
