@@ -105,8 +105,7 @@ agoric:
 pell:
   chain_id: ignite_186-1
   validator:
-    version: v1.4.0
-    suffix_url: pellcored-v1.4.0-linux-amd64
+    version: v1.4.2
     wasmvm:
       version: v2.1.2
   snapshot_url: https://ss-t.pell.nodestake.org/2024-12-23_pell_241564.tar.lz4

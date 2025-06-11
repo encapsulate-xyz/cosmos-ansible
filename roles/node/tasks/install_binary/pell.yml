@@ -1,7 +1,9 @@
 ---
 - name: Download pell binary
+  vars:
+    suffix_url: "{{ node_service_default_binary_name.pell }}-{{ vars[project][type].version }}-{{ ansible_system | lower }}-{{ system_architecture }}"
   ansible.builtin.get_url:
-    url: "{{ vars[project][type].source_url }}/{{ vars[project][type].version }}/{{ vars[project][type].suffix_url }}"
+    url: "{{ vars[project][type].source_url }}/{{ vars[project][type].version }}/{{ suffix_url }}"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     owner: root
     group: root
