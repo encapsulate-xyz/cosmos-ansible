@@ -7,3 +7,13 @@ websocket = "stream.binance.com:9443"
 ## someone is blocking your connection. In such case, try to use the Binance US API instead:
 # rest = "https://api.binance.us"
 # websocket = "stream.binance.us:9443"
+
+[[provider_endpoints]]
+name = "osmosis"
+rest = "https://api.osmo-api.staging.ojolabs.xyz"
+websocket = "api.osmo-api.staging.ojolabs.xyz"
+
+[[provider_endpoints]]
+name = "eth-uniswap"
+rest = "https://api.eth-api.staging.ojolabs.xyz"
+websocket = "api.eth-api.staging.ojolabs.xyz" 
