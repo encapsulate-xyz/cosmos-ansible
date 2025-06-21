@@ -10,7 +10,8 @@ WorkingDirectory={{ node_home_dir }}
 EnvironmentFile={{ node_environment_wasmvm_file_path }}
 {% endif %}
 
-ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }}
+ExecStart={{ node_bin_dir }}/{{ service_identifier }} start --home {{ node_home_dir }} \
+    --address "{{ node_type_settings.abci.address.default }}:{{ abci_port }}"
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
