@@ -155,10 +155,6 @@ base = "milkTIA"
 threshold = "2"
 
 [[deviation_thresholds]]
-base = "DYDX"
-threshold = "2"
-
-[[deviation_thresholds]]
 base = "stTIA"
 threshold = "2"
 
