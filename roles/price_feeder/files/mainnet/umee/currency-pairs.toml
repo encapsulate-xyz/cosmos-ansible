@@ -422,20 +422,6 @@ providers = [
 quote = "USDC"
 
 [[currency_pairs]]
-base = "DYDX"
-providers = [
-  "osmosis",
-]
-quote = "USDC"
-
-[[currency_pairs]]
-base = "DYDX"
-providers = [
-  "osmosis",
-]
-quote = "OSMO"
-
-[[currency_pairs]]
 base = "stTIA"
 providers = [
   "osmosis",
