@@ -19,7 +19,7 @@ quicksilver:
 celestia:
   chain_id: mocha-4
   validator:
-    version: v4.0.3-mocha
+    version: v4.0.6-mocha
     go:
       version: 1.24.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/celestia/celestia_3269266.tar.lz4
