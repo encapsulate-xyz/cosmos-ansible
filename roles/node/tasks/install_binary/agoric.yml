@@ -24,7 +24,7 @@
     chdir: "{{ node_home_dir }}/.agoric-repo"
     executable: /bin/bash
   environment:
-    PATH: "{{ go.root }}/bin:{{ ansible_env.PATH }}"
+    PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin:{{ go.root }}/bin:{{ ansible_env.PATH }}"
     GOROOT: "{{ go.root }}"
     GOPATH: "{{ go.path }}"
     GO111MODULE: "{{ go.module111 }}"
