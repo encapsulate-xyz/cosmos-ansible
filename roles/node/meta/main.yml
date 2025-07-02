@@ -11,10 +11,10 @@ dependencies:
       go_custom_mirror: https://storage.googleapis.com/golang
     when: vars[project][type].go.version is defined
 
-  - role: morgangraphics.ansible-role-nvm
-    nvm_version: "{{ nvm.version }}"
-    nodejs_version: "{{ vars[project][type].node.version }}"
-    nvm_dir: "{{ nvm.path }}"
-    nvm_commands:
-      - npm install -g yarn
-    when: vars[project][type].node.version is defined
+  # - role: morgangraphics.ansible-role-nvm
+  #   nvm_version: "{{ nvm.version }}"
+  #   nodejs_version: "{{ vars[project][type].node.version }}"
+  #   nvm_dir: "{{ nvm.path }}"
+  #   nvm_commands:
+  #     - npm install -g yarn
+  #   when: vars[project][type].node.version is defined
