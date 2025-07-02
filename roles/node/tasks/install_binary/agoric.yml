@@ -20,7 +20,8 @@
   ansible.builtin.shell: |
     source {{ nvm.path }}/nvm.sh
     nvm use {{ vars[project][type].node.version }}
-    npm install -g yarn
+    corepack enable
+    corepack prepare yarn@4.9.1 --activate
     bin/agd build
   args:
     chdir: "{{ node_home_dir }}/.agoric-repo"
