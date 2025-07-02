@@ -19,12 +19,14 @@
 - name: Build agoric binary
   ansible.builtin.shell: |
     source {{ nvm.path }}/nvm.sh
+    npm install -g yarn
     bin/agd build
   args:
     chdir: "{{ node_home_dir }}/.agoric-repo"
     executable: /bin/bash
   environment:
     PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin:{{ go.root }}/bin:{{ ansible_env.PATH }}"
+    NODE_PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/lib/node_modules"
     GOROOT: "{{ go.root }}"
     GOPATH: "{{ go.path }}"
     GO111MODULE: "{{ go.module111 }}"
