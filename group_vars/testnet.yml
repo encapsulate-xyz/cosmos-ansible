@@ -98,7 +98,7 @@ agoric:
     go:
       version: 1.23.1
     node:
-      version: v18.20.5
+      version: v20.19.3
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/agoric/agoric_879650.tar.lz4
   rpc_url: https://agoric-testnet-rpc.polkachu.com:443
 
