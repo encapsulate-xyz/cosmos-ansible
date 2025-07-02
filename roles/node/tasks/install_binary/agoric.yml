@@ -19,6 +19,7 @@
 - name: Build agoric binary
   ansible.builtin.shell: |
     source {{ nvm.path }}/nvm.sh
+    nvm use {{ vars[project][type].node.version }}
     npm install -g yarn
     bin/agd build
   args:
