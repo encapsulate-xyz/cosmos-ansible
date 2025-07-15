@@ -6,6 +6,8 @@ omniflix:
     version: v6.0.0-alpha.2
     go:
       version: 1.23.9
+    wasmvm:
+      version: v2.1.6
   snapshot_url: http://quicksync.cros-nest.com/transfer/flixnet-4-14267555.tar
 
 quicksilver:

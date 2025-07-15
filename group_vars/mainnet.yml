@@ -140,6 +140,8 @@ omniflix:
     version: v6.0.0
     go:
       version: 1.23.9
+    wasmvm:
+      version: v2.1.6
   snapshot_url: https://snapshots.polkachu.com/snapshots/omniflix/omniflix_16286631.tar.lz4
 
 gravity:
@@ -225,7 +227,7 @@ terra:
     go:
       version: 1.23.5
     wasmvm:
-      version: v1.5.8
+      version: v2.2.4
   snapshot_url: https://snapshots.polkachu.com/snapshots/terra/terra_14374222.tar.lz4
 
 passage:
@@ -235,7 +237,7 @@ passage:
     go:
       version: 1.23.5
     wasmvm:
-      version: v1.5.8
+      version: v1.5.7
   snapshot_url: https://snapshots.polkachu.com/snapshots/passage/passage_12539367.tar.lz4
 
 tenet:
