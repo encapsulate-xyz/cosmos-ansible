@@ -19,13 +19,13 @@ node_ufw_rules:
     - port: "{{ rpc_port }}"
       proto: tcp
       rule: limit
-      from: pricefeeder.umee.testnet.encapsulate.xyz
+      from: pricefeeder.umee.mainnet.encapsulate.xyz
       comment: rpc_port
 
     - port: "{{ grpc_port }}"
       proto: tcp
       rule: limit
-      from: pricefeeder.umee.testnet.encapsulate.xyz
+      from: pricefeeder.umee.mainnet.encapsulate.xyz
       comment: grpc_port
 
   fullnode:
