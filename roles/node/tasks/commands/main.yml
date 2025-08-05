@@ -64,6 +64,10 @@
     - name: Include withdraw rewards command
       ansible.builtin.import_tasks: withdraw_rewards.yml
       when: command is defined and command == "withdraw_rewards"
+  
+    - name: Include edit validator command
+      ansible.builtin.import_tasks: edit_validator.yml
+      when: command is defined and command == "edit_validator"
 
   always:
     - name: Delete key
