@@ -85,9 +85,9 @@ juno:
 stargaze:
   chain_id: stargaze-1
   validator:
-    version: v16.0.0
+    version: v17.0.0
     go:
-      version: 1.23.8
+      version: 1.24.1
     wasmvm:
       version: v2.2.3
   snapshot_url: https://snapshots.polkachu.com/snapshots/stargaze/stargaze_17346976.tar.lz4
