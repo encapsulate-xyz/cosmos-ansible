@@ -215,3 +215,9 @@ tenet:
     source_url: https://github.com/tenet-org/tenet-mainnet/releases/download
     ports:
       prefix: 148
+
+lumera:
+  validator:
+    source_url: https://github.com/LumeraProtocol/lumera/releases/download
+    ports:
+      prefix: 150

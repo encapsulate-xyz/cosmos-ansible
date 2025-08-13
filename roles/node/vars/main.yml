@@ -42,6 +42,7 @@ node_service_default_binary_name:
   terra: terrad
   passage: passage
   tenet: tenetd
+  lumera: lumerad
 
 node_status_endpoint: status
 

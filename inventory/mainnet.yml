@@ -122,3 +122,7 @@ all:
         validator.tenet.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
+    lumera:
+      hosts:
+        validator.lumera.mainnet.encapsulate.xyz:
+          type: validator
