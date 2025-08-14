@@ -13,9 +13,9 @@ omniflix:
 quicksilver:
   chain_id: rhye-3
   validator:
-    version: v1.8.0-rc.1
+    version: v1.9.1
     go:
-      version: 1.23.7
+      version: 1.24.5
   snapshot_url: https://server-4.itrocket.net/testnet/quicksilver/quicksilver_2024-11-23_686128_snap.tar.lz4
 
 celestia:
