@@ -113,6 +113,8 @@ all:
       hosts:
         validator.terra.mainnet.encapsulate.xyz:
           type: validator
+        fullnode.terra.mainnet.encapsulate.xyz:
+          type: fullnode
     passage:
       hosts:
         validator.passage.mainnet.encapsulate.xyz:

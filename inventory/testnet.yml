@@ -58,3 +58,8 @@ all:
         validator.pell.testnet.encapsulate.xyz:
           type: validator
           execution_client: true
+
+    terra:
+      hosts:
+        validator.terra.testnet.encapsulate.xyz:
+          type: validator
