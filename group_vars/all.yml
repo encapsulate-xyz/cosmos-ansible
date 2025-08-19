@@ -221,3 +221,8 @@ lumera:
     source_url: https://github.com/LumeraProtocol/lumera/releases/download
     ports:
       prefix: 150
+  supernode:
+    source_url: https://github.com/LumeraProtocol/supernode/releases/download
+    ports:
+      listen_port: 4444
+      p2p_port: 4445
