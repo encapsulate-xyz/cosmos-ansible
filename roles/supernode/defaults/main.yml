@@ -1,0 +1,31 @@
+---
+# maintains directories and paths
+supernode_home_dir: /opt/{{ service_identifier }}
+
+supernode_bin_dir: "{{ supernode_home_dir }}/bin"
+supernode_data_dir: "{{ supernode_home_dir }}/data"
+supernode_key_dir: "{{ supernode_home_dir }}/key"
+supernode_env_dir: "{{ supernode_home_dir }}/environment"
+supernode_raptorq_files_dir: "{{ supernode_home_dir }}/raptorq_files"
+supernode_log_dir: "{{ supernode_home_dir }}/log"
+
+supernode_p2p_dir: "{{ supernode_data_dir }}/p2p"
+
+supernode_directories:
+  - "{{ supernode_home_dir }}"
+  - "{{ supernode_bin_dir }}"
+  - "{{ supernode_data_dir }}"
+  - "{{ supernode_key_dir }}"
+  - "{{ supernode_env_dir }}"
+  - "{{ supernode_raptorq_files_dir }}"
+  - "{{ supernode_log_dir }}"
+  - "{{ supernode_p2p_dir }}"
+
+supernode_config_file_path: "{{ supernode_home_dir }}/{{ supernode_config_file_name }}"
+supernode_log_file_path: "{{ supernode_log_dir }}/{{ service_identifier }}.log"
+
+supernode_environment_secret_file_path: "{{ supernode_env_dir }}/{{ supernode_environment_secret_file_name }}"
+
+supernode_address_key_file_path: "{{ supernode_key_dir }}/{{ supernode_address_key_file_name }}"
+supernode_keyhash_file_path: "{{ supernode_key_dir }}/{{ supernode_keyhash_file_name }}"
+supernode_info_file_path: "{{ supernode_key_dir }}/{{ supernode_info_file_name }}"

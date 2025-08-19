@@ -1,0 +1,13 @@
+---
+supernode_ufw_rules:
+  - port: "{{ lumera.supernode.ports.listen_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: listen_port
+
+  - port: "{{ lumera.supernode.ports.p2p_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: p2p_port
