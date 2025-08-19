@@ -111,3 +111,13 @@ pell:
     wasmvm:
       version: v2.1.2
   snapshot_url: https://ss-t.pell.nodestake.org/2024-12-23_pell_241564.tar.lz4
+
+terra:
+  chain_id: pisco-1
+  validator:
+    version: v2.17.3
+    go:
+      version: 1.23.5
+    wasmvm:
+      version: v2.2.4
+  snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/terra/terra_18175931.tar.lz4
