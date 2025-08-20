@@ -121,7 +121,6 @@ lumera:
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
     version: v2.0.0-alpha
-    host_ip:
     identity:
     grpc_addr: localhost:15090
 

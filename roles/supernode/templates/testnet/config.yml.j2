@@ -1,7 +1,7 @@
 supernode:
     key_name: supernode
     identity: {{ lumera.supernode.identity }}
-    host: {{ lumera.supernode.host_ip }}
+    host: {{ ansible_default_ipv4.address }}
     port: {{ lumera.supernode.ports.listen_port }}
 keyring:
     backend: os
