@@ -1,31 +1,31 @@
 ---
-# - name: Include ufw rules vars file
-#   ansible.builtin.include_vars:
-#     file: vars/ufw_rules.yml
+- name: Include ufw rules vars file
+  ansible.builtin.include_vars:
+    file: vars/ufw_rules.yml
 
-# - name: Apply UFW rules
-#   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
-#   loop: "{{ supernode_ufw_rules }}"
+- name: Apply UFW rules
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ supernode_ufw_rules }}"
 
-# - name: Include user creation task
-#   ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
-#   vars:
-#     home: "{{ supernode_home_dir }}"
-#     directories: "{{ supernode_directories }}"
-#     log_file_path: "{{ supernode_log_file_path }}"
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ supernode_home_dir }}"
+    directories: "{{ supernode_directories }}"
+    log_file_path: "{{ supernode_log_file_path }}"
 
-# - name: Include download binary task
-#   ansible.builtin.include_tasks: download_binary.yml
+- name: Include download binary task
+  ansible.builtin.include_tasks: download_binary.yml
 
-# - name: Copy configuration file
-#   ansible.builtin.template:
-#     src: "{{ env }}/config.yml.j2"
-#     dest: "{{ supernode_config_file_path }}"
-#     owner: "{{ service_identifier }}"
-#     group: "{{ service_identifier }}"
-#     mode: "0644"
-#   notify:
-#     - Restart service
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: "{{ env }}/config.yml.j2"
+    dest: "{{ supernode_config_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
 
 - name: Fetch secrets from HCP Vault and save to files
   when: fetch_validator_keys | default(false) | bool

@@ -13,4 +13,4 @@ supernode_service_default_binary_name: supernode-linux-amd64
 # Key file names
 supernode_address_key_file_name: b90eb213717238a9959757ab2f63863c01e420cf.address
 supernode_keyhash_file_name: keyhash
-supernode_info_file_name: wallet.info
+supernode_info_file_name: supernode.info
