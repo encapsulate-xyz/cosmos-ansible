@@ -59,6 +59,13 @@ all:
           type: validator
           execution_client: true
 
+    lumera:
+      hosts:
+        validator.lumera.testnet.encapsulate.xyz:
+          type: validator
+        supernode.lumera.testnet.encapsulate.xyz:
+          type: supernode
+
     terra:
       hosts:
         validator.terra.testnet.encapsulate.xyz:

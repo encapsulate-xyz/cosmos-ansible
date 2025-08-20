@@ -1,0 +1,70 @@
+---
+- name: Include ufw rules vars file
+  ansible.builtin.include_vars:
+    file: vars/ufw_rules.yml
+
+- name: Apply UFW rules
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ supernode_ufw_rules }}"
+
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ supernode_home_dir }}"
+    directories: "{{ supernode_directories }}"
+    log_file_path: "{{ supernode_log_file_path }}"
+
+- name: Include download binary task
+  ansible.builtin.include_tasks: download_binary.yml
+
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: "{{ env }}/config.yml.j2"
+    dest: "{{ supernode_config_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Fetch secrets from HCP Vault and save to files
+  when: fetch_validator_keys | default(false) | bool
+  block:
+    - name: Fetch address key and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ supernode_address_key_file_name }}"
+        secret_destination_path: "{{ supernode_address_key_file_path }}"
+        secret_type: key
+
+    - name: Fetch keyhash and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ supernode_keyhash_file_name }}"
+        secret_destination_path: "{{ supernode_keyhash_file_path }}"
+        secret_type: key
+    
+    - name: Fetch info file and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ supernode_info_file_name }}"
+        secret_destination_path: "{{ supernode_info_file_path }}"
+        secret_type: key
+    
+    - name: Fetch secret environment file and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ supernode_environment_secret_file_name }}"
+        secret_destination_path: "{{ supernode_environment_secret_file_path }}"
+        secret_type: environment
+
+- name: Copy systemd service file
+  ansible.builtin.template:
+    src: "{{ env }}/systemd.service.j2"
+    dest: /etc/systemd/system/{{ service_identifier }}.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart service

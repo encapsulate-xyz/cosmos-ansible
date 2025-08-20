@@ -128,3 +128,5 @@ all:
       hosts:
         validator.lumera.mainnet.encapsulate.xyz:
           type: validator
+        supernode.lumera.mainnet.encapsulate.xyz:
+          type: supernode

@@ -112,6 +112,18 @@ pell:
       version: v2.1.2
   snapshot_url: https://ss-t.pell.nodestake.org/2024-12-23_pell_241564.tar.lz4
 
+lumera:
+  chain_id: lumera-testnet-2
+  validator:
+    version: v1.7.0
+    wasmvm:
+      version: v2.1.2
+  snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
+  supernode:
+    version: v2.0.0-alpha
+    identity:
+    grpc_addr: localhost:15090
+
 terra:
   chain_id: pisco-1
   validator:

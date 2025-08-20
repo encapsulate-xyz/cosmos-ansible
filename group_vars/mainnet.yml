@@ -228,7 +228,6 @@ terra:
       version: 1.23.5
     wasmvm:
       version: v2.2.4
-  snapshot_url: https://snapshots.polkachu.com/snapshots/terra/terra_14374222.tar.lz4
   fullnode:
     version: v2.17.3
     go:
@@ -260,3 +259,7 @@ lumera:
     wasmvm:
       version: v2.1.2
   snapshot_url: https://snapshots.polkachu.com/snapshots/lumera/lumera_863081.tar.lz4
+  supernode:
+    version: v2.0.0-alpha
+    identity:
+    grpc_addr: localhost:15090

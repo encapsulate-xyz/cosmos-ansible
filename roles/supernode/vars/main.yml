@@ -1,0 +1,16 @@
+---
+# maintains file name, binary names, and anything which is not a directory or path
+
+# config file name
+supernode_config_file_name: config.yml
+
+# Environment file name
+supernode_environment_secret_file_name: "{{ service_identifier }}.secret.env"
+
+# Binary file name
+supernode_service_default_binary_name: supernode-linux-amd64
+
+# Key file names
+supernode_address_key_file_name: b90eb213717238a9959757ab2f63863c01e420cf.address
+supernode_keyhash_file_name: keyhash
+supernode_info_file_name: supernode.info

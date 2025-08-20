@@ -1,0 +1,17 @@
+supernode:
+    key_name: supernode
+    identity: {{ lumera.supernode.identity }}
+    host: {{ ansible_default_ipv4.address }}
+    port: {{ lumera.supernode.ports.listen_port }}
+keyring:
+    backend: os
+    dir: {{ supernode_key_dir }}
+    passphrase_env: KEYRING_PASSPHRASE
+p2p:
+    port: {{ lumera.supernode.ports.p2p_port }}
+    data_dir: {{ supernode_p2p_dir }}
+lumera:
+    grpc_addr: {{ lumera.supernode.grpc_addr }}
+    chain_id: {{ lumera.chain_id }}
+raptorq:
+    files_dir: {{ supernode_raptorq_files_dir }}

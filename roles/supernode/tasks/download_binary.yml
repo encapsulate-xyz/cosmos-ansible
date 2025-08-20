@@ -1,0 +1,14 @@
+---
+- name: Fetch the supernode service binary
+  vars:
+    suffix_url: >
+      {{ lumera.supernode.version }}/{{ supernode_service_default_binary_name }}
+  ansible.builtin.get_url:
+    url: "{{ lumera.supernode.source_url }}/{{ suffix_url }}"
+    dest: "{{ supernode_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
