@@ -1,4 +1,10 @@
 ---
+- name: Install libwebp7
+  ansible.builtin.apt:
+    name: libwebp7
+    state: present
+    update_cache: true
+
 - name: Fetch the supernode service binary
   vars:
     suffix_url: >
