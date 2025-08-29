@@ -230,3 +230,4 @@ lumera:
     ports:
       listen_port: 4444
       p2p_port: 4445
+      discovery_port: 8002

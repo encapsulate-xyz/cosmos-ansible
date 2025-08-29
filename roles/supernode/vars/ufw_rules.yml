@@ -11,3 +11,9 @@ supernode_ufw_rules:
     rule: allow
     from: any
     comment: p2p_port
+
+  - port: "{{ lumera.supernode.ports.discovery_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: discovery_port
