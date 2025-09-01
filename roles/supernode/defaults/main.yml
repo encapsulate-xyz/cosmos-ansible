@@ -26,6 +26,6 @@ supernode_log_file_path: "{{ supernode_log_dir }}/{{ service_identifier }}.log"
 
 supernode_environment_secret_file_path: "{{ supernode_env_dir }}/{{ supernode_environment_secret_file_name }}"
 
-supernode_address_key_file_path: "{{ supernode_key_dir }}/{{ supernode_address_key_file_name }}"
+supernode_address_key_file_path: "{{ supernode_key_dir }}/{{ lumera.supernode.keyfile_name }}"
 supernode_keyhash_file_path: "{{ supernode_key_dir }}/{{ supernode_keyhash_file_name }}"
 supernode_info_file_path: "{{ supernode_key_dir }}/{{ supernode_info_file_name }}"
