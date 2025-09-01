@@ -33,7 +33,7 @@
     - name: Fetch address key and save
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
       vars:
-        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ supernode_address_key_file_name }}"
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ lumera.supernode.keyfile_name }}"
         secret_destination_path: "{{ supernode_address_key_file_path }}"
         secret_type: key
 
