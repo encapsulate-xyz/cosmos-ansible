@@ -147,10 +147,10 @@ omniflix:
 gravity:
   chain_id: gravity-bridge-3
   validator:
-    version: v1.13.0
+    version: v1.13.3
   snapshot_url: https://snapshots.polkachu.com/snapshots/gravity/gravity_15740467.tar.lz4
   orchestrator:
-    version: v1.13.1
+    version: v1.13.3
   node_grpc_address: http://localhost:13090
   public_api_address: https://gravity-api.polkachu.com
   address: gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp
