@@ -8,6 +8,9 @@
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 0.25token1,0.0001token2).
+
+# Making the minimum gas price to 0 as our own orchestrator quries the grpc endpoint, making it 
+# 0 avoids paying fee to our own quries
 minimum-gas-prices = "0ugraviton"
 
 # The maximum gas a query coming over rest/grpc may consume.
