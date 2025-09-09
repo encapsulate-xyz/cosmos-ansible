@@ -1,0 +1,7 @@
+---
+tofnd_ufw_rules:
+  - port: "{{ tofnd_port }}"
+    proto: tcp
+    rule: allow
+    from: 157.90.3.253
+    comment: tofnd_port

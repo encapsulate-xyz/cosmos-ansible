@@ -28,6 +28,18 @@ node_ufw_rules:
       from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: grpc_port
 
+    - port: "{{ rpc_port }}"
+      proto: tcp
+      rule: allow
+      from: 157.90.3.253
+      comment: rpc_port
+
+    - port: "{{ grpc_port }}"
+      proto: tcp
+      rule: allow
+      from: 157.90.3.253
+      comment: grpc_port
+
   fullnode:
     - port: "{{ p2p_port }}"
       proto: tcp

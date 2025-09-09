@@ -12,7 +12,7 @@ ExecStart=/usr/bin/sh -c 'echo $KEYRING_PASSWORD | {{ vald_bin_dir }}/{{ service
     --chain-id {{ axelar.chain_id }} \
     --validator-addr {{ axelar.vald.validator_address }} \
     --node {{ axelar.vald.node_address }} \
-    --tofnd-host {{ vald_tofnd_host }} \
+    --tofnd-host {{ axelar.vald.tofnd_host }} \
     --tofnd-port {{ tofnd_port }} \
     --log_level debug --from {{ vald_broadcaster_address }}'
 Restart=always
