@@ -10,5 +10,4 @@ vald_wasmvm_lib_file_name: libwasmvm.{{ ansible_architecture }}.so
 # binary names
 vald_default_binary_name: axelard
 
-vald_tofnd_host: localhost
 vald_broadcaster_address: broadcaster
