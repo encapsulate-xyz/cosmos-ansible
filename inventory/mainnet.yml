@@ -40,9 +40,6 @@ all:
           ansible_host: 157.90.3.253
           type: vald
           vald_axelar_home: /opt/axelar
-        axelar_tofnd_host_157.90.3.253:
-          ansible_host: 157.90.3.253
-          type: tofnd
     juno:
       hosts:
         validator.juno.mainnet.encapsulate.xyz:
