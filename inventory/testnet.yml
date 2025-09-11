@@ -42,12 +42,9 @@ all:
           support_amplifier: true
         fullnode.axelar.testnet.encapsulate.xyz:
           type: fullnode
-        axelar_vald_host:
-          ansible_host: validator.axelar.testnet.encapsulate.xyz
+        vald.axelar.testnet.encapsulate.xyz:
           type: vald
-          vald_axelar_home: /opt/axelar
-        axelar_tofnd_host:
-          ansible_host: validator.axelar.testnet.encapsulate.xyz
+        tofnd.axelar.testnet.encapsulate.xyz:
           type: tofnd
     agoric:
       hosts:

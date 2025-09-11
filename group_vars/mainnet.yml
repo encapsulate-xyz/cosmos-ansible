@@ -54,7 +54,7 @@ axelar:
       version: v1.5.8
     vote_metrics_url: https://api.axelarscan.io/validator/searchPolls
     heartbeat_metrics_url: https://api.axelarscan.io/validator/searchHeartbeats
-    tofnd_host: validator.axelar.mainnet.encapsulate.xyz
+    tofnd_host: tofnd.axelar.mainnet.encapsulate.xyz
   tofnd:
     version: v0.10.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/axelar/axelar_16464939.tar.lz4

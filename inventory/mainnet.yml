@@ -29,17 +29,10 @@ all:
         validator.axelar.mainnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
-        axelar_vald_host:
-          ansible_host: validator.axelar.mainnet.encapsulate.xyz
+        vald.axelar.mainnet.encapsulate.xyz:
           type: vald
-          vald_axelar_home: /opt/axelar
-        axelar_tofnd_host:
-          ansible_host: validator.axelar.mainnet.encapsulate.xyz
+        tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
-        axelar_vald_host_157.90.3.253:
-          ansible_host: 157.90.3.253
-          type: vald
-          vald_axelar_home: /opt/axelar
     juno:
       hosts:
         validator.juno.mainnet.encapsulate.xyz:
