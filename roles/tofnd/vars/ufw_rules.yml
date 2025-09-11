@@ -3,5 +3,5 @@ tofnd_ufw_rules:
   - port: "{{ tofnd_port }}"
     proto: tcp
     rule: allow
-    from: 157.90.3.253
+    from: vald.axelar.{{ env }}.encapsulate.xyz
     comment: tofnd_port
