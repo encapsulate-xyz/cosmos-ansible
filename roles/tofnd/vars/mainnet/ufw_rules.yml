@@ -3,5 +3,5 @@ tofnd_ufw_rules:
   - port: "{{ tofnd_port }}"
     proto: tcp
     rule: allow
-    from: vald.axelar.{{ env }}.encapsulate.xyz
+    from: vald.axelar.mainnet.encapsulate.xyz
     comment: tofnd_port
