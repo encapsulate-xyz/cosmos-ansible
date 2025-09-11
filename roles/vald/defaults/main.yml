@@ -3,19 +3,19 @@
 vald_home_dir: "/opt/{{ service_identifier }}"
 
 vald_bin_dir: "{{ vald_home_dir }}/bin"
+vald_config_dir: "{{ vald_home_dir }}/config"
 vald_env_dir: "{{ vald_home_dir }}/environment"
 vald_lib_dir: "{{ vald_home_dir }}/lib"
 vald_log_dir: "{{ vald_home_dir }}/log"
 
-vald_vald_dir: "{{ vald_axelar_home }}/vald"
-
 vald_directories:
   - "{{ vald_home_dir }}"
   - "{{ vald_bin_dir }}"
+  - "{{ vald_config_dir }}"
   - "{{ vald_env_dir }}"
   - "{{ vald_log_dir }}"
-  - "{{ vald_vald_dir }}"
 
+vald_config_file_path: "{{ vald_config_dir }}/{{ vald_config_file_name }}"
 vald_log_file_path: "{{ vald_log_dir }}/{{ service_identifier }}.log"
 
 vald_environment_secrets_file_path: "{{ vald_env_dir }}/{{ vald_environment_secrets_file_name }}"

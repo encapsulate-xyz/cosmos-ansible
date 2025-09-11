@@ -1,0 +1,102 @@
+##### EVM bridges options #####
+# Each EVM chain needs the following
+# 1. `[[axelar_bridge_evm]]` # header
+# 2. `name`                  # chain name (eg. "Ethereum")
+# 3. 'rpc_addr'              # EVM RPC endpoint URL; chain maintainers set their own endpoint
+# 4. `start-with-bridge`     # `true` to support this chain
+#
+# see https://docs.axelar.dev/#/validator-zone/external-chains/overview
+
+[[axelar_bridge_evm]]
+name = "ethereum-sepolia"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.ethereum_sepolia_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Avalanche"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.avalanche_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Fantom"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.fantom_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Moonbeam"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.moonbeam_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Polygon"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.polygon_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Binance"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.binance_rpc }}"
+start-with-bridge = true
+
+# Due to the lack of future usage of our Aurora connection, we've decided to disable integrating that connection in our apps. 
+# So, you're welcome to stop maintaining Aurora nodes, deregister as a chain maintainer, and remove from vald config. 
+# Appreciate your patience on this, and we're thinking about new models of chain support for the future so each validator has more 
+# choice on which chains to maintain in the future while maintaining good threshold of security, as we keep adding more chains. 
+#[[axelar_bridge_evm]]
+#name = "Aurora"
+#rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.aurora_rpc }}"
+#start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "Kava"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.kava_rpc }}"
+start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "hero"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.hero_rpc }}"
+start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "arbitrum"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.arbitrum_rpc }}"
+start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "celo"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.celo_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "optimism"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.optimism_rpc }}"
+start-with-bridge = false
+
+[[axelar_bridge_evm]]
+name = "base"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.base_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "filecoin"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.filecoin_rpc }}"
+start-with-bridge = true
+finality_override = "confirmation"
+
+[[axelar_bridge_evm]]
+name = "linea-sepolia"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.linea_sepolia_rpc }}"
+start-with-bridge = true
+finality_override = "confirmation"
+
+[[axelar_bridge_evm]]
+name = "immutable"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.immutable_rpc }}"
+start-with-bridge = true
+
+##### message broadcasting options #####
+[broadcast]
+
+broadcaster-account = "broadcaster"
+gas-adjustment = 1.0
+max-retries = 10
+min-timeout = "4s"

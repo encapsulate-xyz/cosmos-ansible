@@ -1,6 +1,9 @@
 ---
 # maintains file name, binary names, and anything which is not a diretcory or path
 
+# config file names
+vald_config_file_name: config.toml
+
 # Env file name
 vald_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
 

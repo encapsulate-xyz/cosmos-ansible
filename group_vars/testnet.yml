@@ -89,7 +89,7 @@ axelar:
       version: v1.5.8
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
     heartbeat_metrics_url: https://testnet.api.axelarscan.io/validator/searchHeartbeats
-    tofnd_host: validator.axelar.testnet.encapsulate.xyz
+    tofnd_host: tofnd.axelar.testnet.encapsulate.xyz
   tofnd:
     version: v1.0.1
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/axelar/axelar_16356359.tar.lz4
