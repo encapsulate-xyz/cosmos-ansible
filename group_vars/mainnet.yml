@@ -264,3 +264,7 @@ lumera:
     version: v2.0.0-alpha
     identity:
     grpc_addr: localhost:15090
+  fullnode:
+    version: v1.6.1
+    wasmvm:
+      version: v2.1.2

@@ -231,3 +231,7 @@ lumera:
       listen_port: 4444
       p2p_port: 4445
       discovery_port: 8002
+  fullnode:
+    source_url: https://github.com/LumeraProtocol/lumera/releases/download
+    ports:
+      prefix: 151
