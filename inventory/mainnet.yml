@@ -128,4 +128,4 @@ all:
         supernode.lumera.mainnet.encapsulate.xyz:
           type: supernode
         fullnode.lumera.mainnet.encapsulate.xyz:
-          type: supernode
+          type: fullnode
