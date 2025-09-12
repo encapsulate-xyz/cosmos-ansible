@@ -127,3 +127,5 @@ all:
           type: validator
         supernode.lumera.mainnet.encapsulate.xyz:
           type: supernode
+        fullnode.lumera.mainnet.encapsulate.xyz:
+          type: supernode
