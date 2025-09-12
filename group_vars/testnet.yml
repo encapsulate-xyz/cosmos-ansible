@@ -121,7 +121,7 @@ lumera:
       version: v2.1.2
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
-    version: v2.3.17
+    version: v2.3.21
     identity: lumera1wmq0wu60a63cnx5fhln0m0zv6u5rq6dw0dhvhn
     keyfile_name: 76c0f7734feea3899a89bfe6fdbc4cd7283069ae.address
     grpc_addr: localhost:15090
