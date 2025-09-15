@@ -16,6 +16,20 @@
     - name: Setup environment and dependencies
       when: type in allowed_node_types
       block:
+        - name: Get latest supernode release info via GitHub API
+          ansible.builtin.uri:
+            url: "{{ lumera.supernode.github_api_url }}"
+            return_content: yes
+          register: latest_supernode_release
+          when: fetch_latest_release | default(false) | bool
+
+        - name: Override supernode version with latest release
+          ansible.builtin.set_fact:
+            lumera:
+              supernode:
+                version: "{{ latest_supernode_release.json.tag_name }}"
+          when: fetch_latest_release | default(false) | bool
+
         - name: Include environment setup tasks
           ansible.builtin.include_tasks: tasks/setup_environment.yml
 
