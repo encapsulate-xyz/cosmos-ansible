@@ -6,11 +6,12 @@ METRICS_URL="http://{{ orchestrator_metrics_url }}/sommelier?grpc={{ sommelier.p
 {% elif project == "gravity" %}
 METRICS_URL="http://{{ orchestrator_metrics_url }}/peggo?lcd={{ gravity.public_api_address }}&orchAddress={{ gravity.address }}"
 {% endif %}
-PUSHGATEWAY_URL="http://{{ monitor_server_dns }}:{{ pushgateway_port }}"
+PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
 JOB_NAME="chain_exporter"
 ENV="{{ env }}"
 PROJECT="{{ project }}"
 TIMEOUT=30
+AUTH_HEADER="Authorization: Basic {{ vault.default.pushgateway.auth_header }}"
 
 # Timestamped logger
 log() {
@@ -74,7 +75,9 @@ log "Pushing metrics to Pushgateway..."
 start_time=$(date +%s)
 
 push_response=$(curl -s --max-time $TIMEOUT --write-out "%{http_code}" --output /dev/null \
-  --data-binary "$metrics" "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator")
+  -H "$AUTH_HEADER" \
+  --data-binary "$metrics" \
+  "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator")
 
 end_time=$(date +%s)
 duration=$((end_time - start_time))
