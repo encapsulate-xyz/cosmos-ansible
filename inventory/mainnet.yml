@@ -60,6 +60,8 @@ all:
       hosts:
         validator.gitopia.mainnet.encapsulate.xyz:
           type: validator
+        fullnode.gitopia.mainnet.encapsulate.xyz:
+          type: fullnode
     humans:
       hosts:
         validator.humans.mainnet.encapsulate.xyz:
