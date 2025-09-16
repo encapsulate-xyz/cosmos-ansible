@@ -21,7 +21,7 @@
     source {{ nvm.path }}/nvm.sh
     nvm use {{ vars[project][type].node.version }}
     corepack enable
-    corepack prepare yarn@4.9.1 --activate
+    corepack prepare yarn@4.9.3 --activate
     bin/agd build
   args:
     chdir: "{{ node_home_dir }}/.agoric-repo"
