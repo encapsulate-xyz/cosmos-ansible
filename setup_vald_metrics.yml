@@ -8,6 +8,7 @@
     node_service_identifier: "{{ group_names[0] }}{{ '' if type in default_node_types else '-' + type }}"
   vars_files:
     - group_vars/all.yml
+    - group_vars/vault.yml
     - group_vars/{{ env }}.yml
 
   tasks:
