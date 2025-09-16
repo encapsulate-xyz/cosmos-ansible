@@ -147,6 +147,10 @@ gitopia:
     source_url: https://github.com/gitopia/gitopia
     ports:
       prefix: 128
+  fullnode:
+    source_url: https://github.com/gitopia/gitopia
+    ports:
+      prefix: 129
 
 gravity:
   validator:
