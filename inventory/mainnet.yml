@@ -95,6 +95,8 @@ all:
           type: validator
         pigeon.paloma.mainnet.encapsulate.xyz:
           type: pigeon
+        135.181.76.221:
+          type: pigeon
     planq:
       hosts:
         validator.planq.mainnet.encapsulate.xyz:
