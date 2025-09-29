@@ -12,14 +12,14 @@ identity: B68A51B88F28CEF1
 
 ansible_port: 8192
 
-orchestrator_metrics_url: "134.209.147.117:8084"
-
 architecture_map:
   x86_64: amd64
   aarch64: arm64
 
 monitor_server_dns: monitor.encapsulate.xyz
 pushgateway_dns: pushgateway.encapsulate.xyz
+orchestrator_metrics_dns: server.api.encapsulate.xyz
+
 domain_regex: ^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$
 
 default_node_types:
