@@ -19,16 +19,6 @@
   notify:
     - Restart service
 
-- name: Copy genearl env file
-  ansible.builtin.template:
-    src: "{{ env }}/general.env.j2"
-    dest: "{{ pigeon_general_environment_file_path }}"
-    owner: "{{ service_identifier }}"
-    group: "{{ service_identifier }}"
-    mode: "0644"
-  notify:
-    - Restart service
-
 - name: Fetch secrets from HCP Vault and save to files
   when: fetch_validator_keys | default(false) | bool
   block:
