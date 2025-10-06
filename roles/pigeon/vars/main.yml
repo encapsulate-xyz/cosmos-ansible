@@ -3,6 +3,7 @@
 
 # Env file name
 pigeon_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
+pigeon_general_environment_file_name: "{{ service_identifier }}.env"
 
 pigeon_config_file_name: config.yaml
 

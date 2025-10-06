@@ -19,6 +19,7 @@ pigeon_directories:
 pigeon_log_file_path: "{{ pigeon_log_dir }}/{{ service_identifier }}.log"
 
 pigeon_environment_secrets_file_path: "{{ pigeon_env_dir }}/{{ pigeon_environment_secrets_file_name }}"
+pigeon_general_environment_file_path: "{{ pigeon_env_dir }}/{{ pigeon_general_environment_file_name }}"
 
 pigeon_config_file_path: "{{ pigeon_config_dir }}/{{ pigeon_config_file_name }}"
 
