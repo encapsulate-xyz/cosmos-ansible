@@ -18,7 +18,7 @@
 
 - name: Copy wasmvm environment file
   ansible.builtin.template:
-    src: "wasmvm.env.j2"
+    src: "roles/node/templates/wasmvm.env.j2"
     dest: "{{ node_environment_wasmvm_file_path }}"
     owner: root
     group: root
