@@ -16,7 +16,7 @@
   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
   loop: "{{ node_ufw_rules[type] }}"
   vars:
-    delete_ufw_rules: true
+    sunset_delete_rule: true
 
 - name: Delete home directory
   ansible.builtin.file:

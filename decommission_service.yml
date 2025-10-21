@@ -29,4 +29,4 @@
           ansible.builtin.include_role:
             name: common
         - name: Include command task
-          ansible.builtin.include_tasks: roles/node/tasks/wind_down.yml
+          ansible.builtin.include_tasks: roles/node/tasks/decommission_service.yml
