@@ -32,7 +32,7 @@ umee:
 agoric:
   chain_id: agoric-3
   validator:
-    version: agoric-upgrade-22a
+    version: agoric-upgrade-22b
     valoper_address: agoricvaloper1fy8r6zq3dde6n7ak6eqy5zsrp3s7sz833dmv32
     api_urls:
       - "https://agoric-api.polkachu.com"
