@@ -1,0 +1,43 @@
+---
+- name: Include the specific network's vars files
+  ansible.builtin.include_vars: "{{ item }}"
+  loop:
+    - roles/node/defaults/main.yml
+    - roles/node/vars/main.yml
+    - roles/node/vars/{{ env }}/{{ project }}.yml
+
+- name: Stop and disable the service
+  ansible.builtin.service:
+    name: "{{ service_identifier }}"
+    state: stopped
+    enabled: false
+
+- name: Apply UFW rules for each node type
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ node_ufw_rules[type] }}"
+  vars:
+    delete_ufw_rules: true
+
+- name: Delete home directory
+  ansible.builtin.file:
+    path: "{{ node_home_dir }}"
+    state: absent
+
+- name: Delete systemd file
+  ansible.builtin.file:
+    path: /etc/systemd/system/{{ service_identifier }}.service
+    state: absent
+
+- name: Delete user
+  ansible.builtin.user:
+    name: "{{ service_identifier }}"
+    state: absent
+    remove: true
+
+- name: Delete group
+  ansible.builtin.group:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ project }}"
+    - "{{ service_identifier }}"
