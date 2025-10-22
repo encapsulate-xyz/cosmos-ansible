@@ -213,7 +213,7 @@ gravity:
   chain_id: gravity-bridge-3
   validator:
     version: v1.13.3
-  valoper_address: gravityvaloper1s0lankh33kprer2l22nank5rvsuh9ksatgqzfn
+    valoper_address: gravityvaloper1s0lankh33kprer2l22nank5rvsuh9ksatgqzfn
     api_urls:
       - "https://gravity-api.polkachu.com"
       - "https://gravitychain.io:1317"
