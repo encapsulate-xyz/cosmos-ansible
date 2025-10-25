@@ -24,10 +24,10 @@
             msg: "The environment variable KEYRING_PASSWORD is not set."
           when: lookup('env', 'KEYRING_PASSWORD') == ''
 
-        - name: Check if MNEMONIC is set
+        - name: Check if GPG_PASSPHRASE is set
           ansible.builtin.fail:
-            msg: "The environment variable MNEMONIC is not set."
-          when: lookup('env', 'MNEMONIC') == ''
+            msg: "The environment variable GPG_PASSPHRASE is not set."
+          when: lookup('env', 'GPG_PASSPHRASE') == ''
 
   tasks:
     - name: Run node playbook

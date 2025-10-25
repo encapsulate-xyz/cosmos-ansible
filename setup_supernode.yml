@@ -19,7 +19,7 @@
         - name: Get latest supernode release info via GitHub API
           ansible.builtin.uri:
             url: "{{ lumera.supernode.github_api_url }}"
-            return_content: yes
+            return_content: true
           register: latest_supernode_release
           when: fetch_latest_release | default(false) | bool
 
