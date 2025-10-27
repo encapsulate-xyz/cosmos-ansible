@@ -16,6 +16,11 @@ quicksilver:
     version: v1.9.3
     go:
       version: 1.24.5
+    valoper_address: quickvaloper1uj98474n68v52ycwu25chs6ldj77svrtzgq48h
+    api_urls:
+      - "https://quicksilver-testnet-api.itrocket.net"
+      - "https://quicksilver-testnet-api.polkachu.com"
+      - "https://quick.api.t.stavr.tech"
   snapshot_url: https://server-4.itrocket.net/testnet/quicksilver/quicksilver_2024-11-23_686128_snap.tar.lz4
 
 celestia:
@@ -32,6 +37,9 @@ humans:
     version: master
     go:
       version: 1.21.6
+    valoper_address: humanvaloper1l9wxdywayz6c7a93frfdxnn6uw6e6p33z4gxn7
+    api_urls:
+      - "https://humans-testnet.api.kjnodes.com"
   snapshot_url: https://server-4.itrocket.net/testnet/humans/humans_2024-11-23_8405437_snap.tar.lz4
 
 ojo:
@@ -67,6 +75,10 @@ c4e:
       version: 1.19.1
     wasmvm:
       version: v1.5.2
+    valoper_address: c4evaloper1vaxz9hyn8sq5vk3jgdhkge8xefuhz6xt5qnmpy
+    api_urls:
+      - "https://lcd-testnet.c4e.io"
+      - "https://c4e.api.t.stavr.tech"
   snapshot_url: https://snapshots-testnet.stake-town.com/c4e/babajaga-1_latest.tar.lz4
   rpc_url: https://c4e-testnet-rpc.stake-town.com:443
 
@@ -76,6 +88,11 @@ axelar:
     version: v1.2.1
     wasmvm:
       version: v1.5.8
+    valoper_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
+    api_urls:
+      - "https://axelar-testnet-api.polkachu.com"
+      - "https://axelar-rest-1.staketab.org"
+      - "https://axelar-testnet-lcd.qubelabs.io"
   fullnode:
     version: v1.2.1
     wasmvm:
@@ -102,6 +119,10 @@ agoric:
       version: 1.23.1
     node:
       version: v20.19.3
+    valoper_address: agoricvaloper1kg5dkr8z785rr7u0mxdhrjj0dh86qekaj4jj0u
+    api_urls:
+      - "https://agoric-testnet-api.polkachu.com"
+      - "https://emerynet.api.agoric.net"
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/agoric/agoric_879650.tar.lz4
   rpc_url: https://agoric-testnet-rpc.polkachu.com:443
 
@@ -116,9 +137,13 @@ pell:
 lumera:
   chain_id: lumera-testnet-2
   validator:
-    version: v1.7.2
+    version: v1.8.0
     wasmvm:
-      version: v2.1.2
+      version: v3.0.0-ibc2.0
+    valoper_address: lumeravaloper1uj98474n68v52ycwu25chs6ldj77svrtqyddca
+    api_urls:
+      - "https://lumera-testnet-api.polkachu.com"
+      - "https://lcd.testnet.lumera.io"
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
     version: v2.3.21
@@ -134,4 +159,7 @@ terra:
       version: 1.23.5
     wasmvm:
       version: v2.2.4
+    valoper_address: terravaloper19zp8zstmwn5mfak2hkydexrl0xddt4dyqj42cx
+    api_urls:
+      - "https://terra-testnet-api.polkachu.com"
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/terra/terra_18175931.tar.lz4

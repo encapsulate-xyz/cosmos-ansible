@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# -------------------------------
+# Configuration
+# -------------------------------
+VALOPER="{{ vars[project].validator.valoper_address }}"
+APIS=(
+{% for url in vars[project].validator.api_urls %}
+  "{{ url }}"
+{% endfor %}
+)
+
+PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
+JOB_NAME="chain_exporter"
+PROJECT="{{ project }}"
+ENV="{{ env }}"
+AUTH_HEADER="Authorization: Basic {{ vault.default.pushgateway.auth_header }}"
+TIMEOUT=30
+
+# -------------------------------
+# Timestamped logger
+# -------------------------------
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
+}
+
+# -------------------------------
+# Function: Check jailed status
+# -------------------------------
+check_jailed() {
+  local api="$1"
+  local url="${api}/cosmos/staking/v1beta1/validators/${VALOPER}"
+  local response
+  response=$(curl -s --max-time 5 "$url")
+
+  if [[ $curl_code -ne 0 || -z "$response" ]]; then
+    return 2
+  fi
+
+  local jailed
+  jailed=$(echo "$response" | jq -r '.validator.jailed' 2>/dev/null)
+
+  if [[ "$jailed" == "true" ]]; then
+    return 1
+  elif [[ "$jailed" == "false" ]]; then
+    return 0
+  else
+    return 2
+  fi
+}
+
+# -------------------------------
+# Main logic
+# -------------------------------
+log "Checking jailed status for validator..."
+
+for api in "${APIS[@]}"; do
+  check_jailed "$api"
+  ret=$?
+  if [[ $ret -eq 0 ]]; then
+    status_value=0
+    log "Validator is not jailed."
+    api_success=true
+    break
+  elif [[ $ret -eq 1 ]]; then
+    status_value=1
+    log "Validator is jailed."
+    api_success=true
+    break
+  elif [[ $ret -eq 2 ]]; then
+    log "API returned invalid data for $api"
+  fi
+done
+
+if [[ $ret -eq 2 ]]; then
+  status_value=2
+  log "All APIs failed or returned invalid data."
+fi
+
+# -------------------------------
+# Build Prometheus metric
+# -------------------------------
+metrics=$(cat <<EOF
+# TYPE cometbft_validator_jailed_status gauge
+cometbft_validator_jailed_status $status_value
+EOF
+)
+
+metrics="${metrics}"$'\n'
+
+# -------------------------------
+# Push to Pushgateway
+# -------------------------------
+log "Pushing metrics to Pushgateway..."
+
+push_response=$(curl -s --max-time $TIMEOUT --write-out "%{http_code}" --output /dev/null \
+  -H "$AUTH_HEADER" \
+  --data-binary "$metrics" \
+  "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator")
+
+if [[ "$push_response" =~ ^2[0-9][0-9]$ ]]; then
+  log "Successfully pushed jailed status metric."
+else
+  log "Failed to push metric. HTTP code: $push_response"
+fi
