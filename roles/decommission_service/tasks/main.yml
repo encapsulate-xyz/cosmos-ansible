@@ -61,8 +61,11 @@
 
 - name: Delete group
   ansible.builtin.group:
-    name: "{{ item }}"
+    name: "{{ service_identifier }}"
     state: absent
-  loop:
-    - "{{ project }}"
-    - "{{ service_identifier }}"
+
+- name: Delete project group
+  ansible.builtin.group:
+    name: "{{ project }}"
+    state: absent
+  when: delete_project_group | default(false) | bool
