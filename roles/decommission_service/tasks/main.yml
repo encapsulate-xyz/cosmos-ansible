@@ -30,21 +30,28 @@
       ansible.builtin.debug:
         msg: "No UFW vars file found, skipping UFW rules application"
 
-- name: Stop and disable the service
+- name: Stop and disable systemd service and timer
   ansible.builtin.service:
-    name: "{{ service_identifier }}"
+    name: "{{ service_identifier }}.{{ item }}"
     state: stopped
     enabled: false
+  loop:
+    - "service"
+    - "timer"
+  ignore_errors: true
 
 - name: Delete home directory
   ansible.builtin.file:
     path: "/opt/{{ service_identifier }}"
     state: absent
 
-- name: Delete systemd file
+- name: Delete systemd service and timer files
   ansible.builtin.file:
-    path: /etc/systemd/system/{{ service_identifier }}.service
+    path: "/etc/systemd/system/{{ service_identifier }}.{{ item }}"
     state: absent
+  loop:
+    - "service"
+    - "timer"
 
 - name: Delete user
   ansible.builtin.user:
