@@ -137,7 +137,7 @@ pell:
 lumera:
   chain_id: lumera-testnet-2
   validator:
-    version: v1.8.0
+    version: v1.8.4
     wasmvm:
       version: v3.0.0-ibc2.0
     valoper_address: lumeravaloper1uj98474n68v52ycwu25chs6ldj77svrtqyddca
