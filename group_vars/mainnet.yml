@@ -128,7 +128,7 @@ stargaze:
 althea:
   chain_id: althea_258432-1
   validator:
-    version: v1.5.1
+    version: v1.6.0
     go:
       version: 1.23.5
     valoper_address: altheavaloper1d2x0t42a6anth3lt38ld5997m6e5ya5fw72axt
