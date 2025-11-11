@@ -85,7 +85,7 @@ c4e:
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.2.1
+    version: v1.2.4
     wasmvm:
       version: v1.5.8
     valoper_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
@@ -94,12 +94,12 @@ axelar:
       - "https://axelar-rest-1.staketab.org"
       - "https://axelar-testnet-lcd.qubelabs.io"
   fullnode:
-    version: v1.2.1
+    version: v1.2.4
     wasmvm:
       version: v1.5.8
   broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
   vald:
-    version: v1.2.1
+    version: v1.2.4
     node_address: "tcp://validator.axelar.testnet.encapsulate.xyz:11457"
     validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     wasmvm:
