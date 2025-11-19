@@ -124,7 +124,7 @@ enable = {{ node_type_settings.api.enable | tojson }}
 swagger = {{ node_type_settings.api.swagger | tojson }}
 
 # Address defines the API server to listen on.
-address = "{{ node_type_settings.api.address[type] }}:{{ rest_api_port }}"
+address = "tcp://0.0.0.0:{{ rest_api_port }}"
 
 # MaxOpenConnections defines the number of maximum open connections.
 max-open-connections = 1000
