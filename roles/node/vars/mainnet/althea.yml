@@ -22,6 +22,12 @@ node_ufw_rules:
       from: "{{ monitor_server_dns }}"
       comment: execution_metrics_port
 
+    - port: "{{ rest_api_port }}"
+      proto: tcp
+      rule: limit
+      from: "{{ monitor_server_dns }}"
+      comment: rest_api_port
+
   fullnode:
     - port: "{{ p2p_port }}"
       proto: tcp
