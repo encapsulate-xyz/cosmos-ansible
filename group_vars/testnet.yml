@@ -85,25 +85,25 @@ c4e:
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.2.4
+    version: v1.3.1
     wasmvm:
-      version: v1.5.8
+      version: v2.2.4
     valoper_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     api_urls:
       - "https://axelar-testnet-api.polkachu.com"
       - "https://axelar-rest-1.staketab.org"
       - "https://axelar-testnet-lcd.qubelabs.io"
   fullnode:
-    version: v1.2.4
+    version: v1.3.1
     wasmvm:
-      version: v1.5.8
+      version: v2.2.4
   broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
   vald:
-    version: v1.2.4
+    version: v1.3.1
     node_address: "tcp://validator.axelar.testnet.encapsulate.xyz:11457"
     validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     wasmvm:
-      version: v1.5.8
+      version: v2.2.4
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
     heartbeat_metrics_url: https://testnet.api.axelarscan.io/validator/searchHeartbeats
     tofnd_host: tofnd.axelar.testnet.encapsulate.xyz
