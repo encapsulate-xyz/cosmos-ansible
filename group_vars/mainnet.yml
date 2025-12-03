@@ -366,7 +366,7 @@ tenet:
 lumera:
   chain_id: lumera-mainnet-1
   validator:
-    version: v1.8.4
+    version: v1.8.5
     wasmvm:
       version: v3.0.0-ibc2.0
     valoper_address: lumeravaloper18qpd0yrk0gkcvah0zpyq89uqzd2y6q25dlmcux
@@ -381,6 +381,6 @@ lumera:
     identity:
     grpc_addr: localhost:15090
   fullnode:
-    version: v1.8.4
+    version: v1.8.5
     wasmvm:
       version: v3.0.0-ibc2.0
