@@ -105,7 +105,6 @@ axelar:
     wasmvm:
       version: v2.2.4
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
-    heartbeat_metrics_url: https://testnet.api.axelarscan.io/validator/searchHeartbeats
     tofnd_host: tofnd.axelar.testnet.encapsulate.xyz
   tofnd:
     version: v1.0.1
