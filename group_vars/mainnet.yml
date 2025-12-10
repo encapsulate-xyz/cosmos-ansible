@@ -68,7 +68,6 @@ axelar:
     wasmvm:
       version: v2.2.4
     vote_metrics_url: https://api.axelarscan.io/validator/searchPolls
-    heartbeat_metrics_url: https://api.axelarscan.io/validator/searchHeartbeats
     tofnd_host: tofnd.axelar.mainnet.encapsulate.xyz
   tofnd:
     version: v0.10.1
