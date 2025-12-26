@@ -25,7 +25,7 @@ node_ufw_rules:
     - port: "{{ rest_api_port }}"
       proto: tcp
       rule: limit
-      from: "h1.finland.hub.infra.encapsulate.xyz"
+      from: "proposal.bot.althea.mainnet.encapsulate.xyz"
       comment: rest_api_port
 
   fullnode:
