@@ -30,7 +30,12 @@ This playbook relies on HashiCorp Vault to securely retrieve sensitive files, su
 The playbook dynamically retrieves private validator keys and node keys from HashiCorp Vault. The keys are expected to follow a structured path format:
 `<environment>/<project>/<organization>/<type>/<file_name>`
 For example:
-`testnet/axelar/encapsulate/validator/priv_validator_key.json`
+- `testnet/axelar/encapsulate/validator/priv_validator_key.json`
+- [`testnet/axelar/encapsulate/tofnd/axelar-tofnd.secrets.env`](roles/tofnd/templates/secrets.env.example)
+- [`testnet/axelar/encapsulate/vald/axelar-vald.secrets.env`](roles/vald/templates/secrets.env.example)
+- [`testnet/umee/encapsulate/vald/umee-pf.secrets.env`](roles/price_feeder/templates/secrets.env.example)
+- [`testnet/lumera/encapsulate/supernode/lumera-supernode.secrets.env`](roles/supernode/templates/secrets.env.example)
+- [`testnet/paloma/encapsulate/pigeon/paloma-pigeon.secrets.env`](roles/pigeon/templates/secrets.env.example)
 
 This structure ensures easy organization and secure retrieval of secrets.
 
