@@ -10,34 +10,22 @@ node_ufw_rules:
       from: any
       comment: p2p_port
 
-    # - port: "{{ prometheus_port }}"
-    #   proto: tcp
-    #   rule: allow
-    #   from: "{{ monitor_server_dns }}"
-    #   comment: prometheus_port
-
-    # - port: "{{ rpc_port }}"
-    #   proto: tcp
-    #   rule: allow
-    #   from: amplifier.axelar.mainnet.encapsulate.xyz
-    #   comment: rpc_port
-
-    # - port: "{{ grpc_port }}"
-    #   proto: tcp
-    #   rule: allow
-    #   from: amplifier.axelar.mainnet.encapsulate.xyz
-    #   comment: grpc_port
+    - port: "{{ prometheus_port }}"
+      proto: tcp
+      rule: allow
+      from: "{{ monitor_server_dns }}"
+      comment: prometheus_port
 
     - port: "{{ rpc_port }}"
       proto: tcp
       rule: allow
-      from: 157.90.3.253
+      from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: rpc_port
 
     - port: "{{ grpc_port }}"
       proto: tcp
       rule: allow
-      from: 157.90.3.253
+      from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: grpc_port
 
   fullnode:
@@ -53,22 +41,22 @@ node_ufw_rules:
       from: "{{ monitor_server_dns }}"
       comment: prometheus_port
 
-    - port: "{{ rpc_port }}"
-      proto: tcp
-      rule: limit
-      from: any
-      comment: rpc_port
-
     - port: "{{ rest_api_port }}"
       proto: tcp
       rule: limit
       from: any
       comment: rest_api_port
 
+    - port: "{{ rpc_port }}"
+      proto: tcp
+      rule: allow
+      from: amplifier.axelar.mainnet.encapsulate.xyz
+      comment: rpc_port
+
     - port: "{{ grpc_port }}"
       proto: tcp
-      rule: limit
-      from: any
+      rule: allow
+      from: amplifier.axelar.mainnet.encapsulate.xyz
       comment: grpc_port
 
 ########################################################################################################################
