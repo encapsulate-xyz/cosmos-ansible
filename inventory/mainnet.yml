@@ -29,6 +29,9 @@ all:
         validator.axelar.mainnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
+        fullnode.axelar.mainnet.encapsulate.xyz:
+          type: fullnode
+          support_amplifier: true
         vald.axelar.mainnet.encapsulate.xyz:
           type: vald
         tofnd.axelar.mainnet.encapsulate.xyz:
