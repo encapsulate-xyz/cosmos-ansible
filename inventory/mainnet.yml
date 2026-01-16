@@ -18,6 +18,8 @@ all:
       hosts:
         validator.agoric.mainnet.encapsulate.xyz:
           type: validator
+        ts.validator.agoric.mainnet.encapsulate.xyz:
+          type: validator
     umee:
       hosts:
         validator.umee.mainnet.encapsulate.xyz:
@@ -29,12 +31,16 @@ all:
         validator.axelar.mainnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
-        fullnode.axelar.mainnet.encapsulate.xyz:
-          type: fullnode
-          support_amplifier: true
         vald.axelar.mainnet.encapsulate.xyz:
           type: vald
         tofnd.axelar.mainnet.encapsulate.xyz:
+          type: tofnd
+        ts.validator.axelar.mainnet.encapsulate.xyz:
+          type: validator
+          support_amplifier: true
+        ts.vald.axelar.mainnet.encapsulate.xyz:
+          type: vald
+        ts.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
     juno:
       hosts:
@@ -49,6 +55,9 @@ all:
     althea:
       hosts:
         validator.althea.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
+        ts.validator.althea.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
     mantle:
@@ -79,6 +88,10 @@ all:
         validator.gravity.mainnet.encapsulate.xyz:
           type: validator
         orchestrator.gravity.mainnet.encapsulate.xyz:
+          type: orchestrator
+        ts.validator.gravity.mainnet.encapsulate.xyz:
+          type: validator
+        ts.orchestrator.gravity.mainnet.encapsulate.xyz:
           type: orchestrator
     sommelier:
       hosts:
