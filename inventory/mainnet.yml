@@ -46,6 +46,8 @@ all:
       hosts:
         validator.juno.mainnet.encapsulate.xyz:
           type: validator
+        ts.validator.juno.mainnet.encapsulate.xyz:
+          type: validator
         fullnode.juno.mainnet.encapsulate.xyz:
           type: fullnode
     stargaze:
@@ -71,6 +73,8 @@ all:
     gitopia:
       hosts:
         validator.gitopia.mainnet.encapsulate.xyz:
+          type: validator
+        ts.validator.gitopia.mainnet.encapsulate.xyz:
           type: validator
         fullnode.gitopia.mainnet.encapsulate.xyz:
           type: fullnode
