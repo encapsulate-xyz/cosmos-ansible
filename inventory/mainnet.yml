@@ -26,6 +26,10 @@ all:
           type: validator
         pf.umee.mainnet.encapsulate.xyz:
           type: pf
+        ts.validator.umee.mainnet.encapsulate.xyz:
+          type: validator
+        ts.pf.umee.mainnet.encapsulate.xyz:
+          type: pf
     axelar:
       hosts:
         validator.axelar.mainnet.encapsulate.xyz:
