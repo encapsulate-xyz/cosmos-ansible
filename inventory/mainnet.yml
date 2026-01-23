@@ -14,6 +14,8 @@ all:
       hosts:
         validator.quicksilver.mainnet.encapsulate.xyz:
           type: validator
+        ts.validator.quicksilver.mainnet.encapsulate.xyz:
+          type: validator
     agoric:
       hosts:
         validator.agoric.mainnet.encapsulate.xyz:
