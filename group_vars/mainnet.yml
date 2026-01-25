@@ -52,7 +52,7 @@ agoric:
 axelar:
   chain_id: axelar-dojo-1
   validator:
-    version: v1.3.5
+    version: v1.3.9
     wasmvm:
       version: v2.2.4
     valoper_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
@@ -246,7 +246,7 @@ sommelier:
 ixo:
   chain_id: ixo-5
   validator:
-    version: v6.0.0
+    version: v6.0.1
     go:
       version: 1.23.5
     wasmvm:
