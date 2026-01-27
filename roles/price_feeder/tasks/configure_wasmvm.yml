@@ -15,6 +15,6 @@
   ansible.builtin.template:
     src: "wasmvm.env.j2"
     dest: "{{ price_feeder_environment_wasmvm_file_path }}"
-    owner: root
-    group: root
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
     mode: "0644"
