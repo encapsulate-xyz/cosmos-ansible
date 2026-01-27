@@ -127,7 +127,7 @@ stargaze:
 althea:
   chain_id: althea_258432-1
   validator:
-    version: v1.6.2
+    version: v1.6.3
     go:
       version: 1.23.5
     valoper_address: altheavaloper1d2x0t42a6anth3lt38ld5997m6e5ya5fw72axt
@@ -211,7 +211,7 @@ omniflix:
 gravity:
   chain_id: gravity-bridge-3
   validator:
-    version: v1.13.3
+    version: v1.13.4
     valoper_address: gravityvaloper1s0lankh33kprer2l22nank5rvsuh9ksatgqzfn
     api_urls:
       - "https://gravity-api.polkachu.com"
@@ -219,7 +219,7 @@ gravity:
       - "https://rest.lavenderfive.com/gravitybridge"
   snapshot_url: https://snapshots.polkachu.com/snapshots/gravity/gravity_15740467.tar.lz4
   orchestrator:
-    version: v1.13.3
+    version: v1.13.4
   node_grpc_address: http://localhost:13090
   public_api_address: https://gravity-api.polkachu.com
   address: gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp
