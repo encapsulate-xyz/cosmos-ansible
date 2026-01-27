@@ -115,6 +115,8 @@ all:
       hosts:
         validator.ixo.mainnet.encapsulate.xyz:
           type: validator
+        ts.validator.ixo.mainnet.encapsulate.xyz:
+          type: validator
     paloma:
       hosts:
         validator.paloma.mainnet.encapsulate.xyz:
