@@ -10,18 +10,18 @@ verbose_cors = true
 write_timeout = "20s"
 
 [account]
-address = "umee1fk8xy9xy4lkuqjdsj380capumn30wlsmsuu8pm"
+address = "{{ pf_address }}"
 chain_id = "umee-1"
-validator = "umeevaloper1s0lankh33kprer2l22nank5rvsuh9ksavp35nh"
+validator = "{{ validator_address }}"
 
 [keyring]
 backend = "os"
 dir = "{{ umee.pf.keyring_dir }}"
 
 [rpc]
-grpc_endpoint = "validator.umee.mainnet.encapsulate.xyz:{{ grpc_port }}"
+grpc_endpoint = "127.0.0.1:{{ grpc_port }}"
 rpc_timeout = "100ms"
-tmrpc_endpoint = "http://validator.umee.mainnet.encapsulate.xyz:{{ rpc_port }}"
+tmrpc_endpoint = "http://127.0.0.1:{{ rpc_port }}"
 
 [telemetry]
 enable-hostname = true

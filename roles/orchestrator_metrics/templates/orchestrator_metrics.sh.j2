@@ -2,9 +2,9 @@
 
 # Configuration
 {% if project == "sommelier" %}
-METRICS_URL="https://{{ orchestrator_metrics_dns }}/sommelier?grpc={{ sommelier.public_grpc_address }}&orchAddress={{ sommelier.address }}"
+METRICS_URL="https://{{ orchestrator_metrics_dns }}/sommelier?grpc={{ sommelier.public_grpc_address }}&orchAddress={{ orchestrator_address }}"
 {% elif project == "gravity" %}
-METRICS_URL="https://{{ orchestrator_metrics_dns }}/peggo?lcd={{ gravity.public_api_address }}&orchAddress={{ gravity.address }}"
+METRICS_URL="https://{{ orchestrator_metrics_dns }}/peggo?lcd={{ gravity.public_api_address }}&orchAddress={{ orchestrator_address }}"
 {% endif %}
 PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
 JOB_NAME="chain_exporter"
