@@ -43,6 +43,7 @@ all:
           support_amplifier: true
         vald.axelar.mainnet.encapsulate.xyz:
           type: vald
+          broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
         tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
         ts.validator.axelar.mainnet.encapsulate.xyz:
@@ -50,6 +51,7 @@ all:
           support_amplifier: true
         ts.vald.axelar.mainnet.encapsulate.xyz:
           type: vald
+          broadcaster_address: axelar1td75rn99evak5tmklqpl47vg5xzm5jea3zfauz
         ts.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
     juno:
