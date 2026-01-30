@@ -28,10 +28,14 @@ all:
           type: validator
         pf.umee.mainnet.encapsulate.xyz:
           type: pf
+          pf_address: "umee1fk8xy9xy4lkuqjdsj380capumn30wlsmsuu8pm"
+          validator_address: "umeevaloper1s0lankh33kprer2l22nank5rvsuh9ksavp35nh"
         ts.validator.umee.mainnet.encapsulate.xyz:
           type: validator
         ts.pf.umee.mainnet.encapsulate.xyz:
           type: pf
+          pf_address: "umee1td75rn99evak5tmklqpl47vg5xzm5jea86z2n3"
+          validator_address: "umeevaloper1p8uxq4ska2psv2k8wknljh568k5qfnwtcale5a"
     axelar:
       hosts:
         validator.axelar.mainnet.encapsulate.xyz:
@@ -99,16 +103,19 @@ all:
           type: validator
         orchestrator.gravity.mainnet.encapsulate.xyz:
           type: orchestrator
+          orchestrator_address: "gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp"
         ts.validator.gravity.mainnet.encapsulate.xyz:
           type: validator
         ts.orchestrator.gravity.mainnet.encapsulate.xyz:
           type: orchestrator
+          orchestrator_address: "gravity1y5ahycftx9gty47p45cp9kjksnmgxk284zr79p"
     sommelier:
       hosts:
         validator.sommelier.mainnet.encapsulate.xyz:
           type: validator
         orchestrator.sommelier.mainnet.encapsulate.xyz:
           type: orchestrator
+          orchestrator_address: "sommelier1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp"
         steward.sommelier.mainnet.encapsulate.xyz:
           type: steward
     ixo:
