@@ -10,6 +10,7 @@ PUSHGATEWAY_URL="https://{{ pushgateway_dns }}"
 JOB_NAME="chain_exporter"
 ENV="{{ env }}"
 PROJECT="{{ project }}"
+ORCHESTRATOR_ADDRESS="{{ orchestrator_address }}"
 TIMEOUT=30
 AUTH_HEADER="Authorization: Basic {{ vault.default.pushgateway.auth_header }}"
 
@@ -77,7 +78,7 @@ start_time=$(date +%s)
 push_response=$(curl -s --max-time $TIMEOUT --write-out "%{http_code}" --output /dev/null \
   -H "$AUTH_HEADER" \
   --data-binary "$metrics" \
-  "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator")
+  "$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/$PROJECT/env/$ENV/type/validator/orchestrator/$ORCHESTRATOR_ADDRESS")
 
 end_time=$(date +%s)
 duration=$((end_time - start_time))
