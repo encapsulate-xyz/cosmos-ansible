@@ -61,7 +61,7 @@ done
 # Push to Pushgateway
 log "Pushing vote metrics to Pushgateway"
 cat <<EOF | curl --max-time 30 --data-binary @- -H "$AUTH_HEADER" \
-"$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/{{ project }}/env/{{ env }}/type/{{ type }}"
+"$PUSHGATEWAY_URL/metrics/job/$JOB_NAME/project/{{ project }}/env/{{ env }}/type/{{ type }}/broadcaster/$ADDRESS"
 # TYPE axelar_evm_chain_vote_percent gauge
 $metrics
 EOF
