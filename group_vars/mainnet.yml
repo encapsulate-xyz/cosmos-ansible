@@ -60,7 +60,6 @@ axelar:
       - "https://axelar-api.polkachu.com"
       - "https://axelar.ibs.team/api"
       - "https://api-1.axelar.nodes.guru"
-  broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
   vald:
     version: v1.3.5
     node_address: "tcp://ts.validator.axelar.mainnet.encapsulate.xyz:11457"
