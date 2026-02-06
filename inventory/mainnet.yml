@@ -120,6 +120,13 @@ all:
           orchestrator_address: "sommelier1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp"
         steward.sommelier.mainnet.encapsulate.xyz:
           type: steward
+        ts.validator.sommelier.mainnet.encapsulate.xyz:
+          type: validator
+        ts.orchestrator.sommelier.mainnet.encapsulate.xyz:
+          type: orchestrator
+          orchestrator_address: ""
+        ts.steward.sommelier.mainnet.encapsulate.xyz:
+          type: steward
     ixo:
       hosts:
         validator.ixo.mainnet.encapsulate.xyz:
