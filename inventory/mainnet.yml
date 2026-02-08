@@ -95,6 +95,9 @@ all:
         validator.humans.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
+        ts.validator.humans.mainnet.encapsulate.xyz:
+          type: validator
+          execution_client: true
     omniflix:
       hosts:
         validator.omniflix.mainnet.encapsulate.xyz:
