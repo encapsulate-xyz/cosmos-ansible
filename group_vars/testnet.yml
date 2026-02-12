@@ -135,16 +135,16 @@ pell:
 lumera:
   chain_id: lumera-testnet-2
   validator:
-    version: v1.9.1
+    version: v1.10.1
     wasmvm:
-      version: v3.0.0-ibc2.0
+      version: v3.0.2
     valoper_address: lumeravaloper1uj98474n68v52ycwu25chs6ldj77svrtqyddca
     api_urls:
       - "https://lumera-testnet-api.polkachu.com"
       - "https://lcd.testnet.lumera.io"
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
-    version: v2.4.8
+    version: v2.4.28
     identity: lumera1wmq0wu60a63cnx5fhln0m0zv6u5rq6dw0dhvhn
     keyfile_name: 76c0f7734feea3899a89bfe6fdbc4cd7283069ae.address
     grpc_addr: localhost:15090
