@@ -20,6 +20,8 @@ all:
       hosts:
         validator.agoric.mainnet.encapsulate.xyz:
           type: validator
+        new.validator.agoric.mainnet.encapsulate.xyz:
+          type: validator
         ts.validator.agoric.mainnet.encapsulate.xyz:
           type: validator
     umee:
@@ -46,6 +48,14 @@ all:
           broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
         tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
+        new.validator.axelar.mainnet.encapsulate.xyz:
+          type: validator
+          support_amplifier: true
+        new.vald.axelar.mainnet.encapsulate.xyz:
+          type: vald
+          broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
+        new.tofnd.axelar.mainnet.encapsulate.xyz:
+          type: tofnd
         ts.validator.axelar.mainnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
@@ -58,9 +68,13 @@ all:
       hosts:
         validator.juno.mainnet.encapsulate.xyz:
           type: validator
+        new.validator.juno.mainnet.encapsulate.xyz:
+          type: validator
         ts.validator.juno.mainnet.encapsulate.xyz:
           type: validator
         fullnode.juno.mainnet.encapsulate.xyz:
+          type: fullnode
+        new.fullnode.juno.mainnet.encapsulate.xyz:
           type: fullnode
     stargaze:
       hosts:
@@ -81,6 +95,8 @@ all:
     c4e:
       hosts:
         validator.c4e.mainnet.encapsulate.xyz:
+          type: validator
+        new.validator.c4e.mainnet.encapsulate.xyz:
           type: validator
     gitopia:
       hosts:
