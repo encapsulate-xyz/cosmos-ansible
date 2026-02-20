@@ -18,9 +18,7 @@ all:
           type: validator
     agoric:
       hosts:
-        validator.agoric.mainnet.encapsulate.xyz:
-          type: validator
-        new.validator.agoric.mainnet.encapsulate.xyz:
+        old.validator.agoric.mainnet.encapsulate.xyz:
           type: validator
         ts.validator.agoric.mainnet.encapsulate.xyz:
           type: validator
@@ -40,21 +38,13 @@ all:
           validator_address: "umeevaloper1p8uxq4ska2psv2k8wknljh568k5qfnwtcale5a"
     axelar:
       hosts:
-        validator.axelar.mainnet.encapsulate.xyz:
+        old.validator.axelar.mainnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
-        vald.axelar.mainnet.encapsulate.xyz:
+        old.vald.axelar.mainnet.encapsulate.xyz:
           type: vald
           broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
-        tofnd.axelar.mainnet.encapsulate.xyz:
-          type: tofnd
-        new.validator.axelar.mainnet.encapsulate.xyz:
-          type: validator
-          support_amplifier: true
-        new.vald.axelar.mainnet.encapsulate.xyz:
-          type: vald
-          broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
-        new.tofnd.axelar.mainnet.encapsulate.xyz:
+        old.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
         ts.validator.axelar.mainnet.encapsulate.xyz:
           type: validator
@@ -66,15 +56,11 @@ all:
           type: tofnd
     juno:
       hosts:
-        validator.juno.mainnet.encapsulate.xyz:
-          type: validator
-        new.validator.juno.mainnet.encapsulate.xyz:
+        old.validator.juno.mainnet.encapsulate.xyz:
           type: validator
         ts.validator.juno.mainnet.encapsulate.xyz:
           type: validator
-        fullnode.juno.mainnet.encapsulate.xyz:
-          type: fullnode
-        new.fullnode.juno.mainnet.encapsulate.xyz:
+        ts.fullnode.juno.mainnet.encapsulate.xyz:
           type: fullnode
     stargaze:
       hosts:
@@ -94,9 +80,7 @@ all:
           type: validator
     c4e:
       hosts:
-        validator.c4e.mainnet.encapsulate.xyz:
-          type: validator
-        new.validator.c4e.mainnet.encapsulate.xyz:
+        ts.validator.c4e.mainnet.encapsulate.xyz:
           type: validator
     gitopia:
       hosts:
