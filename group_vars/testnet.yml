@@ -152,7 +152,7 @@ lumera:
 terra:
   chain_id: pisco-1
   validator:
-    version: v2.18.0
+    version: v2.19.0
     go:
       version: 1.23.5
     wasmvm:
