@@ -112,11 +112,11 @@ juno:
 stargaze:
   chain_id: stargaze-1
   validator:
-    version: v17.0.0
+    version: v18.0.0
     go:
       version: 1.24.1
     wasmvm:
-      version: v2.2.4
+      version: v2.3.2
     valoper_address: starsvaloper1s0lankh33kprer2l22nank5rvsuh9ksap3gdkx
     api_urls:
       - "https://stargaze-api.polkachu.com"
@@ -315,7 +315,7 @@ qwoyn:
 terra:
   chain_id: phoenix-1
   validator:
-    version: v2.18.0
+    version: v2.19.0
     go:
       version: 1.23.5
     wasmvm:
@@ -327,7 +327,7 @@ terra:
       - "https://terra-phoenix-api.highstakes.ch"
       - "https://terra-api.polkachu.com"
   fullnode:
-    version: v2.18.0
+    version: v2.19.0
     go:
       version: 1.23.5
     wasmvm:
