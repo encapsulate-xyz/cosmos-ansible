@@ -114,7 +114,7 @@ stargaze:
   validator:
     version: v18.0.0
     go:
-      version: 1.24.1
+      version: 1.25.6
     wasmvm:
       version: v2.3.2
     valoper_address: starsvaloper1s0lankh33kprer2l22nank5rvsuh9ksap3gdkx
