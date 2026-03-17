@@ -4,15 +4,9 @@ all:
   vars:
     env: mainnet
   children:
-    celestia:
-      hosts:
-        validator.celestia.mainnet.encapsulate.xyz:
-          type: validator
-        fullnode.celestia.mainnet.encapsulate.xyz:
-          type: fullnode
     quicksilver:
       hosts:
-        validator.quicksilver.mainnet.encapsulate.xyz:
+        old.validator.quicksilver.mainnet.encapsulate.xyz:
           type: validator
         ts.validator.quicksilver.mainnet.encapsulate.xyz:
           type: validator
@@ -24,9 +18,9 @@ all:
           type: validator
     umee:
       hosts:
-        validator.umee.mainnet.encapsulate.xyz:
+        old.validator.umee.mainnet.encapsulate.xyz:
           type: validator
-        pf.umee.mainnet.encapsulate.xyz:
+        old.pf.umee.mainnet.encapsulate.xyz:
           type: pf
           pf_address: "umee1fk8xy9xy4lkuqjdsj380capumn30wlsmsuu8pm"
           validator_address: "umeevaloper1s0lankh33kprer2l22nank5rvsuh9ksavp35nh"
@@ -54,21 +48,13 @@ all:
           broadcaster_address: axelar1td75rn99evak5tmklqpl47vg5xzm5jea3zfauz
         ts.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
-    juno:
-      hosts:
-        old.validator.juno.mainnet.encapsulate.xyz:
-          type: validator
-        ts.validator.juno.mainnet.encapsulate.xyz:
-          type: validator
-        ts.fullnode.juno.mainnet.encapsulate.xyz:
-          type: fullnode
     stargaze:
       hosts:
-        validator.stargaze.mainnet.encapsulate.xyz:
+        old.validator.stargaze.mainnet.encapsulate.xyz:
           type: validator
     althea:
       hosts:
-        validator.althea.mainnet.encapsulate.xyz:
+        old.validator.althea.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
         ts.validator.althea.mainnet.encapsulate.xyz:
@@ -76,7 +62,7 @@ all:
           execution_client: true
     mantle:
       hosts:
-        validator.mantle.mainnet.encapsulate.xyz:
+        old.validator.mantle.mainnet.encapsulate.xyz:
           type: validator
     c4e:
       hosts:
@@ -84,7 +70,7 @@ all:
           type: validator
     gitopia:
       hosts:
-        validator.gitopia.mainnet.encapsulate.xyz:
+        old.validator.gitopia.mainnet.encapsulate.xyz:
           type: validator
         ts.validator.gitopia.mainnet.encapsulate.xyz:
           type: validator
@@ -92,21 +78,17 @@ all:
           type: fullnode
     humans:
       hosts:
-        validator.humans.mainnet.encapsulate.xyz:
+        old.validator.humans.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
         ts.validator.humans.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
-    omniflix:
-      hosts:
-        validator.omniflix.mainnet.encapsulate.xyz:
-          type: validator
     gravity:
       hosts:
-        validator.gravity.mainnet.encapsulate.xyz:
+        old.validator.gravity.mainnet.encapsulate.xyz:
           type: validator
-        orchestrator.gravity.mainnet.encapsulate.xyz:
+        old.orchestrator.gravity.mainnet.encapsulate.xyz:
           type: orchestrator
           orchestrator_address: "gravity1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp"
         ts.validator.gravity.mainnet.encapsulate.xyz:
@@ -116,12 +98,12 @@ all:
           orchestrator_address: "gravity1y5ahycftx9gty47p45cp9kjksnmgxk284zr79p"
     sommelier:
       hosts:
-        validator.sommelier.mainnet.encapsulate.xyz:
+        old.validator.sommelier.mainnet.encapsulate.xyz:
           type: validator
-        orchestrator.sommelier.mainnet.encapsulate.xyz:
+        old.orchestrator.sommelier.mainnet.encapsulate.xyz:
           type: orchestrator
           orchestrator_address: "sommelier1v78rxsl5ycptaq2dq5mu6ftzqcgk2aqtp2ghsp"
-        steward.sommelier.mainnet.encapsulate.xyz:
+        old.steward.sommelier.mainnet.encapsulate.xyz:
           type: steward
         ts.validator.sommelier.mainnet.encapsulate.xyz:
           type: validator
@@ -132,42 +114,32 @@ all:
           type: steward
     ixo:
       hosts:
-        validator.ixo.mainnet.encapsulate.xyz:
+        old.validator.ixo.mainnet.encapsulate.xyz:
           type: validator
         ts.validator.ixo.mainnet.encapsulate.xyz:
           type: validator
-    paloma:
-      hosts:
-        validator.paloma.mainnet.encapsulate.xyz:
-          type: validator
-        pigeon.paloma.mainnet.encapsulate.xyz:
-          type: pigeon
     planq:
       hosts:
-        validator.planq.mainnet.encapsulate.xyz:
+        old.validator.planq.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
-    pylon:
-      hosts:
-        validator.pylon.mainnet.encapsulate.xyz:
-          type: validator
     qwoyn:
       hosts:
-        validator.qwoyn.mainnet.encapsulate.xyz:
+        old.validator.qwoyn.mainnet.encapsulate.xyz:
           type: validator
     terra:
       hosts:
-        validator.terra.mainnet.encapsulate.xyz:
+        old.validator.terra.mainnet.encapsulate.xyz:
           type: validator
         fullnode.terra.mainnet.encapsulate.xyz:
           type: fullnode
     passage:
       hosts:
-        validator.passage.mainnet.encapsulate.xyz:
+        old.validator.passage.mainnet.encapsulate.xyz:
           type: validator
     tenet:
       hosts:
-        validator.tenet.mainnet.encapsulate.xyz:
+        old.validator.tenet.mainnet.encapsulate.xyz:
           type: validator
           execution_client: true
     lumera:
