@@ -62,12 +62,12 @@ axelar:
       - "https://api-1.axelar.nodes.guru"
   vald:
     version: v1.3.5
-    node_address: "tcp://ts.validator.axelar.mainnet.encapsulate.xyz:11457"
+    node_address: "tcp://localhost:11457"
     validator_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
     wasmvm:
       version: v2.2.4
     vote_metrics_url: https://api.axelarscan.io/validator/searchPolls
-    tofnd_host: ts.tofnd.axelar.mainnet.encapsulate.xyz
+    tofnd_host: localhost
   tofnd:
     version: v0.10.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/axelar/axelar_16464939.tar.lz4
