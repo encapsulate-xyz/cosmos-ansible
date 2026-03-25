@@ -74,7 +74,7 @@ all:
           type: validator
         ts.validator.gitopia.mainnet.encapsulate.xyz:
           type: validator
-        fullnode.gitopia.mainnet.encapsulate.xyz:
+        ts.fullnode.gitopia.mainnet.encapsulate.xyz:
           type: fullnode
     humans:
       hosts:
@@ -131,7 +131,7 @@ all:
       hosts:
         ts.validator.terra.mainnet.encapsulate.xyz:
           type: validator
-        fullnode.terra.mainnet.encapsulate.xyz:
+        ts.fullnode.terra.mainnet.encapsulate.xyz:
           type: fullnode
     passage:
       hosts:
@@ -150,5 +150,5 @@ all:
           type: validator
         supernode.lumera.mainnet.encapsulate.xyz:
           type: supernode
-        fullnode.lumera.mainnet.encapsulate.xyz:
+        ts.fullnode.lumera.mainnet.encapsulate.xyz:
           type: fullnode
