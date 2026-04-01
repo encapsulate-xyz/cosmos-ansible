@@ -45,6 +45,7 @@ all:
         vald.axelar.testnet.encapsulate.xyz:
           type: vald
           broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
+          validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
         tofnd.axelar.testnet.encapsulate.xyz:
           type: tofnd
     agoric:

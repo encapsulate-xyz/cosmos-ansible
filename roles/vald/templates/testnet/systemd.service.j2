@@ -10,7 +10,7 @@ EnvironmentFile={{ vald_environment_wasmvm_file_path }}
 ExecStart=/usr/bin/sh -c 'echo $KEYRING_PASSWORD | {{ vald_bin_dir }}/{{ service_identifier }} vald-start \
     --home {{ vald_home_dir }} \
     --chain-id {{ axelar.chain_id }} \
-    --validator-addr {{ axelar.vald.validator_address }} \
+    --validator-addr {{ validator_address }} \
     --node {{ axelar.vald.node_address }} \
     --tofnd-host {{ axelar.vald.tofnd_host }} \
     --tofnd-port {{ tofnd_port }} \
