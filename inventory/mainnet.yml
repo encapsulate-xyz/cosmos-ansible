@@ -38,6 +38,7 @@ all:
         old.vald.axelar.mainnet.encapsulate.xyz:
           type: vald
           broadcaster_address: axelar17x2hs7tta7nkmh788f2d9q60nt8mnk370t5ncs
+          validator_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
         old.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
         ts.validator.axelar.mainnet.encapsulate.xyz:
@@ -46,6 +47,7 @@ all:
         ts.vald.axelar.mainnet.encapsulate.xyz:
           type: vald
           broadcaster_address: axelar1td75rn99evak5tmklqpl47vg5xzm5jea3zfauz
+          validator_address: axelarvaloper1p8uxq4ska2psv2k8wknljh568k5qfnwtwq9yct
         ts.tofnd.axelar.mainnet.encapsulate.xyz:
           type: tofnd
     stargaze:

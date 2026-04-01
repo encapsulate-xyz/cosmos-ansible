@@ -100,7 +100,6 @@ axelar:
   vald:
     version: v1.3.5
     node_address: "tcp://localhost:11457"
-    validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     wasmvm:
       version: v2.2.4
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
