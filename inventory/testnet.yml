@@ -4,68 +4,43 @@ all:
   vars:
     env: testnet
   children:
-    omniflix:
-      hosts:
-        validator.omniflix.testnet.encapsulate.xyz:
-          type: validator
     quicksilver:
       hosts:
-        validator.quicksilver.testnet.encapsulate.xyz:
-          type: validator
-    celestia:
-      hosts:
-        validator.celestia.testnet.encapsulate.xyz:
+        ts.validator.quicksilver.testnet.encapsulate.xyz:
           type: validator
     humans:
       hosts:
-        validator.humans.testnet.encapsulate.xyz:
+        ts.validator.humans.testnet.encapsulate.xyz:
           type: validator
           execution_client: true
-    ojo:
-      hosts:
-        validator.ojo.testnet.encapsulate.xyz:
-          type: validator
-    umee:
-      hosts:
-        validator.umee.testnet.encapsulate.xyz:
-          type: validator
-        pf.umee.testnet.encapsulate.xyz:
-          type: pf
     c4e:
       hosts:
-        validator.c4e.testnet.encapsulate.xyz:
+        ts.validator.c4e.testnet.encapsulate.xyz:
           type: validator
     axelar:
       hosts:
-        validator.axelar.testnet.encapsulate.xyz:
+        ts.validator.axelar.testnet.encapsulate.xyz:
           type: validator
           support_amplifier: true
-        fullnode.axelar.testnet.encapsulate.xyz:
+        ts.fullnode.axelar.testnet.encapsulate.xyz:
           type: fullnode
-        vald.axelar.testnet.encapsulate.xyz:
+        ts.vald.axelar.testnet.encapsulate.xyz:
           type: vald
           broadcaster_address: axelar1fqw4e8080u9wlv5fup38qvquf2605gvv58fwyd
           validator_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
-        tofnd.axelar.testnet.encapsulate.xyz:
+        ts.tofnd.axelar.testnet.encapsulate.xyz:
           type: tofnd
     agoric:
       hosts:
-        validator.agoric.testnet.encapsulate.xyz:
+        ts.validator.agoric.testnet.encapsulate.xyz:
           type: validator
-    pell:
-      hosts:
-        validator.pell.testnet.encapsulate.xyz:
-          type: validator
-          execution_client: true
-
     lumera:
       hosts:
-        validator.lumera.testnet.encapsulate.xyz:
+        ts.validator.lumera.testnet.encapsulate.xyz:
           type: validator
-        supernode.lumera.testnet.encapsulate.xyz:
+        ts.supernode.lumera.testnet.encapsulate.xyz:
           type: supernode
-
     terra:
       hosts:
-        validator.terra.testnet.encapsulate.xyz:
+        ts.validator.terra.testnet.encapsulate.xyz:
           type: validator
