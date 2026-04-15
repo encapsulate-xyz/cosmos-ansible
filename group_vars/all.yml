@@ -233,7 +233,7 @@ lumera:
     source_url: https://github.com/LumeraProtocol/supernode/releases/download
     github_api_url: https://api.github.com/repos/LumeraProtocol/supernode/releases/latest
     ports:
-      listen_port: 4444
+      listen_port: 4443
       p2p_port: 4445
       discovery_port: 8002
   fullnode:
