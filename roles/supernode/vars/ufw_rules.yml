@@ -1,5 +1,12 @@
 ---
 supernode_ufw_rules:
+  - port: "4444"
+    proto: tcp
+    rule: allow
+    from: any
+    delete: true
+    comment: listen_port
+
   - port: "{{ lumera.supernode.ports.listen_port }}"
     proto: tcp
     rule: allow
