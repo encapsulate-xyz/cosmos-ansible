@@ -73,5 +73,5 @@
     body_format: raw
     headers:
       Content-Type: "text/plain"
-      Authorization: "Basic {{ vault.pushgateway.auth_header }}"
+      Authorization: "Basic {{ vault.default.pushgateway.auth_header }}"
     status_code: 200
