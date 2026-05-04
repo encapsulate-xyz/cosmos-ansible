@@ -15,7 +15,7 @@ celestia:
 umee:
   chain_id: umee-1
   validator:
-    version: v6.7.5
+    version: v6.7.6
     go:
       version: 1.23.1
     wasmvm:
