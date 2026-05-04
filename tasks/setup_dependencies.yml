@@ -1,19 +1,18 @@
 ---
 - name: Install apt packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name:
+      - make
+      - build-essential
+      - gcc
+      - git
+      - jq
+      - chrony
+      - lz4
+      - yq
     state: present
     update_cache: true
     cache_valid_time: 3600
-  loop:
-    - make
-    - build-essential
-    - gcc
-    - git
-    - jq
-    - chrony
-    - lz4
-    - yq
 
 - name: Remove existing Go directories (if any)
   ansible.builtin.file:
