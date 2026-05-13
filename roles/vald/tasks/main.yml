@@ -20,6 +20,7 @@
     mode: "0755"
   notify:
     - Restart service
+  when: fetch_binary | default(true) | bool
 
 - name: Copy configuration file
   ansible.builtin.template:
