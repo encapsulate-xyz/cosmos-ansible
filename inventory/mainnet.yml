@@ -154,3 +154,9 @@ all:
           type: supernode
         ts.fullnode.lumera.mainnet.encapsulate.xyz:
           type: fullnode
+    paloma:
+      hosts:
+        ts.validator.paloma.mainnet.encapsulate.xyz:
+          type: validator
+        ts.pigeon.paloma.mainnet.encapsulate.xyz:
+          type: pigeon
