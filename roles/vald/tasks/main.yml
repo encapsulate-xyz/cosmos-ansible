@@ -20,7 +20,11 @@
     mode: "0755"
   notify:
     - Restart service
-  when: fetch_binary | default(true) | bool
+  when: not (fetch_secret_binaries | default(false) | bool)
+
+- name: Include fetch secret binaries task
+  ansible.builtin.include_tasks: fetch_secret_binaries.yml
+  when: fetch_secret_binaries | default(false) | bool
 
 - name: Copy configuration file
   ansible.builtin.template:
