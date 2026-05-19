@@ -85,7 +85,7 @@ c4e:
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.3.11
+    version: v1.4.6
     wasmvm:
       version: v2.2.4
     valoper_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
@@ -94,11 +94,11 @@ axelar:
       - "https://axelar-rest-1.staketab.org"
       - "https://axelar-testnet-lcd.qubelabs.io"
   fullnode:
-    version: v1.3.11
+    version: v1.4.6
     wasmvm:
       version: v2.2.4
   vald:
-    version: v1.3.11
+    version: v1.4.6
     node_address: "tcp://localhost:11457"
     wasmvm:
       version: v2.2.4
