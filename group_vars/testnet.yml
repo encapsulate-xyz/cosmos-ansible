@@ -86,8 +86,6 @@ axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
     version: v1.4.6
-    wasmvm:
-      version: v2.2.4
     valoper_address: axelarvaloper1klj7fs4d63krf2vpcts3wc5csadl9tdsfuz9mh
     api_urls:
       - "https://axelar-testnet-api.polkachu.com"
@@ -95,13 +93,9 @@ axelar:
       - "https://axelar-testnet-lcd.qubelabs.io"
   fullnode:
     version: v1.4.6
-    wasmvm:
-      version: v2.2.4
   vald:
     version: v1.4.6
     node_address: "tcp://localhost:11457"
-    wasmvm:
-      version: v2.2.4
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
     tofnd_host: localhost
   tofnd:

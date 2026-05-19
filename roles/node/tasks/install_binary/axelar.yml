@@ -4,7 +4,7 @@
     suffix_url: >
       {{ node_service_default_binary_name[project] }}-{{ ansible_system | lower }}-{{ system_architecture }}-{{ axelar[type].version }}
   ansible.builtin.get_url:
-    url: "{{ axelar[type].source_url }}/{{ axelar[type].version }}/{{ suffix_url }}"
+    url: "{{ axelar[type].source_url }}/{{ axelar[type].version }}/{{ suffix_url }}-static"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     owner: root
     group: root
@@ -19,7 +19,7 @@
     suffix_url: >
       {{ node_service_default_binary_name[project] }}-{{ ansible_system | lower }}-{{ system_architecture }}-{{ axelar[type].version }}
   ansible.builtin.get_url:
-    url: "{{ vault.external.axelar.private_source_url }}/{{ axelar[type].version }}/{{ suffix_url }}"
+    url: "{{ vault.external.axelar.private_source_url }}/{{ axelar[type].version }}/{{ suffix_url }}-static"
     dest: "{{ node_bin_dir }}/{{ service_identifier }}"
     owner: root
     group: root
