@@ -111,7 +111,7 @@ juno:
 stargaze:
   chain_id: stargaze-1
   validator:
-    version: v18.0.0
+    version: v18.1.0
     go:
       version: 1.25.6
     wasmvm:
