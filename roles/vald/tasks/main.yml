@@ -4,7 +4,6 @@
   vars:
     home: "{{ vald_home_dir }}"
     directories: "{{ vald_directories }}"
-    lib_dir: "{{ vald_lib_dir }}"
     log_file_path: "{{ vald_log_file_path }}"
 
 - name: Fetch the service binary
@@ -35,9 +34,6 @@
     mode: "0644"
   notify:
     - Restart service
-
-- name: Include wasmvm task
-  ansible.builtin.include_tasks: configure_wasmvm.yml
 
 - name: Fetch secrets from HCP Vault and save to files
   when: fetch_vault_secrets | default(false) | bool
