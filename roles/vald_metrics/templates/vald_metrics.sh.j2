@@ -36,7 +36,7 @@ log "Processing vote percentages by chain"
 metrics=""
 mapfile -t lines < <(echo "$vote_response" | jq -r --arg addr "$ADDRESS" '
   .data[] 
-  | {chain: .sender_chain, vote: .[$addr].vote}
+  | {chain: (.sender_chain // "" | ascii_downcase), vote: .[$addr].vote}
 ' | jq -s '
   group_by(.chain) 
   | map({
