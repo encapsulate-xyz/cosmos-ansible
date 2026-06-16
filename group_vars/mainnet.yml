@@ -52,14 +52,14 @@ agoric:
 axelar:
   chain_id: axelar-dojo-1
   validator:
-    version: v1.3.11
+    version: v1.4.7
     valoper_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
     api_urls:
       - "https://axelar-api.polkachu.com"
       - "https://axelar.ibs.team/api"
       - "https://api-1.axelar.nodes.guru"
   vald:
-    version: v1.3.11
+    version: v1.4.7
     node_address: "tcp://localhost:11457"
     vote_metrics_url: https://api.axelarscan.io/validator/searchPolls
     tofnd_host: localhost
