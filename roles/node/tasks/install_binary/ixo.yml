@@ -1,0 +1,17 @@
+---
+- name: Fallback to default compile when secret binaries are disabled
+  ansible.builtin.fail:
+    msg: "Secret binaries not requested, falling back to compile from source"
+  when: not (fetch_secret_binaries | default(false) | bool)
+
+- name: Fetch the ixo service secret binary
+  ansible.builtin.get_url:
+    url: "{{ vault.external.ixo.private_source_url }}/{{ node_service_default_binary_name[project] }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
+  when: fetch_secret_binaries | default(false) | bool
