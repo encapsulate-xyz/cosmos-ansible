@@ -68,9 +68,12 @@
 - name: Set all port variables dynamically for Execution Client
   ansible.builtin.set_fact:
     execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
-    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_websocket | default(ports.suffix.execution_websocket))
+    execution_json_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_json_rpc | default(ports.suffix.execution_json_rpc)) }}"
+    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_websocket | default(ports.suffix.execution_websocket))
       }}"
-    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.execution_metrics | default(ports.suffix.execution_metrics))
+    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_metrics | default(ports.suffix.execution_metrics))
+      }}"
+    lumera_geth_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.lumera_geth_metrics | default(ports.suffix.lumera_geth_metrics))
       }}"
   when: execution_client | default(false) | bool
 

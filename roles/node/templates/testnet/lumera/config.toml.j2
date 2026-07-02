@@ -8,7 +8,7 @@
 
 # The version of the CometBFT binary that created or
 # last modified the config file. Do not modify this.
-version = "0.38.12"
+version = "0.38.19"
 
 #######################################################################
 ###                   Main Base Config Options                      ###
@@ -387,6 +387,9 @@ chunk_request_timeout = "10s"
 
 # The number of concurrent chunk fetchers to run (default: 1).
 chunk_fetchers = "4"
+
+# Maximum number of chunks allowed in a snapshot (default: 100000).
+max_snapshot_chunks = 100000
 
 #######################################################
 ###       Block Sync Configuration Options          ###
