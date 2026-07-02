@@ -109,4 +109,4 @@ node_type_settings:
   # Lumera Geth
   lumera_geth_metrics:
     address:
-      default: localhost
+      default: 127.0.0.1
