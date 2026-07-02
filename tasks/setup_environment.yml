@@ -124,8 +124,10 @@
   ansible.builtin.debug:
     msg:
       - "Execution RPC Port: {{ execution_rpc_port }}"
+      - "Execution JSON RPC Port: {{ execution_json_rpc_port }}"
       - "Execution Web Socket Port: {{ execution_websocket_port }}"
       - "Execution Metrics Port: {{ execution_metrics_port }}"
+      - "Lumera Geth Metrics Port: {{ lumera_geth_metrics_port }}"
   when: execution_client | default(false) | bool
 
 - name: Coordinated Update
