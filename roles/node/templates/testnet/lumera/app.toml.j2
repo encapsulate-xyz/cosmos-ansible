@@ -170,6 +170,13 @@ max-recv-msg-size = "10485760"
 # The default value is math.MaxInt32.
 max-send-msg-size = "2147483647"
 
+# Historical gRPC addresses with block ranges for historical query routing.
+# This should be a JSON string mapping gRPC addresses to block ranges.
+# Format: '{"address1": [start_block, end_block], "address2": [start_block, end_block]}'
+# Example: '{"0.0.0.0:26113": [0, 1000], "0.0.0.0:26114": [1001, 2000]}'
+# Leave empty to disable historical gRPC routing.
+historical-grpc-address-block-range = "{}"
+
 ###############################################################################
 ###                        gRPC Web Configuration                           ###
 ###############################################################################
@@ -233,4 +240,179 @@ stop-node-on-err = true
 #
 # Note, this configuration only applies to SDK built-in app-side mempool
 # implementations.
-max-txs = -1
+max-txs = 10000
+
+###############################################################################
+###                             EVM Configuration                           ###
+###############################################################################
+
+[evm]
+
+# Tracer defines the 'vm.Tracer' type that the EVM will use when the node is run in
+# debug mode. To enable tracing use the '--evm.tracer' flag when starting your node.
+# Valid types are: json|struct|access_list|markdown
+tracer = ""
+
+# MaxTxGasWanted defines the gas wanted for each eth tx returned in ante handler in check tx mode.
+max-tx-gas-wanted = 0
+
+# EnablePreimageRecording enables tracking of SHA3 preimages in the VM
+cache-preimage = false
+
+# EVMChainID is the EIP-155 compatible replay protection chain ID. This is separate from the Cosmos chain ID.
+evm-chain-id = 76857769
+
+# MinTip defines the minimum priority fee for the mempool.
+min-tip = 0
+
+# GethMetricsAddress defines the addr to bind the geth metrics server to. Default 127.0.0.1:8100.
+geth-metrics-address = "{{ node_type_settings.lumera_geth_metrics.address.default }}:{{ lumera_geth_metrics_port }}"
+
+# Mempool configuration for EVM transactions
+[evm.mempool]
+
+# PriceLimit is the minimum gas price to enforce for acceptance into the pool (in wei)
+price-limit = 1
+
+# PriceBump is the minimum price bump percentage to replace an already existing transaction (nonce)
+price-bump = 10
+
+# AccountSlots is the number of executable transaction slots guaranteed per account
+account-slots = 16
+
+# GlobalSlots is the maximum number of executable transaction slots for all accounts
+global-slots = 5120
+
+# AccountQueue is the maximum number of non-executable transaction slots permitted per account
+account-queue = 64
+
+# GlobalQueue is the maximum number of non-executable transaction slots for all accounts
+global-queue = 1024
+
+# Lifetime is the maximum amount of time non-executable transaction are queued
+lifetime = "3h0m0s"
+
+###############################################################################
+###                           JSON RPC Configuration                        ###
+###############################################################################
+
+[json-rpc]
+
+# Enable defines if the JSONRPC server should be enabled.
+enable = true
+
+# Address defines the EVM RPC HTTP server address to bind to.
+address = "{{ node_type_settings.execution_rpc.address[type] }}:{{ execution_rpc_port }}"
+
+# Address defines the EVM WebSocket server address to bind to.
+ws-address = "{{ node_type_settings.execution_rpc.address[type] }}:{{ execution_websocket_port }}"
+
+# WSOrigins defines the allowed origins for WebSocket connections.
+# Example: ["localhost", "127.0.0.1", "myapp.example.com"]
+ws-origins = ["127.0.0.1", "localhost"]
+
+# API defines a list of JSON-RPC namespaces that should be enabled
+# Example: "eth,txpool,personal,net,debug,web3"
+api = "eth,net,web3,rpc"
+
+# GasCap sets a cap on gas that can be used in eth_call/estimateGas (0=infinite). Default: 25,000,000.
+gas-cap = 25000000
+
+# Allow insecure account unlocking when account-related RPCs are exposed by http
+allow-insecure-unlock = true
+
+# EVMTimeout is the global timeout for eth_call. Default: 5s.
+evm-timeout = "5s"
+
+# TxFeeCap is the global tx-fee cap for send transaction. Default: 1eth.
+txfee-cap = 1
+
+# FilterCap sets the global cap for total number of filters that can be created
+filter-cap = 200
+
+# FeeHistoryCap sets the global cap for total number of blocks that can be fetched
+feehistory-cap = 100
+
+# LogsCap defines the max number of results can be returned from single 'eth_getLogs' query.
+logs-cap = 10000
+
+# BlockRangeCap defines the max block range allowed for 'eth_getLogs' query.
+block-range-cap = 10000
+
+# HTTPTimeout is the read/write timeout of http json-rpc server.
+http-timeout = "30s"
+
+# HTTPIdleTimeout is the idle timeout of http json-rpc server.
+http-idle-timeout = "2m0s"
+
+# AllowUnprotectedTxs restricts unprotected (non EIP155 signed) transactions to be submitted via
+# the node's RPC when the global parameter is disabled.
+allow-unprotected-txs = false
+
+# MaxOpenConnections sets the maximum number of simultaneous connections
+# for the server listener.
+max-open-connections = 0
+
+# EnableIndexer enables the custom transaction indexer for the EVM (ethereum transactions).
+enable-indexer = true
+
+# MetricsAddress defines the EVM Metrics server address to bind to. Pass --metrics in CLI to enable
+# Prometheus metrics path: /debug/metrics/prometheus
+metrics-address = "{{ node_type_settings.execution_metrics.address.default }}:{{ execution_metrics_port }}"
+
+# Maximum number of requests in a batch.
+batch-request-limit = 1000
+
+# Maximum number of bytes returned from a batched call.
+batch-response-max-size = 25000000
+
+# Enabled profiling in the debug namespace
+enable-profiling = false
+
+###############################################################################
+###                             TLS Configuration                           ###
+###############################################################################
+
+[tls]
+
+# Certificate path defines the cert.pem file path for the TLS configuration.
+certificate-path = ""
+
+# Key path defines the key.pem file path for the TLS configuration.
+key-path = ""
+
+###############################################################################
+###                           Lumera Configuration                          ###
+###############################################################################
+
+[lumera.evm-mempool]
+# Enables detailed logs for async EVM mempool broadcast queue processing.
+broadcast-debug = false
+
+[lumera.json-rpc-ratelimit]
+# Per-IP token bucket rate limiting for the EVM JSON-RPC endpoint.
+# When the public JSON-RPC alias proxy is active (the default startup topology),
+# enabling this wraps the public json-rpc.address listener directly. proxy-address
+# is used only for the standalone fallback topology when the alias proxy is inactive.
+
+# Enable JSON-RPC rate limiting (default: false).
+enable = false
+
+# Standalone fallback proxy listen address. Not used when the public alias proxy
+# is active and rate limiting wraps json-rpc.address directly.
+proxy-address = "{{ node_type_settings.execution_json_rpc.address[type] }}:{{ execution_json_rpc_port }}"
+
+# Sustained requests per second allowed per IP.
+requests-per-second = 50
+
+# Maximum burst size per IP (token bucket capacity).
+burst = 100
+
+# Time-to-live for per-IP rate limiter entries (Go duration, e.g. "5m", "1h").
+# Entries are evicted after this duration of inactivity.
+entry-ttl = "5m"
+
+# Comma-separated list of trusted reverse proxy CIDRs (e.g. "10.0.0.0/8, 172.16.0.0/12").
+# When set, X-Forwarded-For and X-Real-IP headers are only trusted from these sources.
+# When empty (default), client IP is always derived from the socket peer address.
+trusted-proxies = ""

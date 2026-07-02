@@ -102,3 +102,11 @@ node_type_settings:
   execution_metrics:
     address:
       default: 0.0.0.0
+  execution_json_rpc:
+    address:
+      validator: localhost
+      fullnode: 0.0.0.0
+  # Lumera Geth
+  lumera_geth_metrics:
+    address:
+      default: localhost
