@@ -145,11 +145,11 @@ lumera:
 terra:
   chain_id: pisco-1
   validator:
-    version: v2.19.0
+    version: v2.20.0
     go:
       version: 1.23.5
     wasmvm:
-      version: v2.2.4
+      version: v2.2.8
     valoper_address: terravaloper19zp8zstmwn5mfak2hkydexrl0xddt4dyqj42cx
     api_urls:
       - "https://terra-testnet-api.polkachu.com"
