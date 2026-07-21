@@ -139,7 +139,7 @@ lumera:
   supernode:
     version: v2.6.1-testnet
     identity: lumera1wmq0wu60a63cnx5fhln0m0zv6u5rq6dw0dhvhn
-    keyfile_name: 76c0f7734feea3899a89bfe6fdbc4cd7283069ae.address
+    keyfile_name: 3e8ea52d2cc5ffe6925453b64ae4f21f1b84daad.address
     grpc_addr: localhost:15090
 
 terra:
