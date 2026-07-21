@@ -335,8 +335,6 @@ passage:
     version: v4.0.2
     go:
       version: 1.23.5
-    wasmvm:
-      version: v1.5.7
     valoper_address: pasgvaloper1s0lankh33kprer2l22nank5rvsuh9ksawhck2v
     api_urls:
       - "https://passage-api.polkachu.com"
