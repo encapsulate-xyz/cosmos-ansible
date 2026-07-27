@@ -37,16 +37,16 @@ umee:
 agoric:
   chain_id: agoric-3
   validator:
-    version: agoric-upgrade-22b
+    version: agoric-upgrade-23
     valoper_address: agoricvaloper1fy8r6zq3dde6n7ak6eqy5zsrp3s7sz833dmv32
     api_urls:
       - "https://agoric-api.polkachu.com"
       - "https://api-agoric-01.stakeflow.io"
       - "https://agoric.api.kjnodes.com"
     go:
-      version: 1.23.1
+      version: 1.24.1
     node:
-      version: v20.19.3
+      version: v22.11.0
   snapshot_url: https://snapshots.kjnodes.com/agoric/snapshot_latest.tar.lz4
 
 axelar:
