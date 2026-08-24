@@ -1,5 +1,6 @@
 supernode:
-    key_name: supernode
+    key_name: supernode-legacy
+    evm_key_name: supernode
     identity: {{ lumera.supernode.identity }}
     host: {{ ansible_default_ipv4.address }}
     port: {{ lumera.supernode.ports.listen_port }}

@@ -138,7 +138,7 @@ lumera:
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
     version: v2.6.1-testnet
-    identity: lumera186822tfvchl7dyj52wmy4e8jrudcfk4ddv0w6n
+    identity: lumera1wmq0wu60a63cnx5fhln0m0zv6u5rq6dw0dhvhn
     keyfile_name: 3e8ea52d2cc5ffe6925453b64ae4f21f1b84daad.address
     grpc_addr: localhost:15090
 
