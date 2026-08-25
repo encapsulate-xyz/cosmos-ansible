@@ -4,10 +4,6 @@ all:
   vars:
     env: testnet
   children:
-    quicksilver:
-      hosts:
-        ts.validator.quicksilver.testnet.encapsulate.xyz:
-          type: validator
     humans:
       hosts:
         ts.validator.humans.testnet.encapsulate.xyz:
