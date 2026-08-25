@@ -220,7 +220,7 @@ gravity:
 sommelier:
   chain_id: sommelier-3
   validator:
-    version: v9.3.0
+    version: v10.0.2
     go:
       version: 1.23.5
     valoper_address: sommvaloper1s0lankh33kprer2l22nank5rvsuh9ksa8324s2
