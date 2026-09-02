@@ -23,18 +23,13 @@ rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.kava_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
+name = "ethereum-sepolia"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.ethereum_sepolia_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
 name = "base"
 rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.base_rpc }}"
-start-with-bridge = true
-
-[[axelar_bridge_evm]]
-name = "optimism"
-rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.optimism_rpc }}"
-start-with-bridge = true
-
-[[axelar_bridge_evm]]
-name = "arbitrum"
-rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.arbitrum_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
@@ -43,8 +38,13 @@ rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.filecoin_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
-name = "ethereum-sepolia"
-rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.ethereum_sepolia_rpc }}"
+name = "arbitrum"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.arbitrum_rpc }}"
+start-with-bridge = true
+
+[[axelar_bridge_evm]]
+name = "mantle"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.mantle_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
@@ -59,13 +59,13 @@ rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.polygon_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
-name = "immutable"
-rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.immutable_rpc }}"
+name = "optimism"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.optimism_rpc }}"
 start-with-bridge = true
 
 [[axelar_bridge_evm]]
-name = "mantle"
-rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.mantle_rpc }}"
+name = "immutable"
+rpc_addr = "{{ vault.testnet.axelar.axelar_bridge_evm.immutable_rpc }}"
 start-with-bridge = true
 
 ##### message broadcasting options #####
