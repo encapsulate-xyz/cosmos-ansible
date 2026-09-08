@@ -1,0 +1,41 @@
+---
+- name: Fallback to default compile when secret binaries are disabled
+  ansible.builtin.fail:
+    msg: "Secret binaries not requested, falling back to compile from source"
+  when: not (fetch_secret_binaries | default(false) | bool)
+
+- name: Create a tmp directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Download and unarchive the binary
+  vars:
+    suffix_url: terra_{{ vars[project][type].version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+  ansible.builtin.unarchive:
+    src: "{{ vault.external.terra.private_source_url }}/{{ suffix_url }}"
+    dest: "{{ tmp_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy the binary file
+  ansible.builtin.copy:
+    src: "{{ tmp_dir }}/{{ service_identifier }}/{{ node_service_default_binary_name[project] }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  notify:
+    - Restart service
+
+- name: Clean up the temporary files in /tmp
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ service_identifier }}"
+    state: absent
