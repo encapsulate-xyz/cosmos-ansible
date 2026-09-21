@@ -322,7 +322,7 @@ terra:
       - "https://terra-phoenix-api.highstakes.ch"
       - "https://terra-api.polkachu.com"
   fullnode:
-    version: v2.20.0
+    version: v2.21.0
     go:
       version: 1.23.5
     wasmvm:
