@@ -310,7 +310,7 @@ qwoyn:
 terra:
   chain_id: phoenix-1
   validator:
-    version: v2.20.0
+    version: v2.21.0
     go:
       version: 1.23.5
     wasmvm:
