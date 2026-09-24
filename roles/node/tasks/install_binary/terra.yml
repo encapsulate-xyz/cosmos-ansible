@@ -14,7 +14,7 @@
 
 - name: Download and unarchive the binary
   vars:
-    suffix_url: terra_{{ vars[project][type].version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+    suffix_url: "{{ vars[project][type].version }}/terra_{{ vars[project][type].version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz"
   ansible.builtin.unarchive:
     src: "{{ vault.external.terra.private_source_url }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
