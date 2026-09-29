@@ -42,45 +42,11 @@ wasmvm:
 pf:
   source_url: https://github.com/ojo-network/price-feeder
 
-omniflix:
-  validator:
-    source_url: https://github.com/OmniFlix/omniflixhub
-    ports:
-      prefix: 100
-
-quicksilver:
-  validator:
-    source_url: https://github.com/quicksilver-zone/quicksilver
-    ports:
-      prefix: 102
-
-celestia:
-  validator:
-    source_url: https://github.com/celestiaorg/celestia-app
-    ports:
-      prefix: 104
-  fullnode:
-    source_url: https://github.com/celestiaorg/celestia-app
-    ports:
-      prefix: 105
-
 humans:
   validator:
     source_url: https://github.com/humansdotai/humans
     ports:
       prefix: 106
-
-ojo:
-  validator:
-    source_url: https://github.com/ojo-network/ojo
-    ports:
-      prefix: 108
-
-umee:
-  validator:
-    source_url: https://github.com/umee-network/umee
-    ports:
-      prefix: 110
 
 c4e:
   validator:
@@ -114,33 +80,11 @@ pell:
     ports:
       prefix: 118
 
-juno:
-  validator:
-    source_url: https://github.com/CosmosContracts/juno/releases/download
-    ports:
-      prefix: 120
-  fullnode:
-    source_url: https://github.com/CosmosContracts/juno/releases/download
-    ports:
-      prefix: 121
-
-stargaze:
-  validator:
-    source_url: https://github.com/public-awesome/stargaze
-    ports:
-      prefix: 122
-
 althea:
   validator:
     source_url: https://github.com/AltheaFoundation/althea-L1
     ports:
       prefix: 124
-
-mantle:
-  validator:
-    source_url: https://github.com/AssetMantle/node
-    ports:
-      prefix: 126
 
 gitopia:
   validator:
@@ -176,32 +120,6 @@ ixo:
     ports:
       prefix: 134
 
-paloma:
-  validator:
-    source_url: https://github.com/palomachain/paloma
-    ports:
-      prefix: 136
-  pigeon:
-    source_url: https://github.com/palomachain/pigeon/releases/download
-
-planq:
-  validator:
-    source_url: https://github.com/planq-network/planq
-    ports:
-      prefix: 138
-
-pylon:
-  validator:
-    source_url: https://github.com/Pylons-tech/pylons
-    ports:
-      prefix: 140
-
-qwoyn:
-  validator:
-    source_url: https://github.com/cosmic-horizon/QWOYN
-    ports:
-      prefix: 142
-
 terra:
   validator:
     source_url: https://github.com/phoenix-directive/core
@@ -217,12 +135,6 @@ passage:
     source_url: https://github.com/envadiv/Passage3D
     ports:
       prefix: 146
-
-tenet:
-  validator:
-    source_url: https://github.com/tenet-org/tenet-mainnet/releases/download
-    ports:
-      prefix: 148
 
 lumera:
   validator:

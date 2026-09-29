@@ -4,11 +4,6 @@ all:
   vars:
     env: testnet
   children:
-    humans:
-      hosts:
-        ts.validator.humans.testnet.encapsulate.xyz:
-          type: validator
-          execution_client: true
     c4e:
       hosts:
         ts.validator.c4e.testnet.encapsulate.xyz:
