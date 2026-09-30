@@ -1,39 +1,5 @@
 ---
 # maintains versions and can overwrite all.yml
-celestia:
-  chain_id: celestia
-  validator:
-    version: v4.0.10
-    go:
-      version: 1.24.1
-  fullnode:
-    version: v4.0.10
-    go:
-      version: 1.24.1
-  snapshot_url: https://snapshots.polkachu.com/snapshots/celestia/celestia_4098687.tar.lz4
-
-umee:
-  chain_id: umee-1
-  validator:
-    version: v6.7.7
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.5.5
-    valoper_address: umeevaloper1s0lankh33kprer2l22nank5rvsuh9ksavp35nh
-    api_urls:
-      - "https://umee-api.polkachu.com"
-      - "https://umee.api.m.stavr.tech"
-      - "https://api-umee.mzonder.com"
-  pf:
-    version: umee/v2.4.6
-    keyring_dir: "/opt/umee"
-    go:
-      version: 1.23.1
-    wasmvm:
-      version: v1.5.5
-  snapshot_url: https://snapshots.polkachu.com/snapshots/umee/umee_15888336.tar.lz4
-
 agoric:
   chain_id: agoric-3
   validator:
@@ -67,57 +33,6 @@ axelar:
     version: v0.10.1
   snapshot_url: https://snapshots.polkachu.com/snapshots/axelar/axelar_16464939.tar.lz4
 
-quicksilver:
-  chain_id: quicksilver-2
-  validator:
-    version: v1.11.0
-    go:
-      version: 1.23.7
-    valoper_address: quickvaloper1s0lankh33kprer2l22nank5rvsuh9ksat64m35
-    api_urls:
-      - "https://quicksilver-mainnet-api.itrocket.net"
-      - "https://quicksilver.tdrsys.com"
-      - "https://api.quicksilver.validatus.com"
-      - "https://mainnet-quicksilver-api.konsortech.xyz"
-      - "https://quicksilver-api.polkachu.com"
-  snapshot_url: https://server-2.itrocket.net/mainnet/quicksilver/quicksilver_2025-01-26_11113196_snap.tar.lz4
-
-juno:
-  chain_id: juno-1
-  validator:
-    version: v29.0.0
-    go:
-      version: 1.23.4
-    wasmvm:
-      version: v2.2.4
-    valoper_address: junovaloper1s0lankh33kprer2l22nank5rvsuh9ksahu7s62
-    api_urls:
-      - "https://juno-api.polkachu.com"
-      - "https://api.juno.validatus.com"
-      - "https://juno.api.m.stavr.tech"
-      - "https://juno-api.stakeandrelax.net"
-  fullnode:
-    version: v29.0.0
-    go:
-      version: 1.23.4
-    wasmvm:
-      version: v2.2.4
-  snapshot_url: https://snapshots.polkachu.com/snapshots/juno/juno_23405873.tar.lz4
-
-stargaze:
-  chain_id: stargaze-1
-  validator:
-    version: v18.1.0
-    go:
-      version: 1.25.6
-    wasmvm:
-      version: v2.3.2
-    valoper_address: starsvaloper1s0lankh33kprer2l22nank5rvsuh9ksap3gdkx
-    api_urls:
-      - "https://stargaze-api.polkachu.com"
-      - "https://stargaze.ibs.team/api"
-  snapshot_url: https://snapshots.polkachu.com/snapshots/stargaze/stargaze_17346976.tar.lz4
-
 althea:
   chain_id: althea_258432-1
   validator:
@@ -130,19 +45,6 @@ althea:
       - "https://rest.lavenderfive.com/althea"
       - "https://nodes.chandrastation.com/api/althea"
   snapshot_url: https://snapshots.polkachu.com/snapshots/althea/althea_4526012.tar.lz4
-
-mantle:
-  chain_id: mantle-1
-  validator:
-    version: v1.0.1
-    go:
-      version: 1.23.5
-    valoper_address: mantlevaloper1s0lankh33kprer2l22nank5rvsuh9ksaqg54zs
-    api_urls:
-      - "https://rest.assetmantle.one"
-      - "https://assetmantle-api.polkachu.com"
-      - "hhttps://assetmantle-rest.stakerhouse.com"
-  snapshot_url: https://snapshots.polkachu.com/snapshots/assetmantle/assetmantle_15464734.tar.lz4
 
 c4e:
   chain_id: perun-1
@@ -192,16 +94,6 @@ humans:
       - "https://humans-api.polkachu.com"
   snapshot_url: https://snapshots.polkachu.com/snapshots/humans/humans_9428312.tar.lz4
 
-omniflix:
-  chain_id: omniflixhub-1
-  validator:
-    version: v6.0.0
-    go:
-      version: 1.23.9
-    wasmvm:
-      version: v2.1.6
-  snapshot_url: https://snapshots.polkachu.com/snapshots/omniflix/omniflix_16286631.tar.lz4
-
 gravity:
   chain_id: gravity-bridge-3
   validator:
@@ -248,65 +140,6 @@ ixo:
       - "https://ixo.api.m.stavr.tech"
   snapshot_url: https://server-1.stavr.tech/Mainnet/Ixo/ixo-snap-2.tar.lz4
 
-paloma:
-  chain_id: tumbler
-  validator:
-    version: v2.4.15
-    go:
-      version: 1.24.4
-    wasmvm:
-      version: v2.1.3
-    valoper_address: palomavaloper1y5twjhphk2s49qhjdx7ahsz2fcvd8zuu3v4n9d
-    api_urls:
-      - "https://api-1.paloma.nodes.guru"
-  snapshot_url: https://snapshots.polkachu.com/snapshots/paloma/paloma_32327947.tar.lz4
-  pigeon:
-    version: v2.3.5
-    keyring_dir: "/opt/paloma"
-    signing_key: "0x0d2dbd27b81E240c6f56b2C906a4b2ffD34D3a79"
-    rpc_url: http://localhost:13657
-
-planq:
-  chain_id: planq_7070-2
-  validator:
-    version: v2.1.2
-    go:
-      version: 1.23.5
-    valoper_address: plqvaloper1d2x0t42a6anth3lt38ld5997m6e5ya5ff6pm5f
-    api_urls:
-      - "https://planq-api.stake-town.com"
-      - "https://api.planq.nodestake.org"
-      - "https://rest.planq.network"
-      - "https://planq.api.m.stavr.tech"
-  snapshot_url: https://snapshots.polkachu.com/snapshots/planq/planq_13286525.tar.lz4
-
-pylon:
-  chain_id: pylons-mainnet-1
-  validator:
-    version: v1.1.4
-    go:
-      version: 1.23.5
-    valoper_address: pylovaloper1s0lankh33kprer2l22nank5rvsuh9ksazp37e8
-    api_urls:
-      - "https://rest.nodejumper.io/pylons"
-      - "https://pylons-api.noders.services"
-      - "https://api-1.pylons.nodes.guru"
-  snapshot_url: https://config.noders.services/pylons/data.tar.lz4
-
-qwoyn:
-  chain_id: qwoyn-1
-  validator:
-    version: v5.4.1
-    go:
-      version: 1.23.5
-    wasmvm:
-      version: v1.2.6
-    valoper_address: qwoynvaloper1s0lankh33kprer2l22nank5rvsuh9ksaxjrjqj
-    api_urls:
-      - "https://qwoyn-rest.staketab.org"
-      - "https://qwoyn.api.m.stavr.tech"
-  snapshot_url: https://server-1.stavr.tech/Mainnet/Qwoyn/qwoyn-snap-2.tar.lz4
-
 terra:
   chain_id: phoenix-1
   validator:
@@ -343,16 +176,6 @@ passage:
       - "https://passage-api.bluestake.net"
       - "https://passage-api.stakeandrelax.net"
   snapshot_url: https://snapshots.polkachu.com/snapshots/passage/passage_12539367.tar.lz4
-
-tenet:
-  chain_id: tenet_1559-1
-  validator:
-    version: 11.2.1
-    valoper_address: tenetvaloper1d2x0t42a6anth3lt38ld5997m6e5ya5ff8maql
-    api_urls:
-      - "https://tenet-rest.publicnode.com"
-      - "https://tenet_mainnet_api.chain.whenmoonwhenlambo.money"
-  snapshot_url: https://support.synergynodes.com/snapshots/tenet_mainnet/tenet_16535716.tar.lz4
 
 lumera:
   chain_id: lumera-mainnet-1
