@@ -110,3 +110,7 @@ node_type_settings:
   lumera_geth_metrics:
     address:
       default: 127.0.0.1
+  # Privval
+  privval:
+    address:
+      default: 0.0.0.0
