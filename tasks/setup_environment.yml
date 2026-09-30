@@ -34,6 +34,7 @@
     grpc_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc | default(ports.suffix.grpc)) }}"
     grpc_web_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc_web | default(ports.suffix.grpc_web)) }}"
     multiplexer_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.multiplexer | default(ports.suffix.multiplexer)) }}"
+    privval_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.privval | default(ports.suffix.privval)) }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Set all port variables dynamically for price feeder
@@ -90,6 +91,7 @@
       - "gRPC Port: {{ grpc_port }}"
       - "gRPC-Web Port: {{ grpc_web_port }}"
       - "Multiplexer Port: {{ multiplexer_port }}"
+      - "Privval Port: {{ privval_port }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Display all price feeder port variables

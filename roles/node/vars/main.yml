@@ -17,31 +17,18 @@ node_wasmvm_lib_file_name: libwasmvm.{{ ansible_architecture }}.so
 
 # binary names
 node_service_default_binary_name:
-  omniflix: omniflixhubd
-  quicksilver: quicksilverd
-  celestia: celestia-appd
   humans: humansd
-  ojo: ojod
-  umee: umeed
   c4e: c4ed
   axelar: axelard
   agoric: agd
   pell: pellcored
-  juno: junod
-  stargaze: starsd
   althea: althea
-  mantle: mantleNode
   gitopia: gitopiad
   gavity: gravity
   sommelier: sommelier
   ixo: ixod
-  paloma: palomad
-  planq: planqd
-  pylon: pylonsd
-  qwoyn: qwoynd
   terra: terrad
   passage: passage
-  tenet: tenetd
   lumera: lumerad
 
 node_status_endpoint: status

@@ -30,3 +30,5 @@ ports:
     multiplexer: 98
     # Lumera Geth Metrics Port
     lumera_geth_metrics: 12
+    # Privval Port
+    privval: 63
