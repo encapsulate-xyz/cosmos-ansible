@@ -100,4 +100,4 @@ node_type_settings:
   # Privval
   privval:
     address:
-      default: 0.0.0.0
+      default: tcp://0.0.0.0
