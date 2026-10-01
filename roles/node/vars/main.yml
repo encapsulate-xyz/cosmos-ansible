@@ -30,6 +30,7 @@ node_service_default_binary_name:
   terra: terrad
   passage: passage
   lumera: lumerad
+  cosmoshub: gaiad
 
 node_status_endpoint: status
 
