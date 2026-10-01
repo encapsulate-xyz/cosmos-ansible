@@ -36,3 +36,7 @@ all:
       hosts:
         ts.validator.terra.testnet.encapsulate.xyz:
           type: validator
+    cosmoshub:
+      hosts:
+        ts.validator.cosmoshub.testnet.encapsulate.xyz:
+          type: validator

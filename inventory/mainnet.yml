@@ -88,3 +88,7 @@ all:
           type: supernode
         ts.fullnode.lumera.mainnet.encapsulate.xyz:
           type: fullnode
+    cosmoshub:
+      hosts:
+        ts.validator.cosmoshub.mainnet.encapsulate.xyz:
+          type: validator
