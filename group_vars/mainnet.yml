@@ -4,11 +4,6 @@ agoric:
   chain_id: agoric-3
   validator:
     version: agoric-upgrade-23a
-    valoper_address: agoricvaloper1fy8r6zq3dde6n7ak6eqy5zsrp3s7sz833dmv32
-    api_urls:
-      - "https://agoric-api.polkachu.com"
-      - "https://api-agoric-01.stakeflow.io"
-      - "https://agoric.api.kjnodes.com"
     go:
       version: 1.24.1
     node:
@@ -19,11 +14,6 @@ axelar:
   chain_id: axelar-dojo-1
   validator:
     version: v1.5.5
-    valoper_address: axelarvaloper1s0lankh33kprer2l22nank5rvsuh9ksa6utflp
-    api_urls:
-      - "https://axelar-api.polkachu.com"
-      - "https://axelar.ibs.team/api"
-      - "https://api-1.axelar.nodes.guru"
   vald:
     version: v1.5.5
     node_address: "tcp://localhost:11457"
@@ -39,11 +29,6 @@ althea:
     version: v1.6.3
     go:
       version: 1.23.5
-    valoper_address: altheavaloper1d2x0t42a6anth3lt38ld5997m6e5ya5fw72axt
-    api_urls:
-      - "https://althea.api.m.stavr.tech"
-      - "https://rest.lavenderfive.com/althea"
-      - "https://nodes.chandrastation.com/api/althea"
   snapshot_url: https://snapshots.polkachu.com/snapshots/althea/althea_4526012.tar.lz4
 
 c4e:
@@ -54,11 +39,6 @@ c4e:
       version: 1.23.5
     wasmvm:
       version: v1.5.2
-    valoper_address: c4evaloper1s0lankh33kprer2l22nank5rvsuh9ksad20r7x
-    api_urls:
-      - "https://c4e.api.m.stavr.tech"
-      - "https://api-c4e.mzonder.com"
-      - "https://api.c4e.validatus.com"
   snapshot_url: https://snapshots-1.stake-town.com/c4e/perun-1_latest.tar.lz4
 
 gitopia:
@@ -67,13 +47,6 @@ gitopia:
     version: v6.0.0
     go:
       version: 1.23.5
-    valoper_address: gitopiavaloper1s0lankh33kprer2l22nank5rvsuh9ksag3grfh
-    api_urls:
-      - "https://gitopia.api.m.stavr.tech"
-      - "https://m-gitopia.api.utsa.tech"
-      - "http://gitopia-rpc.stakeangle.com:41317"
-      - "https://gitopia.api.liveraven.net"
-      - "https://gitopia-api.polkachu.com"
   fullnode:
     version: v6.0.0
     go:
@@ -86,23 +59,12 @@ humans:
     version: master
     go:
       version: 1.23.5
-    valoper_address: humanvaloper1d2x0t42a6anth3lt38ld5997m6e5ya5fsqguy3
-    api_urls:
-      - "https://humans-mainnet-api.itrocket.net"
-      - "https://humans-api.noders.services"
-      - "https://mainnet-humans-api.konsortech.xyz"
-      - "https://humans-api.polkachu.com"
   snapshot_url: https://snapshots.polkachu.com/snapshots/humans/humans_9428312.tar.lz4
 
 gravity:
   chain_id: gravity-bridge-3
   validator:
     version: v1.14.2
-    valoper_address: gravityvaloper1s0lankh33kprer2l22nank5rvsuh9ksatgqzfn
-    api_urls:
-      - "https://gravity-api.polkachu.com"
-      - "https://gravitychain.io:1317"
-      - "https://rest.lavenderfive.com/gravitybridge"
   snapshot_url: https://snapshots.polkachu.com/snapshots/gravity/gravity_15740467.tar.lz4
   orchestrator:
     version: v1.14.2
@@ -115,10 +77,6 @@ sommelier:
     version: v10.0.2
     go:
       version: 1.23.5
-    valoper_address: sommvaloper1s0lankh33kprer2l22nank5rvsuh9ksa8324s2
-    api_urls:
-      - "https://sommelier-api.polkachu.com"
-      - "https://som.api.m.stavr.tech"
   snapshot_url: https://snapshots.polkachu.com/snapshots/sommelier/sommelier_18741706.tar.lz4
   orchestrator:
     version: v4.2.7
@@ -135,9 +93,6 @@ ixo:
       version: 1.23.5
     wasmvm:
       version: v1.5.4
-    valoper_address: ixovaloper1s0lankh33kprer2l22nank5rvsuh9ksat8986e
-    api_urls:
-      - "https://ixo.api.m.stavr.tech"
   snapshot_url: https://server-1.stavr.tech/Mainnet/Ixo/ixo-snap-2.tar.lz4
 
 terra:
@@ -148,12 +103,6 @@ terra:
       version: 1.23.5
     wasmvm:
       version: v2.2.8
-    valoper_address: terravaloper1yh4u76y405t3ff9lyrzhhe8legjx9k3as5mujs
-    api_urls:
-      - "https://terra2.tdrsys.com"
-      - "https://terra-api.cosmosrescue.dev:8443"
-      - "https://terra-phoenix-api.highstakes.ch"
-      - "https://terra-api.polkachu.com"
   fullnode:
     version: v2.21.1
     go:
@@ -170,11 +119,6 @@ passage:
       version: 1.23.5
     wasmvm:
       version: v1.5.0
-    valoper_address: pasgvaloper1s0lankh33kprer2l22nank5rvsuh9ksawhck2v
-    api_urls:
-      - "https://passage-api.polkachu.com"
-      - "https://passage-api.bluestake.net"
-      - "https://passage-api.stakeandrelax.net"
   snapshot_url: https://snapshots.polkachu.com/snapshots/passage/passage_12539367.tar.lz4
 
 lumera:
@@ -183,12 +127,6 @@ lumera:
     version: v1.12.0
     wasmvm:
       version: v3.0.2
-    valoper_address: lumeravaloper18qpd0yrk0gkcvah0zpyq89uqzd2y6q25dlmcux
-    api_urls:
-      - "https://lumera-api.polkachu.com"
-      - "https://lumera.ibs.team/api"
-      - "https://lumera-rest.stakerhouse.com"
-      - "https://lcd.lumera.io"
   snapshot_url: https://snapshots.polkachu.com/snapshots/lumera/lumera_863081.tar.lz4
   supernode:
     version: v2.0.0-alpha
