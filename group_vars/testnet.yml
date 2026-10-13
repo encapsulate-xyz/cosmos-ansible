@@ -71,7 +71,7 @@ terra:
 cosmoshub:
   chain_id: provider
   validator:
-    version: v28.2.0
+    version: v29.0.0-rc0
     go:
       version: 1.25.7
     wasmvm:
