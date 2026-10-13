@@ -8,4 +8,6 @@ dependencies:
       GO111MODULE: "{{ go.module111 }}" # Go module management
       GOOS: "{{ ansible_system | lower }}" # Target OS (linux)
       GOARCH: "{{ system_architecture }}" # Target architecture (amd64)
-      go_custom_mirror: https://go.dev/dl
+      go_custom_mirror: "{{ go.mirror }}"
+      go_temporary_dir: "{{ tmp_dir }}"
+      go_checksum: "{{ go_tarball_checksum | default('') }}" # Set by tasks/download_go.yml
