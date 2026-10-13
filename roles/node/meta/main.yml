@@ -1,23 +1,23 @@
----
-dependencies:
-  - role: fubarhouse.golang
-    vars:
-      go_version: "{{ vars[project][type].go.version }}" # Set the desired Go version
-      GOPATH: "{{ go.path }}" # Go path
-      GOROOT: "{{ go.root }}" # Go root
-      GO111MODULE: "{{ go.module111 }}" # Go module management
-      GOOS: "{{ ansible_system | lower }}" # Target OS (linux)
-      GOARCH: "{{ system_architecture }}" # Target architecture (amd64)
-      go_custom_mirror: "{{ go.mirror }}"
-      go_temporary_dir: "{{ tmp_dir }}"
-      go_checksum: "{{ go_tarball_checksum | default('') }}" # Set by tasks/download_go.yml
-    when: vars[project][type].go.version is defined
+# ---
+# dependencies:
+#   - role: fubarhouse.golang
+#     vars:
+#       go_version: "{{ vars[project][type].go.version }}" # Set the desired Go version
+#       GOPATH: "{{ go.path }}" # Go path
+#       GOROOT: "{{ go.root }}" # Go root
+#       GO111MODULE: "{{ go.module111 }}" # Go module management
+#       GOOS: "{{ ansible_system | lower }}" # Target OS (linux)
+#       GOARCH: "{{ system_architecture }}" # Target architecture (amd64)
+#       go_custom_mirror: "{{ go.mirror }}"
+#       go_temporary_dir: "{{ tmp_dir }}"
+#       go_checksum: "{{ go_tarball_checksum | default('') }}" # Set by tasks/download_go.yml
+#     when: vars[project][type].go.version is defined
 
-  - role: morgangraphics.ansible-role-nvm
-    nvm_version: "{{ nvm.version }}"
-    nodejs_version: "{{ vars[project][type].node.version }}"
-    nvm_dir: "{{ nvm.path }}"
-    default: true
-    nvm_commands:
-      - npm install -g yarn --force
-    when: vars[project][type].node.version is defined
+#   - role: morgangraphics.ansible-role-nvm
+#     nvm_version: "{{ nvm.version }}"
+#     nodejs_version: "{{ vars[project][type].node.version }}"
+#     nvm_dir: "{{ nvm.path }}"
+#     default: true
+#     nvm_commands:
+#       - npm install -g yarn --force
+#     when: vars[project][type].node.version is defined
