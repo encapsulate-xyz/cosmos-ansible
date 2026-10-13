@@ -141,7 +141,7 @@ cosmoshub:
   chain_id: cosmoshub-4
   genesis_url: https://server-1.itrocket.net/mainnet/cosmoshub/genesis.json
   validator:
-    version: v28.3.0
+    version: v28.3.1
     go:
       version: 1.25.7
     wasmvm:
