@@ -3,10 +3,6 @@
   hosts: all
   become: true
   gather_facts: true
-  # get_url defaults to a 10s timeout, which roles like fubarhouse.golang don't override
-  module_defaults:
-    ansible.builtin.get_url:
-      timeout: 120
   vars:
     allowed_node_types: [validator, fullnode]
   vars_files:
@@ -24,9 +20,6 @@
           ansible.builtin.include_tasks: tasks/setup_environment.yml
         - name: Include dependencies setup tasks
           ansible.builtin.include_tasks: tasks/setup_dependencies.yml
-        - name: Include Go download tasks
-          ansible.builtin.include_tasks: tasks/download_go.yml
-          when: vars[project][type].go.version is defined
 
   tasks:
     - name: Run node playbook
