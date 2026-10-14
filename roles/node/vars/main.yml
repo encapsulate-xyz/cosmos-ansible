@@ -55,7 +55,7 @@ node_type_settings:
     address:
       default: tcp://0.0.0.0
   double_sign_check_height:
-    validator: 0
+    validator: 10
     fullnode: 0
   prometheus:
     enable: true
