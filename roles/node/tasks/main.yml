@@ -1,11 +1,11 @@
 ---
-# - name: Include the specific network's vars file
-#   ansible.builtin.include_vars:
-#     file: vars/{{ env }}/{{ project }}.yml
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: vars/{{ env }}/{{ project }}.yml
 
-# - name: Apply UFW rules for each node type
-#   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
-#   loop: "{{ node_ufw_rules[type] }}"
+- name: Apply UFW rules for each node type
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ node_ufw_rules[type] }}"
 
 - name: Set seeds
   ansible.builtin.set_fact:

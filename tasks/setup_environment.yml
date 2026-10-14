@@ -138,21 +138,21 @@
       - "Coordinated Update at Height: {{ upgrade_height }}"
   when: upgrade_height is defined
 
-# - name: Confirm deployment details
-#   ansible.builtin.pause:
-#     seconds: 40
+- name: Confirm deployment details
+  ansible.builtin.pause:
+    seconds: 40
 
-# - name: Please confirm again
-#   ansible.builtin.debug:
-#     msg:
-#       - "Deploying to Host: {{ inventory_hostname }}"
-#       - "Project: {{ project }}"
-#       - "Environment: {{ env }}"
-#       - "Type: {{ type }}"
+- name: Please confirm again
+  ansible.builtin.debug:
+    msg:
+      - "Deploying to Host: {{ inventory_hostname }}"
+      - "Project: {{ project }}"
+      - "Environment: {{ env }}"
+      - "Type: {{ type }}"
 
-# - name: Confirm deployment details
-#   ansible.builtin.pause:
-#     seconds: 20
+- name: Confirm deployment details
+  ansible.builtin.pause:
+    seconds: 20
 
-# - name: Include configure ufw task
-#   ansible.builtin.include_tasks: tasks/configure_ufw.yml
+- name: Include configure ufw task
+  ansible.builtin.include_tasks: tasks/configure_ufw.yml

@@ -35,7 +35,6 @@ go:
   root: /usr/local/go
   path: "{{ tmp_dir }}/go"
   module111: "on"
-  mirror: https://dl.google.com/go
 
 wasmvm:
   source_url: https://github.com/CosmWasm/wasmvm/releases/download
