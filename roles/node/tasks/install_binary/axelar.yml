@@ -5,13 +5,11 @@
       {{ node_service_default_binary_name[project] }}-{{ ansible_system | lower }}-{{ system_architecture }}-{{ axelar[type].version }}
   ansible.builtin.get_url:
     url: "{{ axelar[type].source_url }}/{{ axelar[type].version }}/{{ suffix_url }}-static"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    dest: "{{ node_staged_binary }}"
     owner: root
     group: root
     force: true
     mode: "0755"
-  notify:
-    - Restart service
   when: not (fetch_secret_binaries | default(false) | bool)
 
 - name: Fetch the axelar service secret binary
@@ -20,11 +18,9 @@
       {{ node_service_default_binary_name[project] }}-{{ ansible_system | lower }}-{{ system_architecture }}-{{ axelar[type].version }}
   ansible.builtin.get_url:
     url: "{{ vault.external.axelar.private_source_url }}/{{ axelar[type].version }}/{{ suffix_url }}-static"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    dest: "{{ node_staged_binary }}"
     owner: root
     group: root
     force: true
     mode: "0755"
-  notify:
-    - Restart service
   when: fetch_secret_binaries | default(false) | bool

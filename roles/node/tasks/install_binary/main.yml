@@ -6,3 +6,66 @@
   rescue:
     - name: Include default install binary task
       ansible.builtin.include_tasks: default.yml
+
+- name: Wait for the upgrade height before swapping the binary
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/poll_height.yml"
+  when: upgrade_height is defined
+
+- name: Swap in the staged binary
+  when: project != 'agoric'
+  block:
+    - name: Install the staged binary
+      ansible.builtin.copy:
+        src: "{{ node_staged_binary }}"
+        dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+        remote_src: true
+        owner: root
+        group: root
+        mode: "0755"
+      notify:
+        - Restart service
+
+    - name: Remove the staged binary
+      ansible.builtin.file:
+        path: "{{ node_staged_binary }}"
+        state: absent
+
+- name: Switch agoric to the new checkout
+  when: project == 'agoric'
+  block:
+    - name: Get the checkout agoric currently runs from
+      ansible.builtin.stat:
+        path: "{{ node_bin_dir }}/{{ service_identifier }}"
+      register: agoric_current_binary
+
+    - name: Point the agoric binary at the new checkout
+      ansible.builtin.file:
+        src: "{{ node_agoric_repo_dir }}/bin/{{ node_service_default_binary_name[project] }}"
+        dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+        state: link
+      register: agoric_binary_link
+      notify:
+        - Restart service
+
+    - name: Find old agoric checkouts
+      ansible.builtin.find:
+        paths: "{{ node_home_dir }}"
+        patterns: ".agoric-repo*"
+        file_type: directory
+        hidden: true
+        recurse: false
+      register: agoric_checkouts
+      when: agoric_binary_link is changed
+
+    - name: Remove old agoric checkouts
+      vars:
+        agoric_keep_dirs:
+          - "{{ node_agoric_repo_dir | basename }}"
+          - "{{ (agoric_current_binary.stat.lnk_target | default('')) | dirname | dirname | basename }}"
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ agoric_checkouts.files | default([]) | rejectattr('path', 'search', '/(' ~ (agoric_keep_dirs | map('regex_escape') | join('|')) ~ ')$') }}"
+      loop_control:
+        label: "{{ item.path }}"
+      when: agoric_binary_link is changed

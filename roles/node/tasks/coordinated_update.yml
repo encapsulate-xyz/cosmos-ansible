@@ -11,11 +11,6 @@
   notify:
     - Restart service
 
-- name: Include poll height task
-  ansible.builtin.include_tasks: poll_height.yml
-
-#######################################################################################################################
-
 - name: Trigger handlers
   ansible.builtin.meta: flush_handlers
 
