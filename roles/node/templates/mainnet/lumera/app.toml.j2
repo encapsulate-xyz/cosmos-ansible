@@ -22,7 +22,7 @@ pruning = "{{ node_space_optimization_settings.pruning[type] }}"
 
 # These are applied if and only if the pruning strategy is custom.
 pruning-keep-recent = "{{ node_space_optimization_settings.pruning_keep_recent[type] }}"
-pruning-interval = "0"
+pruning-interval = "{{ node_space_optimization_settings.pruning_interval[type] }}"
 
 # HaltHeight contains a non-zero block height at which a node will gracefully
 # halt and shutdown that can be used to assist upgrades and testing.
