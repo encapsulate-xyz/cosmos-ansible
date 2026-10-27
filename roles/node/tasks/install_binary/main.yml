@@ -14,5 +14,5 @@
 - name: Include binary swap task
   ansible.builtin.include_tasks: "{{ item }}"
   with_first_found:
-    - swap/{{ project }}.yml
-    - swap/default.yml
+    - files: ["{{ project }}.yml", default.yml]
+      paths: ["{{ role_path }}/tasks/install_binary/swap"]
