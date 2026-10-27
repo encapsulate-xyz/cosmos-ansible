@@ -73,7 +73,7 @@ node_space_optimization_settings:
   pruning_keep_recent:
     validator: 0
     fullnode: 20000
-  pruning-interval:
+  pruning_interval:
     validator: 0
     fullnode: 10
   snapshot_interval: 0
