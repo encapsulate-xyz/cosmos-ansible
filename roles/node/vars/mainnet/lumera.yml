@@ -40,18 +40,21 @@ node_ufw_rules:
       rule: limit
       from: any
       comment: rpc_port
+      delete: true
 
     - port: "{{ rest_api_port }}"
       proto: tcp
       rule: limit
       from: any
       comment: rest_api_port
+      delete: true
 
     - port: "{{ grpc_port }}"
       proto: tcp
       rule: limit
       from: any
       comment: grpc_port
+      delete: true
 
 ########################################################################################################################
 # NETWORK PARAMS:
