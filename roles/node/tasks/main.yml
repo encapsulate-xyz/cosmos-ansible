@@ -3,6 +3,12 @@
   ansible.builtin.include_vars:
     file: vars/{{ env }}/{{ project }}.yml
 
+- name: Check the tailscale address for nodes that listen on it
+  ansible.builtin.assert:
+    that: ansible_tailscale0.ipv4.address is defined
+    fail_msg: "{{ type }} nodes of {{ project }} listen on tailscale only, but this host has no tailscale0 IPv4 address"
+  when: type in node_listen_tailscale_types | default([])
+
 - name: Apply UFW rules for each node type
   ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
   loop: "{{ node_ufw_rules[type] }}"

@@ -16,7 +16,7 @@
 
 - name: Poll blockchain height until it reaches upgrade height + 200
   ansible.builtin.uri:
-    url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
+    url: http://{{ node_rpc_host }}:{{ rpc_port }}/{{ node_status_endpoint }}
     method: GET
     return_content: true
   register: blockchain_height
