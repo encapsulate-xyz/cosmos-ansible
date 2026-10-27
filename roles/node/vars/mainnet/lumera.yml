@@ -57,6 +57,27 @@ node_ufw_rules:
       delete: true
 
 ########################################################################################################################
+# LISTEN ADDRESSES: the fullnode serves the public endpoints through the openresty gateway, which reaches it over
+# tailscale (ts.fullnode.lumera...), so its RPC, API and gRPC listen on its tailscale address only and the public
+# interface has no query ports at all. tasks/main.yml stops the deploy when the address is missing
+########################################################################################################################
+node_listen_tailscale_types: [fullnode]
+node_tailscale_address: "{{ ansible_tailscale0.ipv4.address }}"
+
+node_type_settings:
+  rpc:
+    address:
+      fullnode: "tcp://{{ node_tailscale_address }}"
+  api:
+    address:
+      fullnode: "tcp://{{ node_tailscale_address }}"
+  grpc:
+    address:
+      fullnode: "{{ node_tailscale_address }}"
+
+node_rpc_host: "{{ node_tailscale_address if type in node_listen_tailscale_types else 'localhost' }}"
+
+########################################################################################################################
 # NETWORK PARAMS:
 ########################################################################################################################
 node_network_params:

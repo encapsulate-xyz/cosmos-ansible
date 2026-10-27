@@ -1,5 +1,9 @@
 [Unit]
 Description={{ service_identifier }}
+{% if type in node_listen_tailscale_types | default([]) %}
+Wants=tailscaled.service
+After=tailscaled.service
+{% endif %}
 
 [Service]
 User={{ service_identifier }}

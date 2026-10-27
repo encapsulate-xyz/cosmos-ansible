@@ -33,6 +33,7 @@ node_service_default_binary_name:
   cosmoshub: gaiad
 
 node_status_endpoint: status
+node_rpc_host: localhost
 
 node_space_optimization_settings:
   indexer: "null"
