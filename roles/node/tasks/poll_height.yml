@@ -7,15 +7,24 @@
   register: blockchain_height
   ignore_errors: true # Do not fail the task if the request fails
 
+- name: Set current blockchain height
+  ansible.builtin.set_fact:
+    current_height: "{{ blockchain_height.json.result.sync_info.latest_block_height | default('0') | int }}"
+
 - name: Display waiting message
   ansible.builtin.debug:
-    msg: "Waiting for blockchain height to reach upgrade height. Current: {{ blockchain_height.json.result.sync_info.latest_block_height }}, Remaining blocks: {{
-      upgrade_height | int - blockchain_height.json.result.sync_info.latest_block_height | default(0) | int }}"
+    msg: >-
+      {% if current_height | int == 0 %}RPC not reachable, retrying.
+      {% elif current_height | int < upgrade_height | int %}Waiting for blockchain height to reach upgrade height. Current: {{ current_height }},
+      Remaining blocks: {{ upgrade_height | int - current_height | int }}
+      {% else %}Upgrade height {{ upgrade_height }} reached. Current: {{ current_height }}, past it by {{ current_height | int - upgrade_height | int }} blocks
+      {% endif %}
 
 - name: Pause for 30 seconds
   ansible.builtin.pause:
     seconds: 30
+  when: current_height | int < upgrade_height | int
 
 - name: Include poll height task
   ansible.builtin.include_tasks: poll_height.yml
-  when: (blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) != (upgrade_height | int)
+  when: current_height | int < upgrade_height | int

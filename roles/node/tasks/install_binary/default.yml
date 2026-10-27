@@ -32,14 +32,12 @@
 - name: Copy the built binary to the target directory
   ansible.builtin.copy:
     src: "{{ binary_location.files[0].path }}"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    dest: "{{ node_staged_binary }}"
     mode: "0755"
     owner: root
     group: root
     remote_src: true
     force: true
-  notify:
-    - Restart service
 
 - name: Clean up the temporary repository directory
   ansible.builtin.file:

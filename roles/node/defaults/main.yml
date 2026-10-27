@@ -19,6 +19,11 @@ node_directories:
   - "{{ node_key_dir }}"
   - "{{ node_log_dir }}"
 
+# install_binary tasks stage the new binary here
+node_staged_binary: "{{ node_bin_dir }}/{{ service_identifier }}.new"
+# agoric runs from its repo checkout, so each version is built in its own checkout instead
+node_agoric_repo_dir: "{{ node_home_dir }}/.agoric-repo-{{ vars[project][type].version }}"
+
 node_config_file_path: "{{ node_config_dir }}/{{ node_config_file_name }}"
 node_app_file_path: "{{ node_config_dir }}/{{ node_app_file_name }}"
 node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"

@@ -1,0 +1,16 @@
+---
+- name: Install the staged binary
+  ansible.builtin.copy:
+    src: "{{ node_staged_binary }}"
+    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0755"
+  notify:
+    - Restart service
+
+- name: Remove the staged binary
+  ansible.builtin.file:
+    path: "{{ node_staged_binary }}"
+    state: absent

@@ -7,11 +7,9 @@
 - name: Fetch the ixo service secret binary
   ansible.builtin.get_url:
     url: "{{ vault.external.ixo.private_source_url }}/{{ node_service_default_binary_name[project] }}"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    dest: "{{ node_staged_binary }}"
     owner: root
     group: root
     force: true
     mode: "0755"
-  notify:
-    - Restart service
   when: fetch_secret_binaries | default(false) | bool

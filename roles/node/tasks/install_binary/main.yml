@@ -6,3 +6,13 @@
   rescue:
     - name: Include default install binary task
       ansible.builtin.include_tasks: default.yml
+
+- name: Wait for the upgrade height before swapping the binary
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/poll_height.yml"
+  when: upgrade_height is defined
+
+- name: Include binary swap task
+  ansible.builtin.include_tasks: "{{ item }}"
+  with_first_found:
+    - swap/{{ project }}.yml
+    - swap/default.yml

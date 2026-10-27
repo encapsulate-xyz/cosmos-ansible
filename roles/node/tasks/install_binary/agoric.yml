@@ -1,7 +1,7 @@
 ---
 - name: Create the agoric-repo folder
   ansible.builtin.file:
-    path: "{{ node_home_dir }}/.agoric-repo"
+    path: "{{ node_agoric_repo_dir }}"
     state: directory
     owner: root
     group: root
@@ -10,11 +10,9 @@
 - name: Clone the repository
   ansible.builtin.git:
     repo: "{{ vars[project][type].source_url }}"
-    dest: "{{ node_home_dir }}/.agoric-repo"
+    dest: "{{ node_agoric_repo_dir }}"
     version: "{{ vars[project][type].version }}"
     force: true
-  notify:
-    - Restart service
 
 - name: Build agoric binary
   ansible.builtin.shell: |
@@ -24,7 +22,7 @@
     corepack prepare yarn@4.12.0 --activate
     bin/agd build
   args:
-    chdir: "{{ node_home_dir }}/.agoric-repo"
+    chdir: "{{ node_agoric_repo_dir }}"
     executable: /bin/bash
   environment:
     PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin:{{ go.root }}/bin:{{ ansible_env.PATH }}"
@@ -33,12 +31,6 @@
     GOPATH: "{{ go.path }}"
     GO111MODULE: "{{ go.module111 }}"
   changed_when: false
-
-- name: Create a symbolic link to agroic binary
-  ansible.builtin.file:
-    src: "{{ node_home_dir }}/.agoric-repo/bin/{{ node_service_default_binary_name[project] }}"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
-    state: link
 
 - name: Copy general environment file
   ansible.builtin.template:

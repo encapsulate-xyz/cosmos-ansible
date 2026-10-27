@@ -26,14 +26,12 @@
 - name: Copy the binary file
   ansible.builtin.copy:
     src: "{{ tmp_dir }}/{{ service_identifier }}/{{ node_service_default_binary_name[project] }}"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    dest: "{{ node_staged_binary }}"
     remote_src: true
     owner: root
     group: root
     force: true
     mode: "0755"
-  notify:
-    - Restart service
 
 - name: Clean up the temporary files in /tmp
   ansible.builtin.file:
