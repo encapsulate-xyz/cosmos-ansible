@@ -44,7 +44,7 @@ pf:
 
 cosmoshub:
   validator:
-    source_url: https://github.com/cosmos/gaia
+    source_url: https://github.com/cosmos/gaia/releases/download
     ports:
       prefix: 100
 
