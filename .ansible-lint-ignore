@@ -1,0 +1,27 @@
+# This file contains ignores rule violations for ansible-lint
+decommission_service.yml yaml[trailing-spaces]
+group_vars/all.yml yaml[line-length]
+inventory/mainnet.yml yaml[new-line-at-end-of-file]
+roles/decommission_service/tasks/main.yml ignore-errors
+roles/decommission_service/tasks/main.yml var-naming[no-role-prefix]
+roles/decommission_service/tasks/main.yml yaml[trailing-spaces]
+roles/node/tasks/commands/create_validator.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/display_command_output.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/edit_validator.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/main.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/rollback.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/unjail.yml var-naming[no-role-prefix]
+roles/node/tasks/commands/withdraw_rewards.yml var-naming[no-role-prefix]
+roles/node/tasks/coordinated_update.yml var-naming[no-role-prefix]
+roles/node/tasks/install_binary/cosmoshub.yml yaml[line-length]
+roles/node/tasks/install_binary/default.yml var-naming[no-role-prefix]
+roles/node/tasks/install_binary/swap/agoric.yml no-handler
+roles/node/tasks/install_binary/swap/agoric.yml var-naming[no-role-prefix]
+roles/node/tasks/install_binary/terra.yml yaml[line-length]
+roles/node/tasks/main.yml var-naming[no-role-prefix]
+roles/node/tasks/poll_height.yml var-naming[no-role-prefix]
+roles/price_feeder/tasks/build_binary.yml var-naming[no-role-prefix]
+roles/sync/tasks/state_sync.yml var-naming[no-role-prefix]
+roles/tofnd/tasks/commands/rotate_axelar_tofnd_keys.yml no-changed-when
+roles/tofnd/tasks/commands/rotate_axelar_tofnd_keys.yml var-naming[no-role-prefix]
+tasks/setup_environment.yml yaml[line-length]
