@@ -43,3 +43,16 @@
         - name: Include supernode role
           ansible.builtin.include_role:
             name: supernode
+            public: true
+
+  post_tasks:
+    - name: Verify supernode
+      when: type in allowed_node_types
+      block:
+        # the HTTP gateway listens on the public address and only starts after the supernode's chain checks,
+        # so there is no health check
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ supernode_log_file_path }}"
+            version_command: "{{ supernode_bin_dir }}/{{ service_identifier }} version"

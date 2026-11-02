@@ -24,3 +24,14 @@
         - name: Include gravity_orchestrator role
           ansible.builtin.include_role:
             name: gravity_orchestrator
+            public: true
+
+  post_tasks:
+    - name: Verify gravity orchestrator
+      block:
+        # gbt v1.14.2 reports 1.14.1, and its metrics server only starts once the node is synced,
+        # so there is no version or health check
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ gravity_orchestrator_log_file_path }}"
