@@ -24,3 +24,16 @@
         - name: Include sommelier_orchestrator role
           ansible.builtin.include_role:
             name: sommelier_orchestrator
+            public: true
+
+  post_tasks:
+    - name: Verify sommelier orchestrator
+      block:
+        # the metrics server only starts once the node is synced, so there is no health check
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ sommelier_orchestrator_log_file_path }}"
+            version_command: "{{ sommelier_orchestrator_bin_dir }}/{{ service_identifier }} --version"
+            # steward prints "steward 4.2.7"
+            expected_version: "{{ sommelier.orchestrator.version | regex_replace('^v', '') }}"

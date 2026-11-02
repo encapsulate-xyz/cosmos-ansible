@@ -24,3 +24,16 @@
         - name: Include steward role
           ansible.builtin.include_role:
             name: steward
+            public: true
+
+  post_tasks:
+    - name: Verify steward
+      block:
+        # steward serves gRPC over TLS only, so there is no HTTP health check
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ steward_log_file_path }}"
+            version_command: "{{ steward_bin_dir }}/{{ service_identifier }} --version"
+            # steward prints "steward 4.2.7"
+            expected_version: "{{ sommelier.steward.version | regex_replace('^v', '') }}"

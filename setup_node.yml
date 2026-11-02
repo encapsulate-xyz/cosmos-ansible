@@ -5,6 +5,9 @@
   gather_facts: true
   vars:
     allowed_node_types: [validator, fullnode]
+    # `version` doesn't print the pinned version here: agd prints its package version (0.36.0-u23.1), not the
+    # agoric-upgrade tag, humans pins a branch, and lumera's source is private, so what lumerad prints is unknown
+    unchecked_version_projects: [agoric, humans, lumera]
   vars_files:
     - group_vars/ports.yml
     - group_vars/all.yml
@@ -31,3 +34,60 @@
         - name: Include node role
           ansible.builtin.include_role:
             name: node
+            public: true
+
+  post_tasks:
+    - name: Verify node
+      when: type in allowed_node_types
+      block:
+        # A validator restarted with double_sign_check_height set panics, and systemd restarts it, until that many
+        # blocks pass without its signature. Wait for the node to store that many new blocks, so the check doesn't
+        # take it for a crash loop. A node that never answers is left to the check, which shows its log
+        - name: Wait out the double sign check
+          when:
+            - verify_service | default(true) | bool
+            - not ansible_check_mode
+            - node_type_settings.double_sign_check_height[type] | int > 0
+          block:
+            - name: Get the node height
+              ansible.builtin.uri:
+                url: http://{{ node_rpc_host }}:{{ rpc_port }}/{{ node_status_endpoint }}
+                method: GET
+                return_content: true
+              register: node_height
+              until: node_height.json is defined
+              delay: 10
+              retries: 30
+
+            - name: Wait for the node to store more blocks than the double sign check height
+              ansible.builtin.uri:
+                url: http://{{ node_rpc_host }}:{{ rpc_port }}/{{ node_status_endpoint }}
+                method: GET
+                return_content: true
+              register: node_height_now
+              until: >-
+                (node_height_now.json.result.sync_info.latest_block_height | default('0') | int)
+                > (node_height.json.result.sync_info.latest_block_height | int) + (node_type_settings.double_sign_check_height[type] | int)
+              delay: 10
+              retries: 30
+          rescue:
+            - name: Display that the node didn't report new blocks
+              ansible.builtin.debug:
+                msg: "{{ service_identifier }} didn't report new blocks, checking it as it is"
+
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ node_log_file_path }}"
+            version_command: "{{ node_bin_dir }}/{{ service_identifier }} version --home {{ node_home_dir }}"
+            # some chains build the version with the leading v, some without
+            expected_version: "{{ vars[project][type].version | regex_replace('^v', '') }}"
+            health_url: "http://{{ node_rpc_host }}:{{ rpc_port }}/health"
+          when: project not in unchecked_version_projects
+
+        - name: Include verify service task without the version check
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ node_log_file_path }}"
+            health_url: "http://{{ node_rpc_host }}:{{ rpc_port }}/health"
+          when: project in unchecked_version_projects
