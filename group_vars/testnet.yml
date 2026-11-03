@@ -71,7 +71,7 @@ terra:
 cosmoshub:
   chain_id: provider
   validator:
-    version: v29.0.1
+    version: v29.1.0-rc0
     wasmvm:
-      version: v2.3.5
+      version: v2.3.6
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/cosmos/cosmos_19216907.tar.lz4
