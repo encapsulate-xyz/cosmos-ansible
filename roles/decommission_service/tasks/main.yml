@@ -7,21 +7,22 @@
           {{ 'roles/node/vars/' ~ env ~ '/' ~ project ~ '.yml'
              if type in ['fullnode', 'validator']
              else 'roles/' ~ (role_folder_name | default(type)) ~ '/vars/ufw_rules.yml' }}
-    
+
     - name: Get UFW rules variable
       ansible.builtin.set_fact:
-        ufw_rules_var: "{{ lookup('vars', vars.keys() | select('search', '_ufw_rules$') | first) }}"
+        decommission_service_ufw_rules_var: "{{ lookup('vars', query('varnames', '_ufw_rules$') | first) }}"
 
     - name: Extract UFW rules
       ansible.builtin.set_fact:
-        ufw_rules_list: >-
-          {{ ufw_rules_var[type] if (ufw_rules_var is mapping and type in ufw_rules_var)
-            else ufw_rules_var if ufw_rules_var is sequence
+        decommission_service_ufw_rules_list: >-
+          {{ decommission_service_ufw_rules_var[type]
+               if (decommission_service_ufw_rules_var is mapping and type in decommission_service_ufw_rules_var)
+            else decommission_service_ufw_rules_var if decommission_service_ufw_rules_var is sequence
             else [] }}
 
     - name: Apply UFW rules
       ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
-      loop: "{{ ufw_rules_list }}"
+      loop: "{{ decommission_service_ufw_rules_list }}"
       vars:
         sunset_delete_rule: true
 
@@ -38,7 +39,11 @@
   loop:
     - "service"
     - "timer"
-  ignore_errors: true
+  register: decommission_service_stop_result
+  # a service without a timer (or already removed) is fine; anything else is a real failure
+  failed_when:
+    - decommission_service_stop_result is failed
+    - "'Could not find the requested service' not in (decommission_service_stop_result.msg | default(''))"
 
 - name: Delete home directory
   ansible.builtin.file:

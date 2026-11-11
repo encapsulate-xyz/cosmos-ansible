@@ -5,7 +5,7 @@ Description={{ service_identifier }}
 User={{ service_identifier }}
 Group={{ service_identifier }}
 
-{% if vars[project][type].wasmvm.version is defined %}
+{% if lookup('vars', project)[type].wasmvm.version is defined %}
 EnvironmentFile={{ node_environment_wasmvm_file_path }}
 {% endif %}
 

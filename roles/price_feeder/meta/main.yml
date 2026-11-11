@@ -2,7 +2,7 @@
 dependencies:
   - role: fubarhouse.golang
     vars:
-      go_version: "{{ vars[project][type].go.version }}" # Set the desired Go version
+      go_version: "{{ lookup('vars', project)[type].go.version }}" # Set the desired Go version
       GOPATH: "{{ go.path }}" # Go path
       GOROOT: "{{ go.root }}" # Go root
       GO111MODULE: "{{ go.module111 }}" # Go module management

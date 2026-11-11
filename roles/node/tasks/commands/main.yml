@@ -13,11 +13,11 @@
         - "{{ node_key_dir }}/{{ service_identifier }}.seed"
         - "/opt/default.seed"
   ansible.builtin.set_fact:
-    seed_file: "{{ lookup('first_found', params) }}"
+    node_seed_file: "{{ lookup('first_found', params) }}"
 
 - name: Show which seed file is being used
   ansible.builtin.debug:
-    msg: "Using seed file: {{ seed_file }}"
+    msg: "Using seed file: {{ node_seed_file }}"
 
 - name: Include user creation task
   ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
@@ -32,21 +32,21 @@
 
 - name: Include wasmvm task
   ansible.builtin.include_tasks: roles/node/tasks/configure_wasmvm.yml
-  when: vars[project][type].wasmvm.version is defined
+  when: lookup('vars', project)[type].wasmvm.version is defined
 
 - name: Decrypt seed file
   ansible.builtin.shell: |
     gpg --batch --yes --quiet --decrypt \
-      --passphrase "$GPG_PASSPHRASE" "{{ seed_file }}"
+      --passphrase "$GPG_PASSPHRASE" "{{ node_seed_file }}"
   environment:
     GPG_PASSPHRASE: "{{ lookup('env', 'GPG_PASSPHRASE') }}"
-  register: decrypted_content
+  register: node_decrypted_content
   no_log: true
   changed_when: false
 
 - name: Store mnemonic temporarily
   ansible.builtin.set_fact:
-    mnemonic: "{{ decrypted_content.stdout | trim }}"
+    node_mnemonic: "{{ node_decrypted_content.stdout | trim }}"
   no_log: true
 
 - name: Manage keys
@@ -58,33 +58,33 @@
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys list --home {{ node_home_dir }} --output text"
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: existing_key_list
-      failed_when: existing_key_list.rc != 0
+      register: node_existing_key_list
+      failed_when: node_existing_key_list.rc != 0
 
     - name: Add key
       ansible.builtin.expect:
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys add {{ key_name }} --home {{ node_home_dir }} --recover"
         responses:
-          "Enter your bip39 mnemonic": "{{ mnemonic }}\n"
+          "Enter your bip39 mnemonic": "{{ node_mnemonic }}\n"
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
           "Re-enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      when: key_name not in existing_key_list.stdout
-      register: add_key
-      failed_when: add_key.rc != 0
+      when: key_name not in node_existing_key_list.stdout
+      register: node_add_key
+      failed_when: node_add_key.rc != 0
 
     - name: List keys
       ansible.builtin.expect:
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys list --home {{ node_home_dir }} --output json"
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: key_list
-      failed_when: key_list.rc != 0
+      register: node_key_list
+      failed_when: node_key_list.rc != 0
 
     - name: Extract and parse key addresses
       ansible.builtin.debug:
         msg: >
           {{
-            key_list.stdout |
+            node_key_list.stdout |
             regex_replace('^Enter keyring passphrase.*:\r\n', '') |
             regex_replace('\\\\"', '"') |
             default('[]') |
@@ -117,9 +117,9 @@
         command: "{{ node_bin_dir }}/{{ service_identifier }} keys delete {{ key_name }} --home {{ node_home_dir }} -y"
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: delete_key_output
-      changed_when: "'Key deleted forever' in delete_key_output.stdout"
+      register: node_delete_key_output
+      changed_when: "'Key deleted forever' in node_delete_key_output.stdout"
       when:
-        - key_name in key_list.stdout
+        - key_name in node_key_list.stdout
         - project != "paloma"
-      failed_when: delete_key_output.rc != 0
+      failed_when: node_delete_key_output.rc != 0

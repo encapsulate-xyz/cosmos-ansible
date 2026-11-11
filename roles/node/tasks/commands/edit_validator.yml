@@ -12,7 +12,7 @@
           --commission-rate={{ node_network_params.current_commission_rate }}
           --yes
           --from {{ key_name }}
-          --chain-id {{ vars[project].chain_id }}
+          --chain-id {{ lookup('vars', project).chain_id }}
           --home {{ node_home_dir }}
           --node tcp://localhost:{{ rpc_port }}
           --output json
@@ -21,17 +21,17 @@
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: edit_validator_output
+      register: node_edit_validator_output
       failed_when:
-        - edit_validator_output.rc != 0
-        - ((edit_validator_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
+        - node_edit_validator_output.rc != 0
+        - ((node_edit_validator_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
   always:
     - name: Prase edit validator command output and store in variable
       ansible.builtin.set_fact:
-        command_result: "{{ edit_validator_output }}"
-      when: edit_validator_output.rc == 0
+        node_command_result: "{{ node_edit_validator_output }}"
+      when: node_edit_validator_output.rc == 0
 
     - name: Include display command output task
       ansible.builtin.import_tasks: display_command_output.yml
-      when: edit_validator_output.rc == 0
+      when: node_edit_validator_output.rc == 0

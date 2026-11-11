@@ -16,66 +16,81 @@
       - "Project: {{ project }}"
       - "Environment: {{ env }}"
       - "Type: {{ type }}"
-      - "Version: {{ vars[project][type].version }}"
+      - "Version: {{ lookup('vars', project)[type].version }}"
       - "Username: {{ service_identifier }}"
       - "Service Name: {{ service_identifier }}"
       - "Operating System: {{ ansible_system | lower }}"
       - "System Architecture: {{ system_architecture }}"
 
 - name: Set all port variables dynamically
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    p2p_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.p2p | default(ports.suffix.p2p)) }}"
-    rpc_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.rpc | default(ports.suffix.rpc)) }}"
-    abci_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.abci | default(ports.suffix.abci)) }}"
-    prometheus_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.prometheus | default(ports.suffix.prometheus)) }}"
-    pprof_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.pprof | default(ports.suffix.pprof)) }}"
-    rest_api_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.rest_api | default(ports.suffix.rest_api)) }}"
-    rosetta_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.rosetta | default(ports.suffix.rosetta)) }}"
-    grpc_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc | default(ports.suffix.grpc)) }}"
-    grpc_web_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.grpc_web | default(ports.suffix.grpc_web)) }}"
-    multiplexer_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.multiplexer | default(ports.suffix.multiplexer)) }}"
-    privval_port: "{{ vars[project][type].ports.prefix ~ (vars[project][type].ports.suffix.privval | default(ports.suffix.privval)) }}"
+    p2p_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.p2p | default(ports.suffix.p2p)) }}"
+    rpc_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.rpc | default(ports.suffix.rpc)) }}"
+    abci_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.abci | default(ports.suffix.abci)) }}"
+    prometheus_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.prometheus | default(ports.suffix.prometheus)) }}"
+    pprof_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.pprof | default(ports.suffix.pprof)) }}"
+    rest_api_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.rest_api | default(ports.suffix.rest_api)) }}"
+    rosetta_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.rosetta | default(ports.suffix.rosetta)) }}"
+    grpc_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.grpc | default(ports.suffix.grpc)) }}"
+    grpc_web_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.grpc_web | default(ports.suffix.grpc_web)) }}"
+    multiplexer_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.multiplexer | default(ports.suffix.multiplexer)) }}"
+    privval_port: "{{ chain_cfg[type].ports.prefix ~ (chain_cfg[type].ports.suffix.privval | default(ports.suffix.privval)) }}"
   when: type == "validator" or type == "fullnode"
 
 - name: Set all port variables dynamically for price feeder
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    price_feeder_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.price_feeder | default(ports.suffix.price_feeder)) }}"
-    grpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.grpc | default(ports.suffix.grpc)) }}"
-    rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
+    price_feeder_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.price_feeder | default(ports.suffix.price_feeder)) }}"
+    grpc_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.grpc | default(ports.suffix.grpc)) }}"
+    rpc_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type == "pf"
 
 - name: Set port variable for axelar vald and tofnd service
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    tofnd_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.tofnd | default(ports.suffix.tofnd)) }}"
-    rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
+    tofnd_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.tofnd | default(ports.suffix.tofnd)) }}"
+    rpc_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.rpc | default(ports.suffix.rpc)) }}"
   when: type in ["vald", "tofnd"]
 
 - name: Set port variable for orchestrator service
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    orchestrator_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics))
-      }}"
+    orchestrator_metrics_port: >-
+      {{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.orchestrator_metrics | default(ports.suffix.orchestrator_metrics)) }}
   when: type == "orchestrator"
 
 - name: Set port variable for steward service
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    steward_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.steward | default(ports.suffix.steward)) }}"
+    steward_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.steward | default(ports.suffix.steward)) }}"
   when: type == "steward"
 
 - name: Set port variable for pigeon service
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    pigeon_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project].validator.ports.suffix.pigeon_metrics | default(ports.suffix.pigeon_metrics)) }}"
+    pigeon_metrics_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg.validator.ports.suffix.pigeon_metrics | default(ports.suffix.pigeon_metrics)) }}"
   when: type == "pigeon"
 
 - name: Set all port variables dynamically for Execution Client
+  vars:
+    chain_cfg: "{{ lookup('vars', project) }}"
   ansible.builtin.set_fact:
-    execution_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
-    execution_json_rpc_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_json_rpc | default(ports.suffix.execution_json_rpc)) }}"
-    execution_websocket_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_websocket | default(ports.suffix.execution_websocket))
-      }}"
-    execution_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.execution_metrics | default(ports.suffix.execution_metrics))
-      }}"
-    lumera_geth_metrics_port: "{{ vars[project].validator.ports.prefix ~ (vars[project][type].ports.suffix.lumera_geth_metrics | default(ports.suffix.lumera_geth_metrics))
-      }}"
+    execution_rpc_port: "{{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.execution_rpc | default(ports.suffix.execution_rpc)) }}"
+    execution_json_rpc_port: >-
+      {{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.execution_json_rpc | default(ports.suffix.execution_json_rpc)) }}
+    execution_websocket_port: >-
+      {{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.execution_websocket | default(ports.suffix.execution_websocket)) }}
+    execution_metrics_port: >-
+      {{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.execution_metrics | default(ports.suffix.execution_metrics)) }}
+    lumera_geth_metrics_port: >-
+      {{ chain_cfg.validator.ports.prefix ~ (chain_cfg[type].ports.suffix.lumera_geth_metrics | default(ports.suffix.lumera_geth_metrics)) }}
   when: execution_client | default(false) | bool
 
 - name: Display all port variables

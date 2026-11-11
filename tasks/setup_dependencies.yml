@@ -22,4 +22,4 @@
   loop:
     - "{{ go.root }}"
     - "{{ go.path }}"
-  when: vars[project][type].go.version is defined
+  when: lookup('vars', project)[type].go.version is defined

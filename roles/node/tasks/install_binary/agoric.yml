@@ -9,15 +9,15 @@
 
 - name: Clone the repository
   ansible.builtin.git:
-    repo: "{{ vars[project][type].source_url }}"
+    repo: "{{ lookup('vars', project)[type].source_url }}"
     dest: "{{ node_agoric_repo_dir }}"
-    version: "{{ vars[project][type].version }}"
+    version: "{{ lookup('vars', project)[type].version }}"
     force: true
 
 - name: Build agoric binary
   ansible.builtin.shell: |
     source {{ nvm.path }}/nvm.sh
-    nvm use {{ vars[project][type].node.version }}
+    nvm use {{ lookup('vars', project)[type].node.version }}
     corepack enable
     corepack prepare yarn@4.12.0 --activate
     bin/agd build
@@ -25,8 +25,8 @@
     chdir: "{{ node_agoric_repo_dir }}"
     executable: /bin/bash
   environment:
-    PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin:{{ go.root }}/bin:{{ ansible_env.PATH }}"
-    NODE_PATH: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/lib/node_modules"
+    PATH: "{{ nvm.path }}/versions/node/{{ lookup('vars', project)[type].node.version }}/bin:{{ go.root }}/bin:{{ ansible_env.PATH }}"
+    NODE_PATH: "{{ nvm.path }}/versions/node/{{ lookup('vars', project)[type].node.version }}/lib/node_modules"
     GOROOT: "{{ go.root }}"
     GOPATH: "{{ go.path }}"
     GO111MODULE: "{{ go.module111 }}"

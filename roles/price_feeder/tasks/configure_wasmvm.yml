@@ -1,7 +1,7 @@
 ---
 - name: Download wasmvm from URL
   vars:
-    suffix_url: "{{ vars[project][type].wasmvm.version }}/{{ price_feeder_wasmvm_lib_file_name }}"
+    suffix_url: "{{ lookup('vars', project)[type].wasmvm.version }}/{{ price_feeder_wasmvm_lib_file_name }}"
   ansible.builtin.get_url:
     url: "{{ wasmvm.source_url }}/{{ suffix_url }}"
     dest: "{{ price_feeder_wasmvm_lib_file_path }}"

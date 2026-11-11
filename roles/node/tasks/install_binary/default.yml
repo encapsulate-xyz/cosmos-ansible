@@ -7,9 +7,9 @@
 
 - name: Clone the repository to /tmp
   ansible.builtin.git:
-    repo: "{{ vars[project][type].source_url }}"
+    repo: "{{ lookup('vars', project)[type].source_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project][type].version }}"
+    version: "{{ lookup('vars', project)[type].version }}"
     force: true
 
 - name: Build the project using `make build`
@@ -27,11 +27,11 @@
     paths: "{{ tmp_dir }}/{{ project }}"
     patterns: "{{ node_service_default_binary_name[project] }}"
     recurse: true
-  register: binary_location
+  register: node_binary_location
 
 - name: Copy the built binary to the target directory
   ansible.builtin.copy:
-    src: "{{ binary_location.files[0].path }}"
+    src: "{{ node_binary_location.files[0].path }}"
     dest: "{{ node_staged_binary }}"
     mode: "0755"
     owner: root

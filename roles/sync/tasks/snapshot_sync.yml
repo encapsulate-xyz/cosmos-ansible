@@ -4,21 +4,21 @@
     - name: Download and Extract zst format snapshot
       ansible.builtin.shell: |
         set -o pipefail
-        curl -o - -L {{ snapshot_url | default(vars[project].snapshot_url) }} | zstd -d | tar -x -C {{ sync_home_dir }}
+        curl -o - -L {{ snapshot_url | default(lookup('vars', project).snapshot_url) }} | zstd -d | tar -x -C {{ sync_home_dir }}
       async: 10000
       poll: 10
       args:
         executable: /bin/bash
         creates: "{{ sync_data_dir }}"
-      when: snapshot_url | default(vars[project].snapshot_url) is search('\.zst$')
+      when: snapshot_url | default(lookup('vars', project).snapshot_url) is search('\.zst$')
 
     - name: Download and Extract lz4 format snapshot
       ansible.builtin.shell: |
         set -o pipefail
-        curl -o - -L {{ snapshot_url | default(vars[project].snapshot_url) }} | lz4 -c -d - | tar -x -C {{ sync_home_dir }}
+        curl -o - -L {{ snapshot_url | default(lookup('vars', project).snapshot_url) }} | lz4 -c -d - | tar -x -C {{ sync_home_dir }}
       async: 10000
       poll: 10
       args:
         executable: /bin/bash
         creates: "{{ sync_data_dir }}"
-      when: snapshot_url | default(vars[project].snapshot_url) is search('\.lz4$')
+      when: snapshot_url | default(lookup('vars', project).snapshot_url) is search('\.lz4$')
