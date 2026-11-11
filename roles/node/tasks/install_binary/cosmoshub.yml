@@ -34,8 +34,10 @@
         mode: "0755"
 
     - name: Copy the binary file
+      vars:
+        node_gaiad_dir: "gaiad-{{ ansible_system | lower }}-{{ system_architecture }}"
       ansible.builtin.copy:
-        src: "{{ tmp_dir }}/{{ service_identifier }}/gaiad-{{ ansible_system | lower }}-{{ system_architecture }}/{{ node_service_default_binary_name[project] }}"
+        src: "{{ tmp_dir }}/{{ service_identifier }}/{{ node_gaiad_dir }}/{{ node_service_default_binary_name[project] }}"
         dest: "{{ node_staged_binary }}"
         remote_src: true
         owner: root

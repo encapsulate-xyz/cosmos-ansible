@@ -183,10 +183,10 @@ laddr = "{{ node_type_settings.p2p.address.default}}:{{ p2p_port }}"
 external_address = "{{ node_sentry_settings.external_address[type] | default(inventory_hostname + ':' + p2p_port) }}"
 
 # Comma separated list of seed nodes to connect to
-seeds = "{{ node_sentry_settings.seeds[type] | default(seeds) }}"
+seeds = "{{ node_sentry_settings.seeds[type] | default(node_seeds) }}"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default(peers) }}"
+persistent_peers = "{{ node_sentry_settings.persistent_peers[type] | default(node_peers) }}"
 
 # UPNP port forwarding
 upnp = false

@@ -3,9 +3,9 @@
   block:
     - name: Get validator public key
       ansible.builtin.command: "{{ node_bin_dir }}/{{ service_identifier }} tendermint show-validator --home {{ node_home_dir }}"
-      register: pubkey_result
+      register: node_pubkey_result
       changed_when: false
-      failed_when: pubkey_result.rc != 0
+      failed_when: node_pubkey_result.rc != 0
 
     - name: Execute create validator
       ansible.builtin.expect:
@@ -13,7 +13,7 @@
           {{ node_bin_dir }}/{{ service_identifier }} tx staking create-validator --home {{ node_home_dir }}
           --amount={{ gentx_amount }}{{ node_network_params.denom }}
           --broadcast-mode=sync
-          --pubkey='{{ pubkey_result.stdout }}'
+          --pubkey='{{ node_pubkey_result.stdout }}'
           --moniker={{ moniker }}
           --website={{ website }}
           --details="{{ about }}"
@@ -32,17 +32,17 @@
           --gas-adjustment=1.4 -y
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: create_validator_output
+      register: node_create_validator_output
       failed_when:
-        - create_validator_output.rc != 0
-        - ((create_validator_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
+        - node_create_validator_output.rc != 0
+        - ((node_create_validator_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
   always:
     - name: Prase create validator command output and store in variable
       ansible.builtin.set_fact:
-        command_result: "{{ create_validator_output }}"
-      when: create_validator_output.rc == 0
+        node_command_result: "{{ node_create_validator_output }}"
+      when: node_create_validator_output.rc == 0
 
     - name: Include display command output task
       ansible.builtin.import_tasks: display_command_output.yml
-      when: create_validator_output.rc == 0
+      when: node_create_validator_output.rc == 0

@@ -7,25 +7,25 @@
           {{ node_bin_dir }}/{{ service_identifier }} keys show {{ key_name }} --bech val --output json --home {{ node_home_dir }}
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: validator_status
-      failed_when: validator_status.rc != 0
+      register: node_validator_status
+      failed_when: node_validator_status.rc != 0
 
     - name: Debug raw output
       ansible.builtin.debug:
-        msg: "{{ validator_status.stdout }}"
+        msg: "{{ node_validator_status.stdout }}"
 
     - name: Extract validator address
       ansible.builtin.set_fact:
-        validator: "{{ validator_status.stdout.split('\n')[-1] | from_json | json_query('address') }}"
+        node_validator: "{{ node_validator_status.stdout.split('\n')[-1] | from_json | json_query('address') }}"
 
     - name: Show the final validator
       ansible.builtin.debug:
-        msg: "Validator address is: {{ validator }}"
+        msg: "Validator address is: {{ node_validator }}"
 
     - name: Withdraw rewards
       ansible.builtin.expect:
         command: >
-          {{ node_bin_dir }}/{{ service_identifier }} tx distribution withdraw-rewards {{ validator }}
+          {{ node_bin_dir }}/{{ service_identifier }} tx distribution withdraw-rewards {{ node_validator }}
           --commission
           --yes
           --from {{ key_name }}
@@ -38,17 +38,17 @@
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: withdraw_output
+      register: node_withdraw_output
       failed_when:
-        - withdraw_output.rc != 0
-        - ((withdraw_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
+        - node_withdraw_output.rc != 0
+        - ((node_withdraw_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
   always:
     - name: Prase withdraw validator rewards command output and store in variable
       ansible.builtin.set_fact:
-        command_result: "{{ withdraw_output }}"
-      when: withdraw_output.rc == 0
+        node_command_result: "{{ node_withdraw_output }}"
+      when: node_withdraw_output.rc == 0
 
     - name: Include display command output task
       ansible.builtin.import_tasks: display_command_output.yml
-      when: withdraw_output.rc == 0
+      when: node_withdraw_output.rc == 0

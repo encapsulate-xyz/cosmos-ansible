@@ -3,33 +3,33 @@
   ansible.builtin.uri:
     url: "{{ rpc_url | default(lookup('vars', project).rpc_url) }}/block"
     return_content: true
-  register: latest_block
+  register: sync_latest_block
 
 - name: Extract the latest height
   ansible.builtin.set_fact:
-    latest_height: "{{ latest_block.json.result.block.header.height | int }}"
+    sync_latest_height: "{{ sync_latest_block.json.result.block.header.height | int }}"
 
 - name: Calculate the trust height
   ansible.builtin.set_fact:
-    trust_height: "{{ latest_height | int - 1000 }}"
+    sync_trust_height: "{{ sync_latest_height | int - 1000 }}"
 
 - name: Get the trust hash for the calculated trust height
   ansible.builtin.uri:
-    url: "{{ rpc_url | default(lookup('vars', project).rpc_url) }}/block?height={{ trust_height }}"
+    url: "{{ rpc_url | default(lookup('vars', project).rpc_url) }}/block?height={{ sync_trust_height }}"
     return_content: true
-  register: trust_block_hash_response
+  register: sync_trust_block_hash_response
 
 - name: Extract the trust hash
   ansible.builtin.set_fact:
-    trust_hash: "{{ trust_block_hash_response.json.result.block_id.hash }}"
+    sync_trust_hash: "{{ sync_trust_block_hash_response.json.result.block_id.hash }}"
 
 - name: Print all variables
   ansible.builtin.debug:
     msg:
       - "RPC_URL: {{ rpc_url | default(lookup('vars', project).rpc_url) }}"
-      - "Latest Height: {{ latest_height }}"
-      - "Trust Height (LATEST_HEIGHT - 2000): {{ trust_height }}"
-      - "Trust Hash: {{ trust_hash }}"
+      - "Latest Height: {{ sync_latest_height }}"
+      - "Trust Height (LATEST_HEIGHT - 2000): {{ sync_trust_height }}"
+      - "Trust Hash: {{ sync_trust_hash }}"
 
 - name: Configure statesync settings
   ansible.builtin.lineinfile:
@@ -43,9 +43,9 @@
     - regexp: "^rpc_servers = .*"
       line: 'rpc_servers = "{{ rpc_url | default(lookup("vars", project).rpc_url) }},{{ rpc_url | default(lookup("vars", project).rpc_url) }}"'
     - regexp: "^trust_height = .*"
-      line: "trust_height = {{ trust_height }}"
+      line: "trust_height = {{ sync_trust_height }}"
     - regexp: "^trust_hash = .*"
-      line: 'trust_hash = "{{ trust_hash }}"'
+      line: 'trust_hash = "{{ sync_trust_hash }}"'
 
 - name: Create data directory
   ansible.builtin.file:
