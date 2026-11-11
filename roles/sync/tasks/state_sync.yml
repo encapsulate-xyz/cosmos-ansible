@@ -41,7 +41,7 @@
     - regexp: "^enable = .*"
       line: "enable = true"
     - regexp: "^rpc_servers = .*"
-      line: 'rpc_servers = "{{ rpc_url | default(lookup('vars', project).rpc_url) }},{{ rpc_url | default(lookup('vars', project).rpc_url) }}"'
+      line: 'rpc_servers = "{{ rpc_url | default(lookup("vars", project).rpc_url) }},{{ rpc_url | default(lookup("vars", project).rpc_url) }}"'
     - regexp: "^trust_height = .*"
       line: "trust_height = {{ trust_height }}"
     - regexp: "^trust_hash = .*"

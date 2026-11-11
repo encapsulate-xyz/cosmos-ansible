@@ -9,8 +9,9 @@
 
 - name: Download and unarchive the binary
   vars:
+    node_binary_version: "{{ lookup('vars', project)[type].version }}"
     suffix_url: >
-      {{ lookup('vars', project)[type].version }}/lumera_{{ lookup('vars', project)[type].version }}_{{ ansible_system | lower }}_{{ system_architecture }}.tar.gz
+      {{ node_binary_version }}/lumera_{{ node_binary_version }}_{{ ansible_system | lower }}_{{ system_architecture }}.tar.gz
   ansible.builtin.unarchive:
     src: "{{ lookup('vars', project)[type].source_url }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
