@@ -10,7 +10,7 @@
     
     - name: Get UFW rules variable
       ansible.builtin.set_fact:
-        ufw_rules_var: "{{ lookup('vars', vars.keys() | select('search', '_ufw_rules$') | first) }}"
+        ufw_rules_var: "{{ lookup('vars', query('varnames', '_ufw_rules$') | first) }}"
 
     - name: Extract UFW rules
       ansible.builtin.set_fact:

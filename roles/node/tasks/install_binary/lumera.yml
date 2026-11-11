@@ -10,9 +10,9 @@
 - name: Download and unarchive the binary
   vars:
     suffix_url: >
-      {{ vars[project][type].version }}/lumera_{{ vars[project][type].version }}_{{ ansible_system | lower }}_{{ system_architecture }}.tar.gz
+      {{ lookup('vars', project)[type].version }}/lumera_{{ lookup('vars', project)[type].version }}_{{ ansible_system | lower }}_{{ system_architecture }}.tar.gz
   ansible.builtin.unarchive:
-    src: "{{ vars[project][type].source_url }}/{{ suffix_url }}"
+    src: "{{ lookup('vars', project)[type].source_url }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ service_identifier }}"
     remote_src: true
     owner: root

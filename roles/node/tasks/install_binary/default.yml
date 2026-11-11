@@ -7,9 +7,9 @@
 
 - name: Clone the repository to /tmp
   ansible.builtin.git:
-    repo: "{{ vars[project][type].source_url }}"
+    repo: "{{ lookup('vars', project)[type].source_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project][type].version }}"
+    version: "{{ lookup('vars', project)[type].version }}"
     force: true
 
 - name: Build the project using `make build`

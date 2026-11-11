@@ -9,7 +9,7 @@
   ansible.builtin.git:
     repo: "{{ pf.source_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
-    version: "{{ vars[project].pf.version }}"
+    version: "{{ lookup('vars', project).pf.version }}"
     force: true
 
 - name: Build the project using `make build`

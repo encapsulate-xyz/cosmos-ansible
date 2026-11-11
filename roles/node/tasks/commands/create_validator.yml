@@ -24,7 +24,7 @@
           --identity={{ identity }}
           --security-contact={{ security_mail }}
           --from={{ key_name }}
-          --chain-id={{ vars[project].chain_id }}
+          --chain-id={{ lookup('vars', project).chain_id }}
           --node tcp://localhost:{{ rpc_port }}
           --gas-prices {{ node_network_params.gas_price }}{{ node_network_params.denom }}
           --output json

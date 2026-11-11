@@ -32,7 +32,7 @@
 
 - name: Include wasmvm task
   ansible.builtin.include_tasks: roles/node/tasks/configure_wasmvm.yml
-  when: vars[project][type].wasmvm.version is defined
+  when: lookup('vars', project)[type].wasmvm.version is defined
 
 - name: Decrypt seed file
   ansible.builtin.shell: |

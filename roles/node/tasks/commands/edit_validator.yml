@@ -12,7 +12,7 @@
           --commission-rate={{ node_network_params.current_commission_rate }}
           --yes
           --from {{ key_name }}
-          --chain-id {{ vars[project].chain_id }}
+          --chain-id {{ lookup('vars', project).chain_id }}
           --home {{ node_home_dir }}
           --node tcp://localhost:{{ rpc_port }}
           --output json

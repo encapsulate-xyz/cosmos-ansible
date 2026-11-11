@@ -1,7 +1,7 @@
 ---
 - name: Get the latest block height
   ansible.builtin.uri:
-    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block"
+    url: "{{ rpc_url | default(lookup('vars', project).rpc_url) }}/block"
     return_content: true
   register: latest_block
 
@@ -15,7 +15,7 @@
 
 - name: Get the trust hash for the calculated trust height
   ansible.builtin.uri:
-    url: "{{ rpc_url | default(vars[project].rpc_url) }}/block?height={{ trust_height }}"
+    url: "{{ rpc_url | default(lookup('vars', project).rpc_url) }}/block?height={{ trust_height }}"
     return_content: true
   register: trust_block_hash_response
 
@@ -26,7 +26,7 @@
 - name: Print all variables
   ansible.builtin.debug:
     msg:
-      - "RPC_URL: {{ rpc_url | default(vars[project].rpc_url) }}"
+      - "RPC_URL: {{ rpc_url | default(lookup('vars', project).rpc_url) }}"
       - "Latest Height: {{ latest_height }}"
       - "Trust Height (LATEST_HEIGHT - 2000): {{ trust_height }}"
       - "Trust Hash: {{ trust_hash }}"
@@ -41,7 +41,7 @@
     - regexp: "^enable = .*"
       line: "enable = true"
     - regexp: "^rpc_servers = .*"
-      line: 'rpc_servers = "{{ rpc_url | default(vars[project].rpc_url) }},{{ rpc_url | default(vars[project].rpc_url) }}"'
+      line: 'rpc_servers = "{{ rpc_url | default(lookup('vars', project).rpc_url) }},{{ rpc_url | default(lookup('vars', project).rpc_url) }}"'
     - regexp: "^trust_height = .*"
       line: "trust_height = {{ trust_height }}"
     - regexp: "^trust_hash = .*"
