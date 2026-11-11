@@ -48,9 +48,9 @@ pell:
 lumera:
   chain_id: lumera-testnet-2
   validator:
-    version: v1.20.2
+    version: v1.23.0
     wasmvm:
-      version: v3.0.3
+      version: v3.0.8
   snapshot_url: https://snapshots.polkachu.com/testnet-snapshots/lumera/lumera_712731.tar.lz4
   supernode:
     version: v2.6.1-testnet
