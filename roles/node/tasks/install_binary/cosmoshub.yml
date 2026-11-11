@@ -1,9 +1,9 @@
 ---
 - name: Download public gaiad binary when secret binaries are disabled
   vars:
-    suffix_url: "gaiad-{{ vars[project][type].version }}-{{ ansible_system | lower }}-{{ system_architecture }}"
+    suffix_url: "gaiad-{{ lookup('vars', project)[type].version }}-{{ ansible_system | lower }}-{{ system_architecture }}"
   ansible.builtin.get_url:
-    url: "{{ vars[project][type].source_url }}/{{ vars[project][type].version }}/{{ suffix_url }}"
+    url: "{{ lookup('vars', project)[type].source_url }}/{{ lookup('vars', project)[type].version }}/{{ suffix_url }}"
     dest: "{{ node_staged_binary }}"
     owner: root
     group: root
@@ -24,7 +24,7 @@
 
     - name: Download and unarchive the binary
       vars:
-        suffix_url: "{{ vars[project][type].version }}/gaiad-{{ ansible_system | lower }}-{{ system_architecture }}.tar.gz"
+        suffix_url: "{{ lookup('vars', project)[type].version }}/gaiad-{{ ansible_system | lower }}-{{ system_architecture }}.tar.gz"
       ansible.builtin.unarchive:
         src: "{{ vault.external.cosmoshub.private_source_url }}/{{ suffix_url }}"
         dest: "{{ tmp_dir }}/{{ service_identifier }}"
@@ -34,8 +34,10 @@
         mode: "0755"
 
     - name: Copy the binary file
+      vars:
+        node_gaiad_dir: "gaiad-{{ ansible_system | lower }}-{{ system_architecture }}"
       ansible.builtin.copy:
-        src: "{{ tmp_dir }}/{{ service_identifier }}/gaiad-{{ ansible_system | lower }}-{{ system_architecture }}/{{ node_service_default_binary_name[project] }}"
+        src: "{{ tmp_dir }}/{{ service_identifier }}/{{ node_gaiad_dir }}/{{ node_service_default_binary_name[project] }}"
         dest: "{{ node_staged_binary }}"
         remote_src: true
         owner: root

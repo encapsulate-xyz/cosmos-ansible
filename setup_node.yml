@@ -81,7 +81,7 @@
             log_file_path: "{{ node_log_file_path }}"
             version_command: "{{ node_bin_dir }}/{{ service_identifier }} version --home {{ node_home_dir }}"
             # some chains build the version with the leading v, some without
-            expected_version: "{{ vars[project][type].version | regex_replace('^v', '') }}"
+            expected_version: "{{ lookup('vars', project)[type].version | regex_replace('^v', '') }}"
             health_url: "http://{{ node_rpc_host }}:{{ rpc_port }}/health"
           when: project not in unchecked_version_projects
 

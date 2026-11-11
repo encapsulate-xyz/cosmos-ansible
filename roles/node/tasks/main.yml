@@ -15,11 +15,11 @@
 
 - name: Set seeds
   ansible.builtin.set_fact:
-    seeds: "{{ lookup('file', 'files/{{ env }}/{{ project }}/seeds.txt').splitlines() | join(',') }}"
+    node_seeds: "{{ lookup('file', 'files/{{ env }}/{{ project }}/seeds.txt').splitlines() | join(',') }}"
 
 - name: Set peers
   ansible.builtin.set_fact:
-    peers: "{{ lookup('file', 'files/{{ env }}/{{ project }}/peers.txt').splitlines() | join(',') }}"
+    node_peers: "{{ lookup('file', 'files/{{ env }}/{{ project }}/peers.txt').splitlines() | join(',') }}"
 
 - name: Include user creation task
   ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
@@ -34,7 +34,7 @@
 
 - name: Include wasmvm task
   ansible.builtin.include_tasks: configure_wasmvm.yml
-  when: vars[project][type].wasmvm.version is defined
+  when: lookup('vars', project)[type].wasmvm.version is defined
 
 - name: Get genesis and configuration files
   block:
@@ -60,12 +60,12 @@
 
     - name: Download genesis file
       ansible.builtin.get_url:
-        url: "{{ vars[project].genesis_url }}"
+        url: "{{ lookup('vars', project).genesis_url }}"
         dest: "{{ node_genesis_file_path }}"
         owner: "{{ service_identifier }}"
         group: "{{ service_identifier }}"
         mode: "0644"
-      when: vars[project].genesis_url is defined
+      when: lookup('vars', project).genesis_url is defined
       notify:
         - Restart service
 
@@ -76,7 +76,7 @@
         owner: "{{ service_identifier }}"
         group: "{{ service_identifier }}"
         mode: "0644"
-      when: vars[project].genesis_url is not defined
+      when: lookup('vars', project).genesis_url is not defined
       notify:
         - Restart service
 

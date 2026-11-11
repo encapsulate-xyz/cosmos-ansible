@@ -12,9 +12,9 @@
     url: http://localhost:{{ rpc_port }}/{{ node_status_endpoint }}
     method: GET
     return_content: true
-  register: blockchain_height
+  register: tofnd_blockchain_height
   ignore_errors: true # Do not fail the task if the request fails
-  until: 1 <= ((blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) % 50) <= 9
+  until: 1 <= ((tofnd_blockchain_height.json.result.sync_info.latest_block_height | default('0') | int) % 50) <= 9
   delay: 10 # Wait 10 seconds between retries
   retries: 1000 # Large number to allow long polling
 
@@ -42,11 +42,12 @@
 
 - name: Read mnemonic
   ansible.builtin.command: cat {{ tofnd_home_dir }}/export
-  register: file_output
+  register: tofnd_file_output
+  changed_when: false
 
 - name: Print mnemonic
   ansible.builtin.debug:
-    msg: "{{ file_output.stdout }}"
+    msg: "{{ tofnd_file_output.stdout }}"
 
 - name: Remove mnemonic
   ansible.builtin.file:
