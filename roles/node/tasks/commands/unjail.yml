@@ -14,17 +14,17 @@
           --sign-mode direct
         responses:
           "Enter keyring passphrase.*:": "{{ lookup('env', 'KEYRING_PASSWORD') }}\n"
-      register: unjail_output
+      register: node_unjail_output
       failed_when:
-        - unjail_output.rc != 0
-        - ((unjail_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
+        - node_unjail_output.rc != 0
+        - ((node_unjail_output.stdout | regex_search('code:\\s*(\\d+)', '\\1')) | default('0') | int) != 0
 
   always:
     - name: Prase unjail command output and store in variable
       ansible.builtin.set_fact:
-        command_result: "{{ unjail_output }}"
-      when: unjail_output.rc == 0
+        node_command_result: "{{ node_unjail_output }}"
+      when: node_unjail_output.rc == 0
 
     - name: Include display command output task
       ansible.builtin.import_tasks: display_command_output.yml
-      when: unjail_output.rc == 0
+      when: node_unjail_output.rc == 0

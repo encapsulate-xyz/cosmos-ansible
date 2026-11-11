@@ -27,11 +27,11 @@
     paths: "{{ tmp_dir }}/{{ project }}"
     patterns: "{{ price_feeder_service_default_binary_name }}"
     recurse: true
-  register: binary_location
+  register: price_feeder_binary_location
 
 - name: Copy the built binary to the target directory
   ansible.builtin.copy:
-    src: "{{ binary_location.files[0].path }}"
+    src: "{{ price_feeder_binary_location.files[0].path }}"
     dest: "{{ price_feeder_bin_dir }}/{{ service_identifier }}"
     mode: "0755"
     owner: root
