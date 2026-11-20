@@ -56,7 +56,7 @@ gitopia:
 humans:
   chain_id: humans_1089-1
   validator:
-    version: master
+    version: master  # unpinned: upstream cuts few release tags (latest v1.0.0 == master HEAD), so we track master
     go:
       version: 1.23.5
   snapshot_url: https://snapshots.polkachu.com/snapshots/humans/humans_9428312.tar.lz4
