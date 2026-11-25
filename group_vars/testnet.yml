@@ -14,11 +14,11 @@ c4e:
 axelar:
   chain_id: axelar-testnet-lisbon-3
   validator:
-    version: v1.6.1
+    version: v1.6.2
   fullnode:
-    version: v1.6.1
+    version: v1.6.2
   vald:
-    version: v1.6.1
+    version: v1.6.2
     node_address: "tcp://localhost:11457"
     vote_metrics_url: https://testnet.api.axelarscan.io/validator/searchPolls
     tofnd_host: localhost
